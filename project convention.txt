@@ -1,0 +1,88 @@
+== 프로젝트 컨벤션 ==
+# 본 프로젝트에서는 가독성과 통일성 유지를 위해 아래와 같은 컨벤션을 따를 것을 권장한다.
+
+
+# 클래스, 구조체, 메서드는 PascalCase를 사용한다.
+    예:
+    class Enemy
+    struct PlayerData
+    Prefab GetInstance()
+
+
+# 필드, 로컬 변수는 camelCase를 사용한다.
+    예:
+    int value;
+    string playerName;
+    PrefabType prefabType;
+
+
+# singleton을 사용하는 class는 이름에 Sg_ 접두어를 붙인다.
+    예:
+    class Sg_ObjectPool
+    class Sg_GameManager
+
+
+# singleton을 사용하는 class의 인스턴스 변수명은 'Inst'로 통일한다.
+    예:
+    class Sg_ObjectPool 
+    {
+        public static Sg_ObjectPool Inst;
+        //...
+    }
+
+
+# static class는 이름에 St_를 붙인다.
+    예:
+    class St_Clamp
+    class St_Range
+
+
+# 프로젝트에서 별도로 정의한 module은 단어 끝에 '_'를 붙인다. '_'를 붙이는 이유는 시스템 및 Unity 예약어와 충돌하는 문제를 방지하기 위함이다.
+
+
+# 중괄호 {}의 경우 Microsoft 권장 스타일을 사용한다.
+    예:
+    void Func()
+    {
+
+    }
+
+
+# if - else if - else 문의 경우 아래와 같은 형식을 사용한다. 조건문의 라인이 1개이더라도 중괄호는 반드시 사용하도록 한다.
+    예:
+    if (condition1) 
+    {
+
+    }
+    else if (condition2)
+    {
+
+    }
+    else
+    {
+
+    }
+
+
+# Hierachy에 Folder(프로젝트에 별도 에셋으로 임포트 되어있음)를 추가할 때는 __FolderName__ 형식으로 작명하여 구분되도록 한다.
+    이름에 포함된 단어는 PascalCase로 작성하도록 한다. 이름에 포함된 공백은 '_'를 사용하지 않고 white space를 사용하도록 한다.
+    예:
+    __Singletone Modules__
+    __Global Objects__
+
+
+# 프로젝트에 기본적으로 포함되어있는 0_ ~ 7_ 폴더는 디렉토리 위치를 변경하거나 이름을 변경하지 않도록 한다.
+
+
+# 필요에 의해 프로젝트 폴더에 새 폴더를 추가해야한다면, Number_FolderName 형식으로 작명한다. 번호는 기존에 존재하는 폴더 번호와 이어지는 번호를 붙이도록 한다.
+    예:
+    // 7_IgnoreAssets 아래에 폴더를 추가하는 상황...
+    +
+    8_CasualModels
+    9_UsableModules
+
+
+# 리포지토리에 공개되어도 문제가 없는 무료 에셋의 경우 6_ExtAssets 폴더에 추가하도록 한다.
+
+
+# 리포지토리에 공개해서는 안되는 유료 에셋의 경우 7_IgnoreAssets 폴더에 추가하도록 한다. 해당 폴더는 .gitignore에 의해 상태 추적 무시가 적용되어있다.
