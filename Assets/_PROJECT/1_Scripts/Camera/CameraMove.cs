@@ -7,7 +7,7 @@ public class CameraMove : MonoBehaviour
     public float zoomedFov;
     public float zoomAcc;
     public float unzoomSpeed;
-    public Vector2 zoomedSensitivity;
+    public Vector2 zoomedSensitivityRatio;
 
     private float currentFov;
     private Camera cam;
@@ -31,14 +31,14 @@ public class CameraMove : MonoBehaviour
             zoomState = !zoomState;
             acc = 0f;
 
-            // 줌 활성화 시 마우스 감도를 더 낮게 설정한다
-            if(zoomState)
+            
+            if(zoomState) // 줌 활성화 시 마우스 감도를 더 낮게 설정한다
             {
-                Sg_MouseMan.Inst.SetSensitivity(zoomedSensitivity);
+                Sg_MouseMan.Inst.SetSensitivityMultiple(zoomedSensitivityRatio);
             }
-            else
+            else // 줌 비활성화 시 마우스 감도를 다시 리셋
             {
-                Sg_MouseMan.Inst.ResetSensitivity();
+                Sg_MouseMan.Inst.ResetSensitivityMultiple();
             }
         }
 
