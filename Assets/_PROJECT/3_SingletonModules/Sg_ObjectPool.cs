@@ -3,13 +3,14 @@ using UnityEngine;
 
 // 오브젝트 풀 유틸
 // 각 프리펩 타입에 맞게 인스턴스를 얻거나 반환
+// 씬 변경 시 인스턴스는 할당 해제된다.
 // 예:
 // var inst = St_ObjectPool.Inst.Get(prefab);
 // St_ObjectPool.Inst.Return(inst);
 
-public class St_ObjectPool : MonoBehaviour
+public class Sg_ObjectPool : MonoBehaviour
 {
-    public static St_ObjectPool Inst;
+    public static Sg_ObjectPool Inst;
     
     private Dictionary<GameObject, List<GameObject>> poolDict = new Dictionary<GameObject, List<GameObject>>();
 
@@ -21,7 +22,7 @@ public class St_ObjectPool : MonoBehaviour
             return;
         }
         Inst = this;
-        print($"[{typeof(St_ObjectPool)}] Created instance.");
+        print($"[{typeof(Sg_ObjectPool)}] Created instance.");
     }
 
     void OnDestroy()

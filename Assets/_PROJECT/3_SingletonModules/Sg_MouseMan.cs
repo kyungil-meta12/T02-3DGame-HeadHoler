@@ -2,6 +2,9 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+// 마우스 커서 및 감도를 담당하는 모듈
+// 한 번 추가되면 씬이 변경되어도 인스턴스는 계속 유지된다.
+
 public class Sg_MouseMan : MonoBehaviour
 {
     public static Sg_MouseMan Inst;
