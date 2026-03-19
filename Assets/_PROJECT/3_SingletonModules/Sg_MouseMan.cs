@@ -11,6 +11,11 @@ public class Sg_MouseMan : MonoBehaviour
 
     public Vector2 sensitivity;
 
+
+    private Vector2 defaultSensitivity;
+    private Vector2 currentSensitivity;
+
+
     [HideInInspector]
     public Vector3 rotation = Vector3.zero;
 
@@ -30,6 +35,8 @@ public class Sg_MouseMan : MonoBehaviour
         {
             LockCursor();
         }
+        defaultSensitivity = sensitivity;
+        currentSensitivity = defaultSensitivity;
 
         print("[Sg_MouseController] Created instance.");
     }
@@ -54,8 +61,8 @@ public class Sg_MouseMan : MonoBehaviour
         if (lockState) // 잠금 상태에서만 마우스 델타 업데이트
         {
             var mouseDelta = Mouse.current.delta.ReadValue();
-            rotation.x -= mouseDelta.y * sensitivity.x;
-            rotation.y += mouseDelta.x * sensitivity.y;
+            rotation.x -= mouseDelta.y * currentSensitivity.x;
+            rotation.y += mouseDelta.x * currentSensitivity.y;
             rotation.x = Mathf.Clamp(rotation.x, -90f, 90f);
             rotation.y %= 360f;
             if (rotation.y < 0)
@@ -77,5 +84,15 @@ public class Sg_MouseMan : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         lockState = false;
+    }
+
+    public void SetSensitivity(Vector2 val)
+    {
+        currentSensitivity = val;
+    }
+
+    public void ResetSensitivity()
+    {
+        currentSensitivity = defaultSensitivity;
     }
 }
