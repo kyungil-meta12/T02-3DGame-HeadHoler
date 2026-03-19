@@ -1,6 +1,6 @@
 using UnityEngine;
 
-// Vector2, Vector3 타입에 대해 clamp를 하는 모듈.
+// Vector3 및 Vector2 타입에 대해 clamp를 하는 모듈.
 // Mathf에 해당 타입에 대한 오버로드가 없어 별도로 작성하였다.
 
 // 값을 clamp하는 방식 옵션
@@ -23,7 +23,7 @@ public enum ClampDir
     Max
 }
 
-public static class Clamp_
+public static class St_Vec3Clamp
 {
     // 양방향 clamp
     public static Vector3 BiLimit(Vector3 val, Vector3 inclusiveMin, Vector3 inclusiveMax, ClampType clampType=ClampType.Block)
@@ -68,6 +68,39 @@ public static class Clamp_
         return retval;
     }
 
+     // 양방향 clamp
+    public static Vector2 BiLimit(Vector2 val, Vector2 inclusiveMin, Vector2 inclusiveMax, ClampType clampType=ClampType.Block)
+    {
+        Vector2 retval = val;
+        if (clampType == ClampType.Block)
+        {
+            retval.x = Mathf.Clamp(retval.x, inclusiveMin.x, inclusiveMax.x);
+            retval.y = Mathf.Clamp(retval.y, inclusiveMin.y, inclusiveMax.y);
+        }
+        else if (clampType == ClampType.Return)
+        {
+            if(retval.x < inclusiveMin.x)
+            {
+                retval.x = inclusiveMax.x;
+            }
+            else if(retval.x > inclusiveMax.x)
+            {
+                retval.x = inclusiveMin.x;
+            }
+
+            if(retval.y < inclusiveMin.y)
+            {
+                retval.y = inclusiveMax.y;
+            }
+            else if(retval.y > inclusiveMax.y)
+            {
+                retval.y = inclusiveMin.y;
+            }
+        }
+
+        return retval;
+    }
+
     // 단방향 clamp
     public static Vector3 MonoLimit(Vector3 val, Vector3 inclusiveLimit, ClampDir clampDir)
     {
@@ -101,6 +134,37 @@ public static class Clamp_
             if(retval.z > inclusiveLimit.z)
             {
                 retval.z = inclusiveLimit.z;
+            }
+        }
+
+        return retval;
+    }
+
+    // 단방향 clamp
+    public static Vector2 MonoLimit(Vector2 val, Vector2 inclusiveLimit, ClampDir clampDir)
+    {
+        Vector2 retval = val;
+
+        if (clampDir == ClampDir.Min)
+        {
+            if(retval.x < inclusiveLimit.x)
+            {
+                retval.x = inclusiveLimit.x;
+            }
+            if(retval.y < inclusiveLimit.y)
+            {
+                retval.y = inclusiveLimit.y;
+            }
+        }
+        else if (clampDir == ClampDir.Max)
+        {
+            if(retval.x > inclusiveLimit.x)
+            {
+                retval.x = inclusiveLimit.x;
+            }
+            if(retval.y > inclusiveLimit.y)
+            {
+                retval.y = inclusiveLimit.y;
             }
         }
 

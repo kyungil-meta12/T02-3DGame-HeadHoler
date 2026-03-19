@@ -10,6 +10,7 @@ using UnityEngine;
 public class St_ObjectPool : MonoBehaviour
 {
     public static St_ObjectPool Inst;
+    
     private Dictionary<GameObject, List<GameObject>> poolDict = new Dictionary<GameObject, List<GameObject>>();
 
     void Awake()

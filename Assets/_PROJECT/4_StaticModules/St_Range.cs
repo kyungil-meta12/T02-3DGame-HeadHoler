@@ -5,7 +5,7 @@ using UnityEngine;
 // 특정 값이 특정 범위 안에 포함되는지 확인하는 모듈
 // inclusive min - inclusive max 범위이다. 
 
-public static class Range_
+public static class St_Range
 {
     public static bool IsInRange(int val, int rangeMinInclusive, int rangeMaxInclusive)
     {
