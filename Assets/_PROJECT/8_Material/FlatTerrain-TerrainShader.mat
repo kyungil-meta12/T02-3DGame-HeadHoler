@@ -13,7 +13,6 @@ Material:
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
   - DR_GRADIENT_ON
-  - DR_RIM_ON
   - _CELPRIMARYMODE_SINGLE
   m_InvalidKeywords:
   - _OVERRIDE_SHADOWS_ENABLED
@@ -86,12 +85,12 @@ Material:
     - _FlatRimEdgeSmoothness: 0.348
     - _FlatRimEnabled: 1
     - _FlatRimLightAlign: 0
-    - _FlatRimSize: 0.125
+    - _FlatRimSize: 0
     - _FlatShadowsEnabled: 1
     - _FlatSpecularEdgeSmoothness: 0.5
     - _FlatSpecularEnabled: 1
     - _FlatSpecularSize: 0.5
-    - _Flatness: 0.816
+    - _Flatness: 1
     - _FlatnessExtra: 1
     - _FlatnessSecondary: 1
     - _GlossMapScale: 1
@@ -116,13 +115,13 @@ Material:
     - _OverrideShadows: 1
     - _OverrideShadowsEnabled: 1
     - _Parallax: 0.02
-    - _RimEnabled: 1
+    - _RimEnabled: 0
     - _SecondaryColor: 1
     - _SecondaryColorEnabled: 1
-    - _SelfShadingSize: 0.827
+    - _SelfShadingSize: 0.789
     - _SelfShadingSizeExtra: 0.5
     - _ShadowAmount: 0
-    - _ShadowEdgeSize: 0.036
+    - _ShadowEdgeSize: 0.017
     - _ShadowEdgeSizeExtra: 0.05
     - _ShadowEdgeSmoothness: 0.5
     - _ShadowFalloff: 0.01
@@ -141,7 +140,7 @@ Material:
     - _ColorDimCurve: {r: 0.85, g: 0.85, b: 0.85, a: 0.85}
     - _ColorDimExtra: {r: 0.85, g: 0.85, b: 0.85, a: 0.85}
     - _ColorDimSteps: {r: 0.85, g: 0.85, b: 0.85, a: 0.85}
-    - _ColorGradient: {r: 1, g: 1, b: 1, a: 1}
+    - _ColorGradient: {r: 0.28586686, g: 0.52161896, b: 0.8301887, a: 1}
     - _ColorSecondary: {r: 1, g: 0.55879205, b: 0, a: 1}
     - _ColorShadow: {r: 0.5, g: 0.5, b: 0.5, a: 1}
     - _ColorShadows: {r: 0.4627451, g: 0.40784314, b: 0.41833144, a: 1}
