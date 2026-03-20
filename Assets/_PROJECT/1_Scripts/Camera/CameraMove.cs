@@ -8,6 +8,8 @@ public class CameraMove : MonoBehaviour
     public float zoomAcc;
     public float unzoomSpeed;
     public Vector2 zoomedSensitivityRatio;
+    public Transform trackTarget;
+    public float rotationOffset;
 
     private float currentFov;
     private Camera cam;
@@ -22,9 +24,12 @@ public class CameraMove : MonoBehaviour
         currentFov = defaultFov;
     }
 
-    void Update()
+    void LateUpdate()
     {
-        cam.transform.rotation = Quaternion.Euler(Sg_MouseMan.Inst.rotation);
+        var camRot = Sg_MouseMan.Inst.rotation;
+        camRot.y += rotationOffset;
+        cam.transform.rotation = Quaternion.Euler(camRot);
+        cam.transform.position = trackTarget.position;
 
         if(Mouse.current.rightButton.wasPressedThisFrame)
         {
