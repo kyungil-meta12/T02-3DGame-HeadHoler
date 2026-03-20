@@ -4,13 +4,14 @@ public class PlayerController : MonoBehaviour
 {
     public float moveSpeed;
     public float moveAcc;
+    public Transform spine;
 
     private Rigidbody body;
     private Vector3 moveDir;
     private Vector3 currDir;
     private Vector3 currDirDest;
 
-    public Transform spine;
+
 
     private bool inputForward;
     private bool inputBackward;
