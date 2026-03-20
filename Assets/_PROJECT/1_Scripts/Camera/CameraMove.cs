@@ -9,7 +9,8 @@ public class CameraMove : MonoBehaviour
     public float unzoomSpeed;
     public Vector2 zoomedSensitivityRatio;
     public Transform trackTarget;
-    public float rotationOffset;
+    public Transform yRotationTarget;
+    
 
     private float currentFov;
     private Camera cam;
@@ -26,9 +27,9 @@ public class CameraMove : MonoBehaviour
 
     void LateUpdate()
     {
-        var camRot = Sg_MouseMan.Inst.rotation;
-        camRot.y += rotationOffset;
-        cam.transform.rotation = Quaternion.Euler(camRot);
+        var xRotation = Sg_MouseMan.Inst.rotation.x;
+        var yRotation = yRotationTarget.rotation.eulerAngles.y;
+        cam.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
         cam.transform.position = trackTarget.position;
 
         if(Mouse.current.rightButton.wasPressedThisFrame)
