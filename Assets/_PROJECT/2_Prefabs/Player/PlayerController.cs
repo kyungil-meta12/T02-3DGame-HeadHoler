@@ -15,9 +15,12 @@ public class PlayerController : MonoBehaviour
     private bool inputStrafeLeft;
     private bool inputStrafeRight;
 
+    private Animator anim;
+
     void Awake()
     {
         body = GetComponent<Rigidbody>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -51,9 +54,14 @@ public class PlayerController : MonoBehaviour
             currDirDest.x -= 1f;
         }
 
+        anim.SetFloat("ForwardSpeed", moveDir.z);
+        anim.SetFloat("StrafeSpeed", moveDir.x);
+
         currDir = Vector3.Lerp(currDir, currDirDest, Time.fixedDeltaTime * moveAcc);
         moveDir = Vector3.ClampMagnitude(currDir, 1f);
         body.rotation = Quaternion.Euler(new Vector3(0f, Sg_MouseMan.Inst.rotation.y, 0f));
+        var currentVel = body.linearVelocity;
         body.AddRelativeForce(moveDir * moveSpeed, ForceMode.Acceleration);
+        body.linearVelocity = currentVel;
     }
 }

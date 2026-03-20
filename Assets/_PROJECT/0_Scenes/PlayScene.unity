@@ -840,16 +840,20 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4870868081787839790, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
+      propertyPath: m_Mass
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4870868081787839790, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
       propertyPath: m_LinearDamping
-      value: 20
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7089622904211512921, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
       propertyPath: moveAcc
-      value: 20
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7089622904211512921, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
       propertyPath: moveSpeed
-      value: 50
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7298863161511034769, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
       propertyPath: m_Controller
