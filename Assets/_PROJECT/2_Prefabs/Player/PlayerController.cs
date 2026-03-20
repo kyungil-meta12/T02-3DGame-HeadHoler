@@ -10,17 +10,22 @@ public class PlayerController : MonoBehaviour
     private Vector3 currDir;
     private Vector3 currDirDest;
 
+    public Transform spine;
+
     private bool inputForward;
     private bool inputBackward;
     private bool inputStrafeLeft;
     private bool inputStrafeRight;
 
     private Animator anim;
+    private SkinnedMeshRenderer smr;
 
     void Awake()
     {
         body = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
+        smr = GetComponentInChildren<SkinnedMeshRenderer>();
+        smr.updateWhenOffscreen = true;
     }
 
     // Update is called once per frame
@@ -30,10 +35,7 @@ public class PlayerController : MonoBehaviour
         inputBackward    = Input.GetKey(KeyCode.S);
         inputStrafeLeft  = Input.GetKey(KeyCode.A);
         inputStrafeRight = Input.GetKey(KeyCode.D);
-    }
 
-    void FixedUpdate()
-    {
         currDirDest.z = 0f;
         if(inputForward)
         {
@@ -56,12 +58,23 @@ public class PlayerController : MonoBehaviour
 
         anim.SetFloat("ForwardSpeed", moveDir.z);
         anim.SetFloat("StrafeSpeed", moveDir.x);
+    }
 
+    void FixedUpdate()
+    {
         currDir = Vector3.Lerp(currDir, currDirDest, Time.fixedDeltaTime * moveAcc);
         moveDir = Vector3.ClampMagnitude(currDir, 1f);
         body.rotation = Quaternion.Euler(new Vector3(0f, Sg_MouseMan.Inst.rotation.y, 0f));
-        var currentVel = body.linearVelocity;
-        body.AddRelativeForce(moveDir * moveSpeed, ForceMode.Acceleration);
-        body.linearVelocity = currentVel;
+        var prevVel = body.linearVelocity;
+        body.AddRelativeForce(moveDir * moveSpeed, ForceMode.VelocityChange);
+        var currVel = body.linearVelocity;
+        body.linearVelocity = new Vector3(currVel.x, prevVel.y, currVel.z);
+    }
+
+    void LateUpdate()
+    {
+        Vector3 worldAxis = body.transform.TransformDirection(Vector3.right);
+        Quaternion rotationDelta = Quaternion.AngleAxis(Sg_MouseMan.Inst.rotation.x, worldAxis);
+        spine.rotation = rotationDelta * spine.rotation;
     }
 }
