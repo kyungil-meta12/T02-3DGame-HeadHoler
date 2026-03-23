@@ -136,11 +136,27 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("ForwardSpeed", moveDir.z);
         anim.SetFloat("StrafeSpeed", moveDir.x);
 
+        // 마우스 우클릭으로 줌 상태 토글
+        if(Mouse.current.rightButton.wasPressedThisFrame)
+        {
+            Sg_CameraController.Inst.ToggleZoom();
+        }
+
         // 줌 상태에서 움직이면 해제된다.
         if (inputForward || inputBackward || inputStrafeLeft || inputStrafeRight)
         {
-            Sg_CameraController.Inst.zoomState = false;
-            Sg_CameraController.Inst.acc = 0f;
+            Sg_CameraController.Inst.DisableZoom();
+        }
+
+        // 마우스 휠로 스코프 배율 조정
+        var scroll = Mouse.current.scroll.ReadValue();
+        if(scroll.y > 0f)
+        {
+            Sg_CameraController.Inst.IncreaseScopeMagnification();
+        }
+        else if(scroll.y < 0f)
+        {
+            Sg_CameraController.Inst.ReduceScopeMagnification();
         }
 
         // 스페이스바를 눌러 숨 참기를 토글한다.
@@ -184,7 +200,7 @@ public class PlayerController : MonoBehaviour
             holdState = false;
         }
 
-        // 애니메이션 속도를 낮추어 숨을 참는 모션 표현
+        // 숨을 참을 때는 애니메이션 속도를 낮추어 화면 흔들림 제거
         anim.speed = Mathf.Lerp(anim.speed, holdState ? 0f : 1f, Time.deltaTime * 2.5f);
     }
 
