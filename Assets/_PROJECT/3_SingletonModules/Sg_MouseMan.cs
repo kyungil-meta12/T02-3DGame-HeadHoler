@@ -19,6 +19,7 @@ public class Sg_MouseMan : MonoBehaviour
 
     [HideInInspector]
     public Vector3 rotation = Vector3.zero;
+    private Vector2 prevRotation = Vector2.zero;
 
     [HideInInspector]
     public bool lockState = false;
@@ -59,6 +60,9 @@ public class Sg_MouseMan : MonoBehaviour
 
         if (lockState) // 잠금 상태에서만 마우스 델타 업데이트
         {
+            prevRotation.x = rotation.x;
+            prevRotation.y = rotation.y;
+
             var mouseDelta = Mouse.current.delta.ReadValue();
             rotation.x -= mouseDelta.y * sensitivity.x * sensitivityMultiply.x;
             rotation.y += mouseDelta.x * sensitivity.y * sensitivityMultiply.y;
