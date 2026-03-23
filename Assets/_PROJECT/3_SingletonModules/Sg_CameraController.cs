@@ -21,7 +21,8 @@ public class Sg_CameraController : MonoBehaviour
     [HideInInspector]
     public bool zoomState = false;
 
-    private float acc;
+    [HideInInspector]
+    public float acc = 0f;
 
     void Awake()
     {
@@ -45,24 +46,7 @@ public class Sg_CameraController : MonoBehaviour
 
     void Update()
     {
-        // 우클릭으로 줌/줌아웃 토글
-        if (Mouse.current.rightButton.wasPressedThisFrame)
-        {
-            zoomState = !zoomState;
-            acc = 0f;
-        }
-
-        // 휠로 스코프 배율 조정
-        var scroll = Mouse.current.scroll.ReadValue();
-        if(scroll.y > 0f)
-        {
-            offsetFovDest -= 1f;
-        }
-        else if(scroll.y < 0f)
-        {
-            offsetFovDest += 1f;
-        }
-        offsetFovDest = Mathf.Clamp(offsetFovDest, -9f, 0f);
+        // 스코프 배율 값 업데이트
         offsetFov = Mathf.Lerp(offsetFov, offsetFovDest, Time.deltaTime * 5f);
 
         // 줌을 더 크게 할 수록 마우스 감도 감소
@@ -110,5 +94,29 @@ public class Sg_CameraController : MonoBehaviour
 
             cam.fieldOfView = currentFov;
         }
+    }
+
+    public void ToggleZoom()
+    {
+        zoomState = !zoomState;
+        acc = 0f;
+    }
+
+    public void IncreaseScopeMagnification()
+    {
+        offsetFovDest -= 1f;
+        offsetFovDest = Mathf.Clamp(offsetFovDest, -9f, 0f);
+    }
+
+    public void ReduceScopeMagnification()
+    {
+        offsetFovDest += 1f;
+        offsetFovDest = Mathf.Clamp(offsetFovDest, -9f, 0f);
+    }
+
+    public void DisableZoom()
+    {
+        zoomState = false;
+        acc = 0f;
     }
 }
