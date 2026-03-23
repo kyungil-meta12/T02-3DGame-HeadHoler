@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour
     public GameObject[] guns;
     public Transform[] handList;
     public Transform[] hintList;
+    private Transform selectedHand;
+    private Transform selectedHint;
     private Rigidbody body;
     private Vector3 moveDir;
     private Vector3 currDir;
@@ -35,6 +37,12 @@ public class PlayerController : MonoBehaviour
     private bool holdState = false;
     private float holdTime;
 
+
+    // 재장전 관리에 사용하는 AnimatorStateInfo
+    private AnimatorStateInfo animInfo;
+    private int upperLayerIndex;
+    private bool onReloading = false;
+
     void Awake()
     {
         body = GetComponent<Rigidbody>();
@@ -46,20 +54,21 @@ public class PlayerController : MonoBehaviour
         hintList = new Transform[guns.Length];
 
         // hand transform과 hint transform을 미리 리스트에 저장해둔다.
-        for(int i = 0; i < guns.Length; i ++)
+        for (int i = 0; i < guns.Length; i++)
         {
             handList[i] = guns[i].transform.Find("Hand");
             hintList[i] = guns[i].transform.Find("Hint");
         }
 
         SetGun(Sg_GunIndex.Inst.GetCurrentIndex());
+        upperLayerIndex = anim.GetLayerIndex("Upper Layer");
     }
 
     void SetGun(int index)
     {
-         // 일단 모든 총기 오브젝트를 비활성화 시킨 후, 
-         // 현재 선택된 인덱스에 해당하는 총기만 활성화 한다.
-        foreach(var g in guns)
+        // 일단 모든 총기 오브젝트를 비활성화 시킨 후, 
+        // 현재 선택된 인덱스에 해당하는 총기만 활성화 한다.
+        foreach (var g in guns)
         {
             g.SetActive(false);
         }
@@ -70,6 +79,9 @@ public class PlayerController : MonoBehaviour
         // 그리고 hand transform과 hint transform을 지정한다.
         tb.data.target = handList[index];
         tb.data.hint = hintList[index];
+        
+        selectedHand = handList[index];
+        selectedHint = hintList[index];
 
         // 마지막으로 리그 빌드 재빌드
         // 게임 플레이 도중에는 변경될 일이 없기 때문에 그냥 빌드를 여기서 한다.
@@ -79,7 +91,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(devMode)
+        if (devMode)
         {
             if (Keyboard.current.digit0Key.wasPressedThisFrame)
             {
@@ -108,100 +120,13 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        inputForward     = Input.GetKey(KeyCode.W);
-        inputBackward    = Input.GetKey(KeyCode.S);
-        inputStrafeLeft  = Input.GetKey(KeyCode.A);
-        inputStrafeRight = Input.GetKey(KeyCode.D);
+        animInfo = anim.GetCurrentAnimatorStateInfo(upperLayerIndex);
+        onReloading = animInfo.IsName("Reload");
 
-        currDirDest.z = 0f;
-        if(inputForward)
-        {
-            currDirDest.z += 1f;
-        }
-        if(inputBackward)
-        {
-            currDirDest.z -= 1f;
-        }
-
-        currDirDest.x = 0f;
-        if(inputStrafeRight)
-        {
-            currDirDest.x += 1f;
-        }
-        if(inputStrafeLeft)
-        {
-            currDirDest.x -= 1f;
-        }
-
-        anim.SetFloat("ForwardSpeed", moveDir.z);
-        anim.SetFloat("StrafeSpeed", moveDir.x);
-
-        // 마우스 우클릭으로 줌 상태 토글
-        if(Mouse.current.rightButton.wasPressedThisFrame)
-        {
-            Sg_CameraController.Inst.ToggleZoom();
-        }
-
-        // 줌 상태에서 움직이면 해제된다.
-        if (inputForward || inputBackward || inputStrafeLeft || inputStrafeRight)
-        {
-            Sg_CameraController.Inst.DisableZoom();
-        }
-
-        // 마우스 휠로 스코프 배율 조정
-        var scroll = Mouse.current.scroll.ReadValue();
-        if(scroll.y > 0f)
-        {
-            Sg_CameraController.Inst.IncreaseScopeMagnification();
-        }
-        else if(scroll.y < 0f)
-        {
-            Sg_CameraController.Inst.ReduceScopeMagnification();
-        }
-
-        // 스페이스바를 눌러 숨 참기를 토글한다.
-        // 줌을 사용하는 동안에만 가능하다.
-        if(Sg_CameraController.Inst.zoomState) {
-            if(Keyboard.current.spaceKey.wasPressedThisFrame) {
-                if(holdState)
-                {
-                    holdState = false;
-                }
-                else
-                {
-                    if(holdTime <= 0f)
-                    {
-                        holdState = true;
-                    }
-                }
-            }
-        }
-        else
-        {
-            holdState = false;
-        }
-
-        if(holdState)
-        {
-            holdTime += Time.deltaTime; // 숨 참기를 시작한 지 5초가 지나면 강제 해제
-            if(holdTime >= 5f)
-            {
-                holdTime = 5f;
-                holdState = false;
-            }
-        }
-        else
-        {
-            holdTime -= Time.deltaTime; // 이전에 실행한 숨 참기 시간동안 숨 참기를 실행할 수 없다.
-            if(holdTime < 0f)
-            {
-                holdTime = 0f;
-            }
-            holdState = false;
-        }
-
-        // 숨을 참을 때는 애니메이션 속도를 낮추어 화면 흔들림 제거
-        anim.speed = Mathf.Lerp(anim.speed, holdState ? 0f : 1f, Time.deltaTime * 2.5f);
+        UpdateMove();
+        UpdateZoom();
+        UpdateBreatheHold();
+        UpdateReload();
     }
 
     void FixedUpdate()
@@ -217,5 +142,131 @@ public class PlayerController : MonoBehaviour
         Vector3 worldAxis = body.transform.TransformDirection(Vector3.right);
         Quaternion rotationDelta = Quaternion.AngleAxis(Sg_MouseMan.Inst.rotation.x, worldAxis);
         spine.rotation = rotationDelta * spine.rotation;
+    }
+
+    void UpdateMove()
+    {
+        inputForward = Input.GetKey(KeyCode.W);
+        inputBackward = Input.GetKey(KeyCode.S);
+        inputStrafeLeft = Input.GetKey(KeyCode.A);
+        inputStrafeRight = Input.GetKey(KeyCode.D);
+
+        currDirDest.z = 0f;
+        if (inputForward)
+        {
+            currDirDest.z += 1f;
+        }
+        if (inputBackward)
+        {
+            currDirDest.z -= 1f;
+        }
+
+        currDirDest.x = 0f;
+        if (inputStrafeRight)
+        {
+            currDirDest.x += 1f;
+        }
+        if (inputStrafeLeft)
+        {
+            currDirDest.x -= 1f;
+        }
+
+        anim.SetFloat("ForwardSpeed", moveDir.z);
+        anim.SetFloat("StrafeSpeed", moveDir.x);
+    }
+
+    void UpdateZoom()
+    {
+        // 마우스 우클릭으로 줌 상태 토글
+        if (!onReloading && Mouse.current.rightButton.wasPressedThisFrame)
+        {
+            Sg_CameraController.Inst.ToggleZoom();
+        }
+
+        // 줌 상태에서 움직이거나 재장전을 실행하면 해제된다.
+        if (onReloading || inputForward || inputBackward || inputStrafeLeft || inputStrafeRight)
+        {
+            Sg_CameraController.Inst.DisableZoom();
+        }
+
+        // 마우스 휠로 스코프 배율 조정
+        var scroll = Mouse.current.scroll.ReadValue();
+        if (!onReloading && scroll.y > 0f)
+        {
+            Sg_CameraController.Inst.IncreaseScopeMagnification();
+        }
+        else if (!onReloading && scroll.y < 0f)
+        {
+            Sg_CameraController.Inst.ReduceScopeMagnification();
+        }
+    }
+
+    void UpdateBreatheHold()
+    {
+        // 스페이스바를 눌러 숨 참기를 토글한다.
+        // 줌을 사용하는 동안에만 가능하다.
+        if (Sg_CameraController.Inst.zoomState)
+        {
+            if (Keyboard.current.spaceKey.wasPressedThisFrame)
+            {
+                if (holdState)
+                {
+                    holdState = false;
+                }
+                else
+                {
+                    if (holdTime <= 0f)
+                    {
+                        holdState = true;
+                    }
+                }
+            }
+        }
+        else
+        {
+            holdState = false;
+        }
+
+        if (holdState)
+        {
+            holdTime += Time.deltaTime; // 숨 참기를 시작한 지 5초가 지나면 강제 해제
+            if (holdTime >= 5f)
+            {
+                holdTime = 5f;
+                holdState = false;
+            }
+        }
+        else
+        {
+            holdTime -= Time.deltaTime; // 이전에 실행한 숨 참기 시간동안 숨 참기를 실행할 수 없다.
+            if (holdTime < 0f)
+            {
+                holdTime = 0f;
+            }
+            holdState = false;
+        }
+
+        // 숨을 참을 때는 애니메이션 속도를 낮추어 화면 흔들림 제거
+        anim.speed = Mathf.Lerp(anim.speed, holdState ? 0f : 1f, Time.deltaTime * 2.5f);
+    }
+
+    void UpdateReload()
+    {
+        // 애니메이션이 재생 중이 아닐 때만 재장전 실행 가능
+        if (!onReloading)
+        {
+            if(Keyboard.current.rKey.wasPressedThisFrame) { // 재장전 실행 시 ik weight를 0으로 설정
+                anim.SetTrigger("Reload");
+            }
+        }
+        
+        // 2. 현재 상태가 "Reload"이거나, "Reload"로 전이 중인지 확인
+        bool isActuallyReloading = anim.GetCurrentAnimatorStateInfo(upperLayerIndex).IsName("Reload") 
+                                || anim.GetNextAnimatorStateInfo(upperLayerIndex).IsName("Reload");
+
+        // 3. weight 값을 선형 보간(Lerp)으로 부드럽게 조절
+        // 재장전 중이면 0 (IK 꺼짐), 아니면 1 (IK 켜짐)
+        float targetWeight = isActuallyReloading ? 0f : 1f;
+        tb.weight = Mathf.Lerp(tb.weight, targetWeight, Time.deltaTime * 10f);
     }
 }
