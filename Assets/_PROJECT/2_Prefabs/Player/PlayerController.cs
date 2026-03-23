@@ -65,6 +65,13 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("ForwardSpeed", moveDir.z);
         anim.SetFloat("StrafeSpeed", moveDir.x);
 
+        // 줌 상태에서 움직이면 해제된다.
+        if (inputForward || inputBackward || inputStrafeLeft || inputStrafeRight)
+        {
+            Sg_CameraController.Inst.zoomState = false;
+            Sg_CameraController.Inst.acc = 0f;
+        }
+
         // 스페이스바를 눌러 숨 참기를 토글한다.
         // 줌을 사용하는 동안에만 가능하다.
         if(Sg_CameraController.Inst.zoomState) {
@@ -115,10 +122,7 @@ public class PlayerController : MonoBehaviour
         currDir = Vector3.Lerp(currDir, currDirDest, Time.fixedDeltaTime * moveAcc);
         moveDir = Vector3.ClampMagnitude(currDir, 1f);
         body.rotation = Quaternion.Euler(new Vector3(0f, Sg_MouseMan.Inst.rotation.y, 0f));
-        var prevVel = body.linearVelocity;
-        body.AddRelativeForce(moveDir * moveSpeed, ForceMode.VelocityChange);
-        var currVel = body.linearVelocity;
-        body.linearVelocity = new Vector3(currVel.x, prevVel.y, currVel.z);
+        body.AddRelativeForce(moveDir * moveSpeed, ForceMode.Force);
     }
 
     void LateUpdate()

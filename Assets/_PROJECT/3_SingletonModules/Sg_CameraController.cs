@@ -21,7 +21,8 @@ public class Sg_CameraController : MonoBehaviour
     [HideInInspector]
     public bool zoomState = false;
 
-    private float acc;
+    [HideInInspector]
+    public float acc = 0f;
 
     void Awake()
     {
