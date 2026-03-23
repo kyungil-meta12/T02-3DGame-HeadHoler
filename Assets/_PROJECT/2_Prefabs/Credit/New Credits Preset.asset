@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc81008149a763b468f830783c72c0e9, type: 3}
+  m_Name: New Credits Preset
+  m_EditorClassIdentifier: Assembly-CSharp::Michsky.UI.Heat.CreditsPreset
+  backgroundSprite: {fileID: 21300000, guid: f52dbec2b1338ea479a11e6d2735e315, type: 3}
+  sectionSpacing: 70
+  headerSpacing: 30
+  nameListSpacing: 50
+  credits:
+  - headerTitle: Created by
+    headerTitleKey: ??
+    items:
+    - T02
+  - headerTitle: Art Design
+    headerTitleKey: ??
+    items:
+    - "\uBB38\uC900\uD638"
+  - headerTitle: Programming
+    headerTitleKey: ??
+    items:
+    - "\uBC15\uC900\uC601"
+  - headerTitle: Sound Design
+    headerTitleKey: ??
+    items:
+    - "\uBC15\uC815\uBBFC"
+  - headerTitle: Concept Artist
+    headerTitleKey: ??
+    items:
+    - "\uCD5C\uC9C4\uC720"
+  mentions:
+  - ID: logo
+    icon: {fileID: 21300000, guid: 6c6acdf7b632b1647b8e847aa5e8a59e, type: 3}
+    description: "\u314E\u314E\u314E\n\uD50C\uB808\uC774 \uD574\uC8FC\uC154\uC11C
+      \uAC10\uC0AC\uD569\uB2C8\uB2E4.\n\uD300 T02 \uC600\uC2B5\uB2C8\uB2E4.\nfkqoo\nkvapd\nfqwt\naf"
+    descriptionKey: "\uD06C\uB808\uB527\uB85C\uACE0"
+    descriptionSpacing: 30
+    layoutSpacing: 160
