@@ -1,3 +1,4 @@
+using SETUtil.Extend;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -8,6 +9,9 @@ public class ScopeImageMove : MonoBehaviour
     public RectTransform[] rt;
     private Vector2[] originPos;
 
+    public Image scopeImage;
+    public Sprite[] images;
+
     void Start()
     {
         originPos = new Vector2[rt.Length];
@@ -15,6 +19,9 @@ public class ScopeImageMove : MonoBehaviour
         {
             originPos[i] = rt[i].localPosition;
         }
+
+        // 총마다 다른 스코프 이미지를 선택한다
+         scopeImage.sprite = images[Sg_GunIndex.Inst.GetCurrentIndex()];
     }
 
     void Update()
