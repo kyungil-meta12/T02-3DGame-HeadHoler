@@ -124,6 +124,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4342334070754805675, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
   m_PrefabInstance: {fileID: 7752920020893051329}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &497482538
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 497482539}
+  - component: {fileID: 497482540}
+  m_Layer: 0
+  m_Name: Sg_GunIndex
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &497482539
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497482538}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1106974620}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &497482540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 497482538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b80df01f7ab0944cba11a68c116dd11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Sg_GunSelector
+  currIndex: 3
 --- !u!1 &560627719
 GameObject:
   m_ObjectHideFlags: 0
@@ -219,6 +264,17 @@ MonoBehaviour:
   sensitivity: {x: 0.1, y: 0.1}
   rotation: {x: 0, y: 0, z: 0}
   lockState: 0
+--- !u!114 &669024959 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7932614440054265011, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
+  m_PrefabInstance: {fileID: 7752920020893051329}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aeda7bfbf984f2a4da5ab4b8967b115d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Animation.Rigging::UnityEngine.Animations.Rigging.TwoBoneIKConstraint
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -360,6 +416,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0148147b093450e48a7769c58ef9581d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::St_ObjectPool
+--- !u!1 &739299162 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1435890577388094134, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
+  m_PrefabInstance: {fileID: 7752920020893051329}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,6 +567,11 @@ MonoBehaviour:
   canvas: {fileID: 1961747471}
   zoomState: 0
   acc: 0
+--- !u!1 &1068289530 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3538679513887850204, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
+  m_PrefabInstance: {fileID: 7752920020893051329}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1106974618
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,11 +615,27 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 497482539}
   - {fileID: 988609430}
   - {fileID: 634501855}
   - {fileID: 712398070}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1145422367 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2459656367773424974, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
+  m_PrefabInstance: {fileID: 7752920020893051329}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1463095010 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2873459360591541678, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
+  m_PrefabInstance: {fileID: 7752920020893051329}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1595604735 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7829558041752083038, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
+  m_PrefabInstance: {fileID: 7752920020893051329}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1667786672
 GameObject:
   m_ObjectHideFlags: 0
@@ -784,6 +866,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8533085704594221178, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
   m_PrefabInstance: {fileID: 7752920020893051329}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1843750516 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7530522153561858227, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
+  m_PrefabInstance: {fileID: 7752920020893051329}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fff0960ef4ea6e04eac66b4a7fd2189d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Animation.Rigging::UnityEngine.Animations.Rigging.RigBuilder
 --- !u!223 &1961747471 stripped
 Canvas:
   m_CorrespondingSourceObject: {fileID: 5539250045246505259, guid: 8aec0d17eee008b49aba2dd2c889bdb3, type: 3}
@@ -802,38 +895,50 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 560627721}
     m_Modifications:
-    - target: {fileID: 4870868081787839790, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
-      propertyPath: m_Mass
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 4870868081787839790, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
-      propertyPath: m_UseGravity
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4870868081787839790, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
-      propertyPath: m_Constraints
-      value: 80
-      objectReference: {fileID: 0}
-    - target: {fileID: 4870868081787839790, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
-      propertyPath: m_LinearDamping
+    - target: {fileID: 2873459360591541678, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7089622904211512921, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
-      propertyPath: moveAcc
-      value: 10
-      objectReference: {fileID: 0}
+      propertyPath: tb
+      value: 
+      objectReference: {fileID: 669024959}
     - target: {fileID: 7089622904211512921, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
-      propertyPath: moveSpeed
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7298863161511034769, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
-      propertyPath: m_AnimatePhysics
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7298863161511034769, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
-      propertyPath: m_ApplyRootMotion
+      propertyPath: rBuild
+      value: 
+      objectReference: {fileID: 1843750516}
+    - target: {fileID: 7089622904211512921, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
+      propertyPath: devMode
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7089622904211512921, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
+      propertyPath: gunIndex
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089622904211512921, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
+      propertyPath: guns.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7089622904211512921, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
+      propertyPath: 'guns.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1463095010}
+    - target: {fileID: 7089622904211512921, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
+      propertyPath: 'guns.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1145422367}
+    - target: {fileID: 7089622904211512921, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
+      propertyPath: 'guns.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1595604735}
+    - target: {fileID: 7089622904211512921, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
+      propertyPath: 'guns.Array.data[3]'
+      value: 
+      objectReference: {fileID: 739299162}
+    - target: {fileID: 7089622904211512921, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
+      propertyPath: 'guns.Array.data[4]'
+      value: 
+      objectReference: {fileID: 1068289530}
     - target: {fileID: 7385601063034729332, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
       propertyPath: m_Name
       value: Player
