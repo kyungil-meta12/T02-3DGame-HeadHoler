@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -20,6 +21,10 @@ public class PlayerController : MonoBehaviour
 
     private Animator anim;
     private SkinnedMeshRenderer smr;
+
+    // 숨참기 값
+    private bool holdState = false;
+    private float holdTime;
 
     void Awake()
     {
@@ -59,6 +64,50 @@ public class PlayerController : MonoBehaviour
 
         anim.SetFloat("ForwardSpeed", moveDir.z);
         anim.SetFloat("StrafeSpeed", moveDir.x);
+
+        // 스페이스바를 눌러 숨 참기를 토글한다.
+        // 줌을 사용하는 동안에만 가능하다.
+        if(Sg_CameraController.Inst.zoomState) {
+            if(Keyboard.current.spaceKey.wasPressedThisFrame) {
+                if(holdState)
+                {
+                    holdState = false;
+                }
+                else
+                {
+                    if(holdTime <= 0f)
+                    {
+                        holdState = true;
+                    }
+                }
+            }
+        }
+        else
+        {
+            holdState = false;
+        }
+
+        if(holdState)
+        {
+            holdTime += Time.deltaTime; // 숨 참기를 시작한 지 5초가 지나면 강제 해제
+            if(holdTime >= 5f)
+            {
+                holdTime = 5f;
+                holdState = false;
+            }
+        }
+        else
+        {
+            holdTime -= Time.deltaTime; // 이전에 실행한 숨 참기 시간동안 숨 참기를 실행할 수 없다.
+            if(holdTime < 0f)
+            {
+                holdTime = 0f;
+            }
+            holdState = false;
+        }
+
+        // 애니메이션 속도를 낮추어 숨을 참는 모션 표현
+        anim.speed = Mathf.Lerp(anim.speed, holdState ? 0f : 1f, Time.deltaTime * 2.5f);
     }
 
     void FixedUpdate()

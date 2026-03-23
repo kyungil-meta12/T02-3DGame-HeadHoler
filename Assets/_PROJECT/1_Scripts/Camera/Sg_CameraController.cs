@@ -1,8 +1,12 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class CameraMove : MonoBehaviour
+public class Sg_CameraController : MonoBehaviour
 {
+    public static Sg_CameraController Inst;
+
+    public Camera cam;
+
     public float defaultFov;
     public float zoomedFov;
     public float zoomAcc;
@@ -14,16 +18,24 @@ public class CameraMove : MonoBehaviour
     private float currentFov;
     private float offsetFov; // 스코프 줌 조정 오프셋 값
     private float offsetFovDest;
-    private Camera cam;
-    private bool zoomState = false;
+    [HideInInspector]
+    public bool zoomState = false;
 
     private float acc;
 
     void Awake()
     {
-        cam = GetComponent<Camera>();
+        if(Inst && Inst != this)
+        {
+            DestroyImmediate(this);
+            return;
+        }
+
         cam.fieldOfView = defaultFov;
         currentFov = defaultFov;
+        
+        Inst = this;
+        print("[Sg_CameraMove] Created instance.");
     }
 
     void Start()
