@@ -54,6 +54,19 @@ public class GunController : MonoBehaviour
         currAmmo--; // 총알 1개 소모
         Sg_MouseMan.Inst.AddRecoil(recoil); // 반동으로 인해 화면이 위로 튄다
         scopeImage.AddRecoil(recoil); // 스코프 이미지에 진동 효과 추가
+
+        // 화면 중앙으로 레이캐스팅
+        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 999f))
+        {
+            Debug.Log($"Collision detected: {hit.collider.tag}");
+        }
+        else
+        {
+            Debug.Log($"Collision not detected");
+        }
+
         print($"[GunController] Fire | Ammo: {currAmmo} / {totalAmmo}"); // 테스트용 출력
     }
 
