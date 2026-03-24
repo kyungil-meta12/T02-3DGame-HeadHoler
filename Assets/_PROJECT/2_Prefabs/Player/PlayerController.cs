@@ -1,3 +1,4 @@
+using SETUtil.Common.Extend;
 using UnityEngine;
 using UnityEngine.Animations.Rigging;
 using UnityEngine.InputSystem;
@@ -19,6 +20,7 @@ public class PlayerController : MonoBehaviour
     private Transform[] handList;
     private Transform[] hintList;
     private GunController currGun;
+    private Transform currGunMagazine;
 
     private Rigidbody body;
     private Vector3 moveDir;
@@ -89,6 +91,9 @@ public class PlayerController : MonoBehaviour
 
         // 총기 컨트롤러 컴포넌트 찾기
         currGun = guns[index].GetComponent<GunController>();
+
+        // 현재 총기의 탄창 찾기
+        currGunMagazine = guns[index].transform.Find("Magazine");
     }
 
     // Update is called once per frame
@@ -159,7 +164,7 @@ public class PlayerController : MonoBehaviour
         currGun.SetGunTrigger(triggerPulled);
 
         // 재장전은 방아쇠를 당기지 않은 상태에서 가능하다
-        if(Keyboard.current.rKey.wasPressedThisFrame && !onReloading && !triggerPulled)
+        if (Keyboard.current.rKey.wasPressedThisFrame && !onReloading && !triggerPulled)
         {
             currGun.ReloadGun();
         }
@@ -276,18 +281,39 @@ public class PlayerController : MonoBehaviour
         // 애니메이션이 재생 중이 아닐 때만 재장전 실행 가능
         if (!onReloading)
         {
-            if(Keyboard.current.rKey.wasPressedThisFrame) { // 재장전 실행 시 ik weight를 0으로 설정
+            if (Keyboard.current.rKey.wasPressedThisFrame)
+            { // 재장전 실행 시 ik weight를 0으로 설정
                 anim.SetTrigger("Reload");
             }
         }
-        
+
         // 2. 현재 상태가 "Reload"이거나, "Reload"로 전이 중인지 확인
-        bool isActuallyReloading = anim.GetCurrentAnimatorStateInfo(upperLayerIndex).IsName("Reload") 
+        bool isActuallyReloading = anim.GetCurrentAnimatorStateInfo(upperLayerIndex).IsName("Reload")
                                 || anim.GetNextAnimatorStateInfo(upperLayerIndex).IsName("Reload");
 
         // 3. weight 값을 선형 보간(Lerp)으로 부드럽게 조절
         // 재장전 중이면 0 (IK 꺼짐), 아니면 1 (IK 켜짐)
         float targetWeight = isActuallyReloading ? 0f : 1f;
         tb.weight = Mathf.Lerp(tb.weight, targetWeight, Time.deltaTime * 10f);
+    }
+
+    // 애니메이션 이벤트
+    public void OnMagazineOut()
+    {
+        print("Magazine Out");
+        if (currGunMagazine)
+        {
+            currGunMagazine.GetComponent<MeshRenderer>().enabled = false; // 총 모델의 탄창 렌더링을 잠시 비활성화
+        }
+    }
+
+    // 애니메이션 이벤트
+    public void OnMagazineIn()
+    {
+        print("Magazine In");
+        if (currGunMagazine)
+        {
+            currGunMagazine.GetComponent<MeshRenderer>().enabled = true; // 총 모델의 탄창 렌더링을 다시 활성화
+        }
     }
 }

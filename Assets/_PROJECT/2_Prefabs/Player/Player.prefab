@@ -2214,15 +2214,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2779295590791264687, guid: b2bc1208672dabb4186bcfcacc23c492, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2779295590791264687, guid: b2bc1208672dabb4186bcfcacc23c492, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 4804563211887694583}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b2bc1208672dabb4186bcfcacc23c492, type: 3}
 --- !u!4 &943662950132849098 stripped
 Transform:
@@ -2234,23 +2231,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2779295590791264687, guid: b2bc1208672dabb4186bcfcacc23c492, type: 3}
   m_PrefabInstance: {fileID: 337909550038754529}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &4804563211887694583
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2459656367773424974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ff15cd6de8c0dd4abe36bf29aa567d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GunController
-  fireInterval: 0.7
-  totalAmmo: 10
-  currAmmo: 10
-  damage: 70
-  recoil: 7
 --- !u!1001 &2463751289520815246
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2265,7 +2245,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1381174597049696850, guid: c6907e338ae2a224789a13fe368ccf15, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5174837386953965553, guid: c6907e338ae2a224789a13fe368ccf15, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2307,48 +2287,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6708443161743436099, guid: c6907e338ae2a224789a13fe368ccf15, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.0386
-      objectReference: {fileID: 0}
-    - target: {fileID: 6708443161743436099, guid: c6907e338ae2a224789a13fe368ccf15, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.0222
-      objectReference: {fileID: 0}
-    - target: {fileID: 6708443161743436099, guid: c6907e338ae2a224789a13fe368ccf15, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.3132
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1381174597049696850, guid: c6907e338ae2a224789a13fe368ccf15, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 9112737454042929292}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c6907e338ae2a224789a13fe368ccf15, type: 3}
 --- !u!1 &3538679513887850204 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1381174597049696850, guid: c6907e338ae2a224789a13fe368ccf15, type: 3}
   m_PrefabInstance: {fileID: 2463751289520815246}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &9112737454042929292
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3538679513887850204}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ff15cd6de8c0dd4abe36bf29aa567d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GunController
-  fireInterval: 1
-  totalAmmo: 10
-  currAmmo: 10
-  damage: 150
-  recoil: 20
 --- !u!4 &7341350701274055551 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5174837386953965553, guid: c6907e338ae2a224789a13fe368ccf15, type: 3}
@@ -2368,7 +2316,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 346786263342605188, guid: 465bd03f055887a4991f8d3f615e7f87, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4866827709688604505, guid: 465bd03f055887a4991f8d3f615e7f87, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2410,48 +2358,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6754128671551196118, guid: 465bd03f055887a4991f8d3f615e7f87, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.0384
-      objectReference: {fileID: 0}
-    - target: {fileID: 6754128671551196118, guid: 465bd03f055887a4991f8d3f615e7f87, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.0406
-      objectReference: {fileID: 0}
-    - target: {fileID: 6754128671551196118, guid: 465bd03f055887a4991f8d3f615e7f87, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.2024
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 346786263342605188, guid: 465bd03f055887a4991f8d3f615e7f87, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6080413954757993204}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 465bd03f055887a4991f8d3f615e7f87, type: 3}
 --- !u!1 &2873459360591541678 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 346786263342605188, guid: 465bd03f055887a4991f8d3f615e7f87, type: 3}
   m_PrefabInstance: {fileID: 2535698477335254570}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6080413954757993204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2873459360591541678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ff15cd6de8c0dd4abe36bf29aa567d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GunController
-  fireInterval: 0.5
-  totalAmmo: 25
-  currAmmo: 25
-  damage: 60
-  recoil: 5
 --- !u!4 &4857379380066536106 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6942435831277509760, guid: 465bd03f055887a4991f8d3f615e7f87, type: 3}
@@ -2475,25 +2391,13 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 5972872150974501700}
     m_Modifications:
-    - target: {fileID: 3142106146401064561, guid: cff90aef35e5b2840a5d4cd0a7ff9fc7, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -0.0394
-      objectReference: {fileID: 0}
-    - target: {fileID: 3142106146401064561, guid: cff90aef35e5b2840a5d4cd0a7ff9fc7, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.0096
-      objectReference: {fileID: 0}
-    - target: {fileID: 3142106146401064561, guid: cff90aef35e5b2840a5d4cd0a7ff9fc7, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.2842
-      objectReference: {fileID: 0}
     - target: {fileID: 6791577632423313301, guid: cff90aef35e5b2840a5d4cd0a7ff9fc7, type: 3}
       propertyPath: m_Name
       value: Dragunov
       objectReference: {fileID: 0}
     - target: {fileID: 6791577632423313301, guid: cff90aef35e5b2840a5d4cd0a7ff9fc7, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8850987795595164668, guid: cff90aef35e5b2840a5d4cd0a7ff9fc7, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2538,10 +2442,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 6791577632423313301, guid: cff90aef35e5b2840a5d4cd0a7ff9fc7, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 828672570046385314}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cff90aef35e5b2840a5d4cd0a7ff9fc7, type: 3}
 --- !u!4 &5205506756284751415 stripped
 Transform:
@@ -2553,23 +2454,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6791577632423313301, guid: cff90aef35e5b2840a5d4cd0a7ff9fc7, type: 3}
   m_PrefabInstance: {fileID: 3668369165522822603}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &828672570046385314
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7829558041752083038}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ff15cd6de8c0dd4abe36bf29aa567d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GunController
-  fireInterval: 0.8
-  totalAmmo: 10
-  currAmmo: 10
-  damage: 80
-  recoil: 10
 --- !u!1001 &8123176688235086450
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2624,38 +2508,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7157940507290681540, guid: 759ffd7756197ab42b44d93deebb3063, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7157940507290681540, guid: 759ffd7756197ab42b44d93deebb3063, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6840845047846413054}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 759ffd7756197ab42b44d93deebb3063, type: 3}
 --- !u!1 &1435890577388094134 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7157940507290681540, guid: 759ffd7756197ab42b44d93deebb3063, type: 3}
   m_PrefabInstance: {fileID: 8123176688235086450}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &6840845047846413054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1435890577388094134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ff15cd6de8c0dd4abe36bf29aa567d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GunController
-  fireInterval: 2
-  totalAmmo: 5
-  currAmmo: 5
-  damage: 120
-  recoil: 15
 --- !u!4 &8086366338568370053 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 37112364586743287, guid: 759ffd7756197ab42b44d93deebb3063, type: 3}

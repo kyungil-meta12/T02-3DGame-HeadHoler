@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 853582682174857814}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.057, z: 0.379}
+  m_LocalPosition: {x: -0.0386, y: 0.0222, z: 0.3132}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 5174837386953965553}
   - component: {fileID: 6914269285791416502}
   - component: {fileID: 8527109360954309445}
+  - component: {fileID: 6331865787381837980}
   m_Layer: 0
   m_Name: Barret
   m_TagString: Untagged
@@ -129,6 +130,24 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &6331865787381837980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381174597049696850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ff15cd6de8c0dd4abe36bf29aa567d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GunController
+  fireInterval: 1
+  totalAmmo: 10
+  currAmmo: 10
+  damage: 150
+  recoil: 20
+  scopeImage: {fileID: 0}
 --- !u!1 &1445107986664836734
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,7 +191,7 @@ GameObject:
   - component: {fileID: 640107535234329435}
   - component: {fileID: 7731378382997627544}
   m_Layer: 0
-  m_Name: SM_Wep_Sniper_Heavy_Mag_01
+  m_Name: Magazine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

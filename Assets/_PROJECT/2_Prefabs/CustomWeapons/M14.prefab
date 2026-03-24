@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 378904661274494527}
   - component: {fileID: 2802119057301981605}
   m_Layer: 0
-  m_Name: SM_Wep_Sniper_Mag_01
+  m_Name: Magazine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -402,6 +402,7 @@ GameObject:
   - component: {fileID: 696068402159566123}
   - component: {fileID: 3199836223537835892}
   - component: {fileID: 5617252349452939440}
+  - component: {fileID: 8276953806627755035}
   m_Layer: 0
   m_Name: M14
   m_TagString: Untagged
@@ -491,6 +492,24 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8276953806627755035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2779295590791264687}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ff15cd6de8c0dd4abe36bf29aa567d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GunController
+  fireInterval: 0.7
+  totalAmmo: 10
+  currAmmo: 10
+  damage: 70
+  recoil: 7
+  scopeImage: {fileID: 0}
 --- !u!1 &3666412084521858092
 GameObject:
   m_ObjectHideFlags: 0

@@ -312,6 +312,7 @@ GameObject:
   - component: {fileID: 37112364586743287}
   - component: {fileID: 7536131700064595180}
   - component: {fileID: 8988984674162381698}
+  - component: {fileID: 5957951025283425142}
   m_Layer: 0
   m_Name: M24
   m_TagString: Untagged
@@ -398,6 +399,24 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &5957951025283425142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7157940507290681540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ff15cd6de8c0dd4abe36bf29aa567d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GunController
+  fireInterval: 2
+  totalAmmo: 5
+  currAmmo: 5
+  damage: 120
+  recoil: 15
+  scopeImage: {fileID: 0}
 --- !u!1 &7444258347358140091
 GameObject:
   m_ObjectHideFlags: 0

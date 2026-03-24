@@ -844,7 +844,7 @@ GameObject:
   - component: {fileID: 1771189101}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1269,35 +1269,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 560627721}
     m_Modifications:
-    - target: {fileID: 828672570046385314, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
+    - target: {fileID: 2456070162425438468, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
       propertyPath: scopeImage
       value: 
       objectReference: {fileID: 2099555747931421484}
-    - target: {fileID: 1435890577388094134, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2459656367773424974, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2873459360591541678, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3538679513887850204, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4804563211887694583, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
-      propertyPath: scopeImage
-      value: 
-      objectReference: {fileID: 2099555747931421484}
-    - target: {fileID: 6080413954757993204, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
-      propertyPath: scopeImage
-      value: 
-      objectReference: {fileID: 2099555747931421484}
-    - target: {fileID: 6840845047846413054, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
+    - target: {fileID: 2525739599309724653, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
       propertyPath: scopeImage
       value: 
       objectReference: {fileID: 2099555747931421484}
@@ -1305,10 +1281,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 7829558041752083038, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 8463094276520364402, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
+      propertyPath: scopeImage
+      value: 
+      objectReference: {fileID: 2099555747931421484}
+    - target: {fileID: 8497816254845520914, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
+      propertyPath: scopeImage
+      value: 
+      objectReference: {fileID: 2099555747931421484}
     - target: {fileID: 8533085704594221178, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.4960692
@@ -1349,7 +1329,7 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9112737454042929292, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
+    - target: {fileID: 8533718006689755386, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
       propertyPath: scopeImage
       value: 
       objectReference: {fileID: 2099555747931421484}
