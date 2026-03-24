@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: 560627721}
   - component: {fileID: 560627720}
   m_Layer: 0
-  m_Name: __Scene Objects__
+  m_Name: __Player Objects__
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -580,7 +580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28562b9c4808b53419268c54bcbb4885, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HierarchyIcons.Folder
-  haveZeroPos: 1
+  haveZeroPos: 0
 --- !u!4 &1106974620
 Transform:
   m_ObjectHideFlags: 0
@@ -1026,6 +1026,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 899b763597c6eae4ab53aa6f27cb7801, type: 3}
   - {fileID: 21300000, guid: 7b10847e40f7158459fa462ba5cdb09e, type: 3}
   - {fileID: 21300000, guid: 7b10847e40f7158459fa462ba5cdb09e, type: 3}
+  shakeStrength: 20
 --- !u!224 &2223188055123128774
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1268,29 +1269,45 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 560627721}
     m_Modifications:
+    - target: {fileID: 828672570046385314, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
+      propertyPath: scopeImage
+      value: 
+      objectReference: {fileID: 2099555747931421484}
     - target: {fileID: 1435890577388094134, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2459656367773424974, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2873459360591541678, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3538679513887850204, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4804563211887694583, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
+      propertyPath: scopeImage
+      value: 
+      objectReference: {fileID: 2099555747931421484}
+    - target: {fileID: 6080413954757993204, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
+      propertyPath: scopeImage
+      value: 
+      objectReference: {fileID: 2099555747931421484}
+    - target: {fileID: 6840845047846413054, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
+      propertyPath: scopeImage
+      value: 
+      objectReference: {fileID: 2099555747931421484}
     - target: {fileID: 7385601063034729332, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 7829558041752083038, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8533085704594221178, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1332,6 +1349,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9112737454042929292, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
+      propertyPath: scopeImage
+      value: 
+      objectReference: {fileID: 2099555747931421484}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
