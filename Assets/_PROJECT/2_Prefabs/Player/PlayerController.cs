@@ -16,8 +16,9 @@ public class PlayerController : MonoBehaviour
     public RigBuilder rBuild;
 
     public GameObject[] guns;
-    public Transform[] handList;
-    public Transform[] hintList;
+    private Transform[] handList;
+    private Transform[] hintList;
+    private GunController currGun;
 
     private Rigidbody body;
     private Vector3 moveDir;
@@ -85,6 +86,9 @@ public class PlayerController : MonoBehaviour
         // 마지막으로 리그 빌드 재빌드
         // 게임 플레이 도중에는 변경될 일이 없기 때문에 그냥 빌드를 여기서 한다.
         rBuild.Build();
+
+        // 총기 컨트롤러 컴포넌트 찾기
+        currGun = guns[index].GetComponent<GunController>();
     }
 
     // Update is called once per frame
@@ -122,6 +126,7 @@ public class PlayerController : MonoBehaviour
         animInfo = anim.GetCurrentAnimatorStateInfo(upperLayerIndex);
         onReloading = animInfo.IsName("Reload");
 
+        UpdateGun();
         UpdateMove();
         UpdateZoom();
         UpdateBreatheHold();
@@ -141,6 +146,16 @@ public class PlayerController : MonoBehaviour
         Vector3 worldAxis = body.transform.TransformDirection(Vector3.right);
         Quaternion rotationDelta = Quaternion.AngleAxis(Sg_MouseMan.Inst.rotation.x, worldAxis);
         spine.rotation = rotationDelta * spine.rotation;
+    }
+
+    void UpdateGun()
+    {
+        bool triggerPulled = Mouse.current.leftButton.isPressed && !onReloading;
+        currGun.SetGunTrigger(triggerPulled);
+        if(Keyboard.current.rKey.wasPressedThisFrame && !onReloading)
+        {
+            currGun.ReloadGun();
+        }
     }
 
     void UpdateMove()

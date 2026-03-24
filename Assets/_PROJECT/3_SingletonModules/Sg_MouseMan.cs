@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -16,6 +15,7 @@ public class Sg_MouseMan : MonoBehaviour
 
 
     private Vector2 sensitivityMultiply = Vector2.one;
+    private float originRotationX = 0f;
 
     [HideInInspector]
     public Vector3 rotation = Vector3.zero;
@@ -23,6 +23,8 @@ public class Sg_MouseMan : MonoBehaviour
 
     [HideInInspector]
     public bool lockState = false;
+
+    private float recoilOffset = 0f;
 
     void Start()
     {
@@ -64,8 +66,9 @@ public class Sg_MouseMan : MonoBehaviour
             prevRotation.y = rotation.y;
 
             var mouseDelta = Mouse.current.delta.ReadValue();
-            rotation.x -= mouseDelta.y * sensitivity.x * sensitivityMultiply.x;
+            originRotationX -= mouseDelta.y * sensitivity.x * sensitivityMultiply.x;
             rotation.y += mouseDelta.x * sensitivity.y * sensitivityMultiply.y;
+            rotation.x = originRotationX + recoilOffset;
             rotation.x = Mathf.Clamp(rotation.x, -90f, 90f);
             rotation.y %= 360f;
             if (rotation.y < 0)
@@ -73,6 +76,8 @@ public class Sg_MouseMan : MonoBehaviour
                 rotation.y += 360f;
             }
         }
+
+        recoilOffset = Mathf.Lerp(recoilOffset, 0f, Time.deltaTime * 5f);
     }
 
     public void LockCursor()
@@ -97,5 +102,11 @@ public class Sg_MouseMan : MonoBehaviour
     public void ResetSensitivityMultiple()
     {
         sensitivityMultiply = Vector2.one;
+    }
+
+    // 반동 추가
+    public void AddRecoil(float val)
+    {
+        recoilOffset -= val;
     }
 }
