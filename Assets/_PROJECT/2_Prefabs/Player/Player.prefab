@@ -1570,7 +1570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d3547555681ff640bfb181bbef8724a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  moveSpeed: 0.5
+  moveSpeed: 1
   moveAcc: 2.45
   spine: {fileID: 7298177421741938294}
   devMode: 1
@@ -1629,9 +1629,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.16
-  m_Height: 2
+  m_Height: 1.8
   m_Direction: 1
-  m_Center: {x: 0, y: 1, z: 0}
+  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!114 &7530522153561858227
 MonoBehaviour:
   m_ObjectHideFlags: 0
