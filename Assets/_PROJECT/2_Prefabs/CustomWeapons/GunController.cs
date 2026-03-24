@@ -63,6 +63,11 @@ public class GunController : MonoBehaviour
         triggerPulled = flag;
     }
 
+    public bool IsFired()
+    {
+        return fireTimer <= 0f;
+    }
+
     // 재장전
     public void ReloadGun()
     {

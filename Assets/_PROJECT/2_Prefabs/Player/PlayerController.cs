@@ -152,6 +152,10 @@ public class PlayerController : MonoBehaviour
     {
         // 재장전을 하지 않고있고 줌을 한 상태에서만 격발이 가능하다
         bool triggerPulled = Mouse.current.leftButton.isPressed && !onReloading && Sg_CameraController.Inst.zoomState;
+        if (triggerPulled && currGun.IsFired()) // 격발 시 숨참기 상태 해제
+        {
+            holdState = false;
+        }
         currGun.SetGunTrigger(triggerPulled);
 
         // 재장전은 방아쇠를 당기지 않은 상태에서 가능하다
