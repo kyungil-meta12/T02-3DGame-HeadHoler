@@ -43,6 +43,11 @@ public class Sg_MouseMan : MonoBehaviour
         print("[Sg_MouseMan] Created instance.");
     }
 
+    void OnDestroy()
+    {
+        Inst = null;
+    }
+
     void Update()
     {
         if(Application.isEditor) // 개발 모드에서 Tab키를 누르면 커서 토글 가능
