@@ -35,10 +35,6 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
     private SkinnedMeshRenderer smr;
 
-    // 숨참기 값
-    private bool holdState = false;
-    private float holdTime;
-
 
     // 재장전 관리에 사용하는 AnimatorStateInfo
     private AnimatorStateInfo animInfo;
@@ -134,7 +130,6 @@ public class PlayerController : MonoBehaviour
         UpdateGun();
         UpdateMove();
         UpdateZoom();
-        UpdateBreatheHold();
         UpdateReload();
     }
 
@@ -143,7 +138,7 @@ public class PlayerController : MonoBehaviour
         currDir = Vector3.Lerp(currDir, currDirDest, Time.fixedDeltaTime * moveAcc);
         moveDir = Vector3.ClampMagnitude(currDir, 1f);
         body.rotation = Quaternion.Euler(new Vector3(0f, Sg_MouseMan.Inst.rotation.y, 0f));
-        body.AddRelativeForce(moveDir * moveSpeed, ForceMode.Force);
+        body.AddRelativeForce(moveDir * moveSpeed, ForceMode.VelocityChange);
     }
 
     void LateUpdate()
@@ -157,10 +152,6 @@ public class PlayerController : MonoBehaviour
     {
         // 재장전을 하지 않고있고 줌을 한 상태에서만 격발이 가능하다
         bool triggerPulled = Mouse.current.leftButton.isPressed && !onReloading && Sg_CameraController.Inst.zoomState;
-        if (triggerPulled && currGun.IsFired()) // 격발 시 숨참기 상태 해제
-        {
-            holdState = false;
-        }
         currGun.SetGunTrigger(triggerPulled);
 
         // 재장전은 방아쇠를 당기지 않은 상태에서 가능하다
@@ -225,55 +216,9 @@ public class PlayerController : MonoBehaviour
         {
             Sg_CameraController.Inst.ReduceScopeMagnification();
         }
-    }
 
-    void UpdateBreatheHold()
-    {
-        // 스페이스바를 눌러 숨 참기를 토글한다.
-        // 줌을 사용하는 동안에만 가능하다.
-        if (Sg_CameraController.Inst.zoomState)
-        {
-            if (Keyboard.current.spaceKey.wasPressedThisFrame)
-            {
-                if (holdState)
-                {
-                    holdState = false;
-                }
-                else
-                {
-                    if (holdTime <= 0f)
-                    {
-                        holdState = true;
-                    }
-                }
-            }
-        }
-        else
-        {
-            holdState = false;
-        }
-
-        if (holdState)
-        {
-            holdTime += Time.deltaTime; // 숨 참기를 시작한 지 5초가 지나면 강제 해제
-            if (holdTime >= 5f)
-            {
-                holdTime = 5f;
-                holdState = false;
-            }
-        }
-        else
-        {
-            holdTime -= Time.deltaTime; // 이전에 실행한 숨 참기 시간동안 숨 참기를 실행할 수 없다.
-            if (holdTime < 0f)
-            {
-                holdTime = 0f;
-            }
-            holdState = false;
-        }
-
-        // 숨을 참을 때는 애니메이션 속도를 낮추어 화면 흔들림 제거
-        anim.speed = Mathf.Lerp(anim.speed, holdState ? 0f : 1f, Time.deltaTime * 2.5f);
+        // 줌 상태에서는 애니메이션에 의한 시점 흔들림을 없애기 위해 의도적으로 애니메이션을 정지한다.
+        anim.speed = Sg_CameraController.Inst.zoomState ? 0f : 1f;
     }
 
     void UpdateReload()
@@ -283,6 +228,7 @@ public class PlayerController : MonoBehaviour
         {
             if (Keyboard.current.rKey.wasPressedThisFrame)
             { // 재장전 실행 시 ik weight를 0으로 설정
+                Sg_CameraController.Inst.DisableZoom();
                 anim.SetTrigger("Reload");
             }
         }

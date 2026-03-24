@@ -72,6 +72,7 @@ public class Sg_MouseMan : MonoBehaviour
 
             var mouseDelta = Mouse.current.delta.ReadValue();
             originRotationX -= mouseDelta.y * sensitivity.x * sensitivityMultiply.x;
+            originRotationX = Mathf.Clamp(originRotationX, -90f, 90f);
             rotation.y += mouseDelta.x * sensitivity.y * sensitivityMultiply.y;
             rotation.x = originRotationX + recoilOffset;
             rotation.x = Mathf.Clamp(rotation.x, -90f, 90f);
