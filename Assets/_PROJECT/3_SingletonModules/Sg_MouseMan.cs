@@ -38,7 +38,7 @@ public class Sg_MouseMan : MonoBehaviour
             LockCursor();
         }
 
-        print("[Sg_MouseController] Created instance.");
+        print("[Sg_MouseMan] Created instance.");
     }
 
     void Update()

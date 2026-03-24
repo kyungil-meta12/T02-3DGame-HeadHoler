@@ -18,8 +18,7 @@ public class PlayerController : MonoBehaviour
     public GameObject[] guns;
     public Transform[] handList;
     public Transform[] hintList;
-    private Transform selectedHand;
-    private Transform selectedHint;
+
     private Rigidbody body;
     private Vector3 moveDir;
     private Vector3 currDir;
@@ -49,7 +48,10 @@ public class PlayerController : MonoBehaviour
         anim = GetComponent<Animator>();
         smr = GetComponentInChildren<SkinnedMeshRenderer>();
         smr.updateWhenOffscreen = true;
+    }
 
+    void Start()
+    {
         handList = new Transform[guns.Length];
         hintList = new Transform[guns.Length];
 
@@ -79,9 +81,6 @@ public class PlayerController : MonoBehaviour
         // 그리고 hand transform과 hint transform을 지정한다.
         tb.data.target = handList[index];
         tb.data.hint = hintList[index];
-        
-        selectedHand = handList[index];
-        selectedHint = hintList[index];
 
         // 마지막으로 리그 빌드 재빌드
         // 게임 플레이 도중에는 변경될 일이 없기 때문에 그냥 빌드를 여기서 한다.
