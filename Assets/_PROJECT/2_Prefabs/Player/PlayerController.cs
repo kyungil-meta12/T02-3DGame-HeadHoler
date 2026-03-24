@@ -150,9 +150,12 @@ public class PlayerController : MonoBehaviour
 
     void UpdateGun()
     {
-        bool triggerPulled = Mouse.current.leftButton.isPressed && !onReloading;
+        // 재장전을 하지 않고있고 줌을 한 상태에서만 격발이 가능하다
+        bool triggerPulled = Mouse.current.leftButton.isPressed && !onReloading && Sg_CameraController.Inst.zoomState;
         currGun.SetGunTrigger(triggerPulled);
-        if(Keyboard.current.rKey.wasPressedThisFrame && !onReloading)
+
+        // 재장전은 방아쇠를 당기지 않은 상태에서 가능하다
+        if(Keyboard.current.rKey.wasPressedThisFrame && !onReloading && !triggerPulled)
         {
             currGun.ReloadGun();
         }
