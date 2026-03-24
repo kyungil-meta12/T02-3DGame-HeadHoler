@@ -58,8 +58,8 @@ public class Sg_CameraController : MonoBehaviour
     {
         var xRotation = Sg_MouseMan.Inst.rotation.x;
         var yRotation = yRotationTarget.rotation.eulerAngles.y;
-        cam.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
         cam.transform.position = trackTarget.position;
+        cam.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);
 
         if (zoomState) // 줌 활성화 시 가속을 사용하여 fov 감소
         {
