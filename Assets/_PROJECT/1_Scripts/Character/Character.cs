@@ -124,20 +124,30 @@ public class Character : MonoBehaviour
             float t = time / 1;
             yield return null;
         }
+        curState = State.Idle;
     }
     
     //걷기
     protected virtual IEnumerator Walk()
     {
         //todo 목표까지 걸어간 후 대기 or 걷는 중에 랜덤확률로 대기
-        float time = 0f;
-        while (time < 1)
+        while (true)
         {
             if (curState == State.Walk) break;
-            time += Time.deltaTime;
-            float t = time / 1;
+
+            foreach (var dest in destinationsPos)
+            {
+                agent.SetDestination(dest);
+                while (Vector3.Distance(transform.position, dest) <= 1f)
+                {
+                    if (curState == State.Walk) break;
+                    yield return null;
+                }
+            }
             yield return null;
         }
+
+        curState = State.Idle;
     }
 
     //뛰기
@@ -152,6 +162,7 @@ public class Character : MonoBehaviour
             float t = time / 1;
             yield return null;
         }
+        curState = State.Idle;
     }
 
     //소리지르기
@@ -264,7 +275,7 @@ public class Character : MonoBehaviour
     {
         isGotShot = isGunShot;
         //todo 헤드샷체크
-        // if ()//(hitCollider != null && hitCollider == headCollider)
+        // if (hitCollider != null && hitCollider == headCollider)
         // {
         //     curState = State.Dead;
         // }
@@ -272,6 +283,8 @@ public class Character : MonoBehaviour
         // {
         //     curState = State.Hurt;
         // }
+        
+        //todo 피격위치에서 소리발생
     }
     
     //소리에 대한 반응
