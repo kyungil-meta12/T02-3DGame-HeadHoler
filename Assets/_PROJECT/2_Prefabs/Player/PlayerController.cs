@@ -163,10 +163,10 @@ public class PlayerController : MonoBehaviour
 
     void UpdateMove()
     {
-        inputForward = Input.GetKey(KeyCode.W);
-        inputBackward = Input.GetKey(KeyCode.S);
-        inputStrafeLeft = Input.GetKey(KeyCode.A);
-        inputStrafeRight = Input.GetKey(KeyCode.D);
+        inputForward = Keyboard.current.wKey.isPressed;
+        inputBackward = Keyboard.current.sKey.isPressed;
+        inputStrafeLeft = Keyboard.current.aKey.isPressed;
+        inputStrafeRight = Keyboard.current.dKey.isPressed;
 
         currDirDest.z = 0f;
         if (inputForward)
