@@ -4817,6 +4817,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: __Player Objects__
       objectReference: {fileID: 0}
+    - target: {fileID: 5870596906349621036, guid: ecd89c2e88b7d6b469a52b0f2496a12c, type: 3}
+      propertyPath: moveAcc
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6073865639846397459, guid: ecd89c2e88b7d6b469a52b0f2496a12c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4855,10 +4859,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6073865639846397459, guid: ecd89c2e88b7d6b469a52b0f2496a12c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6219805266292330212, guid: ecd89c2e88b7d6b469a52b0f2496a12c, type: 3}
-      propertyPath: m_AnimatePhysics
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
