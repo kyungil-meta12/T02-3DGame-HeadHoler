@@ -1,3 +1,4 @@
+using DinoFracture;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -30,24 +31,37 @@ public class Obstacle : MonoBehaviour
 
 	public SphereCollider hitSound;	//소리 감지영역 담당 Collider
 	public float maxSoundRadius = 10f;	//소리 감지영역의 최대반경
-	public float duration = 1f;		//소리 감지영역이 퍼지는 시간
+	public float duration = 1f;     //소리 감지영역이 퍼지는 시간
+
+	public FractureGeometry[] Explosives;
 
 	private void Awake()
 	{
 		hitSound = GetComponent<SphereCollider>();
 	}
 
+	[ContextMenu("테스트")]
 	protected virtual void Hit() //총알에 맞았을때
     {
+	
+		for (int i = 0; i < Explosives.Length; i++)
+		{
+			if (Explosives[i] != null && Explosives[i].gameObject.activeSelf)
+			{
+				// This ensures OnFracture() will be called on us
+				Explosives[i].Fracture().SetCallbackObject(this);
+			}
+		}
 		UniqueInteraction();
 		StartCoroutine(SoundCoroutine());
 	}
+
 
 	protected virtual void OnTriggerEnter(Collider other)//소리범위에 시민이나 적이 닿았을때 Character의 메서드를 호출한다.
 	{
 		Character character = other.GetComponent<Character>();	//부딪친 오브젝트가 Character컴포넌트가 있는지 확인
 
-		character.HearSound(transform);	//Character의 HearSound() 호출
+		character.HearSound();	//Character의 HearSound() 호출
 	}
 
 	protected virtual IEnumerator SoundCoroutine() //소리범위를 늘려준다.
@@ -69,8 +83,13 @@ public class Obstacle : MonoBehaviour
 		hitSound.enabled = false;
 	}
 
+	
 	protected virtual void UniqueInteraction() //고유한 작용
     {
         //dinoFracture 활성화, 산산조각
-    }
+		if(TryGetComponent<RuntimeFracturedGeometry>(out RuntimeFracturedGeometry fracture))
+		{
+			fracture.Fracture();
+		}
+	}
 }
