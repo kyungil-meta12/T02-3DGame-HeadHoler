@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+// 레이 피격 및 레그돌 활성화를 담당하는 모듈
+
 public class RagdollController : MonoBehaviour
 {
     public Collider[] ragdollColliders; // 레그돌 콜라이더
@@ -39,7 +41,7 @@ public class RagdollController : MonoBehaviour
         }
     }
 
-    void EnableRagdoll()
+    public void EnableRagdoll()
     {
         var currLnVel = psRigidBody.linearVelocity * 1.5f;
         var CurrAnVel = psRigidBody.angularVelocity;
