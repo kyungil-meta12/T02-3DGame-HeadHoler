@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,43 +25,37 @@ public class Obstacle : MonoBehaviour
     상속을 자주 쓰는 이유
     시민 - 농부, 목수, ... 종류를 여러가지 추가해도 Character만 상속하면 Obstacle과 상호작용가능.
     */
+	
+	public GameObject target;//부서질 오브젝트
 
-	[SerializeField]
-	private SphereCollider hitSound;	//소리 감지영역 담당 Collider
-	[SerializeField]
-	private float maxSoundRadius = 10f;	//소리 감지영역의 최대반경
-	[SerializeField]
-	private float duration = 1f;		//소리 감지영역이 퍼지는 시간
+	public SphereCollider hitSound;	//소리 감지영역 담당 Collider
+	public float maxSoundRadius = 10f;	//소리 감지영역의 최대반경
+	public float duration = 1f;		//소리 감지영역이 퍼지는 시간
 
-	private HashSet<Character> heard = new HashSet<Character>();	//범위 내 소리를 들은 Character 체크(중복 방지)
+	private void Awake()
+	{
+		hitSound = GetComponent<SphereCollider>();
+	}
 
-    protected virtual void Hit() //총알에 맞았을때
+	protected virtual void Hit() //총알에 맞았을때
     {
 		UniqueInteraction();
-		StartCoroutine(SoundCoRoutine());
+		StartCoroutine(SoundCoroutine());
 	}
 
 	protected virtual void OnTriggerEnter(Collider other)//소리범위에 시민이나 적이 닿았을때 Character의 메서드를 호출한다.
 	{
 		Character character = other.GetComponent<Character>();	//부딪친 오브젝트가 Character컴포넌트가 있는지 확인
 
-		if (character != null && !heard.Contains(character))	//Character가 있고 아직 소리를 들은 사람에 체크되지 않았으면
-		{
-			heard.Add(character);	//감지된 목록에 추가
-
-			character.HearSound(transform.position);	//Character의 HearSound() 호출
-		}
+		character.HearSound();	//Character의 HearSound() 호출
 	}
 
-	protected virtual IEnumerator SoundCoRoutine() //소리범위를 늘려준다.
+	protected virtual IEnumerator SoundCoroutine() //소리범위를 늘려준다.
     {
-		heard.Clear();		//들은 사람 체크 초기화
-
 		hitSound.radius = 0f;		//소리 감지영역 크기 초기화
 		hitSound.enabled = true;
 		float time = 0f;	//소리 퍼지는 시간 초기화
-
-
+		
 		while (time < duration)
 		{
 			time += Time.deltaTime;
@@ -76,6 +71,6 @@ public class Obstacle : MonoBehaviour
 
 	protected virtual void UniqueInteraction() //고유한 작용
     {
-        //깨진다
+        //dinoFracture 활성화, 산산조각
     }
 }
