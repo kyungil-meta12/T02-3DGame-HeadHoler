@@ -1272,6 +1272,7 @@ GameObject:
   - component: {fileID: 1378637284721098741}
   - component: {fileID: 1546563265178323353}
   - component: {fileID: 1966544190378715642}
+  - component: {fileID: 429149097033806361}
   m_Layer: 0
   m_Name: Male_1
   m_TagString: Untagged
@@ -1368,6 +1369,43 @@ CapsuleCollider:
   m_Height: 1.8
   m_Direction: 1
   m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!114 &429149097033806361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3846790828113108434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 094260bb3817053489539e1a31e2f162, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RagdollController
+  ragdollColliders:
+  - {fileID: 5787185537437461648}
+  - {fileID: 8253812930510083468}
+  - {fileID: 5683147782261245397}
+  - {fileID: 216759521549641368}
+  - {fileID: 4271020767550517134}
+  - {fileID: 4165900553871590130}
+  - {fileID: 2832274772372817190}
+  - {fileID: 6468988488788509514}
+  - {fileID: 547281854179465890}
+  - {fileID: 9016633032981137322}
+  - {fileID: 1035207024749376236}
+  ragdollBodies:
+  - {fileID: 978670649025106253}
+  - {fileID: 2293596907688403186}
+  - {fileID: 4257769911141730293}
+  - {fileID: 3385692288480642080}
+  - {fileID: 5613547067216931146}
+  - {fileID: 393302617621485127}
+  - {fileID: 6781503530169837492}
+  - {fileID: 7889241936010658975}
+  - {fileID: 4443553614229218109}
+  - {fileID: 3390285998628459726}
+  - {fileID: 346308392135187772}
+  devMode: 0
 --- !u!1 &4035268123308494915
 GameObject:
   m_ObjectHideFlags: 0
