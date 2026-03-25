@@ -14,6 +14,7 @@ public class Sg_CameraController : MonoBehaviour
     public Transform trackTarget;
     public Transform yRotationTarget;
     public Canvas canvas;
+    public Canvas crosshairCanvas;
 
     private float currentFov;
     private float offsetFov; // 스코프 줌 조정 오프셋 값
@@ -105,6 +106,7 @@ public class Sg_CameraController : MonoBehaviour
     {
         zoomState = !zoomState;
         acc = 0f;
+        crosshairCanvas.gameObject.SetActive(!zoomState); // zoomState가 활성화되면 크로스 헤어 비활성화
     }
 
     public void IncreaseScopeMagnification()

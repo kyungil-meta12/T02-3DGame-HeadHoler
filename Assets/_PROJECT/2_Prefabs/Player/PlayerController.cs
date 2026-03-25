@@ -190,18 +190,23 @@ public class PlayerController : MonoBehaviour
 
         anim.SetFloat("ForwardSpeed", moveDir.z);
         anim.SetFloat("StrafeSpeed", moveDir.x);
+
+        // 줌 상태에서는 애니메이션에 의한 시점 흔들림을 없애기 위해 의도적으로 애니메이션을 정지한다.
+        anim.speed = Sg_CameraController.Inst.zoomState ? 0f : 1f;
     }
 
     void UpdateZoom()
     {
+        bool isMoving = inputForward || inputBackward || inputStrafeLeft || inputStrafeRight;
+
         // 마우스 우클릭으로 줌 상태 토글
-        if (!onReloading && Mouse.current.rightButton.wasPressedThisFrame)
+        if (!onReloading && Mouse.current.rightButton.wasPressedThisFrame && !isMoving)
         {
             Sg_CameraController.Inst.ToggleZoom();
         }
 
         // 줌 상태에서 움직이거나 재장전을 실행하면 해제된다.
-        if (onReloading || inputForward || inputBackward || inputStrafeLeft || inputStrafeRight)
+        if (onReloading || isMoving)
         {
             Sg_CameraController.Inst.DisableZoom();
         }
@@ -216,9 +221,6 @@ public class PlayerController : MonoBehaviour
         {
             Sg_CameraController.Inst.ReduceScopeMagnification();
         }
-
-        // 줌 상태에서는 애니메이션에 의한 시점 흔들림을 없애기 위해 의도적으로 애니메이션을 정지한다.
-        anim.speed = Sg_CameraController.Inst.zoomState ? 0f : 1f;
     }
 
     void UpdateReload()
