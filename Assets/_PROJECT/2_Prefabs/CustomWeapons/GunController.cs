@@ -61,6 +61,7 @@ public class GunController : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 999f))
         {
             Debug.Log($"Collision detected: {hit.collider.tag}");
+            hit.transform.gameObject.GetComponent<Character>().Hit(true,hit.collider);
         }
         else
         {
