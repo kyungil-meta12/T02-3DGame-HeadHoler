@@ -2652,6 +2652,7 @@ GameObject:
   - component: {fileID: 4866940552335958669}
   - component: {fileID: 7923400769944187240}
   - component: {fileID: -5098534921652170600}
+  - component: {fileID: 3912555797986143500}
   m_Layer: 0
   m_Name: Male_3
   m_TagString: Untagged
@@ -2784,7 +2785,28 @@ MonoBehaviour:
   - {fileID: 3832723243462552941}
   - {fileID: 8079012536505695736}
   - {fileID: 3409434126495380033}
+  headCollider: {fileID: 1737464256450433829}
   devMode: 0
+  psCollider: {fileID: 0}
+--- !u!114 &3912555797986143500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8734344183913630576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5265f96eb23040b8a40869992dee06d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Character
+  destinationsPos: []
+  viewCol: {fileID: 0}
+  viewAngle: 90
+  Evidence:
+    serializedVersion: 2
+    m_Bits: 0
+  deathLimitTime: 10
 --- !u!1 &8789711477219969820
 GameObject:
   m_ObjectHideFlags: 0

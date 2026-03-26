@@ -1188,6 +1188,7 @@ GameObject:
   - component: {fileID: -816881509976714175}
   - component: {fileID: 1568533838709707268}
   - component: {fileID: 287795662642369420}
+  - component: {fileID: 3861688015127903686}
   m_Layer: 0
   m_Name: Female_4
   m_TagString: Untagged
@@ -1320,7 +1321,28 @@ MonoBehaviour:
   - {fileID: 2173544817886956453}
   - {fileID: 7803673537558730071}
   - {fileID: 1225552585311018846}
+  headCollider: {fileID: 1286644905223483845}
   devMode: 0
+  psCollider: {fileID: 0}
+--- !u!114 &3861688015127903686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4201989919430184942}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5265f96eb23040b8a40869992dee06d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Character
+  destinationsPos: []
+  viewCol: {fileID: 0}
+  viewAngle: 90
+  Evidence:
+    serializedVersion: 2
+    m_Bits: 0
+  deathLimitTime: 10
 --- !u!1 &4486497312072968819
 GameObject:
   m_ObjectHideFlags: 0
