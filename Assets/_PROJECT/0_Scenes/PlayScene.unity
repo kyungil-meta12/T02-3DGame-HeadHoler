@@ -11823,7 +11823,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5397454008968924989, guid: 5d2a7fe517340664c88b4869501341ed, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 446029388}
   m_SourcePrefab: {fileID: 100100000, guid: 5d2a7fe517340664c88b4869501341ed, type: 3}
 --- !u!1001 &424414582
 PrefabInstance:
@@ -49556,11 +49559,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!135 &2084287437 stripped
-SphereCollider:
-  m_CorrespondingSourceObject: {fileID: 7300949014352221107, guid: 5d2a7fe517340664c88b4869501341ed, type: 3}
-  m_PrefabInstance: {fileID: 418697911}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2086970700 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7539475247283540567, guid: d1df5531f2279ca499321c7d9ca8dea0, type: 3}
@@ -51275,11 +51273,11 @@ SceneRoots:
   - {fileID: 705507995}
   - {fileID: 1667786676}
   - {fileID: 418697911}
+  - {fileID: 1422059624}
   - {fileID: 1104114762}
   - {fileID: 2101847779}
   - {fileID: 1332116335}
   - {fileID: 985025981}
   - {fileID: 1639690733}
   - {fileID: 1023522356}
-  - {fileID: 1422059624}
   - {fileID: 1020467871}
