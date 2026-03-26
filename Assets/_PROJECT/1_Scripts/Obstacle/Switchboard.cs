@@ -12,7 +12,7 @@ public class SwitchBoard : Obstacle		//건물 배전반
 			return;
 		}
 
-		base.UniqueInteraction();
+		base.UniqueInteraction();   //산산조각 나면 안되므로 RuntimeFracturedGeometry컴포넌트 내의 프리팹 교체 필요
 
 		isBroken = true;
 		
