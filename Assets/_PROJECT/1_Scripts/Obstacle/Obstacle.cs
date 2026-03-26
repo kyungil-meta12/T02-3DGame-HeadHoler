@@ -61,7 +61,7 @@ public class Obstacle : MonoBehaviour
 	{
 		Character character = other.GetComponent<Character>();	//부딪친 오브젝트가 Character컴포넌트가 있는지 확인
 
-		character.HearSound();	//Character의 HearSound() 호출
+		//character.HearSound();	//Character의 HearSound() 호출
 	}
 
 	protected virtual IEnumerator SoundCoroutine() //소리범위를 늘려준다.

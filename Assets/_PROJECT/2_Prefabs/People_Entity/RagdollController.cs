@@ -7,12 +7,14 @@ public class RagdollController : MonoBehaviour
 {
     public Collider[] ragdollColliders; // 레그돌 콜라이더
     public Rigidbody[] ragdollBodies; // 레그돌 리지드 바디
+    public Collider headCollider; // 헤드샷 구분용 콜라이더
     public bool devMode = false; // 활성화 시 spaceKey로 레그돌 활성화 가능
 
     private bool ragdollEnabled = false;
 
     private Animator anim;
-    private Collider psCollider; // 물리 시뮬레이션용 콜라이더
+    [HideInInspector]
+    public Collider psCollider; // 물리 시뮬레이션용 콜라이더
     private Rigidbody psRigidBody; // 물리 시뮬레이션용 리지드 바디
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

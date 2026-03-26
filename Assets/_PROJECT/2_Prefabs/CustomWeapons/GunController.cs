@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class GunController : MonoBehaviour
@@ -55,17 +56,55 @@ public class GunController : MonoBehaviour
         Sg_MouseMan.Inst.AddRecoil(recoil); // 반동으로 인해 화면이 위로 튄다
         scopeImage.AddRecoil(recoil); // 스코프 이미지에 진동 효과 추가
 
-        // 화면 중앙으로 레이캐스팅
+        // 화면 중앙으로 레이캐스팅 후 가까운 거리부터 오름차순 정렬
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-        RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 999f))
+        RaycastHit[] hitList = Physics.RaycastAll(ray, 999f);
+        Array.Sort(hitList, (a, b) => a.distance.CompareTo(b.distance));
+
+        // 하나라도 충돌이 발견되면 즉시 for문을 종료한다. => 관통 현상 방지
+        foreach (var hit in hitList)
         {
-            Debug.Log($"Collision detected: {hit.collider.tag}");
-            hit.transform.gameObject.GetComponent<Character>().Hit(true,hit.collider);
-        }
-        else
-        {
-            Debug.Log($"Collision not detected");
+            var characterComp = hit.transform.gameObject.GetComponentInParent<Character>();
+            var obstacleComp = hit.transform.gameObject.GetComponentInParent<Obstacle>();
+
+            if (characterComp) // 사람인 경우
+            {
+                print("people hit");
+
+                var regController = hit.transform.gameObject.GetComponentInParent<RagdollController>();
+
+                if (hit.collider == regController.psCollider) // ps collider인 경우 건너뜀
+                {
+                    print("ps collider. continue.");
+                    continue;
+                }
+
+                if (hit.collider == regController.headCollider) // 헤드샷인 경우 // 헤드샷은 무조건 사망 처리
+                {
+                    regController.EnableRagdoll();
+                    print("headshot");
+                    break;
+                }
+
+                else // 그 이외의 부위인 경우
+                {
+                    print("not headshot");
+                }
+
+                break;
+            }
+
+            if (obstacleComp) // 상호작용 장애물인 경우
+            {
+                print("interactive obstacle hit");
+                break;
+            }
+
+            if (!characterComp && !obstacleComp)  // 상호 작용 불가능한 장애물인 경우 // 예: 건물 외벽, 지형 등...
+            {
+                print("static obstacle hit");
+                break;
+            }
         }
 
         print($"[GunController] Fire | Ammo: {currAmmo} / {totalAmmo}"); // 테스트용 출력
@@ -80,8 +119,8 @@ public class GunController : MonoBehaviour
     public bool IsFired()
     {
         return fireTimer <= 0f;
+    
     }
-
     // 재장전
     public void ReloadGun()
     {

@@ -44,7 +44,8 @@ public class Character : MonoBehaviour
         stateValues = Enum.GetValues(typeof(State));
         curState = State.Idle;
 
-        StartCoroutine(MoveCoroutine());
+        // 레이캐스팅 테스트를 위해 임시 비활성화
+        //StartCoroutine(MoveCoroutine());
     }
 
     #region 기본 코루틴
@@ -305,20 +306,21 @@ public class Character : MonoBehaviour
     //시야 범위 관찰대상쪽으로 레이 쏘기 (관찰 상태가 아닐때)
     private void OnTriggerStay(Collider other)
     {
-        if(curState is State.Scream or State.See) return;
-        if (other.CompareTag("Evidence")) 
-        {
-            Vector3 dirToTarget = (other.transform.position - transform.position).normalized;
-            if (Vector3.Angle(transform.forward, dirToTarget) < viewAngle / 2)
-            {
-                float dst = Vector3.Distance(transform.position, other.transform.position);
-                if (!Physics.Raycast(transform.position, dirToTarget, dst, Evidence))
-                {
-                    Debug.DrawRay(transform.position, dirToTarget, Color.red);
-                    curState = State.Scream;
-                    target = other.transform;
-                }
-            }
-        }
+        // 임시 비활성화
+        //if(curState is State.Scream or State.See) return; 
+        //if (other.CompareTag("Evidence")) 
+        //{
+        //    Vector3 dirToTarget = (other.transform.position - transform.position).normalized;
+        //    if (Vector3.Angle(transform.forward, dirToTarget) < viewAngle / 2)
+        //    {
+        //        float dst = Vector3.Distance(transform.position, other.transform.position);
+        //        if (!Physics.Raycast(transform.position, dirToTarget, dst, Evidence))
+        //        {
+        //            Debug.DrawRay(transform.position, dirToTarget, Color.red);
+        //            curState = State.Scream;
+        //            target = other.transform;
+        //        }
+        //    }
+        //  }
     }
 }

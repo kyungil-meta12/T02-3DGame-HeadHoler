@@ -903,7 +903,7 @@ GameObject:
   - component: {fileID: 3898083410100598030}
   m_Layer: 0
   m_Name: Head
-  m_TagString: Untagged
+  m_TagString: HeadCollider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2132,25 +2132,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RagdollController
   ragdollColliders:
+  - {fileID: 7300949014352221107}
   - {fileID: 5396948046174005716}
   - {fileID: 7896260143635307692}
   - {fileID: 564398284811895295}
   - {fileID: 2676526951918709952}
   - {fileID: 435172491495663901}
   - {fileID: 1962358349244242057}
-  - {fileID: 7300949014352221107}
   - {fileID: 8973515358809938508}
   - {fileID: 6778576531524033472}
   - {fileID: 4225081524504507991}
   - {fileID: 1983058640221171250}
   ragdollBodies:
+  - {fileID: 7673748144660496816}
   - {fileID: 4280876019560827070}
   - {fileID: 5562913174700486063}
   - {fileID: 9199607324240439569}
   - {fileID: 1940012712176557044}
   - {fileID: 8378238053492699331}
   - {fileID: 7777103524553918149}
-  - {fileID: 7673748144660496816}
   - {fileID: 2610266562485820887}
   - {fileID: 8696889758302562198}
   - {fileID: 6765289030188590050}
