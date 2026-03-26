@@ -269,6 +269,10 @@ public class Character : MonoBehaviour
         target = t;
         React();
     }
+    public void HearSound()
+    {
+
+    }
     
     //Obstacle 호출 메서드, Obstacle에 맞았을때
     //Player 호출 메서드, 총에 맞았을때
