@@ -56,4 +56,14 @@ public class ScopeImageMove : MonoBehaviour
     {
         shakeAmount += val;
     }
+
+    // 총기 격발 직후 남아있는 흔들림을 제거하는 메서드
+    public void ResetRecoil()
+    {
+        for (int i = 0; i < rt.Length; i++)
+        {
+            rt[i].localPosition = originPos[i];
+        }
+        shakeAmount = 0f;
+    }
 }

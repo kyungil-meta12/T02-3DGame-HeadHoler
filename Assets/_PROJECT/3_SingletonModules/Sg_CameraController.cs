@@ -95,6 +95,8 @@ public class Sg_CameraController : MonoBehaviour
             currentFov = Mathf.Lerp(currentFov, defaultFov, t);
             if (currentFov > defaultFov * 0.5f)
             {
+                var comp = canvas.gameObject.GetComponentInChildren<ScopeImageMove>();
+                comp.ResetRecoil(); // 비활성화 하기 직전에 남아있는 반동 진동 제거
                 canvas.gameObject.SetActive(false); // 일정 수치 이상으로 fov가 올라가면 스나이퍼 스코프 캔버스 비활성화
             }
 
