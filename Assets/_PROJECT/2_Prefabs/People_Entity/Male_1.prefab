@@ -567,7 +567,7 @@ SkinnedMeshRenderer:
   m_MaskInteraction: 0
   serializedVersion: 2
   m_Quality: 0
-  m_UpdateWhenOffscreen: 0
+  m_UpdateWhenOffscreen: 1
   m_SkinnedMotionVectors: 1
   m_Mesh: {fileID: 4300002, guid: 0045ffb477e043a46950af7e617beb06, type: 3}
   m_Bones:
@@ -1273,6 +1273,7 @@ GameObject:
   - component: {fileID: 1546563265178323353}
   - component: {fileID: 1966544190378715642}
   - component: {fileID: 429149097033806361}
+  - component: {fileID: -8478138712906463804}
   m_Layer: 0
   m_Name: Male_1
   m_TagString: Untagged
@@ -1405,7 +1406,28 @@ MonoBehaviour:
   - {fileID: 4443553614229218109}
   - {fileID: 3390285998628459726}
   - {fileID: 346308392135187772}
+  headCollider: {fileID: 0}
   devMode: 0
+  psCollider: {fileID: 0}
+--- !u!114 &-8478138712906463804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3846790828113108434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5265f96eb23040b8a40869992dee06d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Character
+  destinationsPos: []
+  viewCol: {fileID: 0}
+  viewAngle: 90
+  Evidence:
+    serializedVersion: 2
+    m_Bits: 0
+  deathLimitTime: 10
 --- !u!1 &4035268123308494915
 GameObject:
   m_ObjectHideFlags: 0

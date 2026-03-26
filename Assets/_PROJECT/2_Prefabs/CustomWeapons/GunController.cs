@@ -82,6 +82,7 @@ public class GunController : MonoBehaviour
                 if (hit.collider == regController.headCollider) // 헤드샷인 경우 // 헤드샷은 무조건 사망 처리
                 {
                     regController.EnableRagdoll();
+                    regController.headCollider.attachedRigidbody.AddForce(ray.direction * 100f, ForceMode.Impulse); // 맞은 방향으로 힘 가함
                     print("headshot");
                     break;
                 }
@@ -89,6 +90,15 @@ public class GunController : MonoBehaviour
                 else // 그 이외의 부위인 경우
                 {
                     print("not headshot");
+                    regController.EnableRagdoll();
+                    foreach (var c in regController.ragdollColliders)
+                    {
+                        if(hit.collider == c)
+                        {
+                            c.attachedRigidbody.AddForce(ray.direction * 100f, ForceMode.Impulse); // 맞은 방향으로 힘 가함
+                            break;
+                        }
+                    }
                 }
 
                 break;

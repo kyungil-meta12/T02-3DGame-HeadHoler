@@ -46,7 +46,7 @@ public class RagdollController : MonoBehaviour
     public void EnableRagdoll()
     {
         var currLnVel = psRigidBody.linearVelocity * 1.5f;
-        var CurrAnVel = psRigidBody.angularVelocity;
+        var currAnVel = psRigidBody.angularVelocity;
 
         psRigidBody.isKinematic = true;
         psCollider.enabled = false;
@@ -57,7 +57,7 @@ public class RagdollController : MonoBehaviour
             rb.isKinematic = false;
             rb.useGravity = true;
             rb.linearVelocity = currLnVel;
-            rb.angularVelocity = CurrAnVel;
+            rb.angularVelocity = currAnVel;
             rb.linearDamping = 0.1f;
         }
 
