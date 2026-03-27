@@ -26,7 +26,7 @@ public class PropaneTank : Obstacle
 			if (character != null)
 			{
 				//폭발 중심에서 바깥으로 날리기(폭발 세기, 폭발 중심점, 폭발 반경)
-				character.Hit(false, transform);
+				character.Hit(false, hit);
 
 				//TODO : 캐릭터의 사망이나 모션 등 작성이 필요함
 			}

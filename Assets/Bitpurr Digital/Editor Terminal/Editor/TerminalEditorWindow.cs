@@ -45,10 +45,15 @@ namespace BitpurrDigital
 
         private string _path = Path.GetFullPath(Path.Combine(Application.dataPath, $"..{Path.DirectorySeparatorChar}"));
 #pragma warning disable CS0414
-        private static readonly string Unity6UxmlPath = Path.Combine(GetBasePath(), "TerminalUI_Unity6.uxml");
-        private static readonly string Unity5UxmlPath = Path.Combine(GetBasePath(), "TerminalUI_Unity5.uxml");
+        //private static readonly string Unity6UxmlPath = Path.Combine(GetBasePath(), "TerminalUI_Unity6.uxml");
+        //private static readonly string Unity5UxmlPath = Path.Combine(GetBasePath(), "TerminalUI_Unity5.uxml");
+        private static string Unity6UxmlPath => Path.Combine(GetBasePath(), "TerminalUI_Unity6.uxml");
+        private static string Unity5UxmlPath => Path.Combine(GetBasePath(), "TerminalUI_Unity5.uxml");
 #pragma warning restore CS0414
-        private static readonly string IconPath = Path.Combine(Path.GetDirectoryName(GetBasePath()), "Icon.png");
+        // private static readonly string IconPath = Path.Combine(Path.GetDirectoryName(GetBasePath()), "Icon.png");
+        private static string IconPath => Path.Combine(Path.GetDirectoryName(GetBasePath()), "Icon.png");
+
+
 
 
         private const string InternalCommandPrefix = "editorterminal";
