@@ -45234,17 +45234,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &1892438107 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1159343171139250840, guid: ecd89c2e88b7d6b469a52b0f2496a12c, type: 3}
-  m_PrefabInstance: {fileID: 8188630378540674280}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ff15cd6de8c0dd4abe36bf29aa567d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GunController
 --- !u!1 &1895157446
 GameObject:
   m_ObjectHideFlags: 0
@@ -49533,7 +49522,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c15595ed2b2e22449adba38569ad841e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AmmoProgressBarBinder
-  gunController: {fileID: 1892438107}
+  gunController: {fileID: 2137357065}
   progressBar: {fileID: 594851410}
   updateEveryFrame: 1
 --- !u!1001 &2104201761
@@ -50532,6 +50521,17 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2137357065 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5073614870442326023, guid: ecd89c2e88b7d6b469a52b0f2496a12c, type: 3}
+  m_PrefabInstance: {fileID: 8188630378540674280}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ff15cd6de8c0dd4abe36bf29aa567d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GunController
 --- !u!1001 &2143658703
 PrefabInstance:
   m_ObjectHideFlags: 0
