@@ -51,15 +51,15 @@ public class GunController : MonoBehaviour
         {
             return;
         }
-        fireTimer += fireInterval; // 격발 타이머에 격발 간격 시간 추가
-        currAmmo--; // 총알 1개 소모
-        Sg_MouseMan.Inst.AddRecoil(recoil); // 반동으로 인해 화면이 위로 튄다
-        scopeImage.AddRecoil(recoil); // 스코프 이미지에 진동 효과 추가
 
         // 화면 중앙으로 레이캐스팅 후 가까운 거리부터 오름차순 정렬
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-        RaycastHit[] hitList = Physics.RaycastAll(ray, 999f);
+        RaycastHit[] hitList = Physics.SphereCastAll(ray, 0.1f, 999f, LayerMask.GetMask("Entity")); // 레이캐스팅은 Entity 레이어를 가진 객체에 대해서만 처리
+      //  Debug.DrawRay(ray.origin, ray.direction * 999f, Color.red, 1.0f);
         Array.Sort(hitList, (a, b) => a.distance.CompareTo(b.distance));
+
+        var inputDirection = ray.direction;
+        inputDirection.y = 0f;
 
         // 하나라도 충돌이 발견되면 즉시 for문을 종료한다. => 관통 현상 방지
         foreach (var hit in hitList)
@@ -73,16 +73,10 @@ public class GunController : MonoBehaviour
 
                 var regController = hit.transform.gameObject.GetComponentInParent<RagdollController>();
 
-                if (hit.collider == regController.psCollider) // ps collider인 경우 건너뜀
-                {
-                    print("ps collider. continue.");
-                    continue;
-                }
-
                 if (hit.collider == regController.headCollider) // 헤드샷인 경우 // 헤드샷은 무조건 사망 처리
                 {
                     regController.EnableRagdoll();
-                    regController.headCollider.attachedRigidbody.AddForce(ray.direction * 100f, ForceMode.Impulse); // 맞은 방향으로 힘 가함
+                    regController.headCollider.attachedRigidbody.AddForce(inputDirection * 200f, ForceMode.Impulse); // 맞은 방향으로 힘 가함
                     print("headshot");
                     break;
                 }
@@ -95,7 +89,7 @@ public class GunController : MonoBehaviour
                     {
                         if(hit.collider == c)
                         {
-                            c.attachedRigidbody.AddForce(ray.direction * 100f, ForceMode.Impulse); // 맞은 방향으로 힘 가함
+                            c.attachedRigidbody.AddForce(inputDirection * 200f, ForceMode.Impulse); // 맞은 방향으로 힘 가함
                             break;
                         }
                     }
@@ -116,6 +110,11 @@ public class GunController : MonoBehaviour
                 break;
             }
         }
+
+        fireTimer += fireInterval; // 격발 타이머에 격발 간격 시간 추가
+        currAmmo--; // 총알 1개 소모
+        Sg_MouseMan.Inst.AddRecoil(recoil); // 반동으로 인해 화면이 위로 튄다
+        scopeImage.AddRecoil(recoil); // 스코프 이미지에 진동 효과 추가
 
         print($"[GunController] Fire | Ammo: {currAmmo} / {totalAmmo}"); // 테스트용 출력
     }

@@ -92,7 +92,7 @@ public class Sg_ScoreManager : MonoBehaviour
     {
         if (scoreTextObj != null)
         {
-            scoreTextObj.text = currentScore.ToString();
+            scoreTextObj.text = $"Score : {currentScore:N0}";
         }
     }
 }
