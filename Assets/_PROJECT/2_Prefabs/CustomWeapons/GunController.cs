@@ -58,6 +58,9 @@ public class GunController : MonoBehaviour
       //  Debug.DrawRay(ray.origin, ray.direction * 999f, Color.red, 1.0f);
         Array.Sort(hitList, (a, b) => a.distance.CompareTo(b.distance));
 
+        var inputDirection = ray.direction;
+        inputDirection.y = 0f;
+
         // 하나라도 충돌이 발견되면 즉시 for문을 종료한다. => 관통 현상 방지
         foreach (var hit in hitList)
         {
@@ -73,7 +76,7 @@ public class GunController : MonoBehaviour
                 if (hit.collider == regController.headCollider) // 헤드샷인 경우 // 헤드샷은 무조건 사망 처리
                 {
                     regController.EnableRagdoll();
-                    regController.headCollider.attachedRigidbody.AddForce(ray.direction * 100f, ForceMode.Impulse); // 맞은 방향으로 힘 가함
+                    regController.headCollider.attachedRigidbody.AddForce(inputDirection * 200f, ForceMode.Impulse); // 맞은 방향으로 힘 가함
                     print("headshot");
                     break;
                 }
@@ -86,7 +89,7 @@ public class GunController : MonoBehaviour
                     {
                         if(hit.collider == c)
                         {
-                            c.attachedRigidbody.AddForce(ray.direction * 100f, ForceMode.Impulse); // 맞은 방향으로 힘 가함
+                            c.attachedRigidbody.AddForce(inputDirection * 200f, ForceMode.Impulse); // 맞은 방향으로 힘 가함
                             break;
                         }
                     }
