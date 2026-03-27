@@ -5,11 +5,20 @@ using UnityEngine;
 using UnityEngine.AI;
 
 //todo 즉사가 아닐때
+//todo secondState로 경계, 소리지르기, 상처 관리
 
-public enum State
+//하체 행동
+public enum FirstState
 {
-    //대기, 경계, 걷기, 뛰기, 동료부르기, 관찰, 저격위치 발각, 상처, 죽음
-    Idle, Careful, Walk, Run, Scream, See, Discover, Hurt, Dead
+    //대기, 걷기, 뛰기, 관찰, 저격위치 발각, 죽음,
+    Idle, Walk, Run, See, Discover, Dead,
+}
+
+//상체 행동
+public enum SecondState
+{
+    //없음, 경계, 소리지르기, 상처,
+    None, Careful, Scream, Hurt,
 }
 
 public class Character : MonoBehaviour
@@ -22,13 +31,18 @@ public class Character : MonoBehaviour
     public float viewAngle = 90f; //색적범위
     [Header("관찰대상 레이어")]
     public LayerMask Evidence; //색적대상
-    [Header("상처 지속 시간")] 
-    public float deathLimitTime = 10f; //과다출혈 사망시간
+
+    [Header(("각 행동별 지속시간"))] 
+    public float idleTime = 1f;
+    public float carefulTime = 1f;
+    public float screamTime = 1f;
+    public float hurtTime = 1f;
     
     private Animator anim; //애니메이터
     private NavMeshAgent agent; //AI
     
-    private State curState; //현재 상태
+    private FirstState curFirstState; //현재 하체 행동상태
+    private SecondState curSecondState; //현재 상체 행동상태
     private Array stateValues; //enum개수 체크용
     private Transform target; //관찰대상
     private bool isGotShot;
@@ -41,11 +55,10 @@ public class Character : MonoBehaviour
     
     protected virtual void Start()
     {
-        stateValues = Enum.GetValues(typeof(State));
-        curState = State.Idle;
+        stateValues = Enum.GetValues(typeof(FirstState));
+        curFirstState = FirstState.Idle;
 
-        // 레이캐스팅 테스트를 위해 임시 비활성화
-        //StartCoroutine(MoveCoroutine());
+        StartCoroutine(MoveCoroutine());
     }
 
     #region 기본 코루틴
@@ -53,43 +66,31 @@ public class Character : MonoBehaviour
     {
         while (true)
         {
-            switch (curState)
+            switch (curFirstState)
             {
-                case State.Idle:
-                    ChangeAnim(State.Idle);
+                case FirstState.Idle:
+                    ChangeFirstAnim(FirstState.Idle);
                     yield return Idle();
                     break;
-                case State.Careful:
-                    ChangeAnim(State.Careful);
-                    yield return Careful();
-                    break;
-                case State.Walk:
-                    ChangeAnim(State.Walk);
+                case FirstState.Walk:
+                    ChangeFirstAnim(FirstState.Walk);
                     yield return Walk();
                     break;
-                case State.Run:
-                    ChangeAnim(State.Run);
+                case FirstState.Run:
+                    ChangeFirstAnim(FirstState.Run);
                     yield return Run();
                     break;
-                case State.Scream:
-                    ChangeAnim(State.Scream);
-                    yield return Scream();
-                    break;
-                case State.See:
-                    ChangeAnim(State.See);
+                case FirstState.See:
+                    ChangeFirstAnim(FirstState.See);
                     yield return See();
                     break;
-                case State.Discover:
-                    ChangeAnim(State.Discover);
-                    Discover();
+                case FirstState.Discover:
+                    ChangeFirstAnim(FirstState.Discover);
+                    yield return Discover();
                     break;
-                case State.Hurt:
-                    ChangeAnim(State.Hurt);
-                    yield return Hurt();
-                    break;
-                case State.Dead:
-                    ChangeAnim(State.Dead);
-                    Dead();
+                case FirstState.Dead:
+                    ChangeFirstAnim(FirstState.Dead);
+                    yield return Dead();
                     break;
             }
 
@@ -98,100 +99,74 @@ public class Character : MonoBehaviour
     }
     #endregion
 
-    #region 행동별 코루틴
+    #region FirstState별 코루틴
     //대기
     protected virtual IEnumerator Idle()
     {
-        //todo 일정시간 후 걷기
+        //일정시간 후 걷기
         float time = 0f;
         while (time < 1)
         {
-            if (curState == State.Idle) break;
+            if (curFirstState != FirstState.Idle)
+            {
+                StopCoroutine(Idle());
+                break;
+            }
             time += Time.deltaTime;
-            float t = time / 1;
+            float t = time / idleTime;
             yield return null;
         }
-    }
-
-    //경계
-    protected virtual IEnumerator Careful()
-    {
-        //todo 일정시간 경계 후 대기
-        float time = 0f;
-        while (time < 1)
-        {
-            if (curState == State.Careful) break;
-            time += Time.deltaTime;
-            float t = time / 1;
-            yield return null;
-        }
-        curState = State.Idle;
+        curFirstState = FirstState.Walk;
     }
     
     //걷기
     protected virtual IEnumerator Walk()
     {
-        //todo 목표까지 걸어간 후 대기 or 걷는 중에 랜덤확률로 대기
-        while (true)
+        //목표까지 걸어간 후 대기 or 걷는 중에 랜덤확률로 대기
+        
+        foreach (var dest in destinationsPos)
         {
-            if (curState == State.Walk) break;
-
-            foreach (var dest in destinationsPos)
+            agent.SetDestination(dest);
+            while (true)
             {
-                agent.SetDestination(dest);
-                while (Vector3.Distance(transform.position, dest) <= 1f)
+                if (curFirstState != FirstState.Walk)
                 {
-                    if (curState == State.Walk) break;
-                    yield return null;
+                    agent.isStopped = true;
+                    StopCoroutine(Walk());
+                    break;
                 }
+                if(Vector3.Distance(transform.position, dest) <= 1f) break;
+                yield return null;
             }
-            yield return null;
         }
-
-        curState = State.Idle;
+        
+        agent.isStopped = true;
+        curFirstState = FirstState.Idle;
     }
 
     //뛰기
     protected virtual IEnumerator Run()
     {
-        //todo 목표까지 뛰어간 후 대기
-        float time = 0f;
-        while (time < 1)
-        {
-            if (curState == State.Run) break;
-            time += Time.deltaTime;
-            float t = time / 1;
-            yield return null;
-        }
-        curState = State.Idle;
-    }
-
-    //소리지르기
-    protected virtual IEnumerator Scream()
-    {
-        //일정 시간 소리지른 후 관찰
-        if (target != null)
-        {
-            transform.forward = target.position - transform.position;
-        }
-        CallFriend();
+        //목표까지 뛰어간 후 대기
         
-        float time = 0f;
-        while (time < 1)
+        foreach (var dest in destinationsPos)
         {
-            if (curState == State.Scream) break;
-            time += Time.deltaTime;
-            float t = time / 1;
-            yield return null;
+            agent.SetDestination(dest);
+            while (true)
+            {
+                if (curFirstState != FirstState.Run)
+                {
+                    agent.isStopped = true;
+                    StopCoroutine(Run());
+                    break;
+                }
+                if(Vector3.Distance(transform.position, dest) <= 1f) break;
+                yield return null;
+            }
         }
-
-        curState = State.See;
-    }
-
-    //동료 부르기
-    protected virtual void CallFriend()
-    {
-        //todo 범위 내 동료의 이동타겟 바꾸기,강제 이동
+        
+        agent.isStopped = true;
+        curFirstState = FirstState.Idle;
     }
     
     //관찰
@@ -200,11 +175,82 @@ public class Character : MonoBehaviour
         //관찰대상 사라질때까지 관찰 후 대기 or 특정 상황 관찰 후 대기
         while (target != null)
         {
-            if(curState == State.See) break;
+            if(curFirstState != FirstState.See) break;
             transform.forward = target.position - transform.position;
             yield return null;
         }
-        curState = State.Idle;
+        curFirstState = FirstState.Idle;
+    }
+    
+    //저격위치 발각
+    protected virtual IEnumerator Discover()
+    {
+        //todo 카메라 클로즈업, 발각 모션 후 게임 오버
+        //transform.forward = 플레이어.position - transform.position;
+        yield return null;
+    }
+    
+    //죽음
+    protected virtual IEnumerator Dead()
+    {
+        //행동 종료, 관찰대상 레이어로 바꾸기
+        transform.gameObject.layer = Evidence;
+        StopAllCoroutines();
+        yield return null;
+    }
+    
+    #endregion
+
+    #region SecondState 행동별 코루틴
+    //경계
+    // protected virtual IEnumerator Careful()
+    // {
+    //     //일정시간 경계 후 대기
+    //     float time = 0f;
+    //     while (time < 1)
+    //     {
+    //         if (curFirstState != FirstState.Careful)
+    //         {
+    //             StopCoroutine(Careful());
+    //             break;
+    //         }
+    //         time += Time.deltaTime;
+    //         float t = time / carefulTime;
+    //         yield return null;
+    //     }
+    //     curFirstState = FirstState.Idle;
+    // }
+
+    //소리지르기
+    // protected virtual IEnumerator Scream()
+    // {
+    //     //일정 시간 소리지른 후 관찰
+    //     if (target != null)
+    //     {
+    //         transform.forward = target.position - transform.position;
+    //     }
+    //     CallFriend();
+    //     
+    //     float time = 0f;
+    //     while (time < 1)
+    //     {
+    //         if (curFirstState != FirstState.Scream)
+    //         {
+    //             StopCoroutine(Scream());
+    //             break;
+    //         }
+    //         time += Time.deltaTime;
+    //         float t = time / screamTime;
+    //         yield return null;
+    //     }
+    //
+    //     curFirstState = FirstState.See;
+    // }
+
+    //동료 부르기
+    protected virtual void CallFriend()
+    {
+        //todo 범위 내 동료의 이동타겟 바꾸기,강제 이동
     }
 
     //상처
@@ -212,53 +258,54 @@ public class Character : MonoBehaviour
     {
         //자리에서 계속 소리지르기, 동료가 오면 일정시간 후 치료됨, 동료가 안오면 일정시간 후 과다출혈 사망
         float time = 0f;
-        while (time < deathLimitTime)
+        while (time < hurtTime)
         {
             time += Time.deltaTime;
-            float t = time / deathLimitTime;
+            float t = time / hurtTime;
 
             CallFriend();
             yield return null;
         }
 
-        if (time >= deathLimitTime)
+        if (time >= hurtTime)
         {
-            curState = State.Dead; //시간 지나면 죽음
+            curFirstState = FirstState.Dead; //시간 지나면 죽음
         }
         else if (isGotShot)
         {
-            curState = State.Discover; //총에 맞았으면 발각, 게임오버
+            curFirstState = FirstState.Discover; //총에 맞았으면 발각, 게임오버
         }
         else
         {
-            curState = State.Idle;
+            curFirstState = FirstState.Idle;
         }
     }
     
-    //저격위치 발각
-    protected virtual void Discover()
-    {
-        //todo 카메라 클로즈업, 발각 모션 후 게임 오버
-        //transform.forward = 플레이어.position - transform.position;
-    }
-    
-    //죽음
-    protected virtual void Dead()
-    {
-        //행동 종료, 관찰대상 레이어로 바꾸기
-        StopAllCoroutines();
-        transform.gameObject.layer = Evidence;
-    }
     #endregion
     
     //애니메이션 상태 바꾸기
-    protected virtual void ChangeAnim(State changeState)
+    protected virtual void ChangeFirstAnim(FirstState changeFirstState)
     {
         for (int i = 0; i < stateValues.Length; i++)
         {
-            if (changeState != State.Dead)
+            if (changeFirstState != FirstState.Dead)
             {
-                anim.SetBool($"is{(State)i}", changeState == (State)i);
+                anim.SetBool($"is{(FirstState)i}", changeFirstState == (FirstState)i);
+            }
+        }
+    }
+    
+    protected virtual void ChangeSecondAnim(SecondState changeSecondState)
+    {
+        for (int i = 0; i < stateValues.Length; i++)
+        {
+            if (curFirstState != FirstState.Dead)
+            {
+                anim.SetBool($"is{(SecondState)i}", changeSecondState == (SecondState)i);
+            }
+            else
+            {
+                anim.SetBool($"is{(SecondState)i}", false);
             }
         }
     }
@@ -267,12 +314,12 @@ public class Character : MonoBehaviour
     public void HearSound(Transform t)
     {
         target = t;
-        React();
+        //React();
     }
     
     //Obstacle 호출 메서드, Obstacle에 맞았을때
     //Player 호출 메서드, 총에 맞았을때
-    public void Hit(bool isGunShot, Collider hitCollider)
+    public void Hit(bool isGunShot, Transform trans)
     {
         isGotShot = isGunShot;
         //todo 헤드샷체크
@@ -289,19 +336,25 @@ public class Character : MonoBehaviour
     }
     
     //소리에 대한 반응
-    protected virtual void React()
-    {
-        switch (curState)
-        {
-            case State.Scream: case State.See: case State.Careful:
-                curState = State.Scream;
-                break;
-            default:
-                //경계
-                curState = State.Careful;
-                break;
-        }
-    }
+    // protected virtual void React()
+    // {
+    //     if(curFirstState is FirstState.Dead or FirstState.Discover) return;
+    //     switch (curFirstState)
+    //     {
+    //         case FirstState.Dead: case FirstState.Discover:
+    //             return;
+    //         case FirstState.See: 
+    //             curFirstState = FirstState.Scream;
+    //             break;
+    //         case FirstState.Careful:
+    //             curFirstState = FirstState.Discover;
+    //             break;
+    //         default:
+    //             //경계
+    //             curFirstState = FirstState.Careful;
+    //             break;
+    //     }
+    // }
     
     //시야 범위 관찰대상쪽으로 레이 쏘기 (관찰 상태가 아닐때)
     private void OnTriggerStay(Collider other)

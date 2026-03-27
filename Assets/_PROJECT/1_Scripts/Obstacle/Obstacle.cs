@@ -27,21 +27,12 @@ public class Obstacle : MonoBehaviour
     시민 - 농부, 목수, ... 종류를 여러가지 추가해도 Character만 상속하면 Obstacle과 상호작용가능.
     */
 
-	public GameObject target;//부서질 오브젝트
-
-	public SphereCollider hitSound; //소리 감지영역 담당 Collider
-	public float maxSoundRadius = 10f;  //소리 감지영역의 최대반경
-	public float duration = 1f;     //소리 감지영역이 퍼지는 시간
-
-	public FractureGeometry[] explosives;   //원격폭발(분쇄)할 오브젝트
+	[Header("소리 발생용 프리팹")]
+	public GameObject hitSoundPrefab; //소리 발생 콜라이더
+	
+	public FractureGeometry[] explosives;   //파괴할 오브젝트
 
 	public bool fragile; //부서질수있음
-	public bool explosible; //터질수있음
-
-	private void Awake()
-	{
-		//hitSound = GetComponent<SphereCollider>();
-	}
 
 	[ContextMenu("테스트")]
 	public void Test()
@@ -50,69 +41,55 @@ public class Obstacle : MonoBehaviour
 	}
 	public virtual void Hit(Transform trans) //총알에 맞았을때
 	{
+		Instantiate(hitSoundPrefab, trans.position, Quaternion.identity);
 		UniqueInteraction();
-		StartCoroutine(SoundCoroutine(trans));
 	}
-
-
-	protected virtual void OnTriggerEnter(Collider other)//소리범위에 시민이나 적이 닿았을때 Character의 메서드를 호출한다.
-	{
-		Character character = other.GetComponent<Character>();  //부딪친 오브젝트가 Character컴포넌트가 있는지 확인
-		if(character != null)
-		{
-			character.HearSound(transform); //Character의 HearSound() 호출
-		}
-	}
-
-	protected virtual IEnumerator SoundCoroutine(Transform trans) //소리범위를 늘려준다.
-	{
-		hitSound.center = trans.position;//hitSound의 센터 조절, t를 이용
-		hitSound.radius = 0f;       //소리 감지영역 크기 초기화
-		hitSound.enabled = true;
-		float time = 0f;    //소리 퍼지는 시간 초기화
-
-		while (time < duration)
-		{
-			time += Time.deltaTime;
-			float t = time / duration;
-
-			hitSound.radius = Mathf.Lerp(0f, maxSoundRadius, t);
-
-			yield return null;
-		}
-
-		hitSound.enabled = false;
-	}
-
-
+	
 	protected virtual void UniqueInteraction() //고유한 작용
 	{
 		//dinoFracture 활성화
-		//자신 산산조각, RuntimeFracturedGeometry컴포넌트 필요
 		
-
-		//원격폭발. 이 오브젝트(스위치)에 ExplodeOnFracture 컴포넌트 필요
-		var exploder = GetComponent<ExplodeOnFracture>();
-
-		for (int i = 0; i < explosives.Length; i++)
+		//다른 오브젝트 분쇄
+		if (explosives != null)
 		{
-			if (explosives[i] != null && explosives[i] != this)
+			for (int i = 0; i < explosives.Length; i++)
 			{
-				if (fragile)
+				if (explosives[i] != null)
 				{
-					// 폭발(사방으로 파편 비산) 실행	(외부 오브젝트에 PreFracturedGeometry컴포넌트 필요)
 					if (explosives[i].GetComponent<Rigidbody>() == null)
 					{
-						Rigidbody rb = explosives[i].gameObject.AddComponent<Rigidbody>();
-						rb.useGravity = false;
+						Rigidbody otherRb = explosives[i].gameObject.AddComponent<Rigidbody>();
+						otherRb.useGravity = false;
 					}
-					explosives[i].Fracture().SetCallbackObject(this);
+
+					explosives[i].Fracture().SetCallbackObject(explosives[i]);
 				}
 			}
 		}
-		if (TryGetComponent<RuntimeFracturedGeometry>(out RuntimeFracturedGeometry fracture))
+		
+		
+		//자신 분쇄
+		Rigidbody rb;
+		if (fragile && TryGetComponent<RuntimeFracturedGeometry>(out RuntimeFracturedGeometry fracture))
 		{
-			fracture.Fracture();
+			if (gameObject.GetComponent<Rigidbody>() == null)
+			{
+				rb = gameObject.AddComponent<Rigidbody>();
+				rb.useGravity = false;
+			}
+
+			if (fracture != null)
+			{
+				fracture.Fracture().SetCallbackObject(this);
+			}
+		}
+	}
+
+	protected virtual void OnCollisionEnter(Collision collision)
+	{
+		if (collision.gameObject.CompareTag("FracturedObject"))
+		{
+			Hit(collision.transform);
 		}
 	}
 }
