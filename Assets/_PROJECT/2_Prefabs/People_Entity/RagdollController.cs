@@ -10,6 +10,10 @@ public class RagdollController : MonoBehaviour
     public SphereCollider headCollider; // 헤드샷 구분용 콜라이더
     public bool devMode = false; // 활성화 시 spaceKey로 레그돌 활성화 가능
 
+    [Header("Score")]
+    [SerializeField] private int scoreOnDeath = 100;
+    [SerializeField] private bool giveScoreOnDeath = true;
+
     private bool ragdollEnabled = false;
 
     private Animator anim;
@@ -76,6 +80,11 @@ public class RagdollController : MonoBehaviour
         Physics.SyncTransforms();
 
         ragdollEnabled = true;
+
+        if (giveScoreOnDeath && Sg_ScoreManager.Inst != null)
+        {
+            Sg_ScoreManager.Inst.AddScore(scoreOnDeath);
+        }
 
         // 렌더링 옵션 변경을 코루틴으로 한 프레임 미룸
         StartCoroutine(EnableOffscreenUpdateNextFrame());
