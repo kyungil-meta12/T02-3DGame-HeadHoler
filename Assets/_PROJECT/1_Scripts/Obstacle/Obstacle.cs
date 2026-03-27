@@ -33,7 +33,10 @@ public class Obstacle : MonoBehaviour
 	public float maxSoundRadius = 10f;  //소리 감지영역의 최대반경
 	public float duration = 1f;     //소리 감지영역이 퍼지는 시간
 
-	public FractureGeometry[] Explosives;   //원격폭발(분쇄)할 오브젝트
+	public FractureGeometry[] explosives;   //원격폭발(분쇄)할 오브젝트
+
+	public bool fragile; //부서질수있음
+	public bool explosible; //터질수있음
 
 	private void Awake()
 	{
@@ -41,22 +44,29 @@ public class Obstacle : MonoBehaviour
 	}
 
 	[ContextMenu("테스트")]
-	protected virtual void Hit() //총알에 맞았을때
+	public void Test()
+	{
+		Hit(transform);
+	}
+	public virtual void Hit(Transform trans) //총알에 맞았을때
 	{
 		UniqueInteraction();
-		StartCoroutine(SoundCoroutine());
+		StartCoroutine(SoundCoroutine(trans));
 	}
 
 
 	protected virtual void OnTriggerEnter(Collider other)//소리범위에 시민이나 적이 닿았을때 Character의 메서드를 호출한다.
 	{
 		Character character = other.GetComponent<Character>();  //부딪친 오브젝트가 Character컴포넌트가 있는지 확인
-
-		character.HearSound(transform); //Character의 HearSound() 호출
+		if(character != null)
+		{
+			character.HearSound(transform); //Character의 HearSound() 호출
+		}
 	}
 
-	protected virtual IEnumerator SoundCoroutine() //소리범위를 늘려준다.
+	protected virtual IEnumerator SoundCoroutine(Transform trans) //소리범위를 늘려준다.
 	{
+		hitSound.center = trans.position;//hitSound의 센터 조절, t를 이용
 		hitSound.radius = 0f;       //소리 감지영역 크기 초기화
 		hitSound.enabled = true;
 		float time = 0f;    //소리 퍼지는 시간 초기화
@@ -87,19 +97,23 @@ public class Obstacle : MonoBehaviour
 		//원격폭발. 이 오브젝트(스위치)에 ExplodeOnFracture 컴포넌트 필요
 		var exploder = GetComponent<ExplodeOnFracture>();
 
-		for (int i = 0; i < Explosives.Length; i++)
+		for (int i = 0; i < explosives.Length; i++)
 		{
-			if (Explosives[i] != null && Explosives[i].gameObject.activeSelf)
+			if (explosives[i] != null && explosives[i].gameObject.activeSelf)
 			{
-				if (exploder != null)
+				if (explosible && fragile)
 				{
-					// 폭발(사방으로 파편 비산) 실행	(외부 오브젝트에 RigidBody, PreFracturedGeometry컴포넌트 필요)
-					Explosives[i].Fracture().SetCallbackObject(this);
+					// 폭발(사방으로 파편 비산) 실행	(외부 오브젝트에 PreFracturedGeometry컴포넌트 필요)
+					if (explosives[i].GetComponent<Rigidbody>() == null)
+					{
+						Rigidbody rb = explosives[i].gameObject.AddComponent<Rigidbody>();
+					}
+					explosives[i].Fracture().SetCallbackObject(this);
 				}
-				else //스위치 오브젝트에 ExplodeOnFracture 컴포넌트 없으면
+				else if(!explosible && fragile) //스위치 오브젝트에 ExplodeOnFracture 컴포넌트 없으면
 				{
 					// 폭발없이 분쇄만 실행
-					Explosives[i].Fracture();
+					explosives[i].Fracture();
 				}
 			}
 		}

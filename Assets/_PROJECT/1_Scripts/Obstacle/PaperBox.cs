@@ -6,9 +6,9 @@ public class PaperBox : Obstacle
 	public float spreadRotation = 3f; //종이가 회전하는 속도
 
 
-	protected override void Hit()
+	public override void Hit(Transform trans)
 	{
-		base.Hit();
+		base.Hit(trans);
 		//높은 곳에서 떨어질 때의 호출 구상해야 함
 	}
 
