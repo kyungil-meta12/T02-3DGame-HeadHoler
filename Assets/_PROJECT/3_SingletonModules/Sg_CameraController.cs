@@ -127,5 +127,6 @@ public class Sg_CameraController : MonoBehaviour
     {
         zoomState = false;
         acc = 0f;
+        crosshairCanvas.gameObject.SetActive(true);
     }
 }
