@@ -8,7 +8,6 @@ public class PropaneTank : Obstacle
 	protected override void UniqueInteraction()
 	{
 		//if (Explosives[i] == this) continue;
-
 		base.UniqueInteraction();
 
 		//폭발 반경 주위 모든 콜라이더 객체 찾기
@@ -31,8 +30,8 @@ public class PropaneTank : Obstacle
 				//TODO : 캐릭터의 사망이나 모션 등 작성이 필요함
 			}
 
-			if (hit.CompareTag("Obstacle"))
-			{
+			//if (hit.CompareTag("Obstacle"))
+			//{
 				Rigidbody rb = hit.GetComponent<Rigidbody>();
 				if(hit.gameObject.GetComponent<Rigidbody>() == null)
 				{
@@ -44,7 +43,7 @@ public class PropaneTank : Obstacle
 				{
 					ob.Hit(transform);
 				}
-			}
+			//}
 
 		}
 

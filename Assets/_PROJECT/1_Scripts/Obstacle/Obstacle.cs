@@ -40,7 +40,7 @@ public class Obstacle : MonoBehaviour
 
 	private void Awake()
 	{
-		hitSound = GetComponent<SphereCollider>();
+		//hitSound = GetComponent<SphereCollider>();
 	}
 
 	[ContextMenu("테스트")]
@@ -89,33 +89,30 @@ public class Obstacle : MonoBehaviour
 	{
 		//dinoFracture 활성화
 		//자신 산산조각, RuntimeFracturedGeometry컴포넌트 필요
-		if (TryGetComponent<RuntimeFracturedGeometry>(out RuntimeFracturedGeometry fracture))
-		{
-			fracture.Fracture();
-		}
+		
 
 		//원격폭발. 이 오브젝트(스위치)에 ExplodeOnFracture 컴포넌트 필요
 		var exploder = GetComponent<ExplodeOnFracture>();
 
 		for (int i = 0; i < explosives.Length; i++)
 		{
-			if (explosives[i] != null && explosives[i].gameObject.activeSelf)
+			if (explosives[i] != null && explosives[i] != this)
 			{
-				if (explosible && fragile)
+				if (fragile)
 				{
 					// 폭발(사방으로 파편 비산) 실행	(외부 오브젝트에 PreFracturedGeometry컴포넌트 필요)
 					if (explosives[i].GetComponent<Rigidbody>() == null)
 					{
 						Rigidbody rb = explosives[i].gameObject.AddComponent<Rigidbody>();
+						rb.useGravity = false;
 					}
 					explosives[i].Fracture().SetCallbackObject(this);
 				}
-				else if(!explosible && fragile) //스위치 오브젝트에 ExplodeOnFracture 컴포넌트 없으면
-				{
-					// 폭발없이 분쇄만 실행
-					explosives[i].Fracture();
-				}
 			}
+		}
+		if (TryGetComponent<RuntimeFracturedGeometry>(out RuntimeFracturedGeometry fracture))
+		{
+			fracture.Fracture();
 		}
 	}
 }
