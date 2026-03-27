@@ -25,26 +25,34 @@ public class Character : MonoBehaviour
 {
     [Header("순찰 위치")]
     public Vector3[] destinationsPos; // 자동 이동 지정위치
-    [Header("시야범위")]
-    public Collider viewCol; //감지용 콜라이더
+    [Header("소리지르기 범위 프리팹")]
+    public GameObject screamPrefab; //동료 부르는 범위 콜라이더
+    [Header("소리지르기 지속시간")]
+    public float soundTimer = 3f;
+    [Header("소리지르기 범위")]
+    public float maxSoundRadius = 5f;
+    [Header("시야범위 프리팹")]
+    public GameObject viewPrefab; //감지용 콜라이더
     [Header("시야각")]
     public float viewAngle = 90f; //색적범위
-    [Header("관찰대상 레이어")]
-    public LayerMask Evidence; //색적대상
+    [Header("걷기 속도")] 
+    public float walkSpeed;
+    [Header("뛰기 속도")] 
+    public float runSpeed;
 
     [Header(("각 행동별 지속시간"))] 
     public float idleTime = 1f;
     public float carefulTime = 1f;
     public float screamTime = 1f;
-    public float hurtTime = 1f;
+    public int hurtTime = 5;
     
     private Animator anim; //애니메이터
     private NavMeshAgent agent; //AI
-    
-    private FirstState curFirstState; //현재 하체 행동상태
-    private SecondState curSecondState; //현재 상체 행동상태
+
+    internal FirstState curFirstState; //현재 하체 행동상태
+    internal SecondState curSecondState; //현재 상체 행동상태
     private Array stateValues; //enum개수 체크용
-    private Transform target; //관찰대상
+    internal Transform target; //관찰대상
     private bool isGotShot;
 
     protected virtual void Awake()
@@ -57,12 +65,16 @@ public class Character : MonoBehaviour
     {
         stateValues = Enum.GetValues(typeof(FirstState));
         curFirstState = FirstState.Idle;
+        
+        Instantiate(viewPrefab, transform.position, transform.rotation, transform);
+        Instantiate(screamPrefab, transform.position, transform.rotation, transform);
 
-        StartCoroutine(MoveCoroutine());
+        StartCoroutine(FirstMoveCoroutine());
+        StartCoroutine(SecondMoveCoroutine());
     }
 
     #region 기본 코루틴
-    protected virtual IEnumerator MoveCoroutine()
+    protected virtual IEnumerator FirstMoveCoroutine()
     {
         while (true)
         {
@@ -86,11 +98,38 @@ public class Character : MonoBehaviour
                     break;
                 case FirstState.Discover:
                     ChangeFirstAnim(FirstState.Discover);
-                    yield return Discover();
+                    //todo 카메라 클로즈업, 발각 모션 후 게임 오버
+                    //transform.forward = 플레이어.position - transform.position;
                     break;
                 case FirstState.Dead:
-                    ChangeFirstAnim(FirstState.Dead);
-                    yield return Dead();
+                    transform.tag = "Evidence";
+                    StopAllCoroutines();
+                    break;
+            }
+
+            yield return null;
+        }
+    }
+    protected virtual IEnumerator SecondMoveCoroutine()
+    {
+        while (true)
+        {
+            switch (curSecondState)
+            {
+                case SecondState.None:
+                    yield return null;
+                    break;
+                case SecondState.Careful:
+                    ChangeSecondAnim(SecondState.Careful);
+                    yield return Careful();
+                    break;
+                case SecondState.Hurt:
+                    ChangeSecondAnim(SecondState.Hurt);
+                    yield return Hurt();
+                    break;
+                case SecondState.Scream:
+                    ChangeSecondAnim(SecondState.Scream);
+                    yield return Scream();
                     break;
             }
 
@@ -109,8 +148,7 @@ public class Character : MonoBehaviour
         {
             if (curFirstState != FirstState.Idle)
             {
-                StopCoroutine(Idle());
-                break;
+                yield break;
             }
             time += Time.deltaTime;
             float t = time / idleTime;
@@ -122,24 +160,45 @@ public class Character : MonoBehaviour
     //걷기
     protected virtual IEnumerator Walk()
     {
-        //목표까지 걸어간 후 대기 or 걷는 중에 랜덤확률로 대기
-        
-        foreach (var dest in destinationsPos)
+        //목표까지 걸어간 후 대기
+        if (target == null)
         {
-            agent.SetDestination(dest);
+            //타겟이 없으면 기본 순찰루트 반복
+            foreach (var dest in destinationsPos)
+            {
+                agent.speed = walkSpeed;
+                agent.SetDestination(dest);
+                while (true)
+                {
+                    if (curFirstState != FirstState.Walk)
+                    {
+                        agent.isStopped = true;
+                        yield break;
+                    }
+
+                    if (Vector3.Distance(transform.position, dest) <= 1f) break;
+                    yield return null;
+                }
+            }
+        }
+        else
+        {
+            //타겟이 있으면 타겟으로 이동
+            agent.speed = walkSpeed;
+            agent.SetDestination(target.position);
             while (true)
             {
                 if (curFirstState != FirstState.Walk)
                 {
                     agent.isStopped = true;
-                    StopCoroutine(Walk());
-                    break;
+                    yield break;
                 }
-                if(Vector3.Distance(transform.position, dest) <= 1f) break;
+
+                if (Vector3.Distance(transform.position, target.position) <= 1f) break;
                 yield return null;
             }
         }
-        
+
         agent.isStopped = true;
         curFirstState = FirstState.Idle;
     }
@@ -148,19 +207,40 @@ public class Character : MonoBehaviour
     protected virtual IEnumerator Run()
     {
         //목표까지 뛰어간 후 대기
-        
-        foreach (var dest in destinationsPos)
+        if (target == null)
         {
-            agent.SetDestination(dest);
+            //타겟이 없으면 기본 순찰루트 반복
+            foreach (var dest in destinationsPos)
+            {
+                agent.speed = runSpeed;
+                agent.SetDestination(dest);
+                while (true)
+                {
+                    if (curFirstState != FirstState.Run)
+                    {
+                        agent.isStopped = true;
+                        yield break;
+                    }
+
+                    if (Vector3.Distance(transform.position, dest) <= 1f) break;
+                    yield return null;
+                }
+            }
+        }
+        else
+        {
+            //타겟이 있으면 타겟으로 이동
+            agent.speed = walkSpeed;
+            agent.SetDestination(target.position);
             while (true)
             {
-                if (curFirstState != FirstState.Run)
+                if (curFirstState != FirstState.Walk)
                 {
                     agent.isStopped = true;
-                    StopCoroutine(Run());
-                    break;
+                    yield break;
                 }
-                if(Vector3.Distance(transform.position, dest) <= 1f) break;
+
+                if (Vector3.Distance(transform.position, target.position) <= 1f) break;
                 yield return null;
             }
         }
@@ -175,114 +255,107 @@ public class Character : MonoBehaviour
         //관찰대상 사라질때까지 관찰 후 대기 or 특정 상황 관찰 후 대기
         while (target != null)
         {
-            if(curFirstState != FirstState.See) break;
+            if (curFirstState != FirstState.See)
+            {
+                yield break;
+            }
             transform.forward = target.position - transform.position;
             yield return null;
         }
+
+        Character targetCharacter = target.GetComponent<Character>();
+        if (targetCharacter != null)
+        {
+            if (targetCharacter.isGotShot)
+            {
+                curFirstState = FirstState.Discover;
+                yield break;
+            }
+            else
+            {
+                Destroy(targetCharacter.gameObject);
+            }
+        }
+        target = null;
         curFirstState = FirstState.Idle;
+        curSecondState = SecondState.None;
     }
-    
-    //저격위치 발각
-    protected virtual IEnumerator Discover()
-    {
-        //todo 카메라 클로즈업, 발각 모션 후 게임 오버
-        //transform.forward = 플레이어.position - transform.position;
-        yield return null;
-    }
-    
-    //죽음
-    protected virtual IEnumerator Dead()
-    {
-        //행동 종료, 관찰대상 레이어로 바꾸기
-        transform.gameObject.layer = Evidence;
-        StopAllCoroutines();
-        yield return null;
-    }
-    
     #endregion
 
     #region SecondState 행동별 코루틴
     //경계
-    // protected virtual IEnumerator Careful()
-    // {
-    //     //일정시간 경계 후 대기
-    //     float time = 0f;
-    //     while (time < 1)
-    //     {
-    //         if (curFirstState != FirstState.Careful)
-    //         {
-    //             StopCoroutine(Careful());
-    //             break;
-    //         }
-    //         time += Time.deltaTime;
-    //         float t = time / carefulTime;
-    //         yield return null;
-    //     }
-    //     curFirstState = FirstState.Idle;
-    // }
+    protected virtual IEnumerator Careful()
+    {
+        //일정시간 경계 후 대기
+        float time = 0f;
+        while (time < 1)
+        {
+            if (curSecondState != SecondState.Careful)
+            {
+                yield break;
+            }
+
+            time += Time.deltaTime;
+            float t = time / carefulTime;
+            yield return null;
+        }
+
+        curSecondState = SecondState.None;
+    }
 
     //소리지르기
-    // protected virtual IEnumerator Scream()
-    // {
-    //     //일정 시간 소리지른 후 관찰
-    //     if (target != null)
-    //     {
-    //         transform.forward = target.position - transform.position;
-    //     }
-    //     CallFriend();
-    //     
-    //     float time = 0f;
-    //     while (time < 1)
-    //     {
-    //         if (curFirstState != FirstState.Scream)
-    //         {
-    //             StopCoroutine(Scream());
-    //             break;
-    //         }
-    //         time += Time.deltaTime;
-    //         float t = time / screamTime;
-    //         yield return null;
-    //     }
-    //
-    //     curFirstState = FirstState.See;
-    // }
+    protected virtual IEnumerator Scream()
+    {
+        //일정 시간 소리지른 후 관찰
+        CallFriend(target.position);
+        
+        float time = 0f;
+        while (time < 1)
+        {
+            if (curSecondState != SecondState.Scream)
+            {
+                yield break;
+            }
+            time += Time.deltaTime;
+            float t = time / screamTime;
+            yield return null;
+        }
+
+        curFirstState = FirstState.See;
+        curSecondState = SecondState.Careful;
+    }
 
     //동료 부르기
-    protected virtual void CallFriend()
+    protected virtual void CallFriend(Vector3 dest)
     {
         //todo 범위 내 동료의 이동타겟 바꾸기,강제 이동
     }
 
     //상처
+    WaitForSeconds callWait = new WaitForSeconds(2f);
     protected virtual IEnumerator Hurt()
     {
-        //자리에서 계속 소리지르기, 동료가 오면 일정시간 후 치료됨, 동료가 안오면 일정시간 후 과다출혈 사망
-        float time = 0f;
-        while (time < hurtTime)
+        //계속 동료부르기, 동료가 오면 일정시간 후 치료됨, 동료가 안오면 일정시간 후 과다출혈 사망
+        for (int i = 0; i < hurtTime; i++)
         {
-            time += Time.deltaTime;
-            float t = time / hurtTime;
-
-            CallFriend();
-            yield return null;
+            CallFriend(transform.position);
+            yield return callWait;
         }
-
-        if (time >= hurtTime)
-        {
-            curFirstState = FirstState.Dead; //시간 지나면 죽음
-        }
-        else if (isGotShot)
-        {
-            curFirstState = FirstState.Discover; //총에 맞았으면 발각, 게임오버
-        }
-        else
-        {
-            curFirstState = FirstState.Idle;
-        }
+        curFirstState = FirstState.Dead; //시간 지나면 죽음
+        
+        // if (isGotShot)
+        // {
+        //     curFirstState = FirstState.Discover; //총에 맞았으면 발각, 게임오버
+        // }
+        // else
+        // {
+        //     curFirstState = FirstState.Idle;
+        // }
     }
     
     #endregion
-    
+
+    #region 애니메이션 상태 바꾸기
     //애니메이션 상태 바꾸기
     protected virtual void ChangeFirstAnim(FirstState changeFirstState)
     {
@@ -309,71 +382,43 @@ public class Character : MonoBehaviour
             }
         }
     }
-    
-    //Obstacle 호출 메서드, 깨지는 소리 범위에 들어갔을때
+    #endregion
+
+    #region 외부 호출 메서드
+    //todo Obstacle 호출 메서드, 깨지는 소리 범위에 들어갔을때
     public void HearSound(Transform t)
     {
         target = t;
-        //React();
+        React();
     }
     
     //Obstacle 호출 메서드, Obstacle에 맞았을때
-    //Player 호출 메서드, 총에 맞았을때
+    // todo Player 호출 메서드, 총에 맞았을때
     public void Hit(bool isGunShot, Transform trans)
     {
         isGotShot = isGunShot;
-        //todo 헤드샷체크
-        // if (hitCollider != null && hitCollider == headCollider)
-        // {
-        //     curState = State.Dead;
-        // }
-        // else
-        // {
-        //     curState = State.Hurt;
-        // }
         
-        //todo 피격위치에서 소리발생
     }
     
-    //소리에 대한 반응
-    // protected virtual void React()
-    // {
-    //     if(curFirstState is FirstState.Dead or FirstState.Discover) return;
-    //     switch (curFirstState)
-    //     {
-    //         case FirstState.Dead: case FirstState.Discover:
-    //             return;
-    //         case FirstState.See: 
-    //             curFirstState = FirstState.Scream;
-    //             break;
-    //         case FirstState.Careful:
-    //             curFirstState = FirstState.Discover;
-    //             break;
-    //         default:
-    //             //경계
-    //             curFirstState = FirstState.Careful;
-    //             break;
-    //     }
-    // }
-    
-    //시야 범위 관찰대상쪽으로 레이 쏘기 (관찰 상태가 아닐때)
-    private void OnTriggerStay(Collider other)
+    //소리에 대한 반응, 시체 발견시 반응
+    public virtual void React()
     {
-        // 임시 비활성화
-        //if(curState is State.Scream or State.See) return; 
-        //if (other.CompareTag("Evidence")) 
-        //{
-        //    Vector3 dirToTarget = (other.transform.position - transform.position).normalized;
-        //    if (Vector3.Angle(transform.forward, dirToTarget) < viewAngle / 2)
-        //    {
-        //        float dst = Vector3.Distance(transform.position, other.transform.position);
-        //        if (!Physics.Raycast(transform.position, dirToTarget, dst, Evidence))
-        //        {
-        //            Debug.DrawRay(transform.position, dirToTarget, Color.red);
-        //            curState = State.Scream;
-        //            target = other.transform;
-        //        }
-        //    }
-        //  }
+        if(curFirstState is FirstState.Dead or FirstState.Discover) return;
+        switch (curSecondState)
+        {
+            case SecondState.None:
+                curSecondState = SecondState.Careful;
+                break;
+            case SecondState.Careful:
+                curSecondState = SecondState.Scream;
+                break;
+            case SecondState.Scream:
+                curSecondState = SecondState.Scream;
+                break;
+            case SecondState.Hurt:
+                curSecondState = SecondState.Hurt;
+                break;
+        }
     }
+    #endregion
 }
