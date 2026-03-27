@@ -637,6 +637,9 @@ namespace BitpurrDigital
             _process.StartInfo.RedirectStandardError = true;
             _process.StartInfo.CreateNoWindow = true;
 
+            _process.StartInfo.StandardOutputEncoding = System.Text.Encoding.UTF8;
+            _process.StartInfo.StandardErrorEncoding = System.Text.Encoding.UTF8;
+
             _process.OutputDataReceived += HandleProcessOutput;
             _process.ErrorDataReceived += HandleProcessError;
 

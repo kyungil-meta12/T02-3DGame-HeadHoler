@@ -1224,7 +1224,7 @@ PrefabInstance:
     - target: {fileID: 5443743427605237579, guid: f22ca2fec02a5de43931538fb8a25698, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 236613be69513e04eb2ad83ad878df78, type: 2}
+      objectReference: {fileID: 11400000, guid: 928da2220a0ff5e44aa484bdb0006131, type: 2}
     - target: {fileID: 5443743427605237579, guid: f22ca2fec02a5de43931538fb8a25698, type: 3}
       propertyPath: m_fontColor.b
       value: 0.29411766
@@ -1240,7 +1240,7 @@ PrefabInstance:
     - target: {fileID: 5443743427605237579, guid: f22ca2fec02a5de43931538fb8a25698, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 8233301742285623271, guid: 236613be69513e04eb2ad83ad878df78, type: 2}
+      objectReference: {fileID: -7304394381272760782, guid: 928da2220a0ff5e44aa484bdb0006131, type: 2}
     - target: {fileID: 5443743427605237579, guid: f22ca2fec02a5de43931538fb8a25698, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4283124735
@@ -1260,11 +1260,11 @@ PrefabInstance:
     - target: {fileID: 5443743427730655367, guid: f22ca2fec02a5de43931538fb8a25698, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 236613be69513e04eb2ad83ad878df78, type: 2}
+      objectReference: {fileID: 11400000, guid: 3c499bda0f839fa40ae8c42951d5779d, type: 2}
     - target: {fileID: 5443743427730655367, guid: f22ca2fec02a5de43931538fb8a25698, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 8233301742285623271, guid: 236613be69513e04eb2ad83ad878df78, type: 2}
+      objectReference: {fileID: -7304394381272760782, guid: 3c499bda0f839fa40ae8c42951d5779d, type: 2}
     - target: {fileID: 5443743427730655367, guid: f22ca2fec02a5de43931538fb8a25698, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
       value: 1801810542
@@ -11780,6 +11780,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Female_1
       objectReference: {fileID: 0}
+    - target: {fileID: 5397454008968924989, guid: 5d2a7fe517340664c88b4869501341ed, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8931442031109156632, guid: 5d2a7fe517340664c88b4869501341ed, type: 3}
       propertyPath: m_LocalPosition.x
       value: -9.53
@@ -11820,13 +11824,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3733201777580152833, guid: 5d2a7fe517340664c88b4869501341ed, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 5397454008968924989, guid: 5d2a7fe517340664c88b4869501341ed, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 446029388}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d2a7fe517340664c88b4869501341ed, type: 3}
 --- !u!1001 &424414582
 PrefabInstance:
@@ -12784,30 +12786,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 443583478}
   m_CullTransparentMesh: 1
---- !u!1 &446029382 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5397454008968924989, guid: 5d2a7fe517340664c88b4869501341ed, type: 3}
-  m_PrefabInstance: {fileID: 418697911}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &446029388
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 446029382}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5265f96eb23040b8a40869992dee06d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Character
-  destinationsPos: []
-  viewCol: {fileID: 0}
-  viewAngle: 90
-  Evidence:
-    serializedVersion: 2
-    m_Bits: 0
-  deathLimitTime: 10
 --- !u!1 &455689182
 GameObject:
   m_ObjectHideFlags: 0
@@ -49547,11 +49525,11 @@ PrefabInstance:
     - target: {fileID: 675367248355256403, guid: 5d9ad786046b24d498b979ad8c25b535, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 236613be69513e04eb2ad83ad878df78, type: 2}
+      objectReference: {fileID: 11400000, guid: 3c499bda0f839fa40ae8c42951d5779d, type: 2}
     - target: {fileID: 675367248355256403, guid: 5d9ad786046b24d498b979ad8c25b535, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: 8233301742285623271, guid: 236613be69513e04eb2ad83ad878df78, type: 2}
+      objectReference: {fileID: -7304394381272760782, guid: 3c499bda0f839fa40ae8c42951d5779d, type: 2}
     - target: {fileID: 675367248355256403, guid: 5d9ad786046b24d498b979ad8c25b535, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4278235135
