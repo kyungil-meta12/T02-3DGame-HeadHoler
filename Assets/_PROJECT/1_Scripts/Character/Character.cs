@@ -53,7 +53,7 @@ public class Character : MonoBehaviour
     internal SecondState curSecondState; //현재 상체 행동상태
     private Array stateValues; //enum개수 체크용
     internal Transform target; //관찰대상
-    private bool isGotShot;
+    private bool isGotShot; //직접저격을 당했는지
 
     protected virtual void Awake()
     {
