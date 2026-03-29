@@ -2025,6 +2025,7 @@ GameObject:
   - component: {fileID: 5171579482978218658}
   - component: {fileID: 8922594587404258110}
   - component: {fileID: 3733201777580152833}
+  - component: {fileID: 2979134257655001849}
   m_Layer: 2
   m_Name: Female_1
   m_TagString: Untagged
@@ -2159,6 +2160,8 @@ MonoBehaviour:
   - {fileID: 339344362866701123}
   headCollider: {fileID: 7300949014352221107}
   devMode: 0
+  scoreOnDeath: 100
+  giveScoreOnDeath: 1
   psCollider: {fileID: 0}
 --- !u!114 &8922594587404258110
 MonoBehaviour:
@@ -2173,12 +2176,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Character
   destinationsPos: []
-  viewCol: {fileID: 0}
+  screamPrefab: {fileID: 0}
+  soundTimer: 3
+  maxSoundRadius: 5
+  viewPrefab: {fileID: 0}
   viewAngle: 90
-  Evidence:
-    serializedVersion: 2
-    m_Bits: 0
-  deathLimitTime: 10
+  walkSpeed: 0
+  runSpeed: 0
+  idleTime: 1
+  carefulTime: 1
+  screamTime: 1
+  hurtTime: 5
 --- !u!114 &3733201777580152833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2192,12 +2200,46 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Character
   destinationsPos: []
-  viewCol: {fileID: 0}
+  screamPrefab: {fileID: 0}
+  soundTimer: 3
+  maxSoundRadius: 5
+  viewPrefab: {fileID: 0}
   viewAngle: 90
-  Evidence:
-    serializedVersion: 2
-    m_Bits: 0
-  deathLimitTime: 10
+  walkSpeed: 0
+  runSpeed: 0
+  idleTime: 1
+  carefulTime: 1
+  screamTime: 1
+  hurtTime: 5
+--- !u!114 &2979134257655001849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5397454008968924989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0038c16c34866b4f9e25c9c0dc0f7e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Behavior::Unity.Behavior.BehaviorGraphAgent
+  m_Graph: {fileID: -74240295876975623, guid: c2bf0769d78dc6041ba8e637dc73b504, type: 2}
+  m_BlackboardVariableOverridesList:
+  - rid: 8179367722152886327
+  m_OriginalGraph: {fileID: -74240295876975623, guid: c2bf0769d78dc6041ba8e637dc73b504, type: 2}
+  m_IsInitialised: 0
+  m_IsStarted: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 8179367722152886327
+      type: {class: 'BlackboardVariable`1[[UnityEngine.GameObject, UnityEngine.CoreModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
+      data:
+        GUID:
+          m_Value0: 1
+          m_Value1: 0
+        Name: Self
+        m_Value: {fileID: 5397454008968924989}
 --- !u!1 &5718054835058180168
 GameObject:
   m_ObjectHideFlags: 0
