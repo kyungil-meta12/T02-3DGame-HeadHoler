@@ -92,7 +92,7 @@ public class RagdollController : MonoBehaviour
 
     private System.Collections.IEnumerator EnableOffscreenUpdateNextFrame()
     {
-        // 물리 연산이 한 번 실행된 뒤에 렌더링 옵션을 켭니다.
+        // 물리 연산이 한 번 실행된 뒤에 렌더링 옵션 활성화
         yield return new WaitForFixedUpdate();
         smr.updateWhenOffscreen = true;
     }

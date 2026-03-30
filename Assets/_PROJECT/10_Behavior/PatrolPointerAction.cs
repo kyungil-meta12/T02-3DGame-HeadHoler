@@ -20,7 +20,7 @@ public partial class PatrolPointerAction : Action
 
         if (PatrolPoints.Value.Contains(PatrolPoint.Value))
         {
-            PatrolPoints.Value.Contains(PatrolPoint.Value)
+            PatrolPoints.Value.Contains(PatrolPoint.Value);
         }
         
         return Status.Success;
