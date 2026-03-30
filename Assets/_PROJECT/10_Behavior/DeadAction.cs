@@ -24,7 +24,7 @@ public partial class DeadAction : Action
 
             var regController = agent.gameObject.GetComponent<RagdollController>();
             regController.EnableRagdoll();
-            //Debug.Log($"{Self.Value.name}의 AI가 완전히 정지되었습니다 (사망 처리).");
+            Debug.Log($"{Self.Value.name}의 AI가 완전히 정지되었습니다 (사망 처리).");
         }
 
         return Status.Success;

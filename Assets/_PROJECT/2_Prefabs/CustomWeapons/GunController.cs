@@ -65,10 +65,10 @@ public class GunController : MonoBehaviour
         // 하나라도 충돌이 발견되면 즉시 for문을 종료한다. => 관통 현상 방지
         foreach (var hit in hitList)
         {
-            var characterComp = hit.transform.gameObject.GetComponentInParent<Character>();
+            var behavComp = hit.transform.gameObject.GetComponentInParent<BehaviorGraphAgent>();
             var obstacleComp = hit.transform.gameObject.GetComponentInParent<Obstacle>();
 
-            if (characterComp) // 사람인 경우
+            if (behavComp) // 사람인 경우
             {
                 print("people hit");
 
@@ -76,10 +76,9 @@ public class GunController : MonoBehaviour
 
                 if (hit.collider == regController.headCollider) // 헤드샷인 경우 // 헤드샷은 무조건 사망 처리
                 {
-                    var behav = hit.collider.gameObject.GetComponentInParent<BehaviorGraphAgent>();
-                    if (behav.BlackboardReference.GetVariableValue("curHP", out float hp))
+                    if (behavComp.BlackboardReference.GetVariableValue("curHP", out float hp))
                     {
-                        behav.BlackboardReference.SetVariableValue("curHP", 0f);
+                        behavComp.BlackboardReference.SetVariableValue("curHP", 0f);
                         regController.headCollider.attachedRigidbody.AddForce(inputDirection * 200f, ForceMode.Impulse); // 맞은 방향으로 힘 가함
                         print("headshot");
                     }
@@ -96,20 +95,16 @@ public class GunController : MonoBehaviour
                     {
                         if(hit.collider == c)
                         {
-                            var behav = hit.collider.gameObject.GetComponentInParent<BehaviorGraphAgent>(); 
-                            if(behav.BlackboardReference.GetVariableValue("curHP", out float hp))
+                            if(behavComp.BlackboardReference.GetVariableValue("curHP", out float hp))
                             {
                                 hp -= 50f; // 일단은 50을 대미지로 지정
-                                if (hp > 0f)
+                                behavComp.BlackboardReference.SetVariableValue("curHP", hp);
+                                if (hp <= 0f)
                                 {
-                                    behav.BlackboardReference.SetVariableValue("curHP", hp);
-                                }
-                                else
-                                {
-                                    behav.BlackboardReference.SetVariableValue("curHP", 0f);
                                     c.attachedRigidbody.AddForce(inputDirection * 200f, ForceMode.Impulse); // 죽은 이후에는 맞은 방향으로 힘 가함
                                 }
                                 print("not headshot");
+                                print($"current HP: {hp}");
                             }
                             else
                             {
@@ -129,7 +124,7 @@ public class GunController : MonoBehaviour
                 break;
             }
 
-            if (!characterComp && !obstacleComp)  // 상호 작용 불가능한 장애물인 경우 // 예: 건물 외벽, 지형 등...
+            if (!behavComp && !obstacleComp)  // 상호 작용 불가능한 장애물인 경우 // 예: 건물 외벽, 지형 등...
             {
                 print("static obstacle hit");
                 break;
