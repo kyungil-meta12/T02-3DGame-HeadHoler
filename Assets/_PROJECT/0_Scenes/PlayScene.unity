@@ -1224,7 +1224,7 @@ PrefabInstance:
     - target: {fileID: 5443743427605237579, guid: f22ca2fec02a5de43931538fb8a25698, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 928da2220a0ff5e44aa484bdb0006131, type: 2}
+      objectReference: {fileID: 11400000, guid: 236613be69513e04eb2ad83ad878df78, type: 2}
     - target: {fileID: 5443743427605237579, guid: f22ca2fec02a5de43931538fb8a25698, type: 3}
       propertyPath: m_fontColor.b
       value: 0.29411766
@@ -1240,7 +1240,7 @@ PrefabInstance:
     - target: {fileID: 5443743427605237579, guid: f22ca2fec02a5de43931538fb8a25698, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: -7304394381272760782, guid: 928da2220a0ff5e44aa484bdb0006131, type: 2}
+      objectReference: {fileID: 8233301742285623271, guid: 236613be69513e04eb2ad83ad878df78, type: 2}
     - target: {fileID: 5443743427605237579, guid: f22ca2fec02a5de43931538fb8a25698, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4283124735
@@ -1260,11 +1260,11 @@ PrefabInstance:
     - target: {fileID: 5443743427730655367, guid: f22ca2fec02a5de43931538fb8a25698, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 3c499bda0f839fa40ae8c42951d5779d, type: 2}
+      objectReference: {fileID: 11400000, guid: 236613be69513e04eb2ad83ad878df78, type: 2}
     - target: {fileID: 5443743427730655367, guid: f22ca2fec02a5de43931538fb8a25698, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: -7304394381272760782, guid: 3c499bda0f839fa40ae8c42951d5779d, type: 2}
+      objectReference: {fileID: 8233301742285623271, guid: 236613be69513e04eb2ad83ad878df78, type: 2}
     - target: {fileID: 5443743427730655367, guid: f22ca2fec02a5de43931538fb8a25698, type: 3}
       propertyPath: 'm_ActiveFontFeatures.Array.data[0]'
       value: 1801810542
@@ -27825,6 +27825,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ResultPopupController
   victoryPopup: {fileID: 1697314612}
   defeatPopup: {fileID: 1102722921}
+  resultCursorState: 0
+  gameCursorState: 1
+  resultCursorVisibility: 2
+  gameCursorVisibility: 0
 --- !u!4 &1104114762
 Transform:
   m_ObjectHideFlags: 0
@@ -44511,6 +44515,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5003629532615579919, guid: ecd89c2e88b7d6b469a52b0f2496a12c, type: 3}
   m_PrefabInstance: {fileID: 8188630378540674280}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1843750516 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5870596906349621036, guid: ecd89c2e88b7d6b469a52b0f2496a12c, type: 3}
+  m_PrefabInstance: {fileID: 8188630378540674280}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d3547555681ff640bfb181bbef8724a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
 --- !u!1 &1858132422
 GameObject:
   m_ObjectHideFlags: 0
@@ -49500,7 +49515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c15595ed2b2e22449adba38569ad841e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AmmoProgressBarBinder
-  gunController: {fileID: 2137357065}
+  playerController: {fileID: 1843750516}
   progressBar: {fileID: 594851410}
   updateEveryFrame: 1
 --- !u!1001 &2104201761
@@ -49514,11 +49529,11 @@ PrefabInstance:
     - target: {fileID: 675367248355256403, guid: 5d9ad786046b24d498b979ad8c25b535, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: 3c499bda0f839fa40ae8c42951d5779d, type: 2}
+      objectReference: {fileID: 11400000, guid: 236613be69513e04eb2ad83ad878df78, type: 2}
     - target: {fileID: 675367248355256403, guid: 5d9ad786046b24d498b979ad8c25b535, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: -7304394381272760782, guid: 3c499bda0f839fa40ae8c42951d5779d, type: 2}
+      objectReference: {fileID: 8233301742285623271, guid: 236613be69513e04eb2ad83ad878df78, type: 2}
     - target: {fileID: 675367248355256403, guid: 5d9ad786046b24d498b979ad8c25b535, type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4278235135
@@ -50499,17 +50514,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2137357065 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5073614870442326023, guid: ecd89c2e88b7d6b469a52b0f2496a12c, type: 3}
-  m_PrefabInstance: {fileID: 8188630378540674280}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ff15cd6de8c0dd4abe36bf29aa567d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GunController
 --- !u!1001 &2143658703
 PrefabInstance:
   m_ObjectHideFlags: 0
