@@ -80,6 +80,7 @@ public class GunController : MonoBehaviour
                     {
                         currentHP = 0f;
                         regController.headCollider.attachedRigidbody.AddForce(inputDirection * 200f, ForceMode.Impulse); // 맞은 방향으로 힘 가함
+                        Sg_HitIndicator.Inst.InputHit(); // 명중 피드백 설정
                         print("headshot");
                     }
                     else
@@ -94,6 +95,7 @@ public class GunController : MonoBehaviour
                                 {
                                     c.attachedRigidbody.AddForce(inputDirection * 200f, ForceMode.Impulse); // 죽은 이후에는 맞은 방향으로 힘 가함
                                 }
+                                Sg_HitIndicator.Inst.InputHit(); // 명중 피드백 설정
                                 print("not headshot");
                                 print($"current HP: { currentHP }");
                                 break;
