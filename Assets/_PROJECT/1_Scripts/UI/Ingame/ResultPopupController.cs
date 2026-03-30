@@ -2,9 +2,12 @@ using UnityEngine;
 
 public class ResultPopupController : MonoBehaviour
 {
-    [Header("Popup References")]
-    [SerializeField] private GameObject victoryPopup;
-    [SerializeField] private GameObject defeatPopup;
+    [Header("Popup Reference")]
+    [SerializeField] private GameObject resultPopup;
+
+    [Header("Result Images")]
+    [SerializeField] private GameObject successImage;
+    [SerializeField] private GameObject failureImage;
 
     [Header("Cursor Settings")]
     [SerializeField] private CursorLockMode resultCursorState = CursorLockMode.None;
@@ -27,49 +30,64 @@ public class ResultPopupController : MonoBehaviour
     }
 
     /// <summary>
-    /// 승리 팝업 표시
+    /// 성공 결과 팝업 표시
     /// </summary>
-    public void ShowVictory()
+    public void ShowSuccess()
     {
-        if (isResultShown) return;
+        if (isResultShown)
+            return;
 
         isResultShown = true;
-        HideAll();
 
-        if (victoryPopup != null)
-            victoryPopup.SetActive(true);
+        if (resultPopup != null)
+            resultPopup.SetActive(true);
+
+        if (successImage != null)
+            successImage.SetActive(true);
+
+        if (failureImage != null)
+            failureImage.SetActive(false);
 
         ApplyResultCursor();
         Time.timeScale = 0f;
     }
 
     /// <summary>
-    /// 패배 팝업 표시
+    /// 실패 결과 팝업 표시
     /// </summary>
-    public void ShowDefeat()
+    public void ShowFailure()
     {
-        if (isResultShown) return;
+        if (isResultShown)
+            return;
 
         isResultShown = true;
-        HideAll();
 
-        if (defeatPopup != null)
-            defeatPopup.SetActive(true);
+        if (resultPopup != null)
+            resultPopup.SetActive(true);
+
+        if (successImage != null)
+            successImage.SetActive(false);
+
+        if (failureImage != null)
+            failureImage.SetActive(true);
 
         ApplyResultCursor();
         Time.timeScale = 0f;
     }
 
     /// <summary>
-    /// 모든 결과 팝업 숨김
+    /// 모든 결과 UI 숨김
     /// </summary>
     public void HideAll()
     {
-        if (victoryPopup != null)
-            victoryPopup.SetActive(false);
+        if (resultPopup != null)
+            resultPopup.SetActive(false);
 
-        if (defeatPopup != null)
-            defeatPopup.SetActive(false);
+        if (successImage != null)
+            successImage.SetActive(false);
+
+        if (failureImage != null)
+            failureImage.SetActive(false);
     }
 
     /// <summary>
