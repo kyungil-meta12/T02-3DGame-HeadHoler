@@ -96,7 +96,7 @@ public class GunController : MonoBehaviour
                     {
                         if(hit.collider == c)
                         {
-                            var behav = hit.collider.gameObject.GetComponent<BehaviorGraphAgent>(); 
+                            var behav = hit.collider.gameObject.GetComponentInParent<BehaviorGraphAgent>(); 
                             if(behav.BlackboardReference.GetVariableValue("curHP", out float hp))
                             {
                                 hp -= 50f; // 일단은 50을 대미지로 지정
