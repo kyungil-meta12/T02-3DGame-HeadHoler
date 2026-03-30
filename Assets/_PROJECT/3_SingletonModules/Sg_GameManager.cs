@@ -17,4 +17,9 @@ public class Sg_GameManager : MonoBehaviour
         Inst = this;
         print("[Sg_GameManager] Created instance.");
     }
+
+    void OnDestroy()
+    {
+        Inst = null;
+    }
 }
