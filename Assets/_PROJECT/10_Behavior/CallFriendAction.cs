@@ -45,8 +45,7 @@ public partial class CallFriendAction : Action
                     {
                         // 동료의 블랙보드 'AlertTarget' 변수에 나 자신(Self)을 집어넣어 줌!
                         // (만약 타겟을 나 자신이 아닌 '시체'로 넘겨주고 싶다면 이 부분을 수정하면 됩니다)
-                        otherAgent.BlackboardReference.SetVariableValue(Target.Value, Self.Value);
-                        
+                        otherAgent.SetVariableValue(Target.Value, Self.Value);
                         //Debug.Log($"{myEntity.name}이(가) 동료 {otherEntity.name}을(를) 호출했습니다!");
                     }
                 }

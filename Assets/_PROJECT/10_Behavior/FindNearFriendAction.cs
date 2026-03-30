@@ -44,7 +44,7 @@ public partial class FindNearFriendAction : Action
         
             if (myAgent != null)
             {
-                myAgent.BlackboardReference.SetVariableValue(NearFriend.Value, closestFriend);
+                myAgent.SetVariableValue(NearFriend.Value, closestFriend);
             
                 // Debug.Log($"{myEntity.name}이(가) 가장 가까운 동료 {closestFriend.name}을(를) 찾았습니다! (거리: {minDistance})");
                 return Status.Success;
