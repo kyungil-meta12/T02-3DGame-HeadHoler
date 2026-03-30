@@ -184,7 +184,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.00000047683716}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 59.685, y: 59.685}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &780408121566809933
@@ -208,8 +208,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
+  m_Color: {r: 0.030668736, g: 1, b: 0, a: 1}
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -239,6 +239,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1411741780255560152, guid: d2f11634fbd6b734594db0b6ef35570a, type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1727347654150115751, guid: d2f11634fbd6b734594db0b6ef35570a, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2082291206664937860, guid: d2f11634fbd6b734594db0b6ef35570a, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2870977559013019454, guid: d2f11634fbd6b734594db0b6ef35570a, type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4111133893842059529, guid: d2f11634fbd6b734594db0b6ef35570a, type: 3}
@@ -327,6 +339,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8252388006962238877, guid: d2f11634fbd6b734594db0b6ef35570a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8270907419461806890, guid: d2f11634fbd6b734594db0b6ef35570a, type: 3}
+      propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -424,19 +440,19 @@ PrefabInstance:
       objectReference: {fileID: 7609458393816311726}
     - target: {fileID: 8533085704594221178, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 788.11
       objectReference: {fileID: 0}
     - target: {fileID: 8533085704594221178, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 12.877
       objectReference: {fileID: 0}
     - target: {fileID: 8533085704594221178, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 720.25
       objectReference: {fileID: 0}
     - target: {fileID: 8533085704594221178, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.5017826
       objectReference: {fileID: 0}
     - target: {fileID: 8533085704594221178, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
       propertyPath: m_LocalRotation.x
@@ -444,7 +460,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8533085704594221178, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.8649938
       objectReference: {fileID: 0}
     - target: {fileID: 8533085704594221178, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
       propertyPath: m_LocalRotation.z
@@ -456,7 +472,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8533085704594221178, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -119.764
       objectReference: {fileID: 0}
     - target: {fileID: 8533085704594221178, guid: 608400ddd79d3424faaa8e50911849d4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z

@@ -65,5 +65,6 @@ public class ScopeImageMove : MonoBehaviour
             rt[i].localPosition = originPos[i];
         }
         shakeAmount = 0f;
+        mouseDelta = Vector2.zero;
     }
 }
