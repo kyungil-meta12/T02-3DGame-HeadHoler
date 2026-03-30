@@ -25,12 +25,12 @@ public class Entity : MonoBehaviour
     private void Start()
     {
         Sg_GameManager.entities.Add(this);
-        StartCoroutine(AlertTimer());
+        //StartCoroutine(AlertTimer());
     }
 
     private void Update()
     {
-        animator.SetInteger(AlertLevel, alertLevel);
+        //animator.SetInteger(AlertLevel, alertLevel);
     }
 
     private void OnDisable()
@@ -44,8 +44,6 @@ public class Entity : MonoBehaviour
     {
         while (true)
         {
-
-
             yield return alertWait;
             alertLevel -= 1;
             animator.SetInteger(AlertLevel, alertLevel);
