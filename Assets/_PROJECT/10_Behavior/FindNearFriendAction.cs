@@ -14,7 +14,7 @@ public partial class FindNearFriendAction : Action
 
     protected override Status OnStart()
     {
-        if (Self.Value == null || Sg_GameManager.entities == null) return Status.Failure;
+        if (Self.Value == null || Sg_GameManager.Inst.entities == null) return Status.Failure;
 
         Entity myEntity = Self.Value.GetComponent<Entity>();
         if (myEntity == null) return Status.Failure;
@@ -22,7 +22,7 @@ public partial class FindNearFriendAction : Action
         float minDistance = float.MaxValue;
         GameObject closestFriend = null;
 
-        foreach (var ent in Sg_GameManager.entities)
+        foreach (var ent in Sg_GameManager.Inst.entities)
         {
             if (ent.gameObject == Self.Value) continue;
 

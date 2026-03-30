@@ -88,7 +88,7 @@ public class GunController : MonoBehaviour
                         {
                             if (hit.collider == c)
                             {
-                                currentHP -= 50f; // 일단은 50을 대미지로 지정
+                                currentHP -= damage;
                                 currentHP = Mathf.Clamp(currentHP, 0f, 999f);
                                 if (currentHP <= 0f)
                                 {

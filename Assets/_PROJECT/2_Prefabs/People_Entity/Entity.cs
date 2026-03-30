@@ -24,7 +24,7 @@ public class Entity : MonoBehaviour
 
     private void Start()
     {
-        Sg_GameManager.entities.Add(this);
+        Sg_GameManager.Inst.entities.Add(this);
         //StartCoroutine(AlertTimer());
     }
 
@@ -35,7 +35,7 @@ public class Entity : MonoBehaviour
 
     private void OnDisable()
     {
-        Sg_GameManager.entities.Remove(this);
+        Sg_GameManager.Inst.entities.Remove(this);
     }
     
     private WaitForSeconds alertWait = new WaitForSeconds(alertTimer);
