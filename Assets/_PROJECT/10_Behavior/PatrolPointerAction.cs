@@ -18,10 +18,16 @@ public partial class PatrolPointerAction : Action
     {
         if (Self.Value == null || PatrolPoints ==  null) return Status.Failure;
 
+        int currentIndex = 0;
+            
         if (PatrolPoints.Value.Contains(PatrolPoint.Value))
         {
-            PatrolPoints.Value.Contains(PatrolPoint.Value);
+            currentIndex = PatrolPoints.Value.IndexOf(PatrolPoint.Value);
         }
+
+        int nextIndex = (currentIndex + 1) % PatrolPoints.Value.Count;
+        
+        PatrolPoint.Value = PatrolPoints.Value[nextIndex];
         
         return Status.Success;
     }
