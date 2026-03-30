@@ -12,7 +12,11 @@ public partial class DeadAction : Action
 
     protected override Status OnStart()
     {
-        if (Self.Value == null) return Status.Failure;
+        if (Self.Value == null)
+        {
+            Debug.Log("Status Failure");
+            return Status.Failure;
+        }
 
         // 1. 내 오브젝트에서 BehaviorGraphAgent 컴포넌트 찾기
         BehaviorGraphAgent agent = Self.Value.GetComponent<BehaviorGraphAgent>();
@@ -20,9 +24,15 @@ public partial class DeadAction : Action
         if (agent != null)
         {
             // 2. 인스펙터 창의 체크박스를 해제하는 것과 똑같은 기능!
-            agent.enabled = false; 
-            
-            //Debug.Log($"{Self.Value.name}의 AI가 완전히 정지되었습니다 (사망 처리).");
+            agent.enabled = false;
+
+            var regController = agent.gameObject.GetComponent<RagdollController>();
+            regController.EnableRagdoll();
+            Debug.Log($"{Self.Value.name}의 AI가 완전히 정지되었습니다 (사망 처리).");
+        }
+        else
+        {
+            Debug.Log("agent is null");
         }
 
         return Status.Success;

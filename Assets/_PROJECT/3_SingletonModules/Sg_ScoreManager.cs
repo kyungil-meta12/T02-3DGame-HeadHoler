@@ -1,9 +1,25 @@
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
 public class Sg_ScoreManager : MonoBehaviour
 {
     public static Sg_ScoreManager Inst;
+
+    [System.Serializable]
+    public class ScoreLogEntry
+    {
+        public string label;
+        public int amount;
+        public int totalAfter;
+
+        public ScoreLogEntry(string label, int amount, int totalAfter)
+        {
+            this.label = label;
+            this.amount = amount;
+            this.totalAfter = totalAfter;
+        }
+    }
 
     [Header("Score")]
     [SerializeField] private int currentScore = 0;
@@ -14,12 +30,16 @@ public class Sg_ScoreManager : MonoBehaviour
     [Header("Popup")]
     [SerializeField] private ScorePopupNotifier scorePopupNotifier;
 
+    private readonly List<ScoreLogEntry> scoreLogList = new List<ScoreLogEntry>();
+
     public int CurrentScore
     {
-        get
-        {
-            return currentScore;
-        }
+        get { return currentScore; }
+    }
+
+    public IReadOnlyList<ScoreLogEntry> ScoreLogList
+    {
+        get { return scoreLogList; }
     }
 
     private void Awake()
@@ -36,12 +56,19 @@ public class Sg_ScoreManager : MonoBehaviour
 
     public void AddScore(int amount)
     {
+        AddScore(amount, "Score Gain");
+    }
+
+    public void AddScore(int amount, string label)
+    {
         if (amount < 0)
         {
             amount = 0;
         }
 
         currentScore += amount;
+        scoreLogList.Add(new ScoreLogEntry(label, amount, currentScore));
+
         UpdateScoreUI();
 
         if (scorePopupNotifier != null)
@@ -54,6 +81,11 @@ public class Sg_ScoreManager : MonoBehaviour
 
     public void RemoveScore(int amount)
     {
+        RemoveScore(amount, "Score Lose");
+    }
+
+    public void RemoveScore(int amount, string label)
+    {
         if (amount < 0)
         {
             amount = 0;
@@ -65,6 +97,8 @@ public class Sg_ScoreManager : MonoBehaviour
         {
             currentScore = 0;
         }
+
+        scoreLogList.Add(new ScoreLogEntry(label, -amount, currentScore));
 
         UpdateScoreUI();
 
@@ -85,6 +119,13 @@ public class Sg_ScoreManager : MonoBehaviour
             currentScore = 0;
         }
 
+        UpdateScoreUI();
+    }
+
+    public void ClearGameLog()
+    {
+        currentScore = 0;
+        scoreLogList.Clear();
         UpdateScoreUI();
     }
 

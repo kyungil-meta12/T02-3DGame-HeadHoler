@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Unity.Behavior;
 
 public class GunController : MonoBehaviour
 {
@@ -64,35 +65,42 @@ public class GunController : MonoBehaviour
         // 하나라도 충돌이 발견되면 즉시 for문을 종료한다. => 관통 현상 방지
         foreach (var hit in hitList)
         {
-            var characterComp = hit.transform.gameObject.GetComponentInParent<Character>();
+            var behavComp = hit.transform.gameObject.GetComponentInParent<BehaviorGraphAgent>();
             var obstacleComp = hit.transform.gameObject.GetComponentInParent<Obstacle>();
 
-            if (characterComp) // 사람인 경우
+            if (behavComp) // 사람인 경우
             {
                 print("people hit");
-
                 var regController = hit.transform.gameObject.GetComponentInParent<RagdollController>();
-
-                if (hit.collider == regController.headCollider) // 헤드샷인 경우 // 헤드샷은 무조건 사망 처리
+                if (behavComp.GetVariable<float>("curHP", out var bb))
                 {
-                    regController.EnableRagdoll();
-                    regController.headCollider.attachedRigidbody.AddForce(inputDirection * 200f, ForceMode.Impulse); // 맞은 방향으로 힘 가함
-                    print("headshot");
-                    break;
-                }
+                    var currentHP = bb.Value;
 
-                else // 그 이외의 부위인 경우
-                {
-                    print("not headshot");
-                    regController.EnableRagdoll();
-                    foreach (var c in regController.ragdollColliders)
+                    if (hit.collider == regController.headCollider)
                     {
-                        if(hit.collider == c)
+                        currentHP = 0f;
+                        regController.headCollider.attachedRigidbody.AddForce(inputDirection * 200f, ForceMode.Impulse); // 맞은 방향으로 힘 가함
+                        print("headshot");
+                    }
+                    else
+                    {
+                        foreach (var c in regController.ragdollColliders)
                         {
-                            c.attachedRigidbody.AddForce(inputDirection * 200f, ForceMode.Impulse); // 맞은 방향으로 힘 가함
-                            break;
+                            if (hit.collider == c)
+                            {
+                                currentHP -= 50f; // 일단은 50을 대미지로 지정
+                                currentHP = Mathf.Clamp(currentHP, 0f, 999f);
+                                if (currentHP <= 0f)
+                                {
+                                    c.attachedRigidbody.AddForce(inputDirection * 200f, ForceMode.Impulse); // 죽은 이후에는 맞은 방향으로 힘 가함
+                                }
+                                print("not headshot");
+                                print($"current HP: { currentHP }");
+                                break;
+                            }
                         }
                     }
+                    bb.Value = currentHP;
                 }
 
                 break;
@@ -104,7 +112,7 @@ public class GunController : MonoBehaviour
                 break;
             }
 
-            if (!characterComp && !obstacleComp)  // 상호 작용 불가능한 장애물인 경우 // 예: 건물 외벽, 지형 등...
+            if (!behavComp && !obstacleComp)  // 상호 작용 불가능한 장애물인 경우 // 예: 건물 외벽, 지형 등...
             {
                 print("static obstacle hit");
                 break;

@@ -21,6 +21,8 @@ public class PlayerController : MonoBehaviour
     private GunController currGun;
     private Transform currGunMagazine;
 
+    public GunController CurrentGun => currGun;
+
     private Rigidbody body;
     private Vector3 moveDir;
     private Vector3 currDir;
