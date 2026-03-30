@@ -8,13 +8,13 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: FlatTerrain-TerrainShader
-  m_Shader: {fileID: 4800000, guid: fea9ee138d4a84d90a0c3f187fb3cd8a, type: 3}
+  m_Shader: {fileID: 10623, guid: 0000000000000000f000000000000000, type: 0}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords:
+  m_ValidKeywords: []
+  m_InvalidKeywords:
   - DR_GRADIENT_ON
   - _CELPRIMARYMODE_SINGLE
-  m_InvalidKeywords:
   - _OVERRIDE_SHADOWS_ENABLED
   - _SECONDARY_COLOR_ENABLED
   - _UNITYSHADOWMODE_NONE
@@ -69,6 +69,10 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _TerrainHolesTexture:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
