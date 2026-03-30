@@ -14,7 +14,7 @@ public class RagdollController : MonoBehaviour
     [SerializeField] private int scoreOnDeath = 100;
     [SerializeField] private bool giveScoreOnDeath = true;
 
-    private bool ragdollEnabled = false;
+    internal bool ragdollEnabled = false;
 
     private Animator anim;
     [HideInInspector]

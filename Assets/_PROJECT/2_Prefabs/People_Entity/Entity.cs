@@ -7,7 +7,7 @@ using Unity.Behavior;
 
 public class Entity : MonoBehaviour
 {
-    private static readonly int AlertLevel = Animator.StringToHash("AlertLevel");
+    private static readonly int isAlert = Animator.StringToHash("isAlert");
     [Header("======세팅======")]
     [Header("소속")]
     public Team myTeam;
@@ -76,12 +76,7 @@ public class Entity : MonoBehaviour
             Instantiate(equips[equipIndex], ragdollController.headCollider.transform);
         }
         
-        //StartCoroutine(AlertTimer());
-    }
-
-    private void Update()
-    {
-        //animator.SetInteger(AlertLevel, alertLevel);
+        //if(alertRoutine == null) alertRoutine = StartCoroutine(AlertTimer());
     }
 
     private void OnDisable()
@@ -89,15 +84,20 @@ public class Entity : MonoBehaviour
         Sg_GameManager.Inst.entities.Remove(this);
     }
     
+    //경계 루틴 : 일정시간 이후 경계 풀림
+    private Coroutine alertRoutine = null;
     private WaitForSeconds alertWait = new WaitForSeconds(alertTimer);
-
     private IEnumerator AlertTimer()
     {
-        while (true)
+        if(ragdollController.ragdollEnabled) yield break;
+        alertLevel += 1;
+        animator.SetBool(isAlert, alertLevel > 0);
+        while (alertLevel > 0)
         {
             yield return alertWait;
+            if(ragdollController.ragdollEnabled) yield break;
             alertLevel -= 1;
-            animator.SetInteger(AlertLevel, alertLevel);
+            animator.SetBool(isAlert, alertLevel > 0);
         }
     }
 }
