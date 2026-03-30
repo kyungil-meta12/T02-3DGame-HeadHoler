@@ -71,48 +71,36 @@ public class GunController : MonoBehaviour
             if (behavComp) // 사람인 경우
             {
                 print("people hit");
-
                 var regController = hit.transform.gameObject.GetComponentInParent<RagdollController>();
-
-                if (hit.collider == regController.headCollider) // 헤드샷인 경우 // 헤드샷은 무조건 사망 처리
+                if (behavComp.GetVariable<float>("curHP", out var bb))
                 {
-                    if (behavComp.BlackboardReference.GetVariableValue("curHP", out float hp))
+                    var currentHP = bb.Value;
+
+                    if (hit.collider == regController.headCollider)
                     {
-                        behavComp.BlackboardReference.SetVariableValue("curHP", 0f);
+                        currentHP = 0f;
                         regController.headCollider.attachedRigidbody.AddForce(inputDirection * 200f, ForceMode.Impulse); // 맞은 방향으로 힘 가함
                         print("headshot");
                     }
                     else
                     {
-                        print("Invalid behavior!!");
-                    }
-                    break;
-                }
-
-                else // 그 이외의 부위인 경우
-                {
-                    foreach (var c in regController.ragdollColliders)
-                    {
-                        if(hit.collider == c)
+                        foreach (var c in regController.ragdollColliders)
                         {
-                            if(behavComp.BlackboardReference.GetVariableValue("curHP", out float hp))
+                            if (hit.collider == c)
                             {
-                                hp -= 50f; // 일단은 50을 대미지로 지정
-                                behavComp.BlackboardReference.SetVariableValue("curHP", hp);
-                                if (hp <= 0f)
+                                currentHP -= 50f; // 일단은 50을 대미지로 지정
+                                currentHP = Mathf.Clamp(currentHP, 0f, 999f);
+                                if (currentHP <= 0f)
                                 {
                                     c.attachedRigidbody.AddForce(inputDirection * 200f, ForceMode.Impulse); // 죽은 이후에는 맞은 방향으로 힘 가함
                                 }
                                 print("not headshot");
-                                print($"current HP: {hp}");
+                                print($"current HP: { currentHP }");
+                                break;
                             }
-                            else
-                            {
-                                print("Invalid behavior!!");
-                            }
-                            break;
                         }
                     }
+                    bb.Value = currentHP;
                 }
 
                 break;
