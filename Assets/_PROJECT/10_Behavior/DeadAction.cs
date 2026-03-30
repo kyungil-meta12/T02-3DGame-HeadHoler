@@ -14,7 +14,7 @@ public partial class DeadAction : Action
     {
         if (Self.Value == null)
         {
-            Debug.Log("Status Failure");
+            //Debug.Log("Status Failure");
             return Status.Failure;
         }
 
@@ -28,11 +28,11 @@ public partial class DeadAction : Action
 
             var regController = agent.gameObject.GetComponent<RagdollController>();
             regController.EnableRagdoll();
-            Debug.Log($"{Self.Value.name}의 AI가 완전히 정지되었습니다 (사망 처리).");
+            //Debug.Log($"{Self.Value.name}의 AI가 완전히 정지되었습니다 (사망 처리).");
         }
         else
         {
-            Debug.Log("agent is null");
+            //Debug.Log("agent is null");
         }
 
         return Status.Success;
