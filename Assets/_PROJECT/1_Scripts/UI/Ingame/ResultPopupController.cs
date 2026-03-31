@@ -65,6 +65,13 @@ public class ResultPopupController : MonoBehaviour
         if (failureImage != null)
             failureImage.SetActive(false);
 
+        int finalScore = 0;
+        if (Sg_ScoreManager.Inst != null)
+            finalScore = Sg_ScoreManager.Inst.CurrentScore;
+
+        if (Sg_AchievementRuntime.Inst != null)
+            Sg_AchievementRuntime.Inst.ProcessStageResult(finalScore, true);
+
         PlayVictoryParticlesByScore();
 
         ApplyResultCursor();
@@ -89,6 +96,13 @@ public class ResultPopupController : MonoBehaviour
 
         if (failureImage != null)
             failureImage.SetActive(true);
+
+        int finalScore = 0;
+        if (Sg_ScoreManager.Inst != null)
+            finalScore = Sg_ScoreManager.Inst.CurrentScore;
+
+        if (Sg_AchievementRuntime.Inst != null)
+            Sg_AchievementRuntime.Inst.ProcessStageResult(finalScore, false);
 
         PlayDefeatParticles();
 
