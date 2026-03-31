@@ -16,19 +16,29 @@ public partial class PatrolPointerAction : Action
 
     protected override Status OnStart()
     {
-        if (Self.Value == null || PatrolPoints ==  null) return Status.Failure;
+        if (Self.Value == null ||  PatrolPoints.Value == null)
+        {
+            Debug.LogError("[PatrolPointerAction] Self or PatrolPoints is null! FAILURE");
+            return Status.Failure;
+        }
 
         int currentIndex = 0;
-            
+
         if (PatrolPoints.Value.Contains(PatrolPoint.Value))
         {
             currentIndex = PatrolPoints.Value.IndexOf(PatrolPoint.Value);
         }
+        else
+        {
+            Debug.Log($"[PatrolPointerAction] PatrolPoint.Value not in list, starting from index 0");
+        }
 
         int nextIndex = (currentIndex + 1) % PatrolPoints.Value.Count;
-        
+
         PatrolPoint.Value = PatrolPoints.Value[nextIndex];
-        
+
+        Debug.Log($"[PatrolPointerAction] Set PatrolPoint to {PatrolPoint.Value.name} (index {nextIndex})");
+
         return Status.Success;
     }
 }

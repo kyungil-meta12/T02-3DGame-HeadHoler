@@ -1,9 +1,11 @@
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEditor.Animations;
 using UnityEngine;
 using Unity.Behavior;
 using System.Linq;
+using UnityEngine.AI;
 
 
 public class Entity : MonoBehaviour
@@ -13,6 +15,8 @@ public class Entity : MonoBehaviour
     [Header("소속")]
     public Team myTeam;
     public Role myRole;
+    [Header("최개 체력")]
+    public float maxHP = 100f;
     [Header("성별 선택")]
     public bool isMale = true;
     [Header("랜더러 선택")]
@@ -20,9 +24,11 @@ public class Entity : MonoBehaviour
     [Header("머리장비 선택")]
     public int equipIndex = 99;
     [Header("순찰 포인트")]
-    public GameObject[] patrolPoints;
+    public List<GameObject> patrolPoints;
     [Header("경계 지속시간")]
     public static float alertTimer = 5f;
+
+    private static readonly int Speed = Animator.StringToHash("Speed");
 
     [Space(20)] [Header("======참조======")] 
     [Header("남성 랜더러")]
@@ -40,8 +46,11 @@ public class Entity : MonoBehaviour
     private SkinnedMeshRenderer rend;
     private BehaviorGraphAgent behaviorGraphAgent;
     private RagdollController ragdollController;
+    private NavMeshAgent agent;
+    private float speed;
+    private Vector3 postPos;
 
-    public float currentHP;
+    internal float currentHP;
 
     private void Awake()
     {
@@ -49,15 +58,18 @@ public class Entity : MonoBehaviour
         rend = GetComponentInChildren<SkinnedMeshRenderer>();
         behaviorGraphAgent = GetComponent<BehaviorGraphAgent>();
         ragdollController = GetComponent<RagdollController>();
+        agent = GetComponent<NavMeshAgent>();
     }
 
     private void Start()
     {
         Sg_GameManager.Inst.entities.Add(this);
+        behaviorGraphAgent.Init();
         
         //소속, 순찰포인트 세팅
         behaviorGraphAgent.SetVariableValue("Role", myRole);
-        behaviorGraphAgent.SetVariableValue("PatrolPoints", patrolPoints.ToList<GameObject>());
+        behaviorGraphAgent.SetVariableValue("PatrolPoints", patrolPoints);
+        currentHP = maxHP;
 
         //성별, 인덱스에 맞춰 랜더러 바꾸기
         if (isMale)
@@ -80,11 +92,28 @@ public class Entity : MonoBehaviour
         }
         
         //if(alertRoutine == null) alertRoutine = StartCoroutine(AlertTimer());
+        postPos = transform.position;
+    }
+
+    private void Update()
+    {
+        //속도
+        
+        
+        if (!ragdollController.ragdollEnabled)
+        {
+            float speed = agent.desiredVelocity.magnitude;
+            if (speed > 1f) speed = 1f;
+            animator.SetFloat(Speed, speed, 0.1f, Time.deltaTime);
+        }
     }
 
     private void OnDisable()
     {
-        Sg_GameManager.Inst.entities.Remove(this);
+        if (Sg_GameManager.Inst.entities.Contains(this))
+        {
+            Sg_GameManager.Inst.entities.Remove(this);
+        }
     }
     
     //경계 루틴 : 일정시간 이후 경계 풀림
