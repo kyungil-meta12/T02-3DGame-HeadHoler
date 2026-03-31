@@ -18,6 +18,7 @@ public partial class HelpFriendAction : Action
         if (otherEntity != null)
         {
             otherEntity.currentHP = otherEntity.maxHP;
+            otherEntity.GetComponent<BehaviorGraphAgent>().SetVariableValue("isHurt", false);
         }
         
         return Status.Success;

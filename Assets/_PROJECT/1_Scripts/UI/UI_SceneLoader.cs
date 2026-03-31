@@ -6,6 +6,9 @@ public class UI_SceneLoader : MonoBehaviour
     [Header("Default Target")]
     [SerializeField] private string targetSceneName;
 
+    [Header("Optional Stage Id")]
+    [SerializeField] private string targetStageId;
+
     // Inspector에 적어둔 씬으로 이동
     public void LoadTargetScene()
     {
@@ -13,6 +16,11 @@ public class UI_SceneLoader : MonoBehaviour
         {
             Debug.LogWarning("[UI_SceneLoader] targetSceneName is empty.");
             return;
+        }
+
+        if (!string.IsNullOrEmpty(targetStageId) && Sg_AchievementRuntime.Inst != null)
+        {
+            Sg_AchievementRuntime.Inst.SetSelectedStage(targetStageId);
         }
 
         SceneManager.LoadScene(targetSceneName);
@@ -26,7 +34,8 @@ public class UI_SceneLoader : MonoBehaviour
             Debug.LogWarning("[UI_SceneLoader] sceneName is empty.");
             return;
         }
-
+        if (Sg_AchievementRuntime.Inst != null)
+            Sg_AchievementRuntime.Inst.SetSelectedStage($"{sceneName}");
         SceneManager.LoadScene(sceneName);
     }
 
@@ -37,21 +46,33 @@ public class UI_SceneLoader : MonoBehaviour
 
     public void LoadStageScene00()
     {
+        if (Sg_AchievementRuntime.Inst != null)
+            Sg_AchievementRuntime.Inst.SetSelectedStage("StageScene_00");
+
         SceneManager.LoadScene("StageScene_00");
     }
 
     public void LoadStageScene01()
     {
+        if (Sg_AchievementRuntime.Inst != null)
+            Sg_AchievementRuntime.Inst.SetSelectedStage("01_StageScene");
+
         SceneManager.LoadScene("01_StageScene");
     }
 
     public void LoadStageScene02()
     {
+        if (Sg_AchievementRuntime.Inst != null)
+            Sg_AchievementRuntime.Inst.SetSelectedStage("02_StageScene");
+
         SceneManager.LoadScene("02_StageScene");
     }
 
     public void LoadStageScene03()
     {
+        if (Sg_AchievementRuntime.Inst != null)
+            Sg_AchievementRuntime.Inst.SetSelectedStage("03_StageScene");
+
         SceneManager.LoadScene("03_StageScene");
     }
 
