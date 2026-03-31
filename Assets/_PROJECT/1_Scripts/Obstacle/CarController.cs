@@ -8,6 +8,8 @@ public class CarController : MonoBehaviour
     public float moveSpeed = 5f; // 자동차 이동 속도
     public float wheelRotationMultiplier = 500f; // 바퀴 회전 배수
     public float startTime;
+    public float lightEnableTime;
+    public GameObject carLight;
 
     private float currentTime;
     private int currentIndex = 0;
@@ -20,6 +22,7 @@ public class CarController : MonoBehaviour
         agent.angularSpeed = 720f;
         agent.acceleration = 100f;
         agent.isStopped = true;
+        carLight.SetActive(false);
     }
 
     void Update()
@@ -27,6 +30,10 @@ public class CarController : MonoBehaviour
         if (agent.isStopped) // 읿정 시간이 지나면 출발
         {
             currentTime += Time.deltaTime;
+            if(currentTime >= lightEnableTime)
+            {
+                carLight.SetActive(true); // 출발 직전에 라이트 킴
+            }
             if (currentTime >= startTime)
             {
                 SetDestinationToNextPoint();
