@@ -4,6 +4,9 @@ using Unity.Behavior;
 
 public class GunController : MonoBehaviour
 {
+    //소리 발생 콜라이더 프리팹
+    public GameObject hitSoundPrefab; 
+    
     // 격발 간격
     public float fireInterval;
 
@@ -67,13 +70,14 @@ public class GunController : MonoBehaviour
         {
             var entityComp = hit.transform.gameObject.GetComponentInParent<Entity>();
             var obstacleComp = hit.transform.gameObject.GetComponentInParent<Obstacle>();
-
+            
             if (entityComp) // 사람인 경우
             {
                 print("people hit");
                 var direction = ray.direction;
                 direction.y = 0f;
                 entityComp.Hit(hit, direction, damage);
+                if(hitSoundPrefab)Instantiate(hitSoundPrefab, hit.point, Quaternion.identity);
                 Sg_HitIndicator.Inst.InputHit();
                 break;
             }
@@ -81,6 +85,8 @@ public class GunController : MonoBehaviour
             if (obstacleComp) // 상호작용 장애물인 경우
             {
                 print("interactive obstacle hit");
+                obstacleComp.Hit(hit.point);
+                if(hitSoundPrefab)Instantiate(hitSoundPrefab, hit.point, Quaternion.identity);
                 Sg_HitIndicator.Inst.InputHit();
                 break;
             }
@@ -88,6 +94,7 @@ public class GunController : MonoBehaviour
             if (!entityComp && !obstacleComp)  // 상호 작용 불가능한 장애물인 경우 // 예: 건물 외벽, 지형 등...
             {
                 print("static obstacle hit");
+                if(hitSoundPrefab)Instantiate(hitSoundPrefab, hit.point, Quaternion.identity);
                 break;
             }
         }

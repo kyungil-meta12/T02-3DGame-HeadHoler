@@ -44,7 +44,7 @@ public class Jukebox : Obstacle
 
 		if(buttonHitCount >= buttonHP)
 		{
-			Hit(transform);
+			Hit(transform.position);
 			return;
 		}
 		NotifyCharacter();

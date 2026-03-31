@@ -1,16 +1,18 @@
 
 using System;
 using System.Collections;
+using Unity.Behavior;
 using UnityEngine;
 
 public class HitSound : MonoBehaviour
 {
     [Header("사운드 발생 지속시간")]
-    public float soundTimer = 3f;
+    public float soundTimer = 10f;
     [Header("사운드 발생 범위")]
     public float maxSoundRadius = 5f;
     
     private SphereCollider hitSound;
+    private bool isGunShot = false;
 
     private void Awake()
     {
@@ -41,10 +43,15 @@ public class HitSound : MonoBehaviour
     
     private void OnTriggerEnter(Collider other)//소리범위에 시민이나 적이 닿았을때 Character의 메서드를 호출한다.
     {
-        Character character = other.GetComponent<Character>();  //부딪친 오브젝트가 Character컴포넌트가 있는지 확인
-        if(character != null)
+        // Character character = other.GetComponent<Character>();  //부딪친 오브젝트가 Character컴포넌트가 있는지 확인
+        // if(character != null)
+        // {
+        //     character.HearSound(transform); //Character의 HearSound() 호출
+        // }
+
+        if (other.CompareTag("Entity"))
         {
-            character.HearSound(transform); //Character의 HearSound() 호출
+            other.gameObject.GetComponent<BehaviorGraphAgent>().SetVariableValue("AlertTarget", gameObject);
         }
     }
 }

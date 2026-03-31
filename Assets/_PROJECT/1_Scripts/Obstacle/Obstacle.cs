@@ -27,8 +27,7 @@ public class Obstacle : MonoBehaviour
     시민 - 농부, 목수, ... 종류를 여러가지 추가해도 Character만 상속하면 Obstacle과 상호작용가능.
     */
 
-	[Header("소리 발생용 프리팹")]
-	public GameObject hitSoundPrefab; //소리 발생 콜라이더
+	
 	
 	public FractureGeometry[] explosives;   //파괴할 오브젝트
 
@@ -37,11 +36,10 @@ public class Obstacle : MonoBehaviour
 	[ContextMenu("테스트")]
 	public void Test()
 	{
-		Hit(transform);
+		Hit(transform.position);
 	}
-	public virtual void Hit(Transform trans) //총알에 맞았을때
+	public virtual void Hit(Vector3 trans) //총알에 맞았을때
 	{
-		Instantiate(hitSoundPrefab, trans.position, Quaternion.identity);
 		UniqueInteraction();
 	}
 	
@@ -89,7 +87,7 @@ public class Obstacle : MonoBehaviour
 	{
 		if (collision.gameObject.CompareTag("FracturedObject"))
 		{
-			Hit(collision.transform);
+			Hit(collision.transform.position);
 		}
 	}
 }
