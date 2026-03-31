@@ -110,7 +110,7 @@ public class Entity : MonoBehaviour
 
     private void OnDisable()
     {
-        if (Sg_GameManager.Inst.entities.Contains(this))
+        if (Sg_GameManager.Inst != null && Sg_GameManager.Inst.entities.Contains(this))
         {
             Sg_GameManager.Inst.entities.Remove(this);
         }
