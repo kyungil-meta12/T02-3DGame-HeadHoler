@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class SwitchBoard : Obstacle		//건물 배전반
 {
-	public GameObject[] lights; //가로등의 전구부분
+	public StreetLamp[] lights; //가로등의 전구부분(Lamp)
 	private bool isBroken = false;      //배전반 파괴여부
 	public GameObject brokenEffect;
 
@@ -22,9 +22,10 @@ public class SwitchBoard : Obstacle		//건물 배전반
 			Instantiate(brokenEffect, brokenEffect.transform.position, Quaternion.identity);
 		}
 		
-		foreach (GameObject light in lights)
+		foreach (StreetLamp light in lights)
 		{
-			light.SetActive(false);
+			//light.SetActive(false);
+			light.TurnOff();
 		}
-    }
+	}
 }
