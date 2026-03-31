@@ -7,8 +7,9 @@ public class CarController : MonoBehaviour
     public Transform[] waypoints;
     public float moveSpeed = 5f; // 자동차 이동 속도
     public float wheelRotationMultiplier = 500f; // 바퀴 회전 배수
-    public bool rolling = true;
+    public float startTime;
 
+    private float currentTime;
     private int currentIndex = 0;
     private NavMeshAgent agent;
 
@@ -18,38 +19,36 @@ public class CarController : MonoBehaviour
         agent.speed = moveSpeed;
         agent.angularSpeed = 720f;
         agent.acceleration = 100f;
-    }
-
-    void Start()
-    {
-        if (rolling && waypoints.Length > 0)
-        {
-            SetDestinationToNextPoint();
-        }
+        agent.isStopped = true;
     }
 
     void Update()
     {
-        if (!rolling || currentIndex == waypoints.Length - 1)
+        if (agent.isStopped) // 읿정 시간이 지나면 출발
         {
-            agent.isStopped = true;
-            return;
+            currentTime += Time.deltaTime;
+            if (currentTime >= startTime)
+            {
+                SetDestinationToNextPoint();
+                agent.isStopped = false;
+            }
+        }
+        else
+        {
+            // 도착 확인 및 다음 지점 갱신
+            if (!agent.pathPending && agent.remainingDistance < 0.5f)
+            {
+                SetDestinationToNextPoint();
+            }
+
+            // 실제 이동 속도에 비례한 바퀴 회전
+            float currentMoveSpeed = agent.velocity.magnitude;
+            foreach (var wheel in wheels)
+            {
+                wheel.Rotate(Vector3.right * currentMoveSpeed * wheelRotationMultiplier * Time.deltaTime);
+            }
         }
 
-        agent.isStopped = false;
-
-        // 도착 확인 및 다음 지점 갱신
-        if (!agent.pathPending && agent.remainingDistance < 0.5f)
-        {
-            SetDestinationToNextPoint();
-        }
-
-        // 실제 이동 속도에 비례한 바퀴 회전
-        float currentMoveSpeed = agent.velocity.magnitude;
-        foreach (var wheel in wheels)
-        {
-            wheel.Rotate(Vector3.right * currentMoveSpeed * wheelRotationMultiplier * Time.deltaTime);
-        }
         var position = transform.position;
         position.y = 5.53f;
         transform.position = position;
@@ -59,8 +58,10 @@ public class CarController : MonoBehaviour
     {
         if (waypoints.Length == 0)
             return;
-
-        agent.destination = waypoints[currentIndex].position;
-        currentIndex = (currentIndex + 1) % waypoints.Length;
+        if (currentIndex < waypoints.Length - 1)
+        {
+            currentIndex++;
+            agent.destination = waypoints[currentIndex].position;
+        }
     }
 }
