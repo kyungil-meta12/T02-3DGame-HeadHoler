@@ -35,6 +35,9 @@ public class Sg_MouseMan : MonoBehaviour
         }
         Inst = this;
 
+        Vector2 center = new Vector2(Screen.width / 2f, Screen.height / 2f);
+        Mouse.current.WarpCursorPosition(center);
+
         if (startWithLocked)
         {
             LockCursor();

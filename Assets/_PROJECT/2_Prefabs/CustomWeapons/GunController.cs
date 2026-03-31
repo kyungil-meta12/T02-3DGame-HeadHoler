@@ -65,46 +65,15 @@ public class GunController : MonoBehaviour
         // 하나라도 충돌이 발견되면 즉시 for문을 종료한다. => 관통 현상 방지
         foreach (var hit in hitList)
         {
-            var behavComp = hit.transform.gameObject.GetComponentInParent<BehaviorGraphAgent>();
+            var entityComp = hit.transform.gameObject.GetComponentInParent<Entity>();
             var obstacleComp = hit.transform.gameObject.GetComponentInParent<Obstacle>();
 
-            if (behavComp) // 사람인 경우
+            if (entityComp) // 사람인 경우
             {
                 print("people hit");
-                var regController = hit.transform.gameObject.GetComponentInParent<RagdollController>();
-                if (behavComp.GetVariable<float>("curHP", out var bb))
-                {
-                    var currentHP = bb.Value;
-
-                    if (hit.collider == regController.headCollider)
-                    {
-                        currentHP = 0f;
-                        regController.headCollider.attachedRigidbody.AddForce(inputDirection * 200f, ForceMode.Impulse); // 맞은 방향으로 힘 가함
-                        Sg_HitIndicator.Inst.InputHit(); // 명중 피드백 설정
-                        print("headshot");
-                    }
-                    else
-                    {
-                        foreach (var c in regController.ragdollColliders)
-                        {
-                            if (hit.collider == c)
-                            {
-                                currentHP -= damage;
-                                currentHP = Mathf.Clamp(currentHP, 0f, 999f);
-                                if (currentHP <= 0f)
-                                {
-                                    c.attachedRigidbody.AddForce(inputDirection * 200f, ForceMode.Impulse); // 죽은 이후에는 맞은 방향으로 힘 가함
-                                }
-                                Sg_HitIndicator.Inst.InputHit(); // 명중 피드백 설정
-                                print("not headshot");
-                                print($"current HP: { currentHP }");
-                                break;
-                            }
-                        }
-                    }
-                    bb.Value = currentHP;
-                }
-
+                var direction = ray.direction;
+                direction.y = 0f;
+                entityComp.Hit(hit, direction, damage);
                 break;
             }
 
@@ -114,7 +83,7 @@ public class GunController : MonoBehaviour
                 break;
             }
 
-            if (!behavComp && !obstacleComp)  // 상호 작용 불가능한 장애물인 경우 // 예: 건물 외벽, 지형 등...
+            if (!entityComp && !obstacleComp)  // 상호 작용 불가능한 장애물인 경우 // 예: 건물 외벽, 지형 등...
             {
                 print("static obstacle hit");
                 break;

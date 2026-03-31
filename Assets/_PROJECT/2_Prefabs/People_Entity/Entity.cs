@@ -40,6 +40,8 @@ public class Entity : MonoBehaviour
     private BehaviorGraphAgent behaviorGraphAgent;
     private RagdollController ragdollController;
 
+    public float currentHP;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -98,6 +100,46 @@ public class Entity : MonoBehaviour
             if(ragdollController.ragdollEnabled) yield break;
             alertLevel -= 1;
             animator.SetBool(isAlert, alertLevel > 0);
+        }
+    }
+
+    public void Hit(RaycastHit hit, Vector3 direction, float dmg)
+    {
+        var behavior = GetComponent<BehaviorGraphAgent>();
+        var regController = GetComponent<RagdollController>();
+        if (behavior.GetVariable<bool>("isHurt", out var isHurt))
+        {
+            isHurt.Value = true;
+            if (hit.collider == regController.headCollider)
+            {
+                currentHP = 0f;
+                behavior.enabled = false;
+                regController.EnableRagdoll();
+                regController.headCollider.attachedRigidbody.AddForce(direction * 200f, ForceMode.Impulse); // 맞은 방향으로 힘 가함
+                Sg_HitIndicator.Inst.InputHit(); // 명중 피드백 설정
+                print("headshot");
+            }
+            else
+            {
+                foreach (var c in regController.ragdollColliders)
+                {
+                    if (hit.collider == c)
+                    {
+                        currentHP -= dmg;
+                        currentHP = Mathf.Clamp(currentHP, 0f, 999f);
+                        if (currentHP <= 0f)
+                        {
+                            behavior.enabled = false;
+                            regController.EnableRagdoll();
+                            c.attachedRigidbody.AddForce(direction * 200f, ForceMode.Impulse); // 죽은 이후에는 맞은 방향으로 힘 가함
+                        }
+                        Sg_HitIndicator.Inst.InputHit(); // 명중 피드백 설정
+                        print("not headshot");
+                        print($"current HP: {currentHP}");
+                        break;
+                    }
+                }
+            }
         }
     }
 }
