@@ -15,7 +15,7 @@ public class Sg_GameManager : MonoBehaviour
             return;
         }
         Inst = this;
-        DontDestroyOnLoad(gameObject);
+        entities = new();
         print("[Sg_GameManager] Created instance.");
         entities = new List<Entity>();
     }
