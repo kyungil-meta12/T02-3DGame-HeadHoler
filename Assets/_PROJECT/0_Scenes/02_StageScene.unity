@@ -1403,8 +1403,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 393847805}
-  - component: {fileID: 393847808}
-  - component: {fileID: 393847806}
   - component: {fileID: 393847809}
   m_Layer: 6
   m_Name: NavMesh
@@ -1428,36 +1426,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &393847806
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 393847804}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!33 &393847808
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 393847804}
-  m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &393847809
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1742,15 +1710,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 212889093893185943, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
       propertyPath: m_Radius
-      value: 0.15
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 212889093893185943, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
       propertyPath: m_AgentTypeID
       value: -334000983
       objectReference: {fileID: 0}
     - target: {fileID: 212889093893185943, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
+      propertyPath: m_AutoBraking
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 212889093893185943, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
+      propertyPath: m_Acceleration
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 212889093893185943, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
       propertyPath: m_AngularSpeed
       value: 99999
+      objectReference: {fileID: 0}
+    - target: {fileID: 212889093893185943, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
+      propertyPath: m_StoppingDistance
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 212889093893185943, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
       propertyPath: m_ObstacleAvoidanceType
@@ -1759,6 +1739,10 @@ PrefabInstance:
     - target: {fileID: 2995414374522739281, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
       propertyPath: m_Name
       value: Entity_Office
+      objectReference: {fileID: 0}
+    - target: {fileID: 5751549092392070028, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
+      propertyPath: maxHP
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 5751549092392070028, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
       propertyPath: currentHP
@@ -1784,6 +1768,10 @@ PrefabInstance:
       propertyPath: 'patrolPoints.Array.data[3]'
       value: 
       objectReference: {fileID: 1950043409}
+    - target: {fileID: 6187712208672818035, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8069406678470705957, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 664.2308
@@ -9326,6 +9314,10 @@ PrefabInstance:
     - target: {fileID: 4676628838897909105, guid: bef567f6f01426d4aa24593d6645ba31, type: 3}
       propertyPath: m_Name
       value: PatrolPoint
+      objectReference: {fileID: 0}
+    - target: {fileID: 9054680334566393149, guid: bef567f6f01426d4aa24593d6645ba31, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
