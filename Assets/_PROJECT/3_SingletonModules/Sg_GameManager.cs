@@ -5,7 +5,7 @@ using UnityEngine;
 public class Sg_GameManager : MonoBehaviour
 {
     public static Sg_GameManager Inst;
-    public List<Entity> entities = new();
+    public List<Entity> entities;
 
     private void Awake()
     {
@@ -16,6 +16,7 @@ public class Sg_GameManager : MonoBehaviour
         }
         Inst = this;
         print("[Sg_GameManager] Created instance.");
+        entities = new List<Entity>();
     }
 
     void OnDestroy()
