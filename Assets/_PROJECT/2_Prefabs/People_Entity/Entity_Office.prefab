@@ -692,6 +692,7 @@ MonoBehaviour:
   animatorControllers:
   - {fileID: 9100000, guid: 2a45438e9bd213640a54077f85aca7ac, type: 2}
   - {fileID: 9100000, guid: b8d0e2061dccdab469ad507b287b4fce, type: 2}
+  currentHP: 200
 --- !u!114 &4149120860568308002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -707,7 +708,6 @@ MonoBehaviour:
   m_Graph: {fileID: -74240295876975623, guid: c2bf0769d78dc6041ba8e637dc73b504, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 5993128506800472144
-  - rid: 5993128506800472145
   - rid: 5993128506800472146
   m_OriginalGraph: {fileID: -74240295876975623, guid: c2bf0769d78dc6041ba8e637dc73b504, type: 2}
   m_IsInitialised: 0
@@ -723,14 +723,6 @@ MonoBehaviour:
           m_Value1: 0
         Name: Self
         m_Value: {fileID: 2995414374522739281}
-    - rid: 5993128506800472145
-      type: {class: 'BlackboardVariable`1[[UnityEngine.AI.NavMeshAgent, UnityEngine.AIModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 17021470527195528644
-          m_Value1: 4040732125822195280
-        Name: NavMeshAgent
-        m_Value: {fileID: 212889093893185943}
     - rid: 5993128506800472146
       type: {class: 'BlackboardVariable`1[[UnityEngine.Animator, UnityEngine.AnimationModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:
