@@ -18,7 +18,7 @@ public partial class PatrolPointerAction : Action
     {
         if (Self.Value == null ||  PatrolPoints.Value == null)
         {
-            Debug.LogError("[PatrolPointerAction] Self or PatrolPoints is null! FAILURE");
+            //Debug.LogError("[PatrolPointerAction] Self or PatrolPoints is null! FAILURE");
             return Status.Failure;
         }
 
@@ -30,14 +30,14 @@ public partial class PatrolPointerAction : Action
         }
         else
         {
-            Debug.Log($"[PatrolPointerAction] PatrolPoint.Value not in list, starting from index 0");
+            //Debug.Log($"[PatrolPointerAction] PatrolPoint.Value not in list, starting from index 0");
         }
 
         int nextIndex = (currentIndex + 1) % PatrolPoints.Value.Count;
 
         PatrolPoint.Value = PatrolPoints.Value[nextIndex];
 
-        Debug.Log($"[PatrolPointerAction] Set PatrolPoint to {PatrolPoint.Value.name} (index {nextIndex})");
+        //Debug.Log($"[PatrolPointerAction] Set PatrolPoint to {PatrolPoint.Value.name} (index {nextIndex})");
 
         return Status.Success;
     }
