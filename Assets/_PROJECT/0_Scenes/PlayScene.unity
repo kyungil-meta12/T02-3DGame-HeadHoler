@@ -27823,8 +27823,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15e718e5b315669459b7cf8b60c5741e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ResultPopupController
-  victoryPopup: {fileID: 1697314612}
-  defeatPopup: {fileID: 1102722921}
+  resultPopup: {fileID: 0}
+  successImage: {fileID: 0}
+  failureImage: {fileID: 0}
+  victoryParticlesRoot: {fileID: 0}
+  defeatParticlesRoot: {fileID: 0}
+  victoryParticles: []
+  defeatParticles: []
   resultCursorState: 0
   gameCursorState: 1
   resultCursorVisibility: 2
@@ -50950,8 +50955,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 963194227}
     - target: {fileID: 5003629532615579919, guid: ecd89c2e88b7d6b469a52b0f2496a12c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5003629532615579919, guid: ecd89c2e88b7d6b469a52b0f2496a12c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5003629532615579919, guid: ecd89c2e88b7d6b469a52b0f2496a12c, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.07
+      value: -5
       objectReference: {fileID: 0}
     - target: {fileID: 5003629532615579919, guid: ecd89c2e88b7d6b469a52b0f2496a12c, type: 3}
       propertyPath: m_LocalRotation.w

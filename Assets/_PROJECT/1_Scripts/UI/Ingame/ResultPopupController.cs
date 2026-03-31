@@ -2,6 +2,15 @@ using UnityEngine;
 
 public class ResultPopupController : MonoBehaviour
 {
+    [System.Serializable]
+    public class ScoreParticleSet
+    {
+        public string gradeName;
+        public int minScore;
+        public GameObject root;
+        public ParticleSystem[] particles;
+    }
+
     [Header("Popup Reference")]
     [SerializeField] private GameObject resultPopup;
 
@@ -9,12 +18,11 @@ public class ResultPopupController : MonoBehaviour
     [SerializeField] private GameObject successImage;
     [SerializeField] private GameObject failureImage;
 
-    [Header("Particle Roots")]
-    [SerializeField] private GameObject victoryParticlesRoot;
-    [SerializeField] private GameObject defeatParticlesRoot;
+    [Header("Victory Particle By Score")]
+    [SerializeField] private ScoreParticleSet[] victoryParticleSets;
 
-    [Header("Particle Systems")]
-    [SerializeField] private ParticleSystem[] victoryParticles;
+    [Header("Defeat Particles")]
+    [SerializeField] private GameObject defeatParticlesRoot;
     [SerializeField] private ParticleSystem[] defeatParticles;
 
     [Header("Cursor Settings")]
@@ -24,6 +32,7 @@ public class ResultPopupController : MonoBehaviour
     [SerializeField] private CursorVisibility gameCursorVisibility = CursorVisibility.Default;
 
     private bool isResultShown = false;
+    public bool IsResultShown => isResultShown;
 
     public enum CursorVisibility
     {
@@ -56,7 +65,7 @@ public class ResultPopupController : MonoBehaviour
         if (failureImage != null)
             failureImage.SetActive(false);
 
-        PlayVictoryParticles();
+        PlayVictoryParticlesByScore();
 
         ApplyResultCursor();
         Time.timeScale = 0f;
@@ -101,8 +110,7 @@ public class ResultPopupController : MonoBehaviour
         if (failureImage != null)
             failureImage.SetActive(false);
 
-        if (victoryParticlesRoot != null)
-            victoryParticlesRoot.SetActive(false);
+        HideVictoryParticleSets();
 
         if (defeatParticlesRoot != null)
             defeatParticlesRoot.SetActive(false);
@@ -140,19 +148,70 @@ public class ResultPopupController : MonoBehaviour
             Cursor.visible = false;
     }
 
-    private void PlayVictoryParticles()
+    private void PlayVictoryParticlesByScore()
     {
-        if (victoryParticlesRoot != null)
-            victoryParticlesRoot.SetActive(true);
+        HideVictoryParticleSets();
 
-        if (victoryParticles != null)
+        int score = 0;
+
+        if (Sg_ScoreManager.Inst != null)
+            score = Sg_ScoreManager.Inst.CurrentScore;
+
+        ScoreParticleSet selectedSet = null;
+
+        if (victoryParticleSets != null)
         {
-            foreach (var ps in victoryParticles)
+            for (int i = 0; i < victoryParticleSets.Length; i++)
             {
-                if (ps == null) continue;
+                ScoreParticleSet set = victoryParticleSets[i];
+
+                if (set == null)
+                    continue;
+
+                if (score >= set.minScore)
+                {
+                    if (selectedSet == null || set.minScore > selectedSet.minScore)
+                        selectedSet = set;
+                }
+            }
+        }
+
+        if (selectedSet == null)
+        {
+            Debug.LogWarning("[ResultPopupController] No matching victory particle set found.");
+            return;
+        }
+
+        if (selectedSet.root != null)
+            selectedSet.root.SetActive(true);
+
+        if (selectedSet.particles != null)
+        {
+            foreach (var ps in selectedSet.particles)
+            {
+                if (ps == null)
+                    continue;
+
                 ps.gameObject.SetActive(true);
                 ps.Play(true);
             }
+        }
+
+        Debug.Log($"[ResultPopupController] Victory Score: {score}, Selected Particle Grade: {selectedSet.gradeName}");
+    }
+
+    private void HideVictoryParticleSets()
+    {
+        if (victoryParticleSets == null)
+            return;
+
+        foreach (var set in victoryParticleSets)
+        {
+            if (set == null)
+                continue;
+
+            if (set.root != null)
+                set.root.SetActive(false);
         }
     }
 
@@ -165,7 +224,9 @@ public class ResultPopupController : MonoBehaviour
         {
             foreach (var ps in defeatParticles)
             {
-                if (ps == null) continue;
+                if (ps == null)
+                    continue;
+
                 ps.gameObject.SetActive(true);
                 ps.Play(true);
             }
