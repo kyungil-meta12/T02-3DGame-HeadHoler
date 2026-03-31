@@ -71,6 +71,8 @@ public class UI_GameResultScoreList : MonoBehaviour
             sb.AppendLine($"{entry.label}   {amountText}");
         }
 
+
+
         return sb.ToString();
     }
 
