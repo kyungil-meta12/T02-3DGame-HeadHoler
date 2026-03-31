@@ -137,6 +137,7 @@ public class Entity : MonoBehaviour
     {
         var behavior = GetComponent<BehaviorGraphAgent>();
         var regController = GetComponent<RagdollController>();
+        var agent = GetComponent<NavMeshAgent>();
         if (behavior.GetVariable<bool>("isHurt", out var isHurt))
         {
             isHurt.Value = true;
@@ -144,6 +145,7 @@ public class Entity : MonoBehaviour
             {
                 currentHP = 0f;
                 behavior.enabled = false;
+                agent.isStopped = true;
                 regController.EnableRagdoll();
                 regController.headCollider.attachedRigidbody.AddForce(direction * 200f, ForceMode.Impulse); // 맞은 방향으로 힘 가함
                 print("headshot");
@@ -159,6 +161,7 @@ public class Entity : MonoBehaviour
                         if (currentHP <= 0f)
                         {
                             behavior.enabled = false;
+                            agent.isStopped = true;
                             regController.EnableRagdoll();
                             c.attachedRigidbody.AddForce(direction * 200f, ForceMode.Impulse); // 죽은 이후에는 맞은 방향으로 힘 가함
                         }

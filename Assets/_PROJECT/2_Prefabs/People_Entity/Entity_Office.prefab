@@ -483,8 +483,6 @@ GameObject:
   - component: {fileID: 8069406678470705957}
   - component: {fileID: 212889093893185943}
   - component: {fileID: 9012789382840960400}
-  - component: {fileID: 6187712208672818035}
-  - component: {fileID: 1657394026638219751}
   - component: {fileID: 6785212003250099234}
   - component: {fileID: 5751549092392070028}
   - component: {fileID: 4149120860568308002}
@@ -556,56 +554,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!136 &6187712208672818035
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2995414374522739281}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.15
-  m_Height: 1.8
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.9, z: 0}
---- !u!54 &1657394026638219751
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2995414374522739281}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 80
-  m_CollisionDetection: 0
 --- !u!114 &6785212003250099234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -646,7 +594,6 @@ MonoBehaviour:
   devMode: 0
   scoreOnDeath: 100
   giveScoreOnDeath: 1
-  psCollider: {fileID: 0}
 --- !u!114 &5751549092392070028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -661,6 +608,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Entity
   myTeam: 0
   myRole: 0
+  maxHP: 100
   isMale: 1
   rendererIndex: 0
   equipIndex: 99
@@ -692,7 +640,6 @@ MonoBehaviour:
   animatorControllers:
   - {fileID: 9100000, guid: 2a45438e9bd213640a54077f85aca7ac, type: 2}
   - {fileID: 9100000, guid: b8d0e2061dccdab469ad507b287b4fce, type: 2}
-  currentHP: 200
 --- !u!114 &4149120860568308002
 MonoBehaviour:
   m_ObjectHideFlags: 0

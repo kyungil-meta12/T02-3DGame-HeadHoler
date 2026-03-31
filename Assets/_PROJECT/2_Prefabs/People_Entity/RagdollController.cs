@@ -18,16 +18,16 @@ public class RagdollController : MonoBehaviour
 
     private Animator anim;
     [HideInInspector]
-    public CapsuleCollider psCollider; // 물리 시뮬레이션용 콜라이더
-    private Rigidbody psRigidBody; // 물리 시뮬레이션용 리지드 바디
+   // public CapsuleCollider psCollider; // 물리 시뮬레이션용 콜라이더
+    //private Rigidbody psRigidBody; // 물리 시뮬레이션용 리지드 바디
     private SkinnedMeshRenderer smr; // 스킨드메쉬렌더러
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         anim = GetComponent<Animator>();
-        psCollider = GetComponent<CapsuleCollider>();
-        psRigidBody = GetComponent<Rigidbody>();
+        //psCollider = GetComponent<CapsuleCollider>();
+        //psRigidBody = GetComponent<Rigidbody>();
         smr = GetComponentInChildren<SkinnedMeshRenderer>();
     }
 
@@ -56,19 +56,19 @@ public class RagdollController : MonoBehaviour
 
     public void EnableRagdoll()
     {
-        var currLnVel = psRigidBody.linearVelocity * 1.5f;
-        var currAnVel = psRigidBody.angularVelocity;
+        //var currLnVel = psRigidBody.linearVelocity * 1.5f;
+        //var currAnVel = psRigidBody.angularVelocity;
 
-        psRigidBody.isKinematic = true;
-        psCollider.enabled = false;
+      //  psRigidBody.isKinematic = true;
+       // psCollider.enabled = false;
         anim.enabled = false;
 
         foreach (var rb in ragdollBodies)
         {
             rb.isKinematic = false;
             rb.useGravity = true;
-            rb.linearVelocity = currLnVel;
-            rb.angularVelocity = currAnVel;
+           // rb.linearVelocity = currLnVel;
+           // rb.angularVelocity = currAnVel;
             rb.linearDamping = 0.1f;
         }
 
