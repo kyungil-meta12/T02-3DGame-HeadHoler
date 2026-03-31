@@ -9,6 +9,14 @@ public class ResultPopupController : MonoBehaviour
     [SerializeField] private GameObject successImage;
     [SerializeField] private GameObject failureImage;
 
+    [Header("Particle Roots")]
+    [SerializeField] private GameObject victoryParticlesRoot;
+    [SerializeField] private GameObject defeatParticlesRoot;
+
+    [Header("Particle Systems")]
+    [SerializeField] private ParticleSystem[] victoryParticles;
+    [SerializeField] private ParticleSystem[] defeatParticles;
+
     [Header("Cursor Settings")]
     [SerializeField] private CursorLockMode resultCursorState = CursorLockMode.None;
     [SerializeField] private CursorLockMode gameCursorState = CursorLockMode.Locked;
@@ -48,6 +56,8 @@ public class ResultPopupController : MonoBehaviour
         if (failureImage != null)
             failureImage.SetActive(false);
 
+        PlayVictoryParticles();
+
         ApplyResultCursor();
         Time.timeScale = 0f;
     }
@@ -71,6 +81,8 @@ public class ResultPopupController : MonoBehaviour
         if (failureImage != null)
             failureImage.SetActive(true);
 
+        PlayDefeatParticles();
+
         ApplyResultCursor();
         Time.timeScale = 0f;
     }
@@ -88,6 +100,12 @@ public class ResultPopupController : MonoBehaviour
 
         if (failureImage != null)
             failureImage.SetActive(false);
+
+        if (victoryParticlesRoot != null)
+            victoryParticlesRoot.SetActive(false);
+
+        if (defeatParticlesRoot != null)
+            defeatParticlesRoot.SetActive(false);
     }
 
     /// <summary>
@@ -120,5 +138,37 @@ public class ResultPopupController : MonoBehaviour
             Cursor.visible = true;
         else if (gameCursorVisibility == CursorVisibility.Invisible)
             Cursor.visible = false;
+    }
+
+    private void PlayVictoryParticles()
+    {
+        if (victoryParticlesRoot != null)
+            victoryParticlesRoot.SetActive(true);
+
+        if (victoryParticles != null)
+        {
+            foreach (var ps in victoryParticles)
+            {
+                if (ps == null) continue;
+                ps.gameObject.SetActive(true);
+                ps.Play(true);
+            }
+        }
+    }
+
+    private void PlayDefeatParticles()
+    {
+        if (defeatParticlesRoot != null)
+            defeatParticlesRoot.SetActive(true);
+
+        if (defeatParticles != null)
+        {
+            foreach (var ps in defeatParticles)
+            {
+                if (ps == null) continue;
+                ps.gameObject.SetActive(true);
+                ps.Play(true);
+            }
+        }
     }
 }
