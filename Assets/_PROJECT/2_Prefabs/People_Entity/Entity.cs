@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEditor.Animations;
 using UnityEngine;
 using Unity.Behavior;
+using System.Linq;
 
 
 public class Entity : MonoBehaviour
@@ -56,7 +57,7 @@ public class Entity : MonoBehaviour
         
         //소속, 순찰포인트 세팅
         behaviorGraphAgent.SetVariableValue("Role", myRole);
-        behaviorGraphAgent.SetVariableValue("PatrolPoints", patrolPoints);
+        behaviorGraphAgent.SetVariableValue("PatrolPoints", patrolPoints.ToList<GameObject>());
 
         //성별, 인덱스에 맞춰 랜더러 바꾸기
         if (isMale)

@@ -1430,7 +1430,7 @@ MonoBehaviour:
   - {fileID: 4443553614229218109}
   - {fileID: 3390285998628459726}
   - {fileID: 346308392135187772}
-  headCollider: {fileID: 0}
+  headCollider: {fileID: 2832274772372817190}
   devMode: 0
   scoreOnDeath: 100
   giveScoreOnDeath: 1
@@ -1452,6 +1452,7 @@ MonoBehaviour:
   isMale: 1
   rendererIndex: 0
   equipIndex: 99
+  patrolPoints: []
   maleRenderMeshes:
   - {fileID: 4300012, guid: 0045ffb477e043a46950af7e617beb06, type: 3}
   - {fileID: 4300040, guid: 0045ffb477e043a46950af7e617beb06, type: 3}
@@ -1531,6 +1532,7 @@ MonoBehaviour:
   animatorControllers:
   - {fileID: 9100000, guid: 2a45438e9bd213640a54077f85aca7ac, type: 2}
   - {fileID: 9100000, guid: b8d0e2061dccdab469ad507b287b4fce, type: 2}
+  currentHP: 200
 --- !u!114 &2875999528283478079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1546,7 +1548,6 @@ MonoBehaviour:
   m_Graph: {fileID: -74240295876975623, guid: c2bf0769d78dc6041ba8e637dc73b504, type: 2}
   m_BlackboardVariableOverridesList:
   - rid: 5993128508020752461
-  - rid: 5993128508020752462
   - rid: 5993128508020752463
   m_OriginalGraph: {fileID: -74240295876975623, guid: c2bf0769d78dc6041ba8e637dc73b504, type: 2}
   m_IsInitialised: 0
@@ -1562,14 +1563,6 @@ MonoBehaviour:
           m_Value1: 0
         Name: Self
         m_Value: {fileID: 3846790828113108434}
-    - rid: 5993128508020752462
-      type: {class: 'BlackboardVariable`1[[UnityEngine.AI.NavMeshAgent, UnityEngine.AIModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
-      data:
-        GUID:
-          m_Value0: 17021470527195528644
-          m_Value1: 4040732125822195280
-        Name: NavMeshAgent
-        m_Value: {fileID: 7973818215260277969}
     - rid: 5993128508020752463
       type: {class: 'BlackboardVariable`1[[UnityEngine.Animator, UnityEngine.AnimationModule]]', ns: Unity.Behavior, asm: Unity.Behavior}
       data:

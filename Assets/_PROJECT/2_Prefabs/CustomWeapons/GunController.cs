@@ -74,12 +74,14 @@ public class GunController : MonoBehaviour
                 var direction = ray.direction;
                 direction.y = 0f;
                 entityComp.Hit(hit, direction, damage);
+                Sg_HitIndicator.Inst.InputHit();
                 break;
             }
 
             if (obstacleComp) // 상호작용 장애물인 경우
             {
                 print("interactive obstacle hit");
+                Sg_HitIndicator.Inst.InputHit();
                 break;
             }
 
