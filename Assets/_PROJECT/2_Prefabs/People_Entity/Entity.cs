@@ -117,7 +117,6 @@ public class Entity : MonoBehaviour
                 behavior.enabled = false;
                 regController.EnableRagdoll();
                 regController.headCollider.attachedRigidbody.AddForce(direction * 200f, ForceMode.Impulse); // 맞은 방향으로 힘 가함
-                Sg_HitIndicator.Inst.InputHit(); // 명중 피드백 설정
                 print("headshot");
             }
             else
@@ -134,7 +133,6 @@ public class Entity : MonoBehaviour
                             regController.EnableRagdoll();
                             c.attachedRigidbody.AddForce(direction * 200f, ForceMode.Impulse); // 죽은 이후에는 맞은 방향으로 힘 가함
                         }
-                        Sg_HitIndicator.Inst.InputHit(); // 명중 피드백 설정
                         print("not headshot");
                         print($"current HP: {currentHP}");
                         break;
