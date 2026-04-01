@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class JukeboxButton : MonoBehaviour
+public class JukeboxButton : Obstacle
 {
 	private Jukebox jukebox;
 
@@ -10,11 +10,14 @@ public class JukeboxButton : MonoBehaviour
 	}
 
 	[ContextMenu("테스트")]
-	public void OnButtonHit()
+	public override void Hit(Vector3 hitPoint)
 	{
 		if (jukebox != null)
 		{
 			jukebox.ButtonHit();
 		}
 	}
+	
+	protected override void UniqueInteraction(){}
+	protected override void OnCollisionEnter(Collision collision){}
 }

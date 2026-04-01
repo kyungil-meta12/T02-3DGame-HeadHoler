@@ -12,7 +12,7 @@ public class HitSound : MonoBehaviour
     public float maxSoundRadius = 5f;
     
     private SphereCollider hitSound;
-    private bool isGunShot = false;
+    public bool isGunShot = false;
 
     private void Awake()
     {
@@ -26,9 +26,9 @@ public class HitSound : MonoBehaviour
     }
     private IEnumerator SoundCoroutine() //소리범위를 늘려준다.
     {
-        hitSound.radius = 0f;       //소리 감지영역 크기 초기화
+        hitSound.radius = 0f;
         hitSound.enabled = true;
-        float time = 0f;    //소리 퍼지는 시간 초기화
+        float time = 0f; 
 
         while (time < soundTimer)
         {
@@ -39,9 +39,11 @@ public class HitSound : MonoBehaviour
 
             yield return null;
         }
+        hitSound.enabled = false;
     }
     
-    private void OnTriggerEnter(Collider other)//소리범위에 시민이나 적이 닿았을때 Character의 메서드를 호출한다.
+    //소리범위에 닿았을때 Entity AlertTarget에 해당 지점 참조
+    private void OnTriggerEnter(Collider other)
     {
         // Character character = other.GetComponent<Character>();  //부딪친 오브젝트가 Character컴포넌트가 있는지 확인
         // if(character != null)

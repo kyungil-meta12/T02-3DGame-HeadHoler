@@ -76,8 +76,15 @@ public class GunController : MonoBehaviour
                 print("people hit");
                 var direction = ray.direction;
                 direction.y = 0f;
-                entityComp.Hit(hit, direction, damage);
-                if(hitSoundPrefab)Instantiate(hitSoundPrefab, hit.point, Quaternion.identity);
+                entityComp.Hit(hit.collider, direction, damage);
+                if (hitSoundPrefab)
+                {
+                    //사운드 콜라이더 생성, isGunShot = true
+                    GameObject hitSound;
+                    hitSound = Instantiate(hitSoundPrefab, hit.transform);
+                    hitSound.GetComponent<HitSound>().isGunShot = true;
+                }
+                
                 Sg_HitIndicator.Inst.InputHit();
                 break;
             }

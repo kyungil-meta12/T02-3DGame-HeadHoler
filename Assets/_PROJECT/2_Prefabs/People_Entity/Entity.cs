@@ -133,7 +133,7 @@ public class Entity : MonoBehaviour
         }
     }
 
-    public void Hit(RaycastHit hit, Vector3 direction, float dmg)
+    public void Hit(Collider col, Vector3 direction, float dmg)
     {
         var behavior = GetComponent<BehaviorGraphAgent>();
         var regController = GetComponent<RagdollController>();
@@ -141,7 +141,7 @@ public class Entity : MonoBehaviour
         if (behavior.GetVariable<bool>("isHurt", out var isHurt))
         {
             isHurt.Value = true;
-            if (hit.collider == regController.headCollider)
+            if (col == regController.headCollider)
             {
                 currentHP = 0f;
                 behavior.enabled = false;
@@ -154,7 +154,7 @@ public class Entity : MonoBehaviour
             {
                 foreach (var c in regController.ragdollColliders)
                 {
-                    if (hit.collider == c)
+                    if (col == c)
                     {
                         currentHP -= dmg;
                         currentHP = Mathf.Clamp(currentHP, 0f, 999f);

@@ -26,12 +26,16 @@ public class Obstacle : MonoBehaviour
     상속을 자주 쓰는 이유
     시민 - 농부, 목수, ... 종류를 여러가지 추가해도 Character만 상속하면 Obstacle과 상호작용가능.
     */
-
 	
+	//todo Entity의 Hit(RaycastHit hit, Vector3 direction, float dmg) 호출해서 데미지 입히기
+
+	public GameObject hitSoundPrefab;
 	
 	public FractureGeometry[] explosives;   //파괴할 오브젝트
 
 	public bool fragile; //부서질수있음
+
+	public float damage = 50f;
 
 	[ContextMenu("테스트")]
 	public void Test()

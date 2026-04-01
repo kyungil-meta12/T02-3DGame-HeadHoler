@@ -25,6 +25,8 @@ public class Jukebox : Obstacle
 			playEffect.SetActive(false);
 		}
 	}
+	
+	//버튼이 맞았을때 entity에게 변화를 감지시킨다
 	public void ButtonHit()	//자식 오브젝트(버튼) 명중 시 호출
 	{
 		buttonHitCount++;
@@ -47,23 +49,24 @@ public class Jukebox : Obstacle
 			Hit(transform.position);
 			return;
 		}
-		NotifyCharacter();
+		
+		if(hitSoundPrefab)Instantiate(hitSoundPrefab, transform.position, Quaternion.identity);
 	}
-
-	private void NotifyCharacter()
-	{
-		Collider[] listeners = Physics.OverlapSphere(transform.position, attractionRadius);
-
-		foreach (var hit in listeners)
-		{
-			Character character = hit.GetComponent<Character>();
-
-			if (character != null)
-			{
-				character.HearSound(transform);	//Character의 HearSound 활용
-			}
-		}
-	}
+	
+	// private void NotifyCharacter()
+	// {
+	// 	Collider[] listeners = Physics.OverlapSphere(transform.position, attractionRadius);
+	//
+	// 	foreach (var hit in listeners)
+	// 	{
+	// 		Character character = hit.GetComponent<Character>();
+	//
+	// 		if (character != null)
+	// 		{
+	// 			character.HearSound(transform);	//Character의 HearSound 활용
+	// 		}
+	// 	}
+	// }
 
 	protected override void UniqueInteraction()
 	{
@@ -71,8 +74,6 @@ public class Jukebox : Obstacle
 		{
 			playEffect.SetActive(false);
 		}
-
-		NotifyCharacter();
 
 		if (destroyedSparkPrefab != null && smokePrefab != null)
 		{

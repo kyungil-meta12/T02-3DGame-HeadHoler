@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class AirVentBase : MonoBehaviour
+public class AirVentBase : Obstacle
 {
 	private Rigidbody rb;
 	private bool isFalling = false;
@@ -58,5 +58,22 @@ public class AirVentBase : MonoBehaviour
 
 		transform.position = endPosition;
 		transform.rotation = endRotation;
+	}
+	
+	protected override void OnCollisionEnter(Collision collision)
+	{
+		base.OnCollisionEnter(collision);
+
+		if (collision.gameObject.CompareTag("Entity"))
+		{
+			collision.gameObject.GetComponent<Entity>().Hit(
+				collision.collider,transform.position-collision.contacts[0].point, damage);
+		}
+
+		if (collision.gameObject.CompareTag("Ground"))
+		{
+			Hit(transform.position);
+			Instantiate(hitSoundPrefab, transform.position, Quaternion.identity);
+		}
 	}
 }

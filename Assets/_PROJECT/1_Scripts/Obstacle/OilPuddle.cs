@@ -6,10 +6,14 @@ public class OilPuddle : Obstacle
 	[Header("기름 확산 설정")]
 	public float spreadTime = 10f;
 	public float maxRadius = 3f;        //퍼지는 범위
+	[Header("기름 불타서 없어지는 시간")]
+	public float reduceTime = 10f;
 
 	private float elapsed = 0f;
+	private float elapsed2 = 0f;
 
 	public GameObject fireEffect;       //vfx_Flames_01 1
+	private bool isBurn = false;
 
 	private void Start()
 	{
@@ -33,6 +37,20 @@ public class OilPuddle : Obstacle
 		}
 
 		transform.localScale = targetScale;
+		
+		//fireEffect가 켜지기 전까지 대기, fireEffect가 켜진 것을 감지하고 scale 0까지줄이기, scale 0 되면 Destroy
+		while (elapsed < reduceTime)
+		{
+			elapsed2 += Time.deltaTime;
+
+			float spreadOil = elapsed2 / reduceTime;
+
+			transform.localScale = Vector3.Lerp(targetScale, Vector3.zero, spreadOil);
+
+			yield return null;
+		}
+		
+		Destroy(gameObject);
 	}
 
 	protected override void UniqueInteraction()
@@ -40,6 +58,21 @@ public class OilPuddle : Obstacle
 		if (fireEffect != null)
 		{
 			fireEffect.SetActive(true);
+			isBurn = true;
+		}
+	}
+
+	protected override void OnCollisionEnter(Collision collision)
+	{
+		base.OnCollisionEnter(collision);
+
+		if (isBurn && collision.gameObject.CompareTag("Entity"))
+		{
+			//entity Hit()
+			collision.gameObject.GetComponent<Entity>().Hit(
+				collision.collider,transform.position-collision.contacts[0].point, damage);
+			//entity 불태우기 todo 중복처리 필요
+			Destroy(Instantiate(fireEffect, collision.transform),3f);
 		}
 	}
 }

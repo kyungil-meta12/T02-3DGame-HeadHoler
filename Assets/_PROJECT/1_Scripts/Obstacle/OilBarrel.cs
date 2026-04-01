@@ -52,7 +52,7 @@ public class OilBarrel : Obstacle
 	}
 	*/
 
-	public void OnShot(RaycastHit hitPos)	//명중 좌표
+	public override void Hit(Vector3 vec)	//명중 좌표
 	{
 		if (isLeaking)  //드럼통을 이미 맞췄으면
 		{
@@ -64,13 +64,13 @@ public class OilBarrel : Obstacle
 		if (oilStream != null)
 		{
 			//기름 줄기 회전값(새는 방향)
-			Vector3 leakingDir = (hitPos.point - transform.position).normalized;
+			Vector3 leakingDir = (vec - transform.position).normalized;
 			leakingDir.y = 0;
 			Quaternion leakingRotation = Quaternion.LookRotation(leakingDir);
 
 			Quaternion lastRotation = leakingRotation * oilStream.transform.rotation;	//기름줄기 프리팹 회전값 적용
 
-			GameObject stream = Instantiate(oilStream, hitPos.point, lastRotation);  //총알맞은 좌표에 기름 줄기 생성
+			GameObject stream = Instantiate(oilStream, vec, lastRotation);  //총알맞은 좌표에 기름 줄기 생성
 			stream.transform.SetParent(this.transform); //드럼통을 부모로 기름 줄기 생성
 
 			//웅덩이 생성좌표
@@ -82,14 +82,14 @@ public class OilBarrel : Obstacle
 				Vector3 puddlePos = Vector3.zero;
 
 				//기름 줄기가 바닥에 떨어지는 좌표 계산(각 거리 계산)
-				Vector3 streamTraceMid = (dropPointMid.position - hitPos.point).normalized; //명중좌표~중간좌표 방향 체크
-				float distToMid = Vector3.Distance(hitPos.point, dropPointMid.position);	//명중좌표~중간좌표 거리
+				Vector3 streamTraceMid = (dropPointMid.position - vec).normalized; //명중좌표~중간좌표 방향 체크
+				float distToMid = Vector3.Distance(vec, dropPointMid.position);	//명중좌표~중간좌표 거리
 
 				Vector3 streamTraceEnd = (dropPoint.position - dropPointMid.position).normalized; //중간좌표~끝좌표 방향 체크
 				float distToEnd = Vector3.Distance(dropPointMid.position, dropPoint.position);    //중간좌표~끝좌표 거리
 
 
-				if (Physics.Raycast(hitPos.point, streamTraceMid, out RaycastHit groundHitMid, distToMid, groundLayer))	//중간좌표 방향 사이에 땅표면이 있으면
+				if (Physics.Raycast(vec, streamTraceMid, out RaycastHit groundHitMid, distToMid, groundLayer))	//중간좌표 방향 사이에 땅표면이 있으면
 				{
 					puddlePos = groundHitMid.point + (Vector3.up * 0.001f);
 				}
@@ -103,7 +103,7 @@ public class OilBarrel : Obstacle
 				}
 				else //예외 상황(땅 표면이 너무 멀거나 안잡히는 경우)
 				{
-					puddlePos = new Vector3(hitPos.point.x, transform.position.y + 0.001f, hitPos.point.z);	//드럼통 바닥에 생성
+					puddlePos = new Vector3(vec.x, transform.position.y + 0.001f, vec.z);	//드럼통 바닥에 생성
 				}
 				
 				GameObject puddleObj = Instantiate(oilPuddle, puddlePos, Quaternion.identity);
@@ -119,7 +119,10 @@ public class OilBarrel : Obstacle
 			}
 		}
 	}
-
+	
+	protected override void UniqueInteraction(){}
+	protected override void OnCollisionEnter(Collision collision){}
+	
 	IEnumerator StopStream(GameObject stream, float delay)
 	{
 		yield return new WaitForSeconds(delay);
