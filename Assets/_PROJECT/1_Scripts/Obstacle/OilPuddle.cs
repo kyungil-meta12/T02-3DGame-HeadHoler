@@ -72,7 +72,20 @@ public class OilPuddle : Obstacle
 			collision.gameObject.GetComponent<Entity>().Hit(
 				collision.collider,transform.position-collision.contacts[0].point, damage);
 			//entity 불태우기 todo 중복처리 필요
-			Destroy(Instantiate(fireEffect, collision.transform),3f);
+			bool isIgnite = false;
+			foreach (Transform child in collision.transform)
+			{
+				if (child.name.StartsWith(fireEffect.name))
+				{
+					isIgnite = true;
+					break;
+				}
+			}
+
+			if (isIgnite == false)
+			{
+				Destroy(Instantiate(fireEffect, collision.transform), 3f);
+			}
 		}
 	}
 }

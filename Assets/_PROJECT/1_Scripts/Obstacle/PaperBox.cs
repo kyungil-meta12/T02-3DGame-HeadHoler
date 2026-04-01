@@ -40,4 +40,9 @@ public class PaperBox : Obstacle
 			gameObject.SetActive(false); //종이박스 삭제
 		}
 	}
+
+	protected override void OnCollisionEnter(Collision collision)
+	{
+
+	}
 }

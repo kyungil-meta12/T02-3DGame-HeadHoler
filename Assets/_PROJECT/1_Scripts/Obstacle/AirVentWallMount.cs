@@ -13,4 +13,5 @@ public class AirVentWallMount : Obstacle
 
 		base.UniqueInteraction();
 	}
+
 }
