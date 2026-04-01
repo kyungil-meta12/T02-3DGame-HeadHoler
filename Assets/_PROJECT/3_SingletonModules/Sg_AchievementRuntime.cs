@@ -51,8 +51,8 @@ public class Sg_AchievementRuntime : MonoBehaviour
             case "Test":
                 if (cleared)
                     AchievementManager.SetAchievement("테스트 스테이지 클리어", true);
-                if (cleared && score >= 1000)
-                    AchievementManager.SetAchievement("테스트 스테이지 1000점 달성", true);
+                if (cleared && score >= 4000)
+                    AchievementManager.SetAchievement("테스트 스테이지 4000점 달성", true);
                 break;
 
             case "StageScene_00":
