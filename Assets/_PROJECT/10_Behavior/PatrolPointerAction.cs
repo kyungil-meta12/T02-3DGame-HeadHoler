@@ -22,7 +22,7 @@ public partial class PatrolPointerAction : Action
             return Status.Failure;
         }
         
-        if (PatrolPoints.Value == null) return Status.Success;
+        if (PatrolPoints.Value == null || PatrolPoints.Value.Count == 0) return Status.Success;
 
         int currentIndex = 0;
 

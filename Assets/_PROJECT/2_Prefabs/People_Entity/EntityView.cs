@@ -37,6 +37,7 @@ public class EntityView : MonoBehaviour
         {
             foreach (Collider col in colliders)
             {
+                if (col == null) continue;
                 if (col.CompareTag("Evidence"))
                 {
                     Vector3 dirToTarget = (col.transform.position - transform.position).normalized;
