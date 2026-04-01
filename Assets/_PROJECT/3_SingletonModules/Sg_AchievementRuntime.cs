@@ -9,6 +9,7 @@ public class Sg_AchievementRuntime : MonoBehaviour
     [SerializeField] private string selectedStageId;
 
     [Header("Stage Score Thresholds")]
+    [SerializeField] private int testScoreThreshold = 4000;
     [SerializeField] private int stage00ScoreThreshold = 2000;
     [SerializeField] private int stage01ScoreThreshold = 3000;
     [SerializeField] private int stage02ScoreThreshold = 4000;
@@ -50,14 +51,21 @@ public class Sg_AchievementRuntime : MonoBehaviour
         {
             case "Test":
                 if (cleared)
+                {
                     AchievementManager.SetAchievement("테스트 스테이지 클리어", true);
-                if (cleared && score >= 4000)
+                    UpdateChapterProgress("Test", "StageScene_00");
+                }
+
+                if (cleared && score >= testScoreThreshold)
                     AchievementManager.SetAchievement("테스트 스테이지 4000점 달성", true);
                 break;
 
             case "StageScene_00":
                 if (cleared)
+                {
                     AchievementManager.SetAchievement("튜토리얼 스테이지 클리어", true);
+                    UpdateChapterProgress("StageScene_00", "01_StageScene");
+                }
 
                 if (cleared && score >= stage00ScoreThreshold)
                     AchievementManager.SetAchievement("튜토리얼 2000점 달성", true);
@@ -65,7 +73,10 @@ public class Sg_AchievementRuntime : MonoBehaviour
 
             case "01_StageScene":
                 if (cleared)
+                {
                     AchievementManager.SetAchievement("1스테이지 클리어", true);
+                    UpdateChapterProgress("01_StageScene", "02_StageScene");
+                }
 
                 if (cleared && score >= stage01ScoreThreshold)
                     AchievementManager.SetAchievement("1스테이지 3000점 달성", true);
@@ -73,7 +84,10 @@ public class Sg_AchievementRuntime : MonoBehaviour
 
             case "02_StageScene":
                 if (cleared)
+                {
                     AchievementManager.SetAchievement("2스테이지 클리어", true);
+                    UpdateChapterProgress("02_StageScene", "03_StageScene");
+                }
 
                 if (cleared && score >= stage02ScoreThreshold)
                     AchievementManager.SetAchievement("2스테이지 4000점 달성", true);
@@ -81,7 +95,10 @@ public class Sg_AchievementRuntime : MonoBehaviour
 
             case "03_StageScene":
                 if (cleared)
+                {
                     AchievementManager.SetAchievement("3스테이지 클리어", true);
+                    UpdateChapterProgress("03_StageScene", null);
+                }
 
                 if (cleared && score >= stage03ScoreThreshold)
                     AchievementManager.SetAchievement("3스테이지 5000점 달성", true);
@@ -93,5 +110,18 @@ public class Sg_AchievementRuntime : MonoBehaviour
         }
 
         PlayerPrefs.Save();
+    }
+
+    private void UpdateChapterProgress(string completedChapterId, string nextCurrentChapterId)
+    {
+        if (!string.IsNullOrEmpty(completedChapterId))
+        {
+            ChapterManager.SetCompleted(completedChapterId);
+        }
+
+        if (!string.IsNullOrEmpty(nextCurrentChapterId))
+        {
+            ChapterManager.SetCurrent(nextCurrentChapterId);
+        }
     }
 }
