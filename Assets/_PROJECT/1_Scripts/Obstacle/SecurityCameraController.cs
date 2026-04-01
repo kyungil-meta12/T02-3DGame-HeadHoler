@@ -102,4 +102,10 @@ public class SecurityCameraController : Obstacle
 			}
 		}
 	}
+	//Todo : 카메라를 사격하면 떨어지도록 구현. 가급적 조각나지 않고 그냥 떨어지게 할 예정
+	protected override void UniqueInteraction()
+	{
+		base.UniqueInteraction();
+	}
+	protected override void OnCollisionEnter(Collision collision) { }
 }
