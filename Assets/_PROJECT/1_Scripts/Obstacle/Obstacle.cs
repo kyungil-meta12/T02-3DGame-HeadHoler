@@ -94,4 +94,9 @@ public class Obstacle : MonoBehaviour
 			Hit(collision.transform.position);
 		}
 	}
+	
+	public virtual void ScanComplete()
+	{
+		Destroy(gameObject);
+	}
 }

@@ -24,4 +24,9 @@ public class Sg_GameManager : MonoBehaviour
     {
         Inst = null;
     }
+    
+    public void GameOver()
+    {
+        print("Game Over.");
+    }
 }

@@ -72,8 +72,8 @@ public class AirVentBase : Obstacle
 
 		if (collision.gameObject.CompareTag("Ground"))
 		{
-			Hit(transform.position);
 			Instantiate(hitSoundPrefab, transform.position, Quaternion.identity);
+			Hit(transform.position);
 		}
 	}
 }

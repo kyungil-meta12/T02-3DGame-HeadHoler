@@ -18,16 +18,12 @@ public partial class DeadAction : Action
             return Status.Failure;
         }
 
-        // 1. 내 오브젝트에서 BehaviorGraphAgent 컴포넌트 찾기
-        BehaviorGraphAgent agent = Self.Value.GetComponent<BehaviorGraphAgent>();
+        Entity myEntity = Self.Value.GetComponent<Entity>();
         
-        if (agent != null)
+        if (myEntity != null)
         {
-            //// 2. 인스펙터 창의 체크박스를 해제하는 것과 똑같은 기능!
-            agent.enabled = false;
-
-            //var regController = agent.gameObject.GetComponent<RagdollController>();
-            //regController.EnableRagdoll();
+            myEntity.Die();
+            
             //Debug.Log($"{Self.Value.name}의 AI가 완전히 정지되었습니다 (사망 처리).");
         }
         else

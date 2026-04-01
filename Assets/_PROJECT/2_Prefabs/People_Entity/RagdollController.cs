@@ -62,6 +62,14 @@ public class RagdollController : MonoBehaviour
       //  psRigidBody.isKinematic = true;
        // psCollider.enabled = false;
         anim.enabled = false;
+        
+        //시체 태그로 변경
+        gameObject.tag = "Evidence";
+        Transform[] allChildren = gameObject.GetComponentsInChildren<Transform>(true);
+        foreach (Transform child in allChildren)
+        {
+            child.gameObject.tag = "Evidence";
+        }
 
         foreach (var rb in ragdollBodies)
         {

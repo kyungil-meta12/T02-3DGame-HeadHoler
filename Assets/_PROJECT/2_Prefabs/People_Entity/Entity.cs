@@ -12,6 +12,8 @@ public class Entity : MonoBehaviour
 {
     private static readonly int isAlert = Animator.StringToHash("isAlert");
     [Header("======세팅======")]
+    [Header("**PatrolPoint 씬에 배치하고 참조 필수**")]
+    [Header("**시작 전 우클릭 -> 랜더러 및 머리장비 세팅 필수**")]
     [Header("소속")]
     public Team myTeam;
     public Role myRole;
@@ -25,8 +27,6 @@ public class Entity : MonoBehaviour
     public int equipIndex = 99;
     [Header("순찰 포인트")]
     public List<GameObject> patrolPoints;
-    [Header("경계 지속시간")]
-    public static float alertTimer = 5f;
 
     private static readonly int Speed = Animator.StringToHash("Speed");
 
@@ -39,16 +39,13 @@ public class Entity : MonoBehaviour
     public GameObject[] equips;
     [Header("애니메이터 컨트롤러")]
     public AnimatorController[] animatorControllers;
-
-    internal int alertLevel;
     
     private Animator animator;
     private SkinnedMeshRenderer rend;
-    private BehaviorGraphAgent behaviorGraphAgent;
-    private RagdollController ragdollController;
+    private BehaviorGraphAgent behavior;
+    private RagdollController regController;
     private NavMeshAgent agent;
     private float speed;
-    private Vector3 postPos;
 
     internal float currentHP;
 
@@ -56,21 +53,25 @@ public class Entity : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rend = GetComponentInChildren<SkinnedMeshRenderer>();
-        behaviorGraphAgent = GetComponent<BehaviorGraphAgent>();
-        ragdollController = GetComponent<RagdollController>();
+        behavior = GetComponent<BehaviorGraphAgent>();
+        regController = GetComponent<RagdollController>();
         agent = GetComponent<NavMeshAgent>();
     }
 
     private void Start()
     {
         Sg_GameManager.Inst.entities.Add(this);
-        behaviorGraphAgent.Init();
+        behavior.Init();
         
         //소속, 순찰포인트 세팅
-        behaviorGraphAgent.SetVariableValue("Role", myRole);
-        behaviorGraphAgent.SetVariableValue("PatrolPoints", patrolPoints);
+        behavior.SetVariableValue("Role", myRole);
+        behavior.SetVariableValue("PatrolPoints", patrolPoints);
         currentHP = maxHP;
+    }
 
+    [ContextMenu("랜더러 및 머리장비 세팅")]
+    public void MakeUp()
+    {
         //성별, 인덱스에 맞춰 랜더러 바꾸기
         if (isMale)
         {
@@ -88,19 +89,14 @@ public class Entity : MonoBehaviour
         //머리장비 바꾸기
         if (equipIndex < equips.Length)
         {
-            Instantiate(equips[equipIndex], ragdollController.headCollider.transform);
+            Instantiate(equips[equipIndex], regController.headCollider.transform);
         }
-        
-        //if(alertRoutine == null) alertRoutine = StartCoroutine(AlertTimer());
-        postPos = transform.position;
     }
 
     private void Update()
     {
-        //속도
-        
-        
-        if (!ragdollController.ragdollEnabled)
+        //애니메이터 속도전달
+        if (!regController.ragdollEnabled)
         {
             float speed = agent.desiredVelocity.magnitude;
             if (speed > 1f) speed = 1f;
@@ -115,29 +111,12 @@ public class Entity : MonoBehaviour
             Sg_GameManager.Inst.entities.Remove(this);
         }
     }
-    
-    //경계 루틴 : 일정시간 이후 경계 풀림
-    private Coroutine alertRoutine = null;
-    private WaitForSeconds alertWait = new WaitForSeconds(alertTimer);
-    private IEnumerator AlertTimer()
-    {
-        if(ragdollController.ragdollEnabled) yield break;
-        alertLevel += 1;
-        animator.SetBool(isAlert, alertLevel > 0);
-        while (alertLevel > 0)
-        {
-            yield return alertWait;
-            if(ragdollController.ragdollEnabled) yield break;
-            alertLevel -= 1;
-            animator.SetBool(isAlert, alertLevel > 0);
-        }
-    }
 
+    
+    
+    //총이나 충돌체에 맞았을때
     public void Hit(Collider col, Vector3 direction, float dmg)
     {
-        var behavior = GetComponent<BehaviorGraphAgent>();
-        var regController = GetComponent<RagdollController>();
-        var agent = GetComponent<NavMeshAgent>();
         if (behavior.GetVariable<bool>("isHurt", out var isHurt))
         {
             isHurt.Value = true;
@@ -148,7 +127,7 @@ public class Entity : MonoBehaviour
                 agent.isStopped = true;
                 regController.EnableRagdoll();
                 regController.headCollider.attachedRigidbody.AddForce(direction * 200f, ForceMode.Impulse); // 맞은 방향으로 힘 가함
-                print("headshot");
+                //print("headshot");
             }
             else
             {
@@ -160,17 +139,26 @@ public class Entity : MonoBehaviour
                         currentHP = Mathf.Clamp(currentHP, 0f, 999f);
                         if (currentHP <= 0f)
                         {
+                            currentHP = 0f;
                             behavior.enabled = false;
                             agent.isStopped = true;
                             regController.EnableRagdoll();
                             c.attachedRigidbody.AddForce(direction * 200f, ForceMode.Impulse); // 죽은 이후에는 맞은 방향으로 힘 가함
                         }
-                        print("not headshot");
-                        print($"current HP: {currentHP}");
+                        //print("not headshot");
+                        //print($"current HP: {currentHP}");
                         break;
                     }
                 }
             }
         }
+    }
+
+    public void Die()
+    {
+        currentHP = 0f;
+        behavior.enabled = false;
+        agent.isStopped = true;
+        regController.EnableRagdoll();
     }
 }

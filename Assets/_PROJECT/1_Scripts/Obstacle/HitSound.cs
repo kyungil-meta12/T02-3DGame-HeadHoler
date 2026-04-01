@@ -56,4 +56,9 @@ public class HitSound : MonoBehaviour
             other.gameObject.GetComponent<BehaviorGraphAgent>().SetVariableValue("AlertTarget", gameObject);
         }
     }
+
+    public void ScanComplete()
+    {
+        Destroy(gameObject);
+    }
 }

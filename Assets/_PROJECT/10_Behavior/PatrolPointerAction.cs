@@ -16,11 +16,13 @@ public partial class PatrolPointerAction : Action
 
     protected override Status OnStart()
     {
-        if (Self.Value == null ||  PatrolPoints.Value == null)
+        if (Self.Value == null)
         {
             //Debug.LogError("[PatrolPointerAction] Self or PatrolPoints is null! FAILURE");
             return Status.Failure;
         }
+        
+        if (PatrolPoints.Value == null) return Status.Success;
 
         int currentIndex = 0;
 

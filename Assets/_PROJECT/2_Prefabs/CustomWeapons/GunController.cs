@@ -82,6 +82,7 @@ public class GunController : MonoBehaviour
                     //사운드 콜라이더 생성, isGunShot = true
                     GameObject hitSound;
                     hitSound = Instantiate(hitSoundPrefab, hit.transform);
+                    hitSound.name = "hit(GunShot)";
                     hitSound.GetComponent<HitSound>().isGunShot = true;
                 }
                 

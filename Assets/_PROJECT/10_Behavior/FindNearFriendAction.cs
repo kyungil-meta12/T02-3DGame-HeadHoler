@@ -21,7 +21,8 @@ public partial class FindNearFriendAction : Action
 
         float minDistance = float.MaxValue;
         GameObject closestFriend = null;
-
+        BehaviorGraphAgent myAgent = Self.Value.GetComponent<BehaviorGraphAgent>();
+        
         foreach (var ent in Sg_GameManager.Inst.entities)
         {
             if (ent.gameObject == Self.Value) continue;
@@ -40,8 +41,6 @@ public partial class FindNearFriendAction : Action
 
         if (closestFriend != null)
         {
-            BehaviorGraphAgent myAgent = Self.Value.GetComponent<BehaviorGraphAgent>();
-        
             if (myAgent != null)
             {
                 myAgent.SetVariableValue(NearFriend.Value, closestFriend);
