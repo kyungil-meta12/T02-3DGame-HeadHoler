@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 23389142134594852}
   - component: {fileID: 64849406715264956}
   - component: {fileID: 4000107126684206887}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_Prop_Jukebox_01 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,6 +62,7 @@ MonoBehaviour:
   hitSoundPrefab: {fileID: 6646916530625809652, guid: 19e082466d116b44d97c210f0c8f6ebd, type: 3}
   explosives: []
   fragile: 1
+  damage: 50
   buttonHP: 3
   attractionRadius: 10
   destroyedSparkPrefab: {fileID: 1024167407391004, guid: 63baf4956cfa45d4aa5cd12cbc8b7689, type: 3}

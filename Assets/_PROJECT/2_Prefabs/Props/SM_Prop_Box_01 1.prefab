@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2718382129456983427}
   - component: {fileID: 8560564390551901249}
   - component: {fileID: 7214199401343167668}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_Prop_Box_01 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -130,15 +130,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 524e627244357fd48b970b73330ba1a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PaperBox
-  target: {fileID: 1627151179236616}
-  hitSound: {fileID: 0}
-  maxSoundRadius: 2
-  duration: 1
-  Explosives: []
+  hitSoundPrefab: {fileID: 0}
+  explosives: []
+  fragile: 0
+  damage: 50
   paperBundlePrefab: {fileID: 1810669288301686267, guid: 29f01c4c1690c334489c427f51efd91a, type: 3}
-  explosionForce: 2
-  upwardsModifier: 2
-  spreadRadius: 4
+  spreadRotation: 3
 --- !u!114 &2718382129456983427
 MonoBehaviour:
   m_ObjectHideFlags: 0

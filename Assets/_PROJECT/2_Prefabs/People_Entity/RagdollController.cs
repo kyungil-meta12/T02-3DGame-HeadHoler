@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static RagdollController;
 
 // 레이 피격 및 레그돌 활성화를 담당하는 모듈
 
@@ -10,9 +11,17 @@ public class RagdollController : MonoBehaviour
     public SphereCollider headCollider; // 헤드샷 구분용 콜라이더
     public bool devMode = false; // 활성화 시 spaceKey로 레그돌 활성화 가능
 
+    public enum ScoreMode
+    {
+        None,
+        Add,
+        Remove
+    }
+
     [Header("Score")]
+    [SerializeField] private ScoreMode scoreMode = ScoreMode.Add;
     [SerializeField] private int scoreOnDeath = 100;
-    [SerializeField] private bool giveScoreOnDeath = true;
+    [SerializeField] private string scoreLabelOnDeath = "Enemy Kill";
 
     internal bool ragdollEnabled = false;
 
@@ -89,13 +98,26 @@ public class RagdollController : MonoBehaviour
 
         ragdollEnabled = true;
 
-        if (giveScoreOnDeath && Sg_ScoreManager.Inst != null)
-        {
-            Sg_ScoreManager.Inst.AddScore(scoreOnDeath);
-        }
+        ApplyScore();
 
         // 렌더링 옵션 변경을 코루틴으로 한 프레임 미룸
         StartCoroutine(EnableOffscreenUpdateNextFrame());
+    }
+    private void ApplyScore()
+    {
+        if (Sg_ScoreManager.Inst == null || scoreOnDeath < 0)
+            return;
+
+        switch (scoreMode)
+        {
+            case ScoreMode.Add:
+                Sg_ScoreManager.Inst.AddScore(scoreOnDeath, scoreLabelOnDeath);
+                break;
+
+            case ScoreMode.Remove:
+                Sg_ScoreManager.Inst.RemoveScore(scoreOnDeath, scoreLabelOnDeath);
+                break;
+        }
     }
 
     private System.Collections.IEnumerator EnableOffscreenUpdateNextFrame()

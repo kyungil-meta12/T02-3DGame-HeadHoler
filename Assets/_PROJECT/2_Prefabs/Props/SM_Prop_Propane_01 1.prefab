@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 64712058148839506}
   - component: {fileID: 2824486201041727402}
   - component: {fileID: 5948089808732407456}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_Prop_Propane_01 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,6 +53,7 @@ MonoBehaviour:
   hitSoundPrefab: {fileID: 6646916530625809652, guid: 19e082466d116b44d97c210f0c8f6ebd, type: 3}
   explosives: []
   fragile: 1
+  damage: 50
 --- !u!114 &8783592420625256734
 MonoBehaviour:
   m_ObjectHideFlags: 0

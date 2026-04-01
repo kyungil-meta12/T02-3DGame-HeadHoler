@@ -24,6 +24,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Prop_AirVent_01 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 969042a04b67ce64a8a306a912e18b75, type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 969042a04b67ce64a8a306a912e18b75, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -115,6 +119,7 @@ MonoBehaviour:
   hitSoundPrefab: {fileID: 6646916530625809652, guid: 19e082466d116b44d97c210f0c8f6ebd, type: 3}
   explosives: []
   fragile: 1
+  damage: 50
   baseBody: {fileID: 4297464594422397802}
 --- !u!114 &110988959669255747
 MonoBehaviour:
@@ -195,6 +200,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1c8b059951b2a846a85d4308941d7c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AirVentBase
+  hitSoundPrefab: {fileID: 0}
+  explosives: []
+  fragile: 0
+  damage: 50
   rotationSpeed: 2
   forwardPush: 1
 --- !u!64 &683153116859504081

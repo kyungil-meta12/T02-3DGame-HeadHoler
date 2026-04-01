@@ -149,6 +149,7 @@ MonoBehaviour:
   hitSoundPrefab: {fileID: 6646916530625809652, guid: 19e082466d116b44d97c210f0c8f6ebd, type: 3}
   explosives: []
   fragile: 1
+  damage: 50
   lightOn: {fileID: 2100000, guid: 001a24da32d0ba5448ef7bc72d3aea06, type: 2}
   lightOff: {fileID: 2100000, guid: 8b43727d2e827b4408c5bf79f0ec7c17, type: 2}
   lampLight: {fileID: 6304767758180919419}
@@ -282,6 +283,10 @@ PrefabInstance:
     - target: {fileID: 100000, guid: e05292a117908484b8f0bb664bf154ff, type: 3}
       propertyPath: m_Name
       value: street_lamp_1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: e05292a117908484b8f0bb664bf154ff, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: e05292a117908484b8f0bb664bf154ff, type: 3}
       propertyPath: m_LocalScale.x

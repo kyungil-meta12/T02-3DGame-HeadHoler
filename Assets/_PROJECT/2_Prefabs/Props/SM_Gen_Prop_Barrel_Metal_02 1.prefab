@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1945992953656664667}
   - component: {fileID: 4388046513382528657}
   - component: {fileID: 1263147103}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: SM_Gen_Prop_Barrel_Metal_02 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -51,11 +51,12 @@ MonoBehaviour:
   hitSoundPrefab: {fileID: 6646916530625809652, guid: 19e082466d116b44d97c210f0c8f6ebd, type: 3}
   explosives: []
   fragile: 0
+  damage: 50
   oilStream: {fileID: 5949879041516141078, guid: 557db8ac077544a4f8fc143b4d7893e2, type: 3}
   oilPuddle: {fileID: 5350297917426347178, guid: 9b5482e4e79df99468ee27caec3adfe7, type: 3}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 1536
+    m_Bits: 1152
 --- !u!33 &1945992953656664667
 MeshFilter:
   m_ObjectHideFlags: 0
