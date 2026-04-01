@@ -6,9 +6,9 @@ using UnityEngine;
 public class EntityView : MonoBehaviour
 {
     [Header("시야 반경")]
-    public float radius;
+    public float radius = 10f;
     [Header("시야각")] 
-    public float viewAngle;
+    public float viewAngle = 90f;
     
     private Collider[] colliders = new Collider[30];
 

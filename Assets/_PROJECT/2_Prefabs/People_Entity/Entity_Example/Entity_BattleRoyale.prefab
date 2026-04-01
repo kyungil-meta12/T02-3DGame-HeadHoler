@@ -1274,6 +1274,7 @@ GameObject:
   - component: {fileID: 1546563265178323353}
   - component: {fileID: 1966544190378715642}
   - component: {fileID: 429149097033806361}
+  - component: {fileID: -7734021124898620361}
   - component: {fileID: 8436853378077391349}
   - component: {fileID: 2875999528283478079}
   m_Layer: 2
@@ -1308,7 +1309,7 @@ NavMeshAgent:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3846790828113108434}
   m_Enabled: 1
-  m_AgentTypeID: 0
+  m_AgentTypeID: -334000983
   m_Radius: 0.5
   m_Speed: 3.5
   m_Acceleration: 8
@@ -1434,7 +1435,20 @@ MonoBehaviour:
   devMode: 0
   scoreOnDeath: 100
   giveScoreOnDeath: 1
-  psCollider: {fileID: 0}
+--- !u!114 &-7734021124898620361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3846790828113108434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9015ddef5cec478e850c0fb8f02cc54e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EntityView
+  radius: 10
+  viewAngle: 90
 --- !u!114 &8436853378077391349
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1449,6 +1463,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Entity
   myTeam: 0
   myRole: 0
+  maxHP: 100
   isMale: 1
   rendererIndex: 0
   equipIndex: 99
@@ -1532,7 +1547,6 @@ MonoBehaviour:
   animatorControllers:
   - {fileID: 9100000, guid: 2a45438e9bd213640a54077f85aca7ac, type: 2}
   - {fileID: 9100000, guid: b8d0e2061dccdab469ad507b287b4fce, type: 2}
-  currentHP: 200
 --- !u!114 &2875999528283478079
 MonoBehaviour:
   m_ObjectHideFlags: 0
