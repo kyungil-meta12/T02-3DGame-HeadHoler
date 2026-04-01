@@ -70,7 +70,16 @@ public class ResultPopupController : MonoBehaviour
             finalScore = Sg_ScoreManager.Inst.CurrentScore;
 
         if (Sg_AchievementRuntime.Inst != null)
+        {
             Sg_AchievementRuntime.Inst.ProcessStageResult(finalScore, true);
+
+            string stageId = Sg_AchievementRuntime.Inst.SelectedStageId;
+            if (!string.IsNullOrEmpty(stageId))
+            {
+                Michsky.UI.Heat.ChapterManager.SetCompleted(stageId);                
+            }
+            PlayerPrefs.Save();
+        }
 
         PlayVictoryParticlesByScore();
 
