@@ -1,5 +1,6 @@
 
 using System;
+using System.Collections;
 using Unity.Behavior;
 using UnityEngine;
 
@@ -23,38 +24,64 @@ public class EntityView : MonoBehaviour
         behaviorGraphAgent = GetComponent<BehaviorGraphAgent>();
     }
 
-    private void Update()
+    private void Start()
     {
-        if (ragdollController.ragdollEnabled)
+        StartCoroutine(SearchCoroutine());
+    }
+    
+    private WaitForSeconds wait = new WaitForSeconds(1f);
+    private IEnumerator SearchCoroutine()
+    {
+        while (true)
         {
-            enabled = false;
-            return;
-        }
-        
-        Physics.OverlapSphereNonAlloc(transform.position, radius, colliders);
-        
-        if (colliders != null)
-        {
-            foreach (Collider col in colliders)
+            if (ragdollController.ragdollEnabled)
             {
-                if (col == null) continue;
-                if (col.CompareTag("Evidence"))
+                enabled = false;
+                yield break;
+            }
+
+            Physics.OverlapSphereNonAlloc(transform.position, radius, colliders);
+
+            if (colliders != null)
+            {
+                foreach (Collider col in colliders)
                 {
-                    Vector3 dirToTarget = (col.transform.position - transform.position).normalized;
-                    if (Vector3.Angle(transform.forward, dirToTarget) < viewAngle / 2)
+                    if (col == null) continue;
+                    GameObject evidence = null;
+                    if (col.GetComponentInParent<Entity>())
                     {
-                        float dst = Vector3.Distance(transform.position, col.transform.position);
-                        if (Physics.Raycast(transform.position, dirToTarget, dst,
-                                1<<LayerMask.NameToLayer("Entity")) 
-                            || Physics.Raycast(transform.position, dirToTarget, dst, 
-                                1<<LayerMask.NameToLayer("Obstacle")))
+                        evidence = col.GetComponentInParent<Entity>().gameObject;
+                    }
+                    else if(col.GetComponentInParent<Obstacle>())
+                    {
+                        evidence = col.GetComponentInParent<Obstacle>().gameObject;
+                    }
+                    if(evidence == null) continue;
+                    
+                    if (evidence.CompareTag("Evidence"))
+                    {
+                        Vector3 dirToTarget = (evidence.transform.position - transform.position).normalized;
+                        if (Vector3.Angle(transform.forward, dirToTarget) < viewAngle / 2)
                         {
-                            Debug.DrawRay(transform.position, dirToTarget, Color.red);
-                            behaviorGraphAgent.SetVariableValue("AlertTarget", col.transform.position);
+                            float dst = Vector3.Distance(transform.position, evidence.transform.position);
+                            if (Physics.Raycast(transform.position, dirToTarget, dst,
+                                    1 << LayerMask.NameToLayer("Entity"))
+                                || Physics.Raycast(transform.position, dirToTarget, dst,
+                                    1 << LayerMask.NameToLayer("Obstacle")))
+                            {
+                                Debug.DrawRay(transform.position, dirToTarget, Color.red);
+                                behaviorGraphAgent.GetVariable<GameObject>("AlertTarget", out var alertTarget);
+                                if (alertTarget.Value != evidence.gameObject)
+                                {
+                                    behaviorGraphAgent.SetVariableValue("AlertTarget", evidence.gameObject);
+                                }
+                            }
                         }
                     }
                 }
             }
+
+            yield return wait;
         }
     }
 }

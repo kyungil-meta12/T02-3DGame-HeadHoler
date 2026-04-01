@@ -2,6 +2,16 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Analysis & Debugging Policy
+
+**CRITICAL: Before analyzing or making claims about code behavior:**
+
+1. **Always search for relevant files first** - Use Grep, Glob, Read tools to find and examine actual code
+2. **Check for recent modifications** - Review the conversation history to see if code was already modified
+3. **Verify your findings** - Read the actual file contents before making definitive statements
+4. **Never claim something doesn't exist without checking** - Files, functions, and nodes may exist even if you haven't found them yet
+5. **For Behavior Tree issues** - ALWAYS consult `ENTITY_BEHAVIOR_TREE.md` which contains complete tree structure with line numbers and rid references
+
 ## Language Policy
 
 - **Documentation & MD files**: Write in English
@@ -90,56 +100,41 @@ The project uses **two separate AI systems** for NPCs:
 
 ##### Entity_00.asset Behavior Graph (`10_Behavior/Entity_00.asset`)
 
-**Blackboard Variables:**
-- `FurthestPoint` (GameObject) — Farthest patrol point
-- `PatrolPoint` (GameObject) — Current patrol target
-- `HelpTarget` (GameObject) — Target requesting help
-- `NearFriend` (GameObject) — Closest ally found by FindNearFriendAction
-- `AlertTarget` (GameObject) — Target causing alert state
-- `patrolSpeed` (float: 1.0) — Movement speed during patrol
-- `patrolWaitMinTime` (float: 5.0) — Minimum idle time at patrol point
-- `patrolWaitMaxTime` (float: 10.0) — Maximum idle time at patrol point
-- `helpTime` (float: 10.0) — Duration to help allies
-- `isHurt` (bool) — Damage state flag
-- `isHide` (bool) — Hide state flag
+**⚠️ CRITICAL: When analyzing or debugging Behavior Tree issues, ALWAYS refer to `ENTITY_BEHAVIOR_TREE.md` for the complete tree structure with line numbers and rid references.**
 
-**Tree Structure:**
-```
-Start
-└── Selector (Root)
-    └── BranchingCondition (Alert check)
-        ├── True → Alert Sequence
-        │   ├── CallFriendAction (radius-based alert propagation)
-        │   └── Sequence
-        │       ├── SetAnimatorBool (isAlert = true)
-        │       └── Sequence
-        │           ├── FindNearFriendAction (populate NearFriend)
-        │           └── Selector
-        │               └── BranchingCondition
-        │                   ├── True → Sequence (request help)
-        │                   └── False → Sequence (NullCheckCondition + fallback)
-        │
-        └── False → Patrol Sequence
-            ├── SetAnimatorBool (isAlert = false)
-            └── Selector
-                └── BranchingCondition (help request check)
-                    ├── True → Sequence
-                    │   ├── FindNearFriendAction
-                    │   └── Selector
-                    │       └── BranchingCondition (NullCheckCondition)
-                    │           ├── True → HelpFriendAction
-                    │           └── False → EscapeAction
-                    │
-                    └── False → PatrolPointerAction
-```
+**Quick Reference - Role-Based Branching:**
+- **Enemy_None** (Sequence rid: 8995693995185668569, line: 2182): Aggressive combat → Navigate to AlertTarget → ParallelAll (LookAt + CallFriend/WaitRange)
+- **Citizen_None** (Sequence rid: 8995693995185668570, line: 2197): Investigation → Navigate to AlertTarget → ParallelAll (LookAt + Wait/ScanTarget/ClearAlert)
+- **Citizen_Police** (Sequence rid: 8995693995185668571, line: 2212): Professional response → Navigate → CallBackup → ParallelAll (LookAt + Wait/ScanTarget/ClearAlert)
+- **Enemy_Boss** (Sequence rid: 8995693995185668572, line: 2226): Tactical retreat → ParallelAll (CallReinforcements + EscapeToFurthestPoint)
 
-**Behavior Logic:**
-1. **Alert State**: If AlertTarget exists → CallFriendAction propagates alert to nearby allies (sets their AlertTarget via blackboard), then finds nearest friend for coordination
-2. **Normal State**: Patrols using PatrolPointerAction with wait times (5-10s)
-3. **Help Request**: If HelpTarget exists → FindNearFriendAction → NullCheckCondition → either HelpFriendAction or EscapeAction fallback
-4. **Team Cooperation**: All friend-finding actions filter by matching `myTeam` enum via Sg_GameManager.Inst.entities list
+**Key Blackboard Variables:**
+- `AlertTarget` (rid: 8995693993379759056) — GameObject causing alert state; **must be cleared after investigation to prevent infinite loops**
+- `Self` (rid: 8995693993379759051) — Entity GameObject
+- `Animator` (rid: 8995693993379759052) — Animator component
+- `PatrolPoints` (rid: 8995693993379759053) — List<GameObject> patrol waypoints
+- `NearFriend` (rid: 8995693993379759057) — Closest ally (populated by FindNearFriendAction)
+- `HelpTarget` (rid: 8995693993379759059) — Ally requesting help
+- `callRange` (rid: 8995693993379759062) — float: 10.0, radius for CallFriendAction
+- `patrolSpeed` / `chaseSpeed` (rid: 8995693993379759063, 8995693993379759061) — Movement speeds
+
+**Common Action Nodes (with line numbers):**
+- `SetAnimatorTrigger` "Surprised": Enemy_None(line:2420), Citizen_None(line:2463), Enemy_Boss(line:2537)
+- `WaitAction` 3 seconds: Enemy_None(line:2436), Enemy_Boss(line:2553)
+- `NavigateToTargetAction` → AlertTarget: Enemy_None(line:2691), Citizen_None(line:2745), Citizen_Police(line:3020)
+- `ScanTargetAction`: Citizen_None(line:3298), Citizen_Police(line:3471)
+- `SetVariableValueAction` AlertTarget=null: Citizen_None(line:3312), Citizen_Police(line:3485)
+- `CallFriendAction`: Enemy_None(line:3236), Citizen_None(line:2769), Citizen_Police(line:3326), Enemy_Boss(line:3058)
+
+**AbortModifier Behavior (m_ObserverType: 0 = Self):**
+- AbortModifier nodes continuously re-evaluate conditions every frame
+- If condition changes while child is executing, child is **aborted and restarted**
+- Example: If AlertTarget is repeatedly set/changed, Sequence restarts from beginning
+- Located at: line 1897 (rid: 8995693995185668551), line 1913 (rid: 8995693995185668552)
 
 **CRITICAL DEPENDENCY**: Requires `Sg_GameManager.Inst` to be initialized before Entity.Start() executes, otherwise FindNearFriendAction fails with NullReferenceException
+
+**For complete tree structure, all node details, and debugging:** See `ENTITY_BEHAVIOR_TREE.md`
 
 ### Physics & Death System
 - **RagdollController.cs** — Manages animated NPC → physics ragdoll transition:

@@ -72,6 +72,12 @@ public class Entity : MonoBehaviour
     [ContextMenu("랜더러 및 머리장비 세팅")]
     public void MakeUp()
     {
+        animator = GetComponent<Animator>();
+        rend = GetComponentInChildren<SkinnedMeshRenderer>();
+        behavior = GetComponent<BehaviorGraphAgent>();
+        regController = GetComponent<RagdollController>();
+        agent = GetComponent<NavMeshAgent>();
+        
         //성별, 인덱스에 맞춰 랜더러 바꾸기
         if (isMale)
         {
