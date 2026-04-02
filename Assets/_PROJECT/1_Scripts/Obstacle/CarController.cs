@@ -5,7 +5,6 @@ public class CarController : MonoBehaviour
 {
     public Transform[] wheels;
     public Transform[] waypoints;
-    public float moveSpeed = 5f; // 자동차 이동 속도
     public float wheelRotationMultiplier = 500f; // 바퀴 회전 배수
     public float startTime;
     public float lightEnableTime;
@@ -19,9 +18,6 @@ public class CarController : MonoBehaviour
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
-        agent.speed = moveSpeed;
-        agent.angularSpeed = 720f;
-        agent.acceleration = 100f;
         agent.isStopped = true;
         carLight.SetActive(false);
         fixedHeight = transform.position.y;
