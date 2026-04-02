@@ -9,6 +9,7 @@ public class RagdollController : MonoBehaviour
     public Collider[] ragdollColliders; // 레그돌 콜라이더
     public Rigidbody[] ragdollBodies; // 레그돌 리지드 바디
     public SphereCollider headCollider; // 헤드샷 구분용 콜라이더
+    public GameObject hip; //시체처리용 참조
     public bool devMode = false; // 활성화 시 spaceKey로 레그돌 활성화 가능
 
     public enum ScoreMode
@@ -76,8 +77,8 @@ public class RagdollController : MonoBehaviour
         entityView.enabled = false;
         
         //시체 태그로 변경
-        gameObject.tag = "Evidence";
-        Transform[] allChildren = gameObject.GetComponentsInChildren<Transform>(true);
+        hip.tag = "Evidence";
+        Transform[] allChildren = hip.GetComponentsInChildren<Transform>(true);
         foreach (Transform child in allChildren)
         {
             child.gameObject.tag = "Evidence";

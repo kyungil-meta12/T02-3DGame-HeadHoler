@@ -5,25 +5,28 @@ using Action = Unity.Behavior.Action;
 using Unity.Properties;
 
 [Serializable, GeneratePropertyBag]
-[NodeDescription(name: "CallFriend", story: "Call equal Entity to [Self] in [Radius]", category: "Action", id: "b3ec7c27886c1ae0db7a33da99262f84")]
+[NodeDescription(name: "CallFriend", story: "[Self] Call equal Entity to [AlertTarget] in [Radius]", category: "Action", id: "b3ec7c27886c1ae0db7a33da99262f84")]
 public partial class CallFriendAction : Action
 {
     [SerializeReference] public BlackboardVariable<GameObject> Self;
     [SerializeReference] public BlackboardVariable<float> Radius;
-    [SerializeReference] public BlackboardVariable<string> Target = new BlackboardVariable<string>("AlertTarget");
+    [SerializeReference] public BlackboardVariable<GameObject> AlertTarget;
 
     protected override Status OnStart()
     {
         if (Self.Value == null) return Status.Failure;
 
         Entity myEntity = Self.Value.GetComponent<Entity>();
+        
         if (myEntity == null) return Status.Failure;
 
         Collider[] colliders = Physics.OverlapSphere(Self.Value.transform.position, Radius.Value);
 
         foreach (var col in colliders)
         {
-            if (col.gameObject == Self.Value || col.CompareTag("Evidence")) continue;
+            if (col.GetComponentInParent<Entity>().gameObject == null || 
+                col.GetComponentInParent<Entity>().gameObject == Self.Value || 
+                col.CompareTag("Evidence")) continue;
 
             Entity otherEntity = col.GetComponent<Entity>();
             
@@ -35,9 +38,9 @@ public partial class CallFriendAction : Action
                     if (otherAgent != null)
                     {
                         otherAgent.GetVariable<GameObject>("AlertTarget", out var alertTarget);
-                        if (alertTarget.Value != Self.Value)
+                        if (alertTarget.Value != AlertTarget.Value || alertTarget.Value != null)
                         {
-                            otherAgent.SetVariableValue(Target.Value, Self.Value);
+                            alertTarget.Value = AlertTarget.Value;
                         }
                         //Debug.Log($"{myEntity.name}이(가) 동료 {otherEntity.name}을(를) 호출했습니다!");
                     }

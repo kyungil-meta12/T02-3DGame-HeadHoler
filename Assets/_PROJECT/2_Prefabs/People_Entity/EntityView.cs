@@ -36,16 +36,16 @@ public class EntityView : MonoBehaviour
                 bool isHitObstacle = Physics.Raycast(ray, dst, 1 << LayerMask.NameToLayer("Obstacle"));
                 if (isHitEntity)
                 {
-                    //부모가 entity인지 검사
+                    //부모가 evidence인지 검사
                     Debug.DrawRay(transform.position, dirToTarget, Color.green);
-                    Entity entity = other.gameObject.GetComponentInParent<Entity>();
-                    if (entity != null)
+                    Evidence evidence = other.gameObject.GetComponentInParent<Evidence>();
+                    if (evidence != null)
                     {
                         //AlertTarget이 동일한지 검사
                         behaviorGraphAgent.GetVariable<GameObject>("AlertTarget", out var alertTarget);
-                        if (alertTarget.Value != entity.gameObject)
+                        if (alertTarget.Value != evidence.gameObject)
                         {
-                            alertTarget.Value = entity.gameObject;
+                            alertTarget.Value = evidence.gameObject;
                         }
                     }
                 }

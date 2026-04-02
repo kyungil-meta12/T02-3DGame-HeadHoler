@@ -27,7 +27,6 @@ public partial class ScanTargetAction : Action
                 {
                     //총 맞은 흔적이 있으면 저격 발각, 게임오버
                     Sg_GameManager.Inst.GameOver();
-                    return Status.Success;
                 }
             }
         }
@@ -45,6 +44,7 @@ public partial class ScanTargetAction : Action
         }
         //해당흔적 제거완료 처리
         if (hitCol != null) hitCol.ScanComplete();
+        if (targetEntity != null)targetEntity.ScanComplete();
         if (obstacle != null) obstacle.ScanComplete();
         
         return Status.Success;

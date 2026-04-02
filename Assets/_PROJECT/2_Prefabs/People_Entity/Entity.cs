@@ -175,4 +175,10 @@ public class Entity : MonoBehaviour
         agent.isStopped = true;
         regController.EnableRagdoll();
     }
+
+    public void ScanComplete()
+    {
+        Debug.Log("시체 스캔 완료");
+        Destroy(gameObject);
+    }
 }

@@ -2381,6 +2381,7 @@ GameObject:
   - component: {fileID: 7056910244312733839}
   - component: {fileID: 3347073792971772193}
   - component: {fileID: 837214085743871770}
+  - component: {fileID: 3626008908207501268}
   m_Layer: 9
   m_Name: Hips
   m_TagString: Untagged
@@ -2454,6 +2455,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &3626008908207501268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8113049613027183103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95676796d00e48528186dae27ce6dc1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Evidence
 --- !u!1 &8191112129387089927
 GameObject:
   m_ObjectHideFlags: 0
@@ -3164,6 +3177,10 @@ PrefabInstance:
       propertyPath: 'femaleRenderMeshes.Array.data[14]'
       value: 
       objectReference: {fileID: 4300016, guid: 0045ffb477e043a46950af7e617beb06, type: 3}
+    - target: {fileID: 6785212003250099234, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
+      propertyPath: hip
+      value: 
+      objectReference: {fileID: 8113049613027183103}
     - target: {fileID: 6785212003250099234, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
       propertyPath: headCollider
       value: 
