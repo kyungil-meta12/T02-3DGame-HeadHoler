@@ -19,13 +19,14 @@ public class CarController : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         agent.isStopped = true;
+        agent.autoBraking = false;
         carLight.SetActive(false);
         fixedHeight = transform.position.y;
     }
 
     void Update()
     {
-        if (agent.isStopped) // 읿정 시간이 지나면 출발
+        if (agent.isStopped) // 일정 시간이 지나면 출발
         {
             currentTime += Time.deltaTime;
             if(currentTime >= lightEnableTime)
@@ -63,10 +64,14 @@ public class CarController : MonoBehaviour
     {
         if (waypoints.Length == 0)
             return;
+        if (currentIndex == waypoints.Length - 2) // 마지막 직전 지점이라면 오토브레이킹 활성화
+        {
+            agent.autoBraking = true;
+        }
         if (currentIndex < waypoints.Length - 1)
         {
-            currentIndex++;
             agent.destination = waypoints[currentIndex].position;
+            currentIndex++;
         }
     }
 }
