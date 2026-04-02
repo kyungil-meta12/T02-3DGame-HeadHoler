@@ -503,8 +503,9 @@ MonoBehaviour:
   - {fileID: 3656353042397659049}
   headCollider: {fileID: 7408237951527570431}
   devMode: 0
+  scoreMode: 1
   scoreOnDeath: 100
-  giveScoreOnDeath: 1
+  scoreLabelOnDeath: Enemy Kill
 --- !u!114 &5683552360709676085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -722,6 +723,7 @@ Transform:
   - {fileID: 2965214433223904230}
   - {fileID: 7204580005989813242}
   - {fileID: 5834287901537428560}
+  - {fileID: 1115488168179215601}
   m_Father: {fileID: 875273011811147296}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &7408237951527570431
@@ -1366,6 +1368,37 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!1 &4765499633437206696
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1115488168179215601}
+  m_Layer: 9
+  m_Name: HeadSlot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1115488168179215601
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4765499633437206696}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3483957393640477887}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4888809512153277339
 GameObject:
   m_ObjectHideFlags: 0
