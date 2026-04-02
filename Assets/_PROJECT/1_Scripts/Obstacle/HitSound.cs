@@ -7,9 +7,9 @@ using UnityEngine;
 public class HitSound : MonoBehaviour
 {
     [Header("사운드 발생 지속시간")]
-    public float soundTimer = 1f;
+    public static float soundTimer = 1f;
     [Header("사운드 발생 범위")]
-    public float maxSoundRadius = 5f;
+    public float maxSoundRadius = 20f;
     
     private SphereCollider hitSound;
     public bool isGunShot = false;
@@ -24,36 +24,26 @@ public class HitSound : MonoBehaviour
         StartCoroutine(SoundCoroutine());
         //Destroy(gameObject, soundTimer);
     }
+    
+    private WaitForSeconds wait = new WaitForSeconds(soundTimer);
     private IEnumerator SoundCoroutine() //소리범위를 늘려준다.
     {
-        hitSound.radius = 0f;
+        hitSound.radius = maxSoundRadius;
         hitSound.enabled = true;
-        float time = 0f; 
-
-        while (time < soundTimer)
-        {
-            time += Time.deltaTime;
-            float t = time / soundTimer;
-
-            hitSound.radius = Mathf.Lerp(0f, maxSoundRadius, t);
-
-            yield return null;
-        }
+        yield return wait;
         hitSound.enabled = false;
     }
     
     //소리범위에 닿았을때 Entity AlertTarget에 해당 지점 참조
-    private void OnCollisionEnter(Collision other)
+    private void OnTriggerEnter(Collider other)
     {
-        // Character character = other.GetComponent<Character>();  //부딪친 오브젝트가 Character컴포넌트가 있는지 확인
-        // if(character != null)
-        // {
-        //     character.HearSound(transform); //Character의 HearSound() 호출
-        // }
-
         if (other.gameObject.CompareTag("Entity"))
         {
-            other.gameObject.GetComponentInParent<BehaviorGraphAgent>().SetVariableValue("AlertTarget", gameObject);
+            other.gameObject.GetComponentInParent<BehaviorGraphAgent>().GetVariable<GameObject>("AlertTarget", out var alertTarget);
+            if (alertTarget.Value != gameObject)
+            {
+                alertTarget.Value = gameObject;
+            }
         }
     }
 

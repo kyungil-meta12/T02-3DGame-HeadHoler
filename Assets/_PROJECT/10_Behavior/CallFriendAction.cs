@@ -24,8 +24,8 @@ public partial class CallFriendAction : Action
 
         foreach (var col in colliders)
         {
-            if (col.GetComponentInParent<Entity>().gameObject == null || 
-                col.GetComponentInParent<Entity>().gameObject == Self.Value || 
+            if (col.GetComponentInParent<Entity>() == null) continue;
+            if (col.GetComponentInParent<Entity>().gameObject == Self.Value || 
                 col.CompareTag("Evidence")) continue;
 
             Entity otherEntity = col.GetComponent<Entity>();
