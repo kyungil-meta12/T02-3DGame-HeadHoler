@@ -18,6 +18,9 @@ public class ResultPopupController : MonoBehaviour
     [SerializeField] private GameObject successImage;
     [SerializeField] private GameObject failureImage;
 
+    [Header("Score Result UI")]
+    [SerializeField] private UI_GameResultScoreList scoreListUI;
+
     [Header("Victory Particle By Score")]
     [SerializeField] private ScoreParticleSet[] victoryParticleSets;
 
@@ -65,6 +68,9 @@ public class ResultPopupController : MonoBehaviour
         if (failureImage != null)
             failureImage.SetActive(false);
 
+        if (scoreListUI != null)
+            scoreListUI.Show();
+
         int finalScore = 0;
         if (Sg_ScoreManager.Inst != null)
             finalScore = Sg_ScoreManager.Inst.CurrentScore;
@@ -105,6 +111,9 @@ public class ResultPopupController : MonoBehaviour
 
         if (failureImage != null)
             failureImage.SetActive(true);
+
+        if (scoreListUI != null)
+            scoreListUI.Show();
 
         int finalScore = 0;
         if (Sg_ScoreManager.Inst != null)

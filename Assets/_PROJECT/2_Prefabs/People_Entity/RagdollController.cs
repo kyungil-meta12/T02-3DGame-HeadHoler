@@ -24,6 +24,12 @@ public class RagdollController : MonoBehaviour
     [SerializeField] private int scoreOnDeath = 100;
     [SerializeField] private string scoreLabelOnDeath = "Enemy Kill";
 
+    [Header("Clear Target")]
+    [SerializeField] private bool isClearTarget = true;
+
+    public bool IsClearTarget => isClearTarget;
+    public bool IsDead => ragdollEnabled;
+
     internal bool ragdollEnabled = false;
 
     private Animator anim;
@@ -54,6 +60,10 @@ public class RagdollController : MonoBehaviour
         foreach (var rc in ragdollColliders)
         {
             rc.isTrigger = true;
+        }
+        if (isClearTarget && Sg_TargetTracker.Inst != null)
+        {
+            Sg_TargetTracker.Inst.RegisterTarget(this);
         }
     }
 
@@ -103,6 +113,11 @@ public class RagdollController : MonoBehaviour
         ragdollEnabled = true;
 
         ApplyScore();
+
+        if (isClearTarget && Sg_TargetTracker.Inst != null)
+        {
+            Sg_TargetTracker.Inst.NotifyTargetKilled(this);
+        }
 
         // 렌더링 옵션 변경을 코루틴으로 한 프레임 미룸
         StartCoroutine(EnableOffscreenUpdateNextFrame());
