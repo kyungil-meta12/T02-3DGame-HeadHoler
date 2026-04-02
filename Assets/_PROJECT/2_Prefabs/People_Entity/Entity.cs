@@ -17,8 +17,10 @@ public class Entity : MonoBehaviour
     [Header("소속")]
     public Team myTeam;
     public Role myRole;
-    [Header("최개 체력")]
+    [Header("최대 체력")]
     public float maxHP = 100f;
+    [Header("현재 체력")]
+    public float currentHP;
     [Header("성별 선택")]
     public bool isMale = true;
     [Header("랜더러 선택")]
@@ -49,7 +51,7 @@ public class Entity : MonoBehaviour
     private NavMeshAgent agent;
     private float speed;
 
-    internal float currentHP;
+    
 
     private void Awake()
     {

@@ -65,6 +65,73 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3483957393640477887}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &301543046342148470
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3276472247504089998}
+  - component: {fileID: 3668015857746830054}
+  - component: {fileID: 8653956138840108943}
+  m_Layer: 2
+  m_Name: View
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3276472247504089998
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301543046342148470}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3483957393640477887}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &3668015857746830054
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301543046342148470}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8653956138840108943
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 301543046342148470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9015ddef5cec478e850c0fb8f02cc54e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EntityView
+  viewAngle: 90
 --- !u!1 &493847142031848706
 GameObject:
   m_ObjectHideFlags: 0
@@ -394,7 +461,6 @@ GameObject:
   - component: {fileID: 212889093893185943}
   - component: {fileID: 9012789382840960400}
   - component: {fileID: 6785212003250099234}
-  - component: {fileID: 5683552360709676085}
   - component: {fileID: 5751549092392070028}
   - component: {fileID: 4149120860568308002}
   m_Layer: 2
@@ -506,20 +572,6 @@ MonoBehaviour:
   scoreMode: 1
   scoreOnDeath: 100
   scoreLabelOnDeath: Enemy Kill
---- !u!114 &5683552360709676085
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2995414374522739281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9015ddef5cec478e850c0fb8f02cc54e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EntityView
-  radius: 10
-  viewAngle: 90
 --- !u!114 &5751549092392070028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -535,6 +587,7 @@ MonoBehaviour:
   myTeam: 0
   myRole: 0
   maxHP: 100
+  currentHP: 0
   isMale: 1
   rendererIndex: 0
   equipIndex: 99
@@ -559,6 +612,7 @@ MonoBehaviour:
   - {fileID: 4300004, guid: 318840a7e38980943bb4c508fa842265, type: 3}
   - {fileID: 4300002, guid: 318840a7e38980943bb4c508fa842265, type: 3}
   - {fileID: 4300000, guid: 318840a7e38980943bb4c508fa842265, type: 3}
+  headSlot: {fileID: 0}
   equips:
   - {fileID: 1923144355637116, guid: 362b56fc810e0ac4dbb6aa96741ef534, type: 3}
   - {fileID: 1609684048617766, guid: 680d7ae42985d6442a74fdfc9666d27a, type: 3}
@@ -724,6 +778,7 @@ Transform:
   - {fileID: 7204580005989813242}
   - {fileID: 5834287901537428560}
   - {fileID: 1115488168179215601}
+  - {fileID: 3276472247504089998}
   m_Father: {fileID: 875273011811147296}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &7408237951527570431

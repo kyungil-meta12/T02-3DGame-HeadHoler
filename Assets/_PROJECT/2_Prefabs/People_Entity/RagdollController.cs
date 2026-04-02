@@ -30,6 +30,7 @@ public class RagdollController : MonoBehaviour
    // public CapsuleCollider psCollider; // 물리 시뮬레이션용 콜라이더
     //private Rigidbody psRigidBody; // 물리 시뮬레이션용 리지드 바디
     private SkinnedMeshRenderer smr; // 스킨드메쉬렌더러
+    private EntityView entityView;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -38,6 +39,7 @@ public class RagdollController : MonoBehaviour
         //psCollider = GetComponent<CapsuleCollider>();
         //psRigidBody = GetComponent<Rigidbody>();
         smr = GetComponentInChildren<SkinnedMeshRenderer>();
+        entityView = GetComponentInChildren<EntityView>();
     }
 
     void Start()
@@ -71,6 +73,7 @@ public class RagdollController : MonoBehaviour
       //  psRigidBody.isKinematic = true;
        // psCollider.enabled = false;
         anim.enabled = false;
+        entityView.enabled = false;
         
         //시체 태그로 변경
         gameObject.tag = "Evidence";

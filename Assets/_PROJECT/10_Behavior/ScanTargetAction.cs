@@ -27,6 +27,7 @@ public partial class ScanTargetAction : Action
                 {
                     //총 맞은 흔적이 있으면 저격 발각, 게임오버
                     Sg_GameManager.Inst.GameOver();
+                    return Status.Success;
                 }
             }
         }

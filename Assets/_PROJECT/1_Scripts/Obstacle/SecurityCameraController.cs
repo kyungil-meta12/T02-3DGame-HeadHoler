@@ -1,10 +1,14 @@
 using UnityEngine;
 using System.Collections;
+using Unity.Behavior;
 
 public class SecurityCameraController : Obstacle
 {
+	[Header("소속 팀(알림을 전달할 팀)")]
+	public Team team;
+	
 	[Header("카메라 움직임 설정")]
-	public float waitTime = 3f;
+	public static float waitTime = 3f;
 	public float sweepAngle = 45f;
 	public float rotateTime = 10f;
 
@@ -17,7 +21,7 @@ public class SecurityCameraController : Obstacle
 	
 	private float detectionTiltX = 15f;	//감지각도 15도 보정(카메라 실제 rotation값과 프리팹 카메라 방향차이 보정용)
 
-	public LayerMask ragdollLayer;
+	public LayerMask evidenceLayer;
 	public LayerMask ObstacleLayer;
 	public Light spotLight;
 
@@ -31,13 +35,14 @@ public class SecurityCameraController : Obstacle
 
 		StartCoroutine(CameraMoveRoutine());
 
-		StartCoroutine(FindTarget(0.2f));
+		StartCoroutine(FindTarget());
 	}
 
 	//카메라 움직임
+	private WaitForSeconds cameraMoveWait = new WaitForSeconds(waitTime);
 	IEnumerator CameraMoveRoutine()
 	{
-		yield return new WaitForSeconds(waitTime);
+		yield return cameraMoveWait;
 
 		float targetAngle = sweepAngle;
 
@@ -61,18 +66,19 @@ public class SecurityCameraController : Obstacle
 				yield return null;
 			}
 
-			yield return new WaitForSeconds(waitTime);
+			yield return cameraMoveWait;
 
 			targetAngle = (targetAngle == sweepAngle) ? -sweepAngle : sweepAngle;	//양측 각도 끝으로 번갈아가면서 움직임
 		}
 	}
 
 	//0.2초마다 시야내 타겟 찾기
-	IEnumerator FindTarget(float delay)
+	private WaitForSeconds findWait = new WaitForSeconds(0.2f);
+	IEnumerator FindTarget()
 	{
 		while (true)
 		{
-			yield return new WaitForSeconds(delay);
+			yield return findWait;
 			FindVisibleTargets();
 		}
 	}
@@ -80,7 +86,7 @@ public class SecurityCameraController : Obstacle
 	//타겟 찾기
 	private void FindVisibleTargets()
 	{
-		Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, viewRadius, ragdollLayer);   //시야거리 내 시체 찾기(ragdoll레이어 설정 필요)
+		Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, viewRadius, evidenceLayer);   //시야거리 내 시체 찾기(ragdoll레이어 설정 필요)
 
 		Vector3 tiltedForward = transform.rotation * Quaternion.Euler(detectionTiltX, 0, 0) * Vector3.forward;
 
@@ -98,6 +104,12 @@ public class SecurityCameraController : Obstacle
 					Debug.Log("시체 발견");
 
 					//Todo : NPC 호출 또는 경보나 경계상태
+
+					foreach (var entity in Sg_GameManager.Inst.entities)
+					{
+						if(entity.myTeam != team) continue;
+						//entity.GetComponent<BehaviorGraphAgent>().SetVariableValue("AlertTarget", )
+					}
 				}
 			}
 		}

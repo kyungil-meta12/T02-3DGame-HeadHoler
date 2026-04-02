@@ -7,7 +7,7 @@ using UnityEngine;
 public class HitSound : MonoBehaviour
 {
     [Header("사운드 발생 지속시간")]
-    public float soundTimer = 10f;
+    public float soundTimer = 1f;
     [Header("사운드 발생 범위")]
     public float maxSoundRadius = 5f;
     
@@ -22,7 +22,7 @@ public class HitSound : MonoBehaviour
     private void Start()
     {
         StartCoroutine(SoundCoroutine());
-        Destroy(gameObject, soundTimer);
+        //Destroy(gameObject, soundTimer);
     }
     private IEnumerator SoundCoroutine() //소리범위를 늘려준다.
     {
@@ -43,7 +43,7 @@ public class HitSound : MonoBehaviour
     }
     
     //소리범위에 닿았을때 Entity AlertTarget에 해당 지점 참조
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
         // Character character = other.GetComponent<Character>();  //부딪친 오브젝트가 Character컴포넌트가 있는지 확인
         // if(character != null)
@@ -51,9 +51,9 @@ public class HitSound : MonoBehaviour
         //     character.HearSound(transform); //Character의 HearSound() 호출
         // }
 
-        if (other.CompareTag("Entity"))
+        if (other.gameObject.CompareTag("Entity"))
         {
-            other.gameObject.GetComponent<BehaviorGraphAgent>().SetVariableValue("AlertTarget", gameObject);
+            other.gameObject.GetComponentInParent<BehaviorGraphAgent>().SetVariableValue("AlertTarget", gameObject);
         }
     }
 
