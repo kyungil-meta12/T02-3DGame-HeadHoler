@@ -34,7 +34,6 @@ public partial class RequestHelpAction : Action
                     otherAgent.SetVariableValue("HelpTargets", helpTargetsList);
                 }
             }
-            otherAgent.SetVariableValue(HelpTargets.Value, Self.Value);
         }
 
         return Status.Success;

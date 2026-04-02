@@ -16,18 +16,27 @@ public partial class ScanTargetAction : Action
         if (Target.Value == null || Self.Value == null) return Status.Failure;
 
         Entity targetEntity = Target.Value.GetComponentInParent<Entity>();
+        RagdollController targetRagdollController = Target.Value.GetComponentInParent<RagdollController>();
         Obstacle obstacle = Target.Value.GetComponentInParent<Obstacle>();
         HitSound hitCol = Target.Value.GetComponentInChildren<HitSound>();
 
         if (targetEntity != null)
         {
-            if (hitCol != null)
+            if (targetEntity.myTeam == Self.Value.GetComponent<Entity>().myTeam)
             {
-                if (hitCol.isGunShot)
+                if(hitCol != null)
                 {
-                    //총 맞은 흔적이 있으면 저격 발각, 게임오버
-                    Sg_GameManager.Inst.GameOver();
+                    if (hitCol.isGunShot)
+                    {
+                        //총 맞은 흔적이 있으면 저격 발각, 게임오버
+                        Sg_GameManager.Inst.GameOver();
+                    }
                 }
+            }
+            else
+            {
+                Target.Value = null;
+                return Status.Success;
             }
         }
 
@@ -44,8 +53,11 @@ public partial class ScanTargetAction : Action
         }
         //해당흔적 제거완료 처리
         if (hitCol != null) hitCol.ScanComplete();
-        if (targetEntity != null)targetEntity.ScanComplete();
         if (obstacle != null) obstacle.ScanComplete();
+        if (targetRagdollController != null)
+        {
+            if (targetRagdollController.ragdollEnabled && targetEntity != null)targetEntity.ScanComplete();
+        }
         
         return Status.Success;
     }

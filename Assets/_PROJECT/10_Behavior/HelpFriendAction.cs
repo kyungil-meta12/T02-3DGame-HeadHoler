@@ -14,11 +14,11 @@ public partial class HelpFriendAction : Action
     {
         if (HelpTarget.Value == null) return Status.Failure;
         
-        Entity otherEntity = HelpTarget.Value.GetComponent<Entity>();
+        Entity otherEntity = HelpTarget.Value.GetComponentInParent<Entity>();
         if (otherEntity != null)
         {
             otherEntity.currentHP = otherEntity.maxHP;
-            otherEntity.GetComponent<BehaviorGraphAgent>().SetVariableValue("isHurt", false);
+            otherEntity.GetComponentInParent<BehaviorGraphAgent>().SetVariableValue<bool>("isHurt", false);
         }
         
         return Status.Success;
