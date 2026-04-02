@@ -34,7 +34,9 @@ public class Entity : MonoBehaviour
     [Header("남성 랜더러")]
     public Mesh[] maleRenderMeshes; 
     [Header("여성 랜더러")]
-    public Mesh[] femaleRenderMeshes; 
+    public Mesh[] femaleRenderMeshes;
+    [Header("머리 장비 슬롯")]
+    public Transform headSlot;
     [Header("머리장비")]
     public GameObject[] equips;
     [Header("애니메이터 컨트롤러")]
@@ -95,7 +97,11 @@ public class Entity : MonoBehaviour
         //머리장비 바꾸기
         if (equipIndex < equips.Length)
         {
-            Instantiate(equips[equipIndex], regController.headCollider.transform);
+            for (int i = 0; i < headSlot.childCount; i++)
+            {
+                Destroy(headSlot.GetChild(i).gameObject);
+            }
+            Instantiate(equips[equipIndex], headSlot);
         }
     }
 
