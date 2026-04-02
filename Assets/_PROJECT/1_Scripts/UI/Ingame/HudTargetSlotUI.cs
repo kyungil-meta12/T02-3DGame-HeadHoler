@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PauseTargetSlotUI : MonoBehaviour
+public class HudTargetSlotUI : MonoBehaviour
 {
     [Header("Target Reference")]
     [SerializeField] private RagdollController target;

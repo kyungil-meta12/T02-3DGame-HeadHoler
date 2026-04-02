@@ -86,8 +86,7 @@ public class GunController : MonoBehaviour
                 if (hitSoundPrefab)
                 {
                     //사운드 콜라이더 생성, isGunShot = true
-                    GameObject hitSound;
-                    hitSound = Instantiate(hitSoundPrefab, hit.transform.GetComponentInParent<Evidence>().transform);
+                    var hitSound = Instantiate(hitSoundPrefab, hit.transform.GetComponentInParent<Evidence>().transform);
                     hitSound.name = "hit(GunShot)";
                     hitSound.GetComponent<HitSound>().isGunShot = true;
                 }
@@ -100,7 +99,13 @@ public class GunController : MonoBehaviour
             {
                 print("interactive obstacle hit");
                 obstacleComp.Hit(hit.point);
-                if(hitSoundPrefab)Instantiate(hitSoundPrefab, hit.point, Quaternion.identity);
+                if (hitSoundPrefab)
+                {
+                    //사운드 콜라이더 생성, isGunShot = true
+                    var hitSound = Instantiate(hitSoundPrefab, hit.point, Quaternion.identity);
+                    hitSound.name = "hit(GunShot)";
+                    hitSound.GetComponent<HitSound>().isGunShot = true;
+                }
                 Sg_HitIndicator.Inst.InputHit();
                 break;
             }
@@ -108,7 +113,13 @@ public class GunController : MonoBehaviour
             if (!entityComp && !obstacleComp)  // 상호 작용 불가능한 장애물인 경우 // 예: 건물 외벽, 지형 등...
             {
                 print("static obstacle hit");
-                if(hitSoundPrefab)Instantiate(hitSoundPrefab, hit.point, Quaternion.identity);
+                if (hitSoundPrefab)
+                {
+                    //사운드 콜라이더 생성, isGunShot = true
+                    var hitSound = Instantiate(hitSoundPrefab, hit.point, Quaternion.identity);
+                    hitSound.name = "hit(GunShot)";
+                    hitSound.GetComponent<HitSound>().isGunShot = true;
+                }
                 break;
             }
         }

@@ -27,6 +27,8 @@ public class Entity : MonoBehaviour
     public int rendererIndex = 0;
     [Header("머리장비 선택")]
     public int equipIndex = 99;
+    [Header("가드 대상 (없으면 비워두기 가능)")]
+    public GameObject guardTarget;
     [Header("순찰 포인트")]
     public List<GameObject> patrolPoints;
 
@@ -70,6 +72,7 @@ public class Entity : MonoBehaviour
         //소속, 순찰포인트 세팅
         behavior.SetVariableValue("Role", myRole);
         behavior.SetVariableValue("PatrolPoints", patrolPoints);
+        behavior.SetVariableValue("GuardTarget", guardTarget);
         currentHP = maxHP;
     }
 

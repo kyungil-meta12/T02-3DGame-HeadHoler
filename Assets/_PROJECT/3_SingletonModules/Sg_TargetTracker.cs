@@ -16,6 +16,9 @@ public class Sg_TargetTracker : MonoBehaviour
     [Header("Result Popup")]
     [SerializeField] private ResultPopupController resultPopupController;
 
+    [Header("HUD Target Slots")]
+    [SerializeField] private HudTargetSlotUI[] hudTargetSlots;
+
     private bool isGameCleared = false;
 
     private void Awake()
@@ -40,6 +43,7 @@ public class Sg_TargetTracker : MonoBehaviour
     {
         CleanupNullTargets();
         RefreshTargetUI();
+        RefreshHudTargetSlots();
     }
 
     public void RegisterTarget(RagdollController target)
@@ -68,6 +72,7 @@ public class Sg_TargetTracker : MonoBehaviour
             return;
 
         RefreshTargetUI();
+        RefreshHudTargetSlots();
 
         Debug.Log($"[Sg_TargetTracker] NotifyTargetKilled: {target.name} / Alive = {GetAliveTargetCount()}");
 
@@ -108,6 +113,9 @@ public class Sg_TargetTracker : MonoBehaviour
         int aliveCount = GetAliveTargetCount();
         targetQuestItem.questText = string.Format(targetTextFormat, aliveCount);
         targetQuestItem.UpdateUI();
+        targetQuestItem.AnimateQuest();
+
+
     }
 
     private void CheckClear()
@@ -144,4 +152,17 @@ public class Sg_TargetTracker : MonoBehaviour
                 allTargets.RemoveAt(i);
         }
     }
+
+    private void RefreshHudTargetSlots()
+    {
+        if (hudTargetSlots == null)
+            return;
+
+        for (int i = 0; i < hudTargetSlots.Length; i++)
+        {
+            if (hudTargetSlots[i] != null)
+                hudTargetSlots[i].Refresh();
+        }
+    }
 }
+
