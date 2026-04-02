@@ -1,16 +1,17 @@
 using System;
+using System.Collections.Generic;
 using Unity.Behavior;
 using UnityEngine;
 using Action = Unity.Behavior.Action;
 using Unity.Properties;
 
 [Serializable, GeneratePropertyBag]
-[NodeDescription(name: "FindNearFriend", story: "Find [NearFriend]", category: "Action", id: "4dc6bcabdf4918dea4f291b25e160034")]
+[NodeDescription(name: "FindNearFriend", story: "[Self] Find [NearFriend]", category: "Action", id: "4dc6bcabdf4918dea4f291b25e160034")]
 public partial class FindNearFriendAction : Action
 {
     //Sg_GameManager.entities중 가까운 동료 찾기
     [SerializeReference] public BlackboardVariable<GameObject> Self;
-    [SerializeReference] public BlackboardVariable<string> NearFriend = new BlackboardVariable<string>("NearFriend");
+    [SerializeReference] public BlackboardVariable<GameObject> NearFriend;
 
     protected override Status OnStart()
     {
@@ -43,8 +44,20 @@ public partial class FindNearFriendAction : Action
         {
             if (myAgent != null)
             {
-                myAgent.SetVariableValue(NearFriend.Value, closestFriend);
-            
+                NearFriend.Value = closestFriend;
+                closestFriend.GetComponentInParent<BehaviorGraphAgent>().GetVariable<List<GameObject>>(
+                    "HelpTargets", out var helpTargets);
+                closestFriend.GetComponentInParent<BehaviorGraphAgent>().GetVariable<GameObject>(
+                    "HelpTarget", out var helpTarget);
+                if (!helpTargets.Value.Contains(Self.Value))
+                {
+                    helpTargets.Value.Add(Self.Value);
+                    if (helpTarget.Value == null)
+                    {
+                        helpTarget.Value = Self.Value;
+                    }
+                }
+                
                 // Debug.Log($"{myEntity.name}이(가) 가장 가까운 동료 {closestFriend.name}을(를) 찾았습니다! (거리: {minDistance})");
             }
         }

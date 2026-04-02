@@ -821,6 +821,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &18277014 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2995414374522739281, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
+  m_PrefabInstance: {fileID: 1422119061}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &24266384
 GameObject:
   m_ObjectHideFlags: 0
@@ -1315,6 +1320,35 @@ PrefabInstance:
     - target: {fileID: 2995414374522739281, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
       propertyPath: m_TagString
       value: Entity
+      objectReference: {fileID: 0}
+    - target: {fileID: 4149120860568308002, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
+      propertyPath: 'managedReferences[8995694016283804514]'
+      value: 'Unity.Behavior Unity.Behavior.BlackboardVariable`1[[UnityEngine.GameObject,
+        UnityEngine.CoreModule]]'
+      objectReference: {fileID: 0}
+    - target: {fileID: 4149120860568308002, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
+      propertyPath: managedReferences[8995694016283804514].Name
+      value: GuardTarget
+      objectReference: {fileID: 0}
+    - target: {fileID: 4149120860568308002, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
+      propertyPath: m_BlackboardVariableOverridesList.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4149120860568308002, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
+      propertyPath: managedReferences[8995694016283804514].m_Value
+      value: 
+      objectReference: {fileID: 18277014}
+    - target: {fileID: 4149120860568308002, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
+      propertyPath: 'm_BlackboardVariableOverridesList.Array.data[2]'
+      value: 8995694016283804514
+      objectReference: {fileID: 0}
+    - target: {fileID: 4149120860568308002, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
+      propertyPath: managedReferences[8995694016283804514].GUID.m_Value0
+      value: 12614751796467893578
+      objectReference: {fileID: 0}
+    - target: {fileID: 4149120860568308002, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
+      propertyPath: managedReferences[8995694016283804514].GUID.m_Value1
+      value: 12309950237189369833
       objectReference: {fileID: 0}
     - target: {fileID: 5751549092392070028, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
       propertyPath: myRole
@@ -40878,6 +40912,10 @@ PrefabInstance:
     - target: {fileID: 5751549092392070028, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
       propertyPath: myRole
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5751549092392070028, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
+      propertyPath: myTeam
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5751549092392070028, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
       propertyPath: equipIndex
