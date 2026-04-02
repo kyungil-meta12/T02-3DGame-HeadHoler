@@ -16,6 +16,7 @@ public class Sg_GunIndex : MonoBehaviour
             return;
         }
         Inst = this;
+        DontDestroyOnLoad(gameObject);
 
         print("[Sg_GunSelector] Created instance.");
     }

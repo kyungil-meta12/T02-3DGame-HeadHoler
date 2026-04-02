@@ -14,11 +14,7 @@ public class WeaponCardGroupUI : MonoBehaviour
 
     private void Start()
     {
-        // 시작 시 첫 번째 카드 기본 선택
-        if (cards != null && cards.Length > 0)
-        {
-            SelectCard(cards[0]);
-        }
+
     }
 
     public void SelectCard(WeaponCardUI selectedCard)
