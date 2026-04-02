@@ -14,6 +14,7 @@ public class CarController : MonoBehaviour
     private float currentTime;
     private int currentIndex = 0;
     private NavMeshAgent agent;
+    private float fixedHeight;
 
     void Awake()
     {
@@ -23,6 +24,7 @@ public class CarController : MonoBehaviour
         agent.acceleration = 100f;
         agent.isStopped = true;
         carLight.SetActive(false);
+        fixedHeight = transform.position.y;
     }
 
     void Update()
@@ -57,7 +59,7 @@ public class CarController : MonoBehaviour
         }
 
         var position = transform.position;
-        position.y = 5.53f;
+        position.y = fixedHeight;
         transform.position = position;
     }
 
