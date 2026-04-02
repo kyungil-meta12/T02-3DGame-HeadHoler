@@ -17,9 +17,9 @@ public class UI_MainMenuStartButton : MonoBehaviour
     [Header("Clear Achievement Titles")]
     [SerializeField] private string testClearAchievement = "테스트 스테이지 클리어";
     [SerializeField] private string tutorialClearAchievement = "튜토리얼 스테이지 클리어";
-    [SerializeField] private string stage01ClearAchievement = "1스테이지 클리어";
-    [SerializeField] private string stage02ClearAchievement = "2스테이지 클리어";
-    [SerializeField] private string stage03ClearAchievement = "3스테이지 클리어";
+    [SerializeField] private string stage01ClearAchievement = "01스테이지 클리어";
+    [SerializeField] private string stage02ClearAchievement = "02스테이지 클리어";
+    [SerializeField] private string stage03ClearAchievement = "03스테이지 클리어";
 
     [Header("Button Text")]
     [SerializeField] private string defaultTitle = "게임 시작";

@@ -58,7 +58,7 @@ public class GunController : MonoBehaviour
 
         // 화면 중앙으로 레이캐스팅 후 가까운 거리부터 오름차순 정렬
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-        RaycastHit[] hitList = Physics.SphereCastAll(ray, 0.1f, 999f, LayerMask.GetMask("Entity")); // 레이캐스팅은 Entity 레이어를 가진 객체에 대해서만 처리
+        RaycastHit[] hitList = Physics.SphereCastAll(ray, 0.025f, 999f, LayerMask.GetMask("Entity")); // 레이캐스팅은 Entity 레이어를 가진 객체에 대해서만 처리
       //  Debug.DrawRay(ray.origin, ray.direction * 999f, Color.red, 1.0f);
         Array.Sort(hitList, (a, b) => a.distance.CompareTo(b.distance));
 
