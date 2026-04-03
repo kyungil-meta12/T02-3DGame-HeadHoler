@@ -12,6 +12,7 @@ public class HitSound : MonoBehaviour
     public float maxSoundRadius = 20f;
     
     public bool isGunShot = false;
+    public BlackboardVariable<bool> isHurt;
     public bool isBurn = false;
     public GameObject fireEffect;
 
@@ -30,42 +31,63 @@ public class HitSound : MonoBehaviour
     {
         StartCoroutine(SoundCoroutine());
         //Destroy(gameObject, soundTimer);
+        if (hitEntity != null && behavior != null)
+        {
+            if (behavior.GetVariable<bool>("isHurt", out isHurt))
+            {
+                if (isHurt)
+                {
+                    StartCoroutine(HurtCoroutine());
+                    if (isBurn)
+                    {
+                        StartCoroutine(BurnCoroutine());
+                    }
+                }
+            }
+        }
     }
 
     private WaitForSeconds HurtWait =  new WaitForSeconds(3f);
     private IEnumerator HurtCoroutine()
     {
-        if (hitEntity != null && behavior != null)
+        
+        while (true)
         {
-            while (true)
+            yield return HurtWait;
+            
+            if (isHurt)
             {
-                yield return HurtWait;
-                if (behavior.GetVariable<bool>("isHurt", out var isHurt))
-                {
-                    if (isBurn)
-                    {
-                        hitEntity.currentHP -= 1;
-                        fireEffect.SetActive(true);
-                    }
-                    else
-                    {
-                        fireEffect.SetActive(false);
-                    }
-                    
-                    if (isHurt)
-                    {
-                        hitEntity.currentHP -= 1;
-                    }
-                    else
-                    {
-                        isBurn = false;
-                        yield break;
-                    }
-                    
-                }
+                hitEntity.currentHP -= 1;
             }
+            else
+            {
+                isBurn = false;
+                yield break;
+            }
+            
         }
+        
+        yield return null;
+    }
 
+    private WaitForSeconds BurnWait =  new WaitForSeconds(1f);
+    private IEnumerator BurnCoroutine()
+    {
+        while (true)
+        {
+            if (isBurn)
+            {
+                hitEntity.currentHP -= 1;
+                fireEffect.SetActive(true);
+            }
+            else
+            {
+                fireEffect.SetActive(false);
+                yield break;
+            }
+            yield return BurnWait;
+        }
+        
         yield return null;
     }
     

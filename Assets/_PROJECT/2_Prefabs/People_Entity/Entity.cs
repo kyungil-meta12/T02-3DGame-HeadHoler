@@ -44,7 +44,7 @@ public class Entity : MonoBehaviour
     [Header("머리장비")]
     public GameObject[] equips;
     [Header("애니메이터 컨트롤러")]
-    public AnimatorController[] animatorControllers;
+    public RuntimeAnimatorController[] animatorControllers;
     
     private Animator animator;
     private SkinnedMeshRenderer rend;
