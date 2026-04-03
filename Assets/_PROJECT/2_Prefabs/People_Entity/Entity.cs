@@ -70,9 +70,8 @@ public class Entity : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
     }
 
-    private void Start()
+    private IEnumerator Start()
     {
-        Sg_GameManager.Inst.entities.Add(this);
         behavior.Init();
         
         //소속, 순찰포인트 세팅
@@ -87,6 +86,9 @@ public class Entity : MonoBehaviour
         {
             StartCoroutine(PointToMoveCoRoutine());
         }
+
+        yield return new WaitUntil(() => Sg_GameManager.Inst != null);
+        Sg_GameManager.Inst.entities.Add(this);
     }
 
     //목적지가 있을시 실행됨
