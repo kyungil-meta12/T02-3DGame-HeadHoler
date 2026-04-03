@@ -11,12 +11,19 @@ public class HitSound : MonoBehaviour
     [Header("사운드 발생 범위")]
     public float maxSoundRadius = 20f;
     
-    private SphereCollider hitSound;
     public bool isGunShot = false;
+    public bool isBurn = false;
+    public GameObject fireEffect;
+
+    private SphereCollider hitSound;
+    private Entity hitEntity;
+    private BehaviorGraphAgent behavior;
 
     private void Awake()
     {
         hitSound = GetComponent<SphereCollider>();
+        hitEntity = GetComponentInParent<Entity>();
+        behavior = GetComponentInParent<BehaviorGraphAgent>();
     }
 
     private void Start()
@@ -24,13 +31,50 @@ public class HitSound : MonoBehaviour
         StartCoroutine(SoundCoroutine());
         //Destroy(gameObject, soundTimer);
     }
+
+    private WaitForSeconds HurtWait =  new WaitForSeconds(3f);
+    private IEnumerator HurtCoroutine()
+    {
+        if (hitEntity != null && behavior != null)
+        {
+            while (true)
+            {
+                yield return HurtWait;
+                if (behavior.GetVariable<bool>("isHurt", out var isHurt))
+                {
+                    if (isBurn)
+                    {
+                        hitEntity.currentHP -= 1;
+                        fireEffect.SetActive(true);
+                    }
+                    else
+                    {
+                        fireEffect.SetActive(false);
+                    }
+                    
+                    if (isHurt)
+                    {
+                        hitEntity.currentHP -= 1;
+                    }
+                    else
+                    {
+                        isBurn = false;
+                        yield break;
+                    }
+                    
+                }
+            }
+        }
+
+        yield return null;
+    }
     
-    private WaitForSeconds wait = new WaitForSeconds(soundTimer);
+    private WaitForSeconds SoundWait = new WaitForSeconds(soundTimer);
     private IEnumerator SoundCoroutine() //소리범위를 늘려준다.
     {
         hitSound.radius = maxSoundRadius;
         hitSound.enabled = true;
-        yield return wait;
+        yield return SoundWait;
         hitSound.enabled = false;
     }
     

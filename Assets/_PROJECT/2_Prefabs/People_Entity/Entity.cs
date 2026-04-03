@@ -119,6 +119,14 @@ public class Entity : MonoBehaviour
             if (speed > 1f) speed = 1f;
             animator.SetFloat(Speed, speed, 0.1f, Time.deltaTime);
         }
+
+        if (currentHP <= 0f)
+        {
+            currentHP = 0f;
+            behavior.enabled = false;
+            agent.isStopped = true;
+            regController.EnableRagdoll();
+        }
     }
 
     private void OnDisable()
@@ -140,9 +148,6 @@ public class Entity : MonoBehaviour
             if (col == regController.headCollider)
             {
                 currentHP = 0f;
-                behavior.enabled = false;
-                agent.isStopped = true;
-                regController.EnableRagdoll();
                 regController.headCollider.attachedRigidbody.AddForce(direction * 200f, ForceMode.Impulse); // 맞은 방향으로 힘 가함
                 //print("headshot");
             }
@@ -154,12 +159,8 @@ public class Entity : MonoBehaviour
                     {
                         currentHP -= dmg;
                         currentHP = Mathf.Clamp(currentHP, 0f, 999f);
-                        if (currentHP <= 0f)
+                        if (regController.ragdollEnabled)
                         {
-                            currentHP = 0f;
-                            behavior.enabled = false;
-                            agent.isStopped = true;
-                            regController.EnableRagdoll();
                             c.attachedRigidbody.AddForce(direction * 200f, ForceMode.Impulse); // 죽은 이후에는 맞은 방향으로 힘 가함
                         }
                         //print("not headshot");

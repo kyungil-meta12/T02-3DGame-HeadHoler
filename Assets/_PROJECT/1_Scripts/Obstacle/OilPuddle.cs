@@ -71,21 +71,12 @@ public class OilPuddle : Obstacle
 			//entity Hit()
 			collision.gameObject.GetComponentInParent<Entity>().Hit(
 				collision.collider,transform.position-collision.contacts[0].point, damage);
-			var hitSound = Instantiate(hitSoundPrefab, collision.transform.GetComponentInParent<Evidence>().transform);
-			//entity 불태우기 todo 중복처리 필요
-			bool isIgnite = false;
-			foreach (Transform child in collision.transform)
+			var hitSound = collision.transform.GetComponentInParent<HitSound>();
+			//entity 불태우기
+			if (hitSound == null)
 			{
-				if (child.name.StartsWith(fireEffect.name))
-				{
-					isIgnite = true;
-					break;
-				}
-			}
-
-			if (isIgnite == false)
-			{
-				Destroy(Instantiate(fireEffect, collision.transform), 3f);
+				var hitEvidence = Instantiate(hitSoundPrefab, collision.transform.GetComponentInParent<Evidence>().transform);
+				hitEvidence.GetComponent<HitSound>().isBurn = true;
 			}
 		}
 	}
