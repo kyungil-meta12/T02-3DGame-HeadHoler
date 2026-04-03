@@ -30,6 +30,11 @@ public class Sg_ScoreManager : MonoBehaviour
     [Header("Popup")]
     [SerializeField] private ScorePopupNotifier scorePopupNotifier;
 
+    private bool isFailureShown = false;
+
+    [Header("Fail Result Popup")]
+    [SerializeField] private ResultPopupController resultPopupController;
+
     private readonly List<ScoreLogEntry> scoreLogList = new List<ScoreLogEntry>();
 
     public int CurrentScore
@@ -107,6 +112,7 @@ public class Sg_ScoreManager : MonoBehaviour
             scorePopupNotifier.ShowScoreLose(amount);
         }
 
+        CheckFailureByScore();
         Debug.Log($"[Sg_ScoreManager] RemoveScore: -{amount}, CurrentScore: {currentScore}");
     }
 
@@ -120,12 +126,14 @@ public class Sg_ScoreManager : MonoBehaviour
         }
 
         UpdateScoreUI();
+        CheckFailureByScore();
     }
 
     public void ClearGameLog()
     {
         currentScore = 0;
         scoreLogList.Clear();
+        isFailureShown = false;
         UpdateScoreUI();
     }
 
@@ -134,6 +142,26 @@ public class Sg_ScoreManager : MonoBehaviour
         if (scoreTextObj != null)
         {
             scoreTextObj.text = $"Score : {currentScore:N0}";
+        }
+    }
+
+    private void CheckFailureByScore()
+    {
+        if (isFailureShown)
+            return;
+
+        if (currentScore > 0)
+            return;
+
+        isFailureShown = true;
+
+        if (resultPopupController != null)
+        {
+            resultPopupController.ShowFailure();
+        }
+        else
+        {
+            Debug.LogWarning("[Sg_ScoreManager] resultPopupController is null.");
         }
     }
 }

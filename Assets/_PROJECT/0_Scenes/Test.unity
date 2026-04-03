@@ -179,7 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47d12122ba728e049b0d47fc726e0769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameTimer
-  maxTime: 180
+  maxTime: 360
   currentTime: 180
   startOnAwake: 1
   stopWhenTimeOver: 1
@@ -9585,6 +9585,14 @@ PrefabInstance:
       propertyPath: 'patrolPoints.Array.data[3]'
       value: 
       objectReference: {fileID: 784601220}
+    - target: {fileID: 6785212003250099234, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
+      propertyPath: scoreMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6785212003250099234, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
+      propertyPath: scoreOnDeath
+      value: 10000
+      objectReference: {fileID: 0}
     - target: {fileID: 6785212003250099234, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
       propertyPath: isClearTarget
       value: 0
@@ -22803,6 +22811,7 @@ MonoBehaviour:
   currentScore: 1000
   scoreTextObj: {fileID: 1431753663}
   scorePopupNotifier: {fileID: 1281338785}
+  resultPopupController: {fileID: 1035557906}
 --- !u!4 &1121302519
 Transform:
   m_ObjectHideFlags: 0
@@ -38483,6 +38492,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Sg_GameManager
   entities:
   - {fileID: 0}
+  resultPopupController: {fileID: 1035557906}
 --- !u!1 &1592398502
 GameObject:
   m_ObjectHideFlags: 0
