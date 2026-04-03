@@ -30,11 +30,12 @@ public class AirVentBase : Obstacle
 		{
 			StartCoroutine(FallingDown());
 
-			rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;   //Y좌표 외에 회전 포함 전부 잠금
+			//rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;   //Y좌표 외에 회전 포함 전부 잠금
+			rb.linearVelocity = Vector3.zero;
+			rb.angularVelocity = Vector3.zero;
 
 			rb.isKinematic = false;
 			rb.useGravity = true;
-			//rb.linearVelocity = Vector3.zero;
 		}
 	}
 
