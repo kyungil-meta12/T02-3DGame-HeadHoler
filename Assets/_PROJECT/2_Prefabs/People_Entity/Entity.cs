@@ -53,7 +53,7 @@ public class Entity : MonoBehaviour
     private NavMeshAgent agent;
     private float speed;
 
-    
+    private bool isDead = false;
 
     private void Awake()
     {
@@ -120,8 +120,9 @@ public class Entity : MonoBehaviour
             animator.SetFloat(Speed, speed, 0.1f, Time.deltaTime);
         }
 
-        if (currentHP <= 0f)
+        if (currentHP <= 0f && isDead == false)
         {
+            isDead = true;
             currentHP = 0f;
             behavior.enabled = false;
             agent.isStopped = true;
