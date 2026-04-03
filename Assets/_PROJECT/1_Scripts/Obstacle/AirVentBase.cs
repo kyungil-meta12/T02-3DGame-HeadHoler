@@ -1,10 +1,13 @@
 using System.Collections;
+using Unity.Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class AirVentBase : Obstacle
 {
 	private Rigidbody rb;
 	private bool isFalling = false;
+	private bool isfalled = false;
 
 	[Header("회전속도, 밀려나는 거리")]
 	public float rotationSpeed = 2f;	//기본 1초에서 회전에 걸리는 시간 나눔값(2f = 0.5s)
@@ -25,14 +28,13 @@ public class AirVentBase : Obstacle
 
 		if (rb != null)
 		{
+			StartCoroutine(FallingDown());
+
+			rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;   //Y좌표 외에 회전 포함 전부 잠금
+
 			rb.isKinematic = false;
 			rb.useGravity = true;
-
-			rb.constraints = RigidbodyConstraints.FreezeRotation;   //물리회전 잠금
-
-			
-
-			StartCoroutine(FallingDown());
+			//rb.linearVelocity = Vector3.zero;
 		}
 	}
 
@@ -66,14 +68,21 @@ public class AirVentBase : Obstacle
 
 		if (collision.gameObject.CompareTag("Entity"))
 		{
-			collision.gameObject.GetComponent<Entity>().Hit(
-				collision.collider,transform.position-collision.contacts[0].point, damage);
+			if (isfalled == false)
+			{
+				collision.gameObject.GetComponent<Entity>().Hit(
+				collision.collider, transform.position - collision.contacts[0].point, damage);
+			}
 		}
 
-		if (collision.gameObject.CompareTag("Ground"))
+			if (collision.gameObject.CompareTag("Ground"))
 		{
-			Instantiate(hitSoundPrefab, transform.position, Quaternion.identity);
-			Hit(transform.position);
+			if (isfalled == false)
+			{
+				isfalled = true;
+				Instantiate(hitSoundPrefab, transform.position, Quaternion.identity);
+				Hit(transform.position);
+			}
 		}
 	}
 }
