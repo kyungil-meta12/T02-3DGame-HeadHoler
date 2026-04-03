@@ -45,9 +45,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2591b686a202448990598cfa21db81d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HitSound
-  soundTimer: 1
   maxSoundRadius: 20
   isGunShot: 0
+  isBurn: 0
+  fireEffect: {fileID: 8793510976239746625, guid: 8fa5143051527e949b0ae174c8430414, type: 3}
 --- !u!135 &7285146321843765632
 SphereCollider:
   m_ObjectHideFlags: 0
