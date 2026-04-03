@@ -480,8 +480,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3839652506848762441}
   - {fileID: 4935882524811454589}
@@ -573,6 +573,7 @@ MonoBehaviour:
   scoreMode: 1
   scoreOnDeath: 100
   scoreLabelOnDeath: Enemy Kill
+  isClearTarget: 1
 --- !u!114 &5751549092392070028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -592,6 +593,7 @@ MonoBehaviour:
   isMale: 1
   rendererIndex: 0
   equipIndex: 99
+  guardTarget: {fileID: 0}
   patrolPoints: []
   maleRenderMeshes:
   - {fileID: 4300034, guid: 318840a7e38980943bb4c508fa842265, type: 3}

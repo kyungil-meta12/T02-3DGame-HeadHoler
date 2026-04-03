@@ -69,8 +69,9 @@ public class OilPuddle : Obstacle
 		if (isBurn && collision.gameObject.CompareTag("Entity"))
 		{
 			//entity Hit()
-			collision.gameObject.GetComponent<Entity>().Hit(
+			collision.gameObject.GetComponentInParent<Entity>().Hit(
 				collision.collider,transform.position-collision.contacts[0].point, damage);
+			var hitSound = Instantiate(hitSoundPrefab, collision.transform.GetComponentInParent<Evidence>().transform);
 			//entity 불태우기 todo 중복처리 필요
 			bool isIgnite = false;
 			foreach (Transform child in collision.transform)
