@@ -64,7 +64,7 @@ public class Obstacle : MonoBehaviour
 						otherRb.useGravity = false;
 					}
 
-					explosives[i].Fracture().SetCallbackObject(explosives[i]);
+					explosives[i].Fracture();
 				}
 			}
 		}
@@ -82,7 +82,7 @@ public class Obstacle : MonoBehaviour
 
 			if (fracture != null)
 			{
-				fracture.Fracture().SetCallbackObject(this);
+				fracture.Fracture();
 			}
 		}
 	}
