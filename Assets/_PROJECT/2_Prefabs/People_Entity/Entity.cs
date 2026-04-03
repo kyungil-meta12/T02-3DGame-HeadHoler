@@ -99,13 +99,14 @@ public class Entity : MonoBehaviour
             rend.sharedMesh = femaleRenderMeshes[curIndex];
         }
 
+        for (int i = 0; i < headSlot.childCount; i++)
+        {
+            DestroyImmediate(headSlot.GetChild(i).gameObject);
+        }
+        
         //머리장비 바꾸기
         if (equipIndex < equips.Length)
         {
-            for (int i = 0; i < headSlot.childCount; i++)
-            {
-                Destroy(headSlot.GetChild(i).gameObject);
-            }
             Instantiate(equips[equipIndex], headSlot);
         }
     }
