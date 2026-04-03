@@ -12,6 +12,12 @@ public partial class OnStopAction : Action
     [SerializeReference] public BlackboardVariable<Animator> Animator;
     [SerializeReference] public BlackboardVariable<bool> Bool;
     //해당 분기 종료시 애니메이션 false
+
+    protected override Status OnUpdate()
+    {
+        return Status.Running;
+    }
+
     protected override void OnEnd()
     {
         if(String.Value == null || Animator.Value == null) return;
