@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6311505627060122255}
   - component: {fileID: 3282190285899156171}
   - component: {fileID: 4391027498639099237}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: OilPuddlePrefab
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -48,10 +48,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a66afffd71f49ef40a19f0d5063eb6ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OilPuddle
+  hitSoundPrefab: {fileID: 0}
   explosives: []
   fragile: 0
+  damage: 50
   spreadTime: 5
   maxRadius: 3
+  reduceTime: 10
   fireEffect: {fileID: 4946188563040506486}
 --- !u!33 &6311505627060122255
 MeshFilter:
@@ -129,7 +132,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1001 &4516186760642145335

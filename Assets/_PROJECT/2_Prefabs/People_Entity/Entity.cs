@@ -27,12 +27,18 @@ public class Entity : MonoBehaviour
     public int rendererIndex = 0;
     [Header("머리장비 선택")]
     public int equipIndex = 99;
+    [Header("일정시간 후 이동해야 하는 좌표 (없으면 비워두기 가능)")]
+    public GameObject pointToMove;
+    public static float pointToMoveTime = 60;
+    [Header("차에 타야하는지 체크")]
+    public bool isMustGetInCar;
     [Header("가드 대상 (없으면 비워두기 가능)")]
     public GameObject guardTarget;
     [Header("순찰 포인트")]
     public List<GameObject> patrolPoints;
 
     private static readonly int Speed = Animator.StringToHash("Speed");
+    private static readonly int GetInCar = Animator.StringToHash("GetInCar");
 
     [Space(20)] [Header("======참조======")] 
     [Header("남성 랜더러")]
@@ -73,7 +79,43 @@ public class Entity : MonoBehaviour
         behavior.SetVariableValue("Role", myRole);
         behavior.SetVariableValue("PatrolPoints", patrolPoints);
         behavior.SetVariableValue("GuardTarget", guardTarget);
+        behavior.SetVariableValue("pointToMoveTime", pointToMoveTime);
+        behavior.SetVariableValue("PointToMove", pointToMove);
         currentHP = maxHP;
+
+        if (pointToMove != null)
+        {
+            StartCoroutine(PointToMoveCoRoutine());
+        }
+    }
+
+    //목적지가 있을시 실행됨
+    private WaitForSeconds pointToMoveWait = new WaitForSeconds(pointToMoveTime);
+    private IEnumerator PointToMoveCoRoutine()
+    {
+        yield return pointToMoveWait;
+
+        //차에 타야하는지
+        if (isMustGetInCar)
+        {
+            behavior.enabled = false;
+            //애니메이터 bool값 전부 끄기
+            foreach (AnimatorControllerParameter param in animator.parameters)
+            {
+                if (param.type == AnimatorControllerParameterType.Bool)
+                {
+                    animator.SetBool(param.name, false);
+                }
+            }
+            animator.SetTrigger(GetInCar);
+            
+            //todo 차량 탑승처리 : transform이 차량 머리쪽을 본다, 오른쪽으로 애니메이션에 맞춰 이동, 차량에 transform 고정해서 같이 이동
+            //todo 차량 터지면 사망처리 : 터지기 직전에 다친 상태로 나오기, 차량 터지면 폭발에 의해 사망
+        }
+        else
+        {
+            //todo 차에 탑승 안한다면 이동 후 할 행동
+        }
     }
 
     [ContextMenu("랜더러 및 머리장비 세팅")]
