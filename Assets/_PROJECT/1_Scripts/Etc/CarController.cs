@@ -120,7 +120,7 @@ public class CarController : MonoBehaviour
                             joint.connectedBody = null;
                             Destroy(joint);
                         }
-                        wheel.AddForce((wheel.position - body.position) * 50f, ForceMode.Impulse);
+                        wheel.AddForce((wheel.position - body.position) * 100f, ForceMode.Impulse);
                     }
                     exploded = true;
                 }
