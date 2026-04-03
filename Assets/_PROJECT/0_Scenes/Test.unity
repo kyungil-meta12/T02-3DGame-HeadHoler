@@ -22526,17 +22526,9 @@ PrefabInstance:
       objectReference: {fileID: 927608244}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 2354732545067378228, guid: fbf8743ea28904246a1fb523386a72c1, type: 3}
-      insertIndex: 0
-      addedObject: {fileID: 1591117487}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbf8743ea28904246a1fb523386a72c1, type: 3}
---- !u!4 &1095404884 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2354732545067378228, guid: fbf8743ea28904246a1fb523386a72c1, type: 3}
-  m_PrefabInstance: {fileID: 1095404883}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1103264003
 GameObject:
   m_ObjectHideFlags: 0
@@ -38764,53 +38756,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1590590528}
   m_CullTransparentMesh: 1
---- !u!1 &1591117486
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1591117487}
-  - component: {fileID: 1591117488}
-  m_Layer: 0
-  m_Name: Sg_GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1591117487
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1591117486}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 665.1756, y: 0.10001993, z: 628.0445}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1095404884}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1591117488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1591117486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 497f5b6f333b412ea234cb788ec0d005, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Sg_GameManager
-  entities:
-  - {fileID: 0}
-  resultPopupController: {fileID: 1035557906}
 --- !u!1 &1592398502
 GameObject:
   m_ObjectHideFlags: 0
