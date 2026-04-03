@@ -37,7 +37,8 @@ public class OilPuddle : Obstacle
 		}
 
 		transform.localScale = targetScale;
-		
+
+		yield return new WaitUntil(() => fireEffect.activeSelf);
 		//fireEffect가 켜지기 전까지 대기, fireEffect가 켜진 것을 감지하고 scale 0까지줄이기, scale 0 되면 Destroy
 		while (elapsed < reduceTime)
 		{

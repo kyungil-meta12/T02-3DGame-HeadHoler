@@ -12,20 +12,21 @@ public class OilBarrel : Obstacle
 	private bool isLeaking = false;
 
 	//테스트용 함수
-	/*
+/*
 	private void OnMouseDown()
 	{
 		if (isLeaking)  //드럼통을 이미 맞췄으면
 		{
 			return;
 		}
-
+		Vector3 hit;
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-		RaycastHit hit;
+		RaycastHit click;
 
-		if (Physics.Raycast(ray, out hit))
+		if (Physics.Raycast(ray, out click))
 		{
-			Debug.Log($"마우스클릭 감지 : {hit.point}");
+			Debug.Log($"마우스클릭 감지 : {click.point}");
+			hit = click.point;
 			Hit(hit);
 		}
 	}*/
