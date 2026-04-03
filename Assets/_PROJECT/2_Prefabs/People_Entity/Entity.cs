@@ -38,7 +38,7 @@ public class Entity : MonoBehaviour
     public List<GameObject> patrolPoints;
 
     private static readonly int Speed = Animator.StringToHash("Speed");
-    private static readonly int GetInCar = Animator.StringToHash("GetInCar");
+    private static readonly int isInCar = Animator.StringToHash("isInCar");
 
     [Space(20)] [Header("======참조======")] 
     [Header("남성 랜더러")]
@@ -109,9 +109,11 @@ public class Entity : MonoBehaviour
                     animator.SetBool(param.name, false);
                 }
             }
-            animator.SetTrigger(GetInCar);
+            animator.SetBool(isInCar, true);
             
             //todo 차량 탑승처리 : transform이 차량 머리쪽을 본다, 오른쪽으로 애니메이션에 맞춰 이동, 차량에 transform 고정해서 같이 이동
+            
+            
             //todo 차량 터지면 사망처리 : 터지기 직전에 다친 상태로 나오기, 차량 터지면 폭발에 의해 사망
         }
         else
