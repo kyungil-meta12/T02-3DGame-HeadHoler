@@ -8,7 +8,7 @@ public class RagdollController : MonoBehaviour
 {
     public Collider[] ragdollColliders; // 레그돌 콜라이더
     public Rigidbody[] ragdollBodies; // 레그돌 리지드 바디
-    public SphereCollider headCollider; // 헤드샷 구분용 콜라이더
+    public Collider headCollider; // 헤드샷 구분용 콜라이더
     public GameObject hip; //시체처리용 참조
     public bool devMode = false; // 활성화 시 spaceKey로 레그돌 활성화 가능
 
@@ -51,8 +51,6 @@ public class RagdollController : MonoBehaviour
 
     void Start()
     {
-        headCollider.radius = 0.2f; // 머리 콜라이더 조정
-
         foreach (var rb in ragdollBodies) // 레그돌 바디들은 중력을 비활성화 하고 트리거 콜라이더로 설정한다
         {
             rb.useGravity = false;

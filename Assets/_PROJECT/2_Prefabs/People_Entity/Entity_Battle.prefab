@@ -530,9 +530,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7107576353816887056}
-  - component: {fileID: 5812012958628384545}
   - component: {fileID: 7972411409405395732}
   - component: {fileID: 9191068301260376379}
+  - component: {fileID: 7150545103696432466}
   m_Layer: 9
   m_Name: Head
   m_TagString: Entity
@@ -559,27 +559,6 @@ Transform:
   - {fileID: 5453405623669767317}
   m_Father: {fileID: 3261041993419938415}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!135 &5812012958628384545
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2094528778983229915}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.15
-  m_Center: {x: 0, y: 0.09549456, z: 0}
 --- !u!54 &7972411409405395732
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -653,6 +632,29 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
+--- !u!136 &7150545103696432466
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094528778983229915}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.16
+  m_Height: 0.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.05, z: 0}
 --- !u!1 &2253565243009083768
 GameObject:
   m_ObjectHideFlags: 0
@@ -3252,7 +3254,7 @@ PrefabInstance:
     - target: {fileID: 6785212003250099234, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
       propertyPath: headCollider
       value: 
-      objectReference: {fileID: 5812012958628384545}
+      objectReference: {fileID: 7150545103696432466}
     - target: {fileID: 6785212003250099234, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
       propertyPath: ragdollBodies.Array.size
       value: 11
@@ -3332,7 +3334,7 @@ PrefabInstance:
     - target: {fileID: 6785212003250099234, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
       propertyPath: 'ragdollColliders.Array.data[6]'
       value: 
-      objectReference: {fileID: 5812012958628384545}
+      objectReference: {fileID: 7150545103696432466}
     - target: {fileID: 6785212003250099234, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
       propertyPath: 'ragdollColliders.Array.data[7]'
       value: 
