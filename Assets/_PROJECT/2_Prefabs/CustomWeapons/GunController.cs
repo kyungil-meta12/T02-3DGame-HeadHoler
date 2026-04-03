@@ -60,7 +60,8 @@ public class GunController : MonoBehaviour
         var obstacleMask = 1 << LayerMask.NameToLayer("Obstacle");
         var groundMask = 1 << LayerMask.NameToLayer("Ground");
         var wallMask = 1 << LayerMask.NameToLayer("Wall");
-        var findMask = obstacleMask | entityMask | groundMask | wallMask;
+        var wheelMask = 1 << LayerMask.NameToLayer("Wheel");
+        var findMask = obstacleMask | entityMask | groundMask | wallMask | wheelMask;
 
         // 화면 중앙으로 레이캐스팅 후 가까운 거리부터 오름차순 정렬
         Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
@@ -76,6 +77,7 @@ public class GunController : MonoBehaviour
         {
             var entityComp = hit.transform.gameObject.GetComponentInParent<Entity>();
             var obstacleComp = hit.transform.gameObject.GetComponentInParent<Obstacle>();
+            var wheelComp = hit.transform.gameObject.GetComponent<WheelController>();
             
             if (entityComp) // 사람인 경우
             {
@@ -110,7 +112,13 @@ public class GunController : MonoBehaviour
                 break;
             }
 
-            if (!entityComp && !obstacleComp)  // 상호 작용 불가능한 장애물인 경우 // 예: 건물 외벽, 지형 등...
+            if(wheelComp) // 자동차 바퀴인 경우
+            {
+                print("wheel hit");
+                wheelComp.DestroyWheel(ray.direction);
+            }
+
+            if(!entityComp && !obstacleComp && !wheelComp)  // 상호 작용 불가능한 장애물인 경우 // 예: 건물 외벽, 지형 등...
             {
                 print("static obstacle hit");
                 if (hitSoundPrefab)
