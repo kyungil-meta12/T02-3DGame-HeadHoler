@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 namespace DinoFracture
@@ -31,8 +32,10 @@ namespace DinoFracture
             return ThisMass / TotalMass;
         }
 
-        private void Start()
+        private WaitForSeconds wait = new WaitForSeconds(3f);
+        private IEnumerator Start()
         {
+            yield return wait;
             gameObject.tag = "FracturedObject";
             gameObject.layer = LayerMask.NameToLayer("Obstacle");
         }
@@ -40,6 +43,14 @@ namespace DinoFracture
         public void ScanComplete()
         {
             Destroy(gameObject);
+        }
+
+        private void OnCollisionEnter(Collision other)
+        {
+            if (other.gameObject.CompareTag("Entity"))
+            {
+                other.gameObject.SendMessage("Hit", other);
+            }
         }
     }
 }
