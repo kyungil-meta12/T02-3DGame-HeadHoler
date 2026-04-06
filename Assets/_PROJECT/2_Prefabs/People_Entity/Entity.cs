@@ -62,6 +62,8 @@ public class Entity : MonoBehaviour
     private float speed;
 
     internal bool isDead = false;
+    internal BlackboardVariable<bool> isHurt;
+    internal BlackboardVariable<bool> shotTrigger;
 
     private void Awake()
     {
@@ -82,6 +84,10 @@ public class Entity : MonoBehaviour
         behavior.SetVariableValue("GuardTarget", guardTarget);
         behavior.SetVariableValue("pointToMoveTime", pointToMoveTime);
         behavior.SetVariableValue("PointToMove", pointToMove);
+
+        behavior.GetVariable<bool>("isHurt", out isHurt);
+        behavior.GetVariable<bool>("ShotTrigger", out shotTrigger);
+            
         currentHP = maxHP;
 
         if (pointToMove != null)
@@ -239,31 +245,29 @@ public class Entity : MonoBehaviour
     //총이나 충돌체에 맞았을때
     public void Hit(Collider col, Vector3 direction, float dmg)
     {
-        if (behavior.GetVariable<bool>("isHurt", out var isHurt))
+        shotTrigger.Value = !shotTrigger.Value;
+        isHurt.Value = true;
+        if (col == regController.headCollider)
         {
-            isHurt.Value = true;
-            if (col == regController.headCollider)
+            currentHP = 0f;
+            regController.headCollider.attachedRigidbody.AddForce(direction * 200f, ForceMode.Impulse); // 맞은 방향으로 힘 가함
+            //print("headshot");
+        }
+        else
+        {
+            foreach (var c in regController.ragdollColliders)
             {
-                currentHP = 0f;
-                regController.headCollider.attachedRigidbody.AddForce(direction * 200f, ForceMode.Impulse); // 맞은 방향으로 힘 가함
-                //print("headshot");
-            }
-            else
-            {
-                foreach (var c in regController.ragdollColliders)
+                if (col == c)
                 {
-                    if (col == c)
+                    currentHP -= dmg;
+                    currentHP = Mathf.Clamp(currentHP, 0f, 999f);
+                    if (regController.ragdollEnabled)
                     {
-                        currentHP -= dmg;
-                        currentHP = Mathf.Clamp(currentHP, 0f, 999f);
-                        if (regController.ragdollEnabled)
-                        {
-                            c.attachedRigidbody.AddForce(direction * 200f, ForceMode.Impulse); // 죽은 이후에는 맞은 방향으로 힘 가함
-                        }
-                        //print("not headshot");
-                        //print($"current HP: {currentHP}");
-                        break;
+                        c.attachedRigidbody.AddForce(direction * 200f, ForceMode.Impulse); // 죽은 이후에는 맞은 방향으로 힘 가함
                     }
+                    //print("not headshot");
+                    //print($"current HP: {currentHP}");
+                    break;
                 }
             }
         }
