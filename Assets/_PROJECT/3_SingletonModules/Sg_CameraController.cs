@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -22,7 +23,13 @@ public class Sg_CameraController : MonoBehaviour
 
     private float currentFov;
     private float offsetFov; // 스코프 줌 조정 오프셋 값
-    private float offsetFovDest;
+    private float offsetFovDest = 1f;
+
+    public int maxZoomCount = 10;
+    private int currZoomCount = 0;
+    public float zoomSensitivity = 1f;
+    private List<float> zoomSens = new();
+
     [HideInInspector]
     public bool zoomState = false;
 
@@ -52,15 +59,19 @@ public class Sg_CameraController : MonoBehaviour
     void Start()
     {
         canvas.gameObject.SetActive(false);
+        for (int i = 0; i < maxZoomCount; i++)
+        {
+            zoomSens.Add(0f);
+        }
     }
 
     void Update()
     {
         // 스코프 배율 값 업데이트
-        offsetFov = Mathf.Lerp(offsetFov, offsetFovDest, Time.deltaTime * 5f);
+        offsetFov = Mathf.Lerp(offsetFov, -offsetFovDest * zoomSensitivity + zoomSensitivity, Time.deltaTime * 5f);
 
         // 줌을 더 크게 할 수록 마우스 감도 감소
-        var camSensitivity = (offsetFov + currentFov)/defaultFov;
+        var camSensitivity = (currentFov)/defaultFov;
         Sg_MouseMan.Inst.SetSensitivityMultiple(new Vector2(camSensitivity, camSensitivity));
     }
 
@@ -99,10 +110,10 @@ public class Sg_CameraController : MonoBehaviour
             }
             else // 값이 zoomedFov 미만으로 작아지지 않도록 고정
             {
-                currentFov = zoomedFov;
+                currentFov = zoomedFov + offsetFov;
             }
 
-            cam.fieldOfView = currentFov + offsetFov;
+            cam.fieldOfView = currentFov;
         }
         else // 줌 비활성화 시 lerp를 사용하여 fov 증가
         {
@@ -132,14 +143,24 @@ public class Sg_CameraController : MonoBehaviour
 
     public void IncreaseScopeMagnification()
     {
-        offsetFovDest -= 1f;
-        offsetFovDest = Mathf.Clamp(offsetFovDest, -9f, 0f);
+        if(currZoomCount == maxZoomCount)
+        {
+            return;
+        }
+        // 일정한 줌인/줌아웃 감도를 위해 리스트에 감도를 기록하여 축소 시 사용
+        zoomSens[currZoomCount] = 0.5f / offsetFovDest;
+        offsetFovDest += zoomSens[currZoomCount];
+        currZoomCount++;
     }
 
     public void ReduceScopeMagnification()
     {
-        offsetFovDest += 1f;
-        offsetFovDest = Mathf.Clamp(offsetFovDest, -9f, 0f);
+        if(currZoomCount == 0)
+        {
+            return;
+        }
+        offsetFovDest -= zoomSens[currZoomCount - 1];
+        currZoomCount--;
     }
 
     public void DisableZoom()

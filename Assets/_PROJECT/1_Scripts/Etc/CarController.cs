@@ -146,7 +146,7 @@ public class CarController : MonoBehaviour
                     }
                     
                     exploded = true;
-                    Sg_CameraController.Inst.AddShake(0.05f);
+                    Sg_CameraController.Inst.AddShake(0.1f);
                 }
                 else if(explosionTime >= 8f) // 폭발 파티클을 다시 비활성화
                 {
