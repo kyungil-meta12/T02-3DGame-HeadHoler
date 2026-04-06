@@ -226,15 +226,13 @@ public class Entity : MonoBehaviour
         }
     }
 
-    public void Hit(Collision col)
+    public void Hit(HitData hitData)
     {
         //sendMessage 호출용, 상대속도로 데미지 적용
-        float hitSpeed = col.relativeVelocity.magnitude;
-        Debug.Log(hitSpeed);
-
-        if (hitSpeed > 5f)
+        
+        if (hitData.impactForce > 5f)
         {
-            Hit(col.collider, col.transform.position - transform.position, hitSpeed);
+            Hit(hitData.col, hitData.direction, hitData.impactForce);
         }
     }
     

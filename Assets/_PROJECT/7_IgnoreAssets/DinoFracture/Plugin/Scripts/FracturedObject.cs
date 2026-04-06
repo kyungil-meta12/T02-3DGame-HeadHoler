@@ -16,6 +16,9 @@ namespace DinoFracture
         public float ThisMass;
         public float ThisVolume;
 
+        private HitData hitData = new HitData();
+        private Rigidbody rb;
+        
         public float GetRelativeSize()
         {
             return ThisVolume / TotalVolume;
@@ -33,6 +36,7 @@ namespace DinoFracture
         private WaitForSeconds wait = new WaitForSeconds(3f);
         private IEnumerator Start()
         {
+            rb = GetComponent<Rigidbody>();
             yield return wait;
             gameObject.tag = "FracturedObject";
             gameObject.layer = LayerMask.NameToLayer("Obstacle");
@@ -42,5 +46,22 @@ namespace DinoFracture
         {
             Destroy(transform.root.gameObject);
         }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.CompareTag("Entity"))
+            {
+                hitData.col = other;
+                hitData.direction = transform.position - other.transform.position;
+                hitData.impactForce = rb.linearVelocity.magnitude;
+                other.transform.root.SendMessage("Hit", hitData, SendMessageOptions.DontRequireReceiver);
+            }
+        }
     }
+}
+public class HitData
+{
+    public Collider col;
+    public Vector3 direction;
+    public float impactForce;
 }
