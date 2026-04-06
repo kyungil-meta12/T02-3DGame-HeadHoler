@@ -1,4 +1,5 @@
 using System;
+using DinoFracture;
 using Unity.Behavior;
 using UnityEngine;
 using Action = Unity.Behavior.Action;
@@ -19,6 +20,7 @@ public partial class ScanTargetAction : Action
         RagdollController targetRagdollController = Target.Value.GetComponentInParent<RagdollController>();
         Obstacle obstacle = Target.Value.GetComponentInParent<Obstacle>();
         HitSound hitCol = Target.Value.GetComponentInChildren<HitSound>();
+        FracturedObject fracturedObject = Target.Value.GetComponentInChildren<FracturedObject>();
 
         if (targetEntity != null)
         {
@@ -53,6 +55,7 @@ public partial class ScanTargetAction : Action
         }
         //해당흔적 제거완료 처리
         if (hitCol != null) hitCol.ScanComplete();
+        if (fracturedObject != null) fracturedObject.ScanComplete();
         if (obstacle != null) obstacle.ScanComplete();
         if (targetRagdollController != null)
         {
