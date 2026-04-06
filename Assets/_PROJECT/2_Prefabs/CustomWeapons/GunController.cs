@@ -103,10 +103,8 @@ public class GunController : MonoBehaviour
                 obstacleComp.Hit(hit.point);
                 if (hitSoundPrefab)
                 {
-                    //사운드 콜라이더 생성, isGunShot = true
-                    var hitSound = Instantiate(hitSoundPrefab, hit.point, Quaternion.identity);
-                    hitSound.name = "hit(GunShot)";
-                    hitSound.GetComponent<HitSound>().isGunShot = true;
+                    //사운드 콜라이더 생성
+                    Instantiate(hitSoundPrefab, hit.point, Quaternion.identity);
                 }
                 Sg_HitIndicator.Inst.InputHit();
                 break;
@@ -115,6 +113,11 @@ public class GunController : MonoBehaviour
             if(wheelComp) // 자동차 바퀴인 경우
             {
                 print("wheel hit");
+                if (hitSoundPrefab)
+                {
+                    //사운드 콜라이더 생성, isGunShot = true
+                    Instantiate(hitSoundPrefab, hit.point, Quaternion.identity);
+                }
                 wheelComp.DestroyWheel(ray.direction);
             }
 
@@ -124,9 +127,7 @@ public class GunController : MonoBehaviour
                 if (hitSoundPrefab)
                 {
                     //사운드 콜라이더 생성, isGunShot = true
-                    var hitSound = Instantiate(hitSoundPrefab, hit.point, Quaternion.identity);
-                    hitSound.name = "hit(GunShot)";
-                    hitSound.GetComponent<HitSound>().isGunShot = true;
+                    Instantiate(hitSoundPrefab, hit.point, Quaternion.identity);
                 }
                 break;
             }
