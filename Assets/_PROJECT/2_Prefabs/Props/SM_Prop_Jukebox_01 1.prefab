@@ -68,7 +68,7 @@ MonoBehaviour:
   destroyedSparkPrefab: {fileID: 1024167407391004, guid: 63baf4956cfa45d4aa5cd12cbc8b7689, type: 3}
   smokePrefab: {fileID: 3512801800959310821, guid: 5b1a599c7689ffc4dae2bac75010b78b, type: 3}
   playMusic: 0
-  playEffect: {fileID: 0}
+  playEffect: {fileID: 876618648734608431}
 --- !u!114 &88198600158693094
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -538,6 +538,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 108ca465382c11742bd2c91fe4fdb13f, type: 3}
+--- !u!1 &876618648734608431 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 339158821923109191, guid: 108ca465382c11742bd2c91fe4fdb13f, type: 3}
+  m_PrefabInstance: {fileID: 621091178949219688}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7117565805392136236 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7662913529153330500, guid: 108ca465382c11742bd2c91fe4fdb13f, type: 3}

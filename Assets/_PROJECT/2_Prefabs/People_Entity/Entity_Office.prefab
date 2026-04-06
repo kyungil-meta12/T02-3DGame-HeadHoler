@@ -463,7 +463,7 @@ GameObject:
   - component: {fileID: 6785212003250099234}
   - component: {fileID: 5751549092392070028}
   - component: {fileID: 4149120860568308002}
-  m_Layer: 2
+  m_Layer: 9
   m_Name: Entity_Office
   m_TagString: Entity
   m_Icon: {fileID: 0}
@@ -595,6 +595,7 @@ MonoBehaviour:
   equipIndex: 99
   pointToMove: {fileID: 0}
   isMustGetInCar: 0
+  carDriverSeatPoint: {fileID: 0}
   guardTarget: {fileID: 0}
   patrolPoints: []
   maleRenderMeshes:
