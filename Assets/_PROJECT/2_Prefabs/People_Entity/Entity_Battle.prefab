@@ -263,7 +263,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7382477577439554972}
   - component: {fileID: 4582882111974337703}
-  m_Layer: 9
+  m_Layer: 2
   m_Name: Renderer
   m_TagString: Entity
   m_Icon: {fileID: 0}
@@ -532,7 +532,7 @@ GameObject:
   - component: {fileID: 7107576353816887056}
   - component: {fileID: 7972411409405395732}
   - component: {fileID: 9191068301260376379}
-  - component: {fileID: 7150545103696432466}
+  - component: {fileID: 5268001467328780620}
   m_Layer: 9
   m_Name: Head
   m_TagString: Entity
@@ -632,7 +632,7 @@ CharacterJoint:
   m_EnablePreprocessing: 0
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!136 &7150545103696432466
+--- !u!136 &5268001467328780620
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -651,10 +651,10 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.16
-  m_Height: 0.5
+  m_Radius: 0.17
+  m_Height: 0.4
   m_Direction: 1
-  m_Center: {x: 0, y: 0.05, z: 0}
+  m_Center: {x: 0, y: 0.04, z: 0}
 --- !u!1 &2253565243009083768
 GameObject:
   m_ObjectHideFlags: 0
@@ -3254,7 +3254,7 @@ PrefabInstance:
     - target: {fileID: 6785212003250099234, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
       propertyPath: headCollider
       value: 
-      objectReference: {fileID: 7150545103696432466}
+      objectReference: {fileID: 5268001467328780620}
     - target: {fileID: 6785212003250099234, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
       propertyPath: ragdollBodies.Array.size
       value: 11
@@ -3334,7 +3334,7 @@ PrefabInstance:
     - target: {fileID: 6785212003250099234, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
       propertyPath: 'ragdollColliders.Array.data[6]'
       value: 
-      objectReference: {fileID: 7150545103696432466}
+      objectReference: {fileID: 5268001467328780620}
     - target: {fileID: 6785212003250099234, guid: 50614ee19c63aac4cbd931bbf1d033c2, type: 3}
       propertyPath: 'ragdollColliders.Array.data[7]'
       value: 

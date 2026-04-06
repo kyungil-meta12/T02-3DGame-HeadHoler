@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using Unity.Behavior;
+using UnityEngine.UI;
 
 public class GunController : MonoBehaviour
 {
@@ -24,15 +25,16 @@ public class GunController : MonoBehaviour
 
     // 스코프 캔버스
     public ScopeImageMove scopeImage;
+    private Image centerImage;
 
     // 방아쇠를 당긴 상태 = 마우스 좌클릭 상태
     private bool triggerPulled = false;
     // 격발 간격 타이머
     private float fireTimer = 0f;
 
-    void Start()
-    {
+    void Awake() {
         currAmmo = totalAmmo; // 탄창을 채운 상태로 시작
+        centerImage = scopeImage.transform.Find("ScopeImage").GetComponent<Image>();
     }
 
     void Update()
@@ -56,35 +58,28 @@ public class GunController : MonoBehaviour
             return;
         }
         
-        var entityMask = 1 << LayerMask.NameToLayer("Entity");
+        var entityMask   = 1 << LayerMask.NameToLayer("Entity");
         var obstacleMask = 1 << LayerMask.NameToLayer("Obstacle");
-        var groundMask = 1 << LayerMask.NameToLayer("Ground");
-        var wallMask = 1 << LayerMask.NameToLayer("Wall");
-        var wheelMask = 1 << LayerMask.NameToLayer("Wheel");
-        var findMask = obstacleMask | entityMask | groundMask | wallMask | wheelMask;
+        var groundMask   = 1 << LayerMask.NameToLayer("Ground");
+        var wallMask     = 1 << LayerMask.NameToLayer("Wall");
+        var wheelMask    = 1 << LayerMask.NameToLayer("Wheel");
+        var findMask     = obstacleMask | entityMask | groundMask | wallMask | wheelMask;
 
-        // 화면 중앙으로 레이캐스팅 후 가까운 거리부터 오름차순 정렬
-        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0));
-        RaycastHit[] hitList = Physics.RaycastAll(ray, 999f, findMask); // 레이캐스팅은 Entity 레이어를 가진 객체에 대해서만 처리
-      //  Debug.DrawRay(ray.origin, ray.direction * 999f, Color.red, 1.0f);
-        Array.Sort(hitList, (a, b) => a.distance.CompareTo(b.distance));
+        Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
 
-        var inputDirection = ray.direction;
-        inputDirection.y = 0f;
-
-        // 하나라도 충돌이 발견되면 즉시 for문을 종료한다. => 관통 현상 방지
-        foreach (var hit in hitList)
-        {
-            var entityComp = hit.transform.gameObject.GetComponentInParent<Entity>();
+        // 레이캐스팅은 findMask에 해당하는 레이어를 가진 객체에 대해서만 처리
+        if (Physics.Raycast(ray, out var hit, 9999f, findMask)) {
+            var entityComp   = hit.transform.gameObject.GetComponentInParent<Entity>();
             var obstacleComp = hit.transform.gameObject.GetComponentInParent<Obstacle>();
-            var wheelComp = hit.transform.gameObject.GetComponent<WheelController>();
-            
+            var wheelComp    = hit.transform.gameObject.GetComponent<WheelController>();
+
+            var rayDirection = ray.direction;
+            rayDirection.y = 0f;
+
             if (entityComp) // 사람인 경우
             {
                 print("people hit");
-                var direction = ray.direction;
-                direction.y = 0f;
-                entityComp.Hit(hit.collider, direction, damage);
+                entityComp.Hit(hit.collider, rayDirection, damage);
                 if (hitSoundPrefab)
                 {
                     //사운드 콜라이더 생성, isGunShot = true
@@ -92,9 +87,7 @@ public class GunController : MonoBehaviour
                     hitSound.name = "hit(GunShot)";
                     hitSound.GetComponent<HitSound>().isGunShot = true;
                 }
-                
                 Sg_HitIndicator.Inst.InputHit();
-                break;
             }
 
             if (obstacleComp) // 상호작용 장애물인 경우
@@ -109,16 +102,16 @@ public class GunController : MonoBehaviour
                     hitSound.GetComponent<HitSound>().isGunShot = true;
                 }
                 Sg_HitIndicator.Inst.InputHit();
-                break;
             }
 
-            if(wheelComp) // 자동차 바퀴인 경우
+            if (wheelComp) // 자동차 바퀴인 경우
             {
                 print("wheel hit");
-                wheelComp.DestroyWheel(ray.direction);
+                wheelComp.DestroyWheel(rayDirection);
+                Sg_HitIndicator.Inst.InputHit();
             }
 
-            if(!entityComp && !obstacleComp && !wheelComp)  // 상호 작용 불가능한 장애물인 경우 // 예: 건물 외벽, 지형 등...
+            if (!entityComp && !obstacleComp && !wheelComp)  // 상호 작용 불가능한 장애물인 경우 // 예: 건물 외벽, 지형 등...
             {
                 print("static obstacle hit");
                 if (hitSoundPrefab)
@@ -128,7 +121,6 @@ public class GunController : MonoBehaviour
                     hitSound.name = "hit(GunShot)";
                     hitSound.GetComponent<HitSound>().isGunShot = true;
                 }
-                break;
             }
         }
 
