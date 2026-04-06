@@ -36,5 +36,10 @@ namespace DinoFracture
             gameObject.tag = "FracturedObject";
             gameObject.layer = LayerMask.NameToLayer("Obstacle");
         }
+
+        public void ScanComplete()
+        {
+            Destroy(gameObject);
+        }
     }
 }
