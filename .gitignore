@@ -99,5 +99,18 @@ InitTestScene*.unity*
 /[Aa]ssets/[Ii]nit[Tt]est[Ss]cene*.unity*
 
 # Ignored direcory
-/[Aa]ssets/_PROJECT/7_IgnoreAssets/**
-!/[Aa]ssets/_PROJECT/7_IgnoreAssets/DinoFracture/*
+/[Aa]ssets/_PROJECT/7_IgnoreAssets/*
+
+# Ignore 예외처리
+!/[Aa]ssets/_PROJECT/7_IgnoreAssets/DinoFracture/
+!/[Aa]ssets/_PROJECT/7_IgnoreAssets/DinoFracture.meta
+/[Aa]ssets/_PROJECT/7_IgnoreAssets/DinoFracture/*
+!/[Aa]ssets/_PROJECT/7_IgnoreAssets/DinoFracture/Plugin/
+!/[Aa]ssets/_PROJECT/7_IgnoreAssets/DinoFracture/Plugin.meta
+/[Aa]ssets/_PROJECT/7_IgnoreAssets/DinoFracture/Plugin/*
+!/[Aa]ssets/_PROJECT/7_IgnoreAssets/DinoFracture/Plugin/Scripts/
+!/[Aa]ssets/_PROJECT/7_IgnoreAssets/DinoFracture/Plugin/Scripts.meta
+/[Aa]ssets/_PROJECT/7_IgnoreAssets/DinoFracture/Plugin/Scripts/*
+!/[Aa]ssets/_PROJECT/7_IgnoreAssets/DinoFracture/Plugin/Scripts/FracturedObject.cs
+!/[Aa]ssets/_PROJECT/7_IgnoreAssets/DinoFracture/Plugin/Scripts/FracturedObject.cs.meta
+
