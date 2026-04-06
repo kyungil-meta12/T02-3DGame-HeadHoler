@@ -374,6 +374,7 @@ MonoBehaviour:
   yRotationTarget: {fileID: 0}
   canvas: {fileID: 0}
   crosshairCanvas: {fileID: 0}
+  shakeStrength: 1
   zoomState: 0
   acc: 0
 --- !u!1 &5289360943322509508
@@ -421,6 +422,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Sg_GameManager
   entities: []
+  resultPopupController: {fileID: 0}
 --- !u!1 &7865353867103692888
 GameObject:
   m_ObjectHideFlags: 0

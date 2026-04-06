@@ -3,6 +3,8 @@ using UnityEngine.AI;
 
 public class CarController : MonoBehaviour
 {
+    public bool destroyable = false;
+
     public Transform[] wheels;
     public Transform[] waypoints;
     public float wheelRotationMultiplier = 500f; // 바퀴 회전 배수
@@ -31,18 +33,24 @@ public class CarController : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         agent.isStopped = true;
         agent.autoBraking = false;
-        carLight.SetActive(false);
+        if (carLight)
+        {
+            carLight.SetActive(false);
+        }
         fixedHeight = transform.position.y;
 
-        body = GetComponentInChildren<Rigidbody>();
-        rigidWheels = GetComponentsInChildren<Rigidbody>();
-        foreach (var wheel in rigidWheels)
+        if (destroyable)
         {
-            wheel.isKinematic = true; // 튐 방지를 위해 일시적으로 비활성화
-        }
-        body.isKinematic = true;
+            body = GetComponentInChildren<Rigidbody>();
+            rigidWheels = GetComponentsInChildren<Rigidbody>();
+            foreach (var wheel in rigidWheels)
+            {
+                wheel.isKinematic = true; // 튐 방지를 위해 일시적으로 비활성화
+            }
+            body.isKinematic = true;
 
-        originFlameRotation = flameParticle.transform.rotation.eulerAngles;
+            originFlameRotation = flameParticle.transform.rotation.eulerAngles;
+        }
     }
 
     void Update()
@@ -54,7 +62,10 @@ public class CarController : MonoBehaviour
                 currentTime += Time.deltaTime;
                 if (currentTime >= lightEnableTime)
                 {
-                    carLight.SetActive(true); // 출발 직전에 라이트 킴
+                    if (carLight)
+                    {
+                        carLight.SetActive(true); // 출발 직전에 라이트 킴
+                    }
                 }
                 if (currentTime >= startTime)
                 {
@@ -135,6 +146,7 @@ public class CarController : MonoBehaviour
                     }
                     
                     exploded = true;
+                    Sg_CameraController.Inst.AddShake(0.05f);
                 }
                 else if(explosionTime >= 8f) // 폭발 파티클을 다시 비활성화
                 {
@@ -161,7 +173,7 @@ public class CarController : MonoBehaviour
 
     public void SetCarDamaged()
     {
-        if (!agent.enabled) // 한 번 파괴상태로 전환하면 중복 실행을 하지 않는다
+        if (!destroyable || !agent.enabled) // 한 번 파괴상태로 전환하면 중복 실행을 하지 않는다
         {
             return;
         }

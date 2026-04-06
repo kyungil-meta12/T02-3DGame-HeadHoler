@@ -14,7 +14,7 @@ public class WheelController : MonoBehaviour
     {
         var root = transform.root;
         root.GetComponent<CarController>().SetCarDamaged();
-        rb.AddForce(isRightWheel ? -transform.right * 500f : transform.right * 500f, ForceMode.Impulse);
+        rb.AddForce(isRightWheel ? -transform.right * 250f : transform.right * 250f, ForceMode.Impulse);
         var joint = GetComponent<ConfigurableJoint>();
         if (joint)
         {

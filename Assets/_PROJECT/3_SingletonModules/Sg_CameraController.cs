@@ -16,6 +16,10 @@ public class Sg_CameraController : MonoBehaviour
     public Canvas canvas;
     public Canvas crosshairCanvas;
 
+    private float shakeAmount;
+    private float shakeTimer;
+    public float shakeStrength;
+
     private float currentFov;
     private float offsetFov; // 스코프 줌 조정 오프셋 값
     private float offsetFovDest;
@@ -62,9 +66,24 @@ public class Sg_CameraController : MonoBehaviour
 
     void LateUpdate()
     {
+        shakeAmount = Mathf.Lerp(shakeAmount, 0f, Time.deltaTime * 5f);
+        var shakeVal = shakeAmount * shakeStrength;
+        Vector2 shakeOffset = new();
+        shakeTimer -= Time.deltaTime;
+        if (shakeTimer < 0f)
+        {
+            shakeTimer -= 0.02f;
+            shakeOffset.x = Random.Range(-shakeVal, shakeVal);
+            shakeOffset.y = Random.Range(-shakeVal, shakeVal);
+        }
+
+        var finalOffsetX = cam.transform.right * shakeOffset.x;
+        var finalOffsetY = cam.transform.up * shakeOffset.y;
+        var finalOffset = finalOffsetX + finalOffsetY;
+
         var xRotation = Sg_MouseMan.Inst.rotation.x;
         var yRotation = yRotationTarget.rotation.eulerAngles.y;
-        cam.transform.position = trackTarget.position;
+        cam.transform.position = trackTarget.position + finalOffset;
         cam.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);    
 
         if (zoomState) // 줌 활성화 시 가속을 사용하여 fov 감소
@@ -128,5 +147,11 @@ public class Sg_CameraController : MonoBehaviour
         zoomState = false;
         acc = 0f;
         crosshairCanvas.gameObject.SetActive(true);
+    }
+
+    public void AddShake(float val)
+    {
+        shakeAmount += val;
+        canvas.gameObject.GetComponent<ScopeImageMove>().AddRecoil(val * 100f);
     }
 }
