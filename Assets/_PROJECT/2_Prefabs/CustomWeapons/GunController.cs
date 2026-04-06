@@ -96,10 +96,8 @@ public class GunController : MonoBehaviour
                 obstacleComp.Hit(hit.point);
                 if (hitSoundPrefab)
                 {
-                    //사운드 콜라이더 생성, isGunShot = true
-                    var hitSound = Instantiate(hitSoundPrefab, hit.point, Quaternion.identity);
-                    hitSound.name = "hit(GunShot)";
-                    hitSound.GetComponent<HitSound>().isGunShot = true;
+                    //사운드 콜라이더 생성
+                    Instantiate(hitSoundPrefab, hit.point, Quaternion.identity);
                 }
                 Sg_HitIndicator.Inst.InputHit();
             }
@@ -109,6 +107,12 @@ public class GunController : MonoBehaviour
                 print("wheel hit");
                 wheelComp.DestroyWheel(rayDirection);
                 Sg_HitIndicator.Inst.InputHit();
+                if (hitSoundPrefab)
+                {
+                    //사운드 콜라이더 생성, isGunShot = true
+                    Instantiate(hitSoundPrefab, hit.point, Quaternion.identity);
+                }
+                wheelComp.DestroyWheel(ray.direction);
             }
 
             if (!entityComp && !obstacleComp && !wheelComp)  // 상호 작용 불가능한 장애물인 경우 // 예: 건물 외벽, 지형 등...
@@ -117,9 +121,7 @@ public class GunController : MonoBehaviour
                 if (hitSoundPrefab)
                 {
                     //사운드 콜라이더 생성, isGunShot = true
-                    var hitSound = Instantiate(hitSoundPrefab, hit.point, Quaternion.identity);
-                    hitSound.name = "hit(GunShot)";
-                    hitSound.GetComponent<HitSound>().isGunShot = true;
+                    Instantiate(hitSoundPrefab, hit.point, Quaternion.identity);
                 }
             }
         }
