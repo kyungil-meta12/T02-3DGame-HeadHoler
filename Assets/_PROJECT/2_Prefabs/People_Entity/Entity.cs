@@ -230,6 +230,7 @@ public class Entity : MonoBehaviour
     {
         //sendMessage 호출용, 상대속도로 데미지 적용
         float hitSpeed = col.relativeVelocity.magnitude;
+        Debug.Log(hitSpeed);
 
         if (hitSpeed > 5f)
         {
