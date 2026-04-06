@@ -12,7 +12,6 @@ public class WheelController : MonoBehaviour
 
     public void DestroyWheel(Vector3 direction)
     {
-        direction.y = 0f;
         var root = transform.root;
         root.GetComponent<CarController>().SetCarDamaged();
         rb.AddForce(isRightWheel ? -transform.right * 1500f : transform.right * 1500f, ForceMode.Impulse);
