@@ -28,8 +28,15 @@ public class EntityView : MonoBehaviour
         targetSet = new HashSet<GameObject>(fracturedTargets.Value);
     }
 
+    public float checkInterval = 0.5f; 
+    private float nextCheckTime = 0f; 
     private void OnTriggerStay(Collider other)
     {
+        if (Time.time >= nextCheckTime)
+        {
+            nextCheckTime = Time.time + checkInterval; 
+        }
+        else return;
         //시체, 증거물 태그 검사
         if (other.gameObject.CompareTag("Evidence") || other.gameObject.CompareTag("FracturedObject"))
         {

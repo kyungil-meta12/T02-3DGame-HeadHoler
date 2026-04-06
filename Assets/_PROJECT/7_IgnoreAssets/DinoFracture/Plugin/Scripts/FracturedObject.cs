@@ -16,8 +16,6 @@ namespace DinoFracture
         public float ThisMass;
         public float ThisVolume;
 
-        private Collider col;
-
         public float GetRelativeSize()
         {
             return ThisVolume / TotalVolume;
@@ -42,15 +40,7 @@ namespace DinoFracture
 
         public void ScanComplete()
         {
-            Destroy(gameObject);
-        }
-
-        private void OnCollisionEnter(Collision other)
-        {
-            if (other.gameObject.CompareTag("Entity"))
-            {
-                other.gameObject.SendMessage("Hit", other);
-            }
+            Destroy(transform.root.gameObject);
         }
     }
 }
