@@ -1,6 +1,8 @@
 
 using System;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using Unity.Behavior;
 using UnityEngine;
 
@@ -12,18 +14,24 @@ public class EntityView : MonoBehaviour
     private Collider col;
     private Entity myEntity;
     private BehaviorGraphAgent behaviorGraphAgent;
+    private BlackboardVariable<GameObject> alertTarget;
+    private BlackboardVariable<List<GameObject>> fracturedTargets;
+    private HashSet<GameObject> targetSet;
 
     private void Awake()
     {
         col = GetComponent<Collider>();
         myEntity = GetComponentInParent<Entity>();
         behaviorGraphAgent = GetComponentInParent<BehaviorGraphAgent>();
+        behaviorGraphAgent.GetVariable<GameObject>("AlertTarget", out alertTarget);
+        behaviorGraphAgent.GetVariable<List<GameObject>>("FracturedTargets", out fracturedTargets);
+        targetSet = new HashSet<GameObject>(fracturedTargets.Value);
     }
 
     private void OnTriggerStay(Collider other)
     {
         //시체, 증거물 태그 검사
-        if (other.gameObject.CompareTag("Evidence"))
+        if (other.gameObject.CompareTag("Evidence") || other.gameObject.CompareTag("FracturedObject"))
         {
             //시야각 검사
             Vector3 dirToTarget = (other.transform.position - transform.position).normalized;
@@ -42,7 +50,6 @@ public class EntityView : MonoBehaviour
                     if (evidence != null)
                     {
                         //AlertTarget이 동일한지 검사
-                        behaviorGraphAgent.GetVariable<GameObject>("AlertTarget", out var alertTarget);
                         if (alertTarget.Value != evidence.gameObject)
                         {
                             alertTarget.Value = evidence.gameObject;
@@ -51,17 +58,13 @@ public class EntityView : MonoBehaviour
                 }
                 else if (isHitObstacle)
                 {
-                    //부모가 obstacle인지 검사
                     Debug.DrawRay(transform.position, dirToTarget, Color.green);
-                    Obstacle obstacle = other.gameObject.GetComponentInParent<Obstacle>();
-                    if (obstacle != null)
+                    
+                    //FracturedTargets 리스트에 있는지 검사
+                    if (!targetSet.Contains(other.gameObject))
                     {
-                        //AlertTarget이 동일한지 검사
-                        behaviorGraphAgent.GetVariable<GameObject>("AlertTarget", out var alertTarget);
-                        if (alertTarget.Value != obstacle.gameObject)
-                        {
-                            alertTarget.Value = obstacle.gameObject;
-                        }
+                        targetSet.Add(other.gameObject);
+                        behaviorGraphAgent.SetVariableValue<List<GameObject>>("FracturedTargets", targetSet.ToList());
                     }
                 }
                 else

@@ -1,11 +1,14 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using Unity.Behavior;
 
 public class SecurityCameraController : Obstacle
 {
-	[Header("소속 팀(알림을 전달할 팀)")]
-	public Team team;
+	[Header("알림을 전달할 Entity")]
+	public Entity observerEntity;
+	private BehaviorGraphAgent behaviorGraphAgent;
 	
 	[Header("카메라 움직임 설정")]
 	public static float waitTime = 3f;
@@ -24,15 +27,27 @@ public class SecurityCameraController : Obstacle
 	public LayerMask evidenceLayer;
 	public LayerMask ObstacleLayer;
 	public Light spotLight;
+	
+	private BlackboardVariable<GameObject> alertTarget;
+	private BlackboardVariable<List<GameObject>> fracturedTargets;
+	private HashSet<GameObject> targetSet;
 
 	private void Start()
 	{
-		if (spotLight != null)	//본체 시야각, 시야거리를 SpotLight에 적용
+		if (spotLight != null) //본체 시야각, 시야거리를 SpotLight에 적용
 		{
 			spotLight.range = viewRadius;
 			spotLight.spotAngle = viewAngle;
 		}
 
+		if (observerEntity != null)
+		{
+			behaviorGraphAgent = observerEntity.GetComponentInParent<BehaviorGraphAgent>();
+			behaviorGraphAgent.GetVariable<GameObject>("AlertTarget", out alertTarget);
+			behaviorGraphAgent.GetVariable<List<GameObject>>("FracturedTargets", out fracturedTargets);
+			targetSet = new HashSet<GameObject>(fracturedTargets.Value);
+		}
+		
 		StartCoroutine(CameraMoveRoutine());
 
 		StartCoroutine(FindTarget());
@@ -79,44 +94,70 @@ public class SecurityCameraController : Obstacle
 		while (true)
 		{
 			yield return findWait;
-			FindVisibleTargets();
-		}
-	}
-
-	//타겟 찾기
-	private void FindVisibleTargets()
-	{
-		Collider[] targetsInViewRadius = Physics.OverlapSphere(transform.position, viewRadius, evidenceLayer);   //시야거리 내 시체 찾기(ragdoll레이어 설정 필요)
-
-		Vector3 tiltedForward = transform.rotation * Quaternion.Euler(detectionTiltX, 0, 0) * Vector3.forward;
-
-		for (int i = 0; i < targetsInViewRadius.Length; i++)
-		{
-			Transform target = targetsInViewRadius[i].transform;
-			Vector3 targetDir = (target.position - transform.position).normalized;
-
-			if (Vector3.Angle(tiltedForward, targetDir) < viewAngle / 2)	//시야각 제약
+			if (observerEntity == null) yield break;
+			if (!observerEntity.isDead)
 			{
-				float targetDist = Vector3.Distance(transform.position, target.position);
-
-				if (!Physics.Raycast(transform.position, targetDir, targetDist, ObstacleLayer))	//카메라와 시체 사이에 장애물이 없는 경우(장애물 레이어 설정 필요)
-				{
-					Debug.Log("시체 발견");
-
-					//Todo : NPC 호출 또는 경보나 경계상태
-
-					foreach (var entity in Sg_GameManager.Inst.entities)
-					{
-						if(entity.myTeam != team) continue;
-						//entity.GetComponent<BehaviorGraphAgent>().SetVariableValue("AlertTarget", )
-					}
-				}
+				FindVisibleTargets();
 			}
 		}
 	}
-	//Todo : 카메라를 사격하면 떨어지도록 구현. 가급적 조각나지 않고 그냥 떨어지게 할 예정
+	
+	//타겟 찾기
+	//배열 미리 선언해서 가비지 방지 
+	private Collider[] targetsInViewRadius = new Collider[100];
+	private void FindVisibleTargets()
+	{
+		int hitCount = Physics.OverlapSphereNonAlloc(transform.position, viewRadius, targetsInViewRadius);
+		
+		for (int i = 0; i < hitCount; i++)
+		{
+			if (targetsInViewRadius[i].gameObject.CompareTag("Evidence") || targetsInViewRadius[i].gameObject.CompareTag("FracturedObject"))
+			{
+	            //시야각 검사
+	            Vector3 dirToTarget = (targetsInViewRadius[i].transform.position - transform.position).normalized;
+	            float dst = Vector3.Distance(transform.position, targetsInViewRadius[i].transform.position);
+	            if (Vector3.Angle(transform.forward, dirToTarget) < viewAngle / 2)
+	            {
+	                //가리는 것이 없는지 검사, obstacle이나 entity인지 검사
+	                Ray ray = new Ray(transform.position, dirToTarget);
+	                bool isHitEntity = Physics.Raycast(ray, dst, 1 << LayerMask.NameToLayer("Entity"));
+	                bool isHitObstacle = Physics.Raycast(ray, dst, 1 << LayerMask.NameToLayer("Obstacle"));
+	                if (isHitEntity)
+	                {
+	                    //부모가 evidence인지 검사
+	                    Debug.DrawRay(transform.position, dirToTarget, Color.green);
+	                    Evidence evidence = targetsInViewRadius[i].gameObject.GetComponentInParent<Evidence>();
+	                    if (evidence != null)
+	                    {
+	                        //AlertTarget이 동일한지 검사
+	                        if (alertTarget.Value != evidence.gameObject)
+	                        {
+	                            alertTarget.Value = evidence.gameObject;
+	                        }
+	                    }
+	                }
+	                else if (isHitObstacle)
+	                {
+	                    Debug.DrawRay(transform.position, dirToTarget, Color.green);
+	                    
+	                    //FracturedTargets 리스트에 있는지 검사
+                        if (!targetSet.Contains(targetsInViewRadius[i].gameObject))
+                        {
+	                        targetSet.Add(targetsInViewRadius[i].gameObject);
+                        }
+	                }
+	                else
+	                {
+	                    Debug.DrawRay(transform.position, dirToTarget, Color.red);
+	                }
+	            }
+	        }
+		}
+		behaviorGraphAgent.SetVariableValue<List<GameObject>>("FracturedTargets", targetSet.ToList());
+	}
 	protected override void UniqueInteraction()
 	{
+		StopAllCoroutines();
 		base.UniqueInteraction();
 	}
 	protected override void OnCollisionEnter(Collision collision) { }

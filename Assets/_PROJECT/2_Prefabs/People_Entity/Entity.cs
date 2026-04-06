@@ -61,7 +61,7 @@ public class Entity : MonoBehaviour
     private NavMeshAgent agent;
     private float speed;
 
-    private bool isDead = false;
+    internal bool isDead = false;
 
     private void Awake()
     {
