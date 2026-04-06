@@ -29,9 +29,10 @@ public class Entity : MonoBehaviour
     public int equipIndex = 99;
     [Header("일정시간 후 이동해야 하는 좌표 (없으면 비워두기 가능)")]
     public GameObject pointToMove;
-    public static float pointToMoveTime = 60;
     [Header("차에 타야하는지 체크")]
     public bool isMustGetInCar;
+    [Header("운전석 위치")]
+    public Transform carDriverSeatPoint;
     [Header("가드 대상 (없으면 비워두기 가능)")]
     public GameObject guardTarget;
     [Header("순찰 포인트")]
@@ -39,6 +40,7 @@ public class Entity : MonoBehaviour
 
     private static readonly int Speed = Animator.StringToHash("Speed");
     private static readonly int isInCar = Animator.StringToHash("isInCar");
+    private static float pointToMoveTime = 60;
 
     [Space(20)] [Header("======참조======")] 
     [Header("남성 랜더러")]
@@ -109,12 +111,50 @@ public class Entity : MonoBehaviour
                     animator.SetBool(param.name, false);
                 }
             }
+            
+            //차량 탑승처리 : transform이 차량 머리쪽을 본다, 오른쪽으로 애니메이션에 맞춰 이동, 차량에 transform 고정해서 같이 이동
+            while (true)
+            {
+                //몸 방향 -> 차량 머리방향 회전
+                float angleDiff = Quaternion.Angle(transform.rotation, pointToMove.transform.rotation);
+
+                if (angleDiff < 0.1f) 
+                {
+                    transform.rotation = pointToMove.transform.rotation;
+                    break; 
+                }
+
+                transform.rotation = Quaternion.Slerp(
+                    transform.rotation, 
+                    pointToMove.transform.rotation, 
+                    Time.deltaTime * 5f);
+
+                yield return null;
+            }
             animator.SetBool(isInCar, true);
+
+            CarController carController = pointToMove.GetComponentInParent<CarController>();
             
-            //todo 차량 탑승처리 : transform이 차량 머리쪽을 본다, 오른쪽으로 애니메이션에 맞춰 이동, 차량에 transform 고정해서 같이 이동
+            while (true)
+            {
+                //차량 운전석으로 위치 고정
+                transform.position = carDriverSeatPoint.position;
+                if (carController != null)
+                {
+                    if (carController.fireStarted)
+                    {
+                        // 터지기 직전에 다친 상태로 나오기
+                        animator.SetBool(isInCar, false);
+                        behavior.enabled = true;
+                        Hit(regController.ragdollColliders[0],
+                            carController.transform.position - transform.position,90);
+                        break;
+                    }
+                }
+                yield return null;
+            }
             
-            
-            //todo 차량 터지면 사망처리 : 터지기 직전에 다친 상태로 나오기, 차량 터지면 폭발에 의해 사망
+            //차량 터지면 폭발에 의해 사망
         }
         else
         {
@@ -174,6 +214,7 @@ public class Entity : MonoBehaviour
             behavior.enabled = false;
             agent.isStopped = true;
             regController.EnableRagdoll();
+            StopAllCoroutines();
         }
     }
 

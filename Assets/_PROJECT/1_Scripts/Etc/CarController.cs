@@ -20,9 +20,9 @@ public class CarController : MonoBehaviour
     private int currentIndex = 0;
     private NavMeshAgent agent;
     private float fixedHeight;
-    private bool fireStarted;
+    internal bool fireStarted;
     private float explosionTime;
-    private bool exploded;
+    internal bool exploded;
 
     private Vector3 originFlameRotation;
 
@@ -122,6 +122,18 @@ public class CarController : MonoBehaviour
                         }
                         wheel.AddForce((wheel.position - body.position) * 100f, ForceMode.Impulse);
                     }
+
+                    //반경내 entity Hit();
+                    Collider[] colliders = Physics.OverlapSphere(transform.position, 20f);
+                    foreach (var col in colliders)
+                    {
+                        if (col.CompareTag("Entity"))
+                        {
+                            col.GetComponentInParent<Entity>().Hit(col, 
+                                transform.position- col.transform.position, 200f);
+                        }
+                    }
+                    
                     exploded = true;
                 }
                 else if(explosionTime >= 8f) // 폭발 파티클을 다시 비활성화
