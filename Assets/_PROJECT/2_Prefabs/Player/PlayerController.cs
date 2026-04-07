@@ -10,7 +10,7 @@ public class PlayerController : MonoBehaviour
 
     // 게임 씬 시작 시 선택할 인덱스 // 개발 테스트용 변수
     // 빌드 시에는 inspector에서 false로 두고 빌드 할 것
-    public bool devMode = false;
+    //public bool devMode = false;
 
     public TwoBoneIKConstraint tb;
     public RigBuilder rBuild;
@@ -32,6 +32,9 @@ public class PlayerController : MonoBehaviour
     private bool inputBackward;
     private bool inputStrafeLeft;
     private bool inputStrafeRight;
+
+    private bool prevZoomState;
+    private bool currZoomState;
 
     private Animator anim;
     private SkinnedMeshRenderer smr;
@@ -96,34 +99,34 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (devMode)
-        {
-            if (Keyboard.current.digit0Key.wasPressedThisFrame)
-            {
-                Sg_GunIndex.Inst.SelectIndex(0);
-                SetGun(Sg_GunIndex.Inst.GetCurrentIndex());
-            }
-            else if (Keyboard.current.digit1Key.wasPressedThisFrame)
-            {
-                Sg_GunIndex.Inst.SelectIndex(1);
-                SetGun(Sg_GunIndex.Inst.GetCurrentIndex());
-            }
-            else if (Keyboard.current.digit2Key.wasPressedThisFrame)
-            {
-                Sg_GunIndex.Inst.SelectIndex(2);
-                SetGun(Sg_GunIndex.Inst.GetCurrentIndex());
-            }
-            else if (Keyboard.current.digit3Key.wasPressedThisFrame)
-            {
-                Sg_GunIndex.Inst.SelectIndex(3);
-                SetGun(Sg_GunIndex.Inst.GetCurrentIndex());
-            }
-            else if (Keyboard.current.digit4Key.wasPressedThisFrame)
-            {
-                Sg_GunIndex.Inst.SelectIndex(4);
-                SetGun(Sg_GunIndex.Inst.GetCurrentIndex());
-            }
-        }
+        //if (devMode)
+        //{
+        //    if (Keyboard.current.digit0Key.wasPressedThisFrame)
+        //    {
+        //        Sg_GunIndex.Inst.SelectIndex(0);
+        //        SetGun(Sg_GunIndex.Inst.GetCurrentIndex());
+        //    }
+        //    else if (Keyboard.current.digit1Key.wasPressedThisFrame)
+        //    {
+        //        Sg_GunIndex.Inst.SelectIndex(1);
+        //        SetGun(Sg_GunIndex.Inst.GetCurrentIndex());
+        //    }
+        //    else if (Keyboard.current.digit2Key.wasPressedThisFrame)
+        //    {
+        //        Sg_GunIndex.Inst.SelectIndex(2);
+        //        SetGun(Sg_GunIndex.Inst.GetCurrentIndex());
+        //    }
+        //    else if (Keyboard.current.digit3Key.wasPressedThisFrame)
+        //    {
+        //        Sg_GunIndex.Inst.SelectIndex(3);
+        //        SetGun(Sg_GunIndex.Inst.GetCurrentIndex());
+        //    }
+        //    else if (Keyboard.current.digit4Key.wasPressedThisFrame)
+        //    {
+        //        Sg_GunIndex.Inst.SelectIndex(4);
+        //        SetGun(Sg_GunIndex.Inst.GetCurrentIndex());
+        //    }
+        //}
 
         animInfo = anim.GetCurrentAnimatorStateInfo(upperLayerIndex);
         onReloading = animInfo.IsName("Reload");
@@ -201,13 +204,13 @@ public class PlayerController : MonoBehaviour
         bool isMoving = inputForward || inputBackward || inputStrafeLeft || inputStrafeRight;
 
         // 마우스 우클릭으로 줌 상태 토글
-        if (!onReloading && Mouse.current.rightButton.wasPressedThisFrame && !isMoving)
+        if (!onReloading && Mouse.current.rightButton.wasPressedThisFrame/* && !isMoving*/)
         {
             Sg_CameraController.Inst.ToggleZoom();
         }
 
         // 줌 상태에서 움직이거나 재장전을 실행하면 해제된다.
-        if (onReloading || isMoving)
+        if (onReloading/* || isMoving*/)
         {
             Sg_CameraController.Inst.DisableZoom();
         }
@@ -221,6 +224,15 @@ public class PlayerController : MonoBehaviour
         else if (!onReloading && scroll.y < 0f)
         {
             Sg_CameraController.Inst.ReduceScopeMagnification();
+        }
+
+        // 줌이 활성화 되면 총기 렌더러를 비활성화 하고, 줌이 비활성화되면 총기 렌더러를 활성화 한다.
+        // 성능 최적화를 위해 상태가 변경된 순간에만 렌더러 on/off 실행
+        currZoomState = Sg_CameraController.Inst.zoomCompleted;
+        if(prevZoomState != currZoomState)
+        {
+            currGun.SetRenderState(!currZoomState);
+            prevZoomState = currZoomState;
         }
     }
 

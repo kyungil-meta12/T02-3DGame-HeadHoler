@@ -34,6 +34,9 @@ public class Sg_CameraController : MonoBehaviour
     public bool zoomState = false;
 
     [HideInInspector]
+    public bool zoomCompleted = false;
+
+    [HideInInspector]
     public float acc = 0f;
 
     void Awake()
@@ -74,29 +77,6 @@ public class Sg_CameraController : MonoBehaviour
         // 줌을 더 크게 할 수록 마우스 감도 감소
         var camSensitivity = (currentFov)/defaultFov;
         Sg_MouseMan.Inst.SetSensitivityMultiple(new Vector2(camSensitivity, camSensitivity));
-    }
-
-    void LateUpdate()
-    {
-        shakeAmount = Mathf.Lerp(shakeAmount, 0f, Time.deltaTime * 5f);
-        var shakeVal = shakeAmount * shakeStrength;
-        Vector2 shakeOffset = new();
-        shakeTimer -= Time.deltaTime;
-        if (shakeTimer < 0f)
-        {
-            shakeTimer -= 0.02f;
-            shakeOffset.x = Random.Range(-shakeVal, shakeVal);
-            shakeOffset.y = Random.Range(-shakeVal, shakeVal);
-        }
-
-        var finalOffsetX = cam.transform.right * shakeOffset.x;
-        var finalOffsetY = cam.transform.up * shakeOffset.y;
-        var finalOffset = finalOffsetX + finalOffsetY;
-
-        var xRotation = Sg_MouseMan.Inst.rotation.x;
-        var yRotation = yRotationTarget.rotation.eulerAngles.y;
-        cam.transform.position = trackTarget.position + finalOffset;
-        cam.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);    
 
         if (zoomState) // 줌 활성화 시 가속을 사용하여 fov 감소
         {
@@ -107,6 +87,7 @@ public class Sg_CameraController : MonoBehaviour
                 if (currentFov < defaultFov * 0.5f)
                 {
                     canvas.gameObject.SetActive(true); // 일정 수치 미만으로 fov가 내려가면 스나이퍼 스코프 캔버스 활성화
+                    zoomCompleted = true;
                 }
             }
             else // 값이 zoomedFov 미만으로 작아지지 않도록 고정
@@ -132,7 +113,31 @@ public class Sg_CameraController : MonoBehaviour
             }
 
             cam.fieldOfView = currentFov;
+            zoomCompleted = false;
         }
+    }
+
+    void LateUpdate()
+    {
+        shakeAmount = Mathf.Lerp(shakeAmount, 0f, Time.deltaTime * 5f);
+        var shakeVal = shakeAmount * shakeStrength;
+        Vector2 shakeOffset = new();
+        shakeTimer -= Time.deltaTime;
+        if (shakeTimer < 0f)
+        {
+            shakeTimer -= 0.02f;
+            shakeOffset.x = Random.Range(-shakeVal, shakeVal);
+            shakeOffset.y = Random.Range(-shakeVal, shakeVal);
+        }
+
+        var finalOffsetX = cam.transform.right * shakeOffset.x;
+        var finalOffsetY = cam.transform.up * shakeOffset.y;
+        var finalOffset = finalOffsetX + finalOffsetY;
+
+        var xRotation = Sg_MouseMan.Inst.rotation.x;
+        var yRotation = yRotationTarget.rotation.eulerAngles.y;
+        cam.transform.position = trackTarget.position + finalOffset;
+        cam.transform.rotation = Quaternion.Euler(xRotation, yRotation, 0f);    
     }
 
     public void ToggleZoom()
