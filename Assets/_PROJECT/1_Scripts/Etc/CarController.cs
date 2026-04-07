@@ -25,7 +25,7 @@ public class CarController : MonoBehaviour
     internal bool fireStarted;
     private float explosionTime;
     internal bool exploded;
-    internal bool isTimeToMove;
+    public bool isTimeToMove;
 
     private Vector3 originFlameRotation;
 

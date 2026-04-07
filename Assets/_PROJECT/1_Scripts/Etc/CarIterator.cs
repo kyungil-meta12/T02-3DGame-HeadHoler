@@ -31,7 +31,7 @@ public class CarIterator : MonoBehaviour
             return;
         }
 
-        if (!agent.pathPending && agent.remainingDistance < 5f)
+        if (!agent.pathPending && agent.remainingDistance < 3f)
         {
             SetDestinationToNextPoint();
         }
@@ -55,16 +55,16 @@ public class CarIterator : MonoBehaviour
         }
         if (currentIndex < wayPoints.Count - 1)
         {
-            agent.destination = wayPoints[currentIndex].position;
             currentIndex++;
+            agent.destination = wayPoints[currentIndex].position;
         }
         else
         {
             transform.position = originPosition;
             transform.rotation = originRotation;
             currentIndex = 0;
-            agent.SetDestination(wayPoints[0].position);
             agent.Warp(originPosition);
+            agent.SetDestination(wayPoints[0].position);
         }
     }
 }
