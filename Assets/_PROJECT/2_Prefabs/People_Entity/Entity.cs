@@ -28,7 +28,6 @@ public class Entity : MonoBehaviour
     [Header("머리장비 선택")]
     public int equipIndex = 99;
     [Header("일정시간 후 이동해야 하는 좌표 (없으면 비워두기 가능)")]
-    public float pointToMoveTime = 60;
     public GameObject pointToMove;
     [Header("차에 타야하는지 체크")]
     public bool isMustGetInCar;
@@ -41,6 +40,7 @@ public class Entity : MonoBehaviour
 
     private static readonly int Speed = Animator.StringToHash("Speed");
     private static readonly int isInCar = Animator.StringToHash("isInCar");
+    private static float pointToMoveTime = 60;
 
     [Space(20)] [Header("======참조======")] 
     [Header("남성 랜더러")]
@@ -64,7 +64,6 @@ public class Entity : MonoBehaviour
     internal bool isDead = false;
     internal BlackboardVariable<bool> isHurt;
     internal BlackboardVariable<bool> shotTrigger;
-    internal BlackboardVariable<bool> isTimeToMove;
 
     private void Awake()
     {
@@ -85,11 +84,9 @@ public class Entity : MonoBehaviour
         behavior.SetVariableValue("GuardTarget", guardTarget);
         behavior.SetVariableValue("pointToMoveTime", pointToMoveTime);
         behavior.SetVariableValue("PointToMove", pointToMove);
-        behavior.SetVariableValue("isMustGetInCar", isMustGetInCar);
 
         behavior.GetVariable<bool>("isHurt", out isHurt);
         behavior.GetVariable<bool>("ShotTrigger", out shotTrigger);
-        behavior.GetVariable<bool>("isTimeToMove", out isTimeToMove);
             
         currentHP = maxHP;
 
@@ -100,18 +97,14 @@ public class Entity : MonoBehaviour
 
         yield return new WaitUntil(() => Sg_GameManager.Inst != null);
         Sg_GameManager.Inst.entities.Add(this);
-        pointToMoveWait = new WaitForSeconds(pointToMoveTime);
     }
 
     //목적지가 있을시 실행됨
-    private WaitForSeconds pointToMoveWait;
-    
+    private WaitForSeconds pointToMoveWait = new WaitForSeconds(pointToMoveTime);
     private IEnumerator PointToMoveCoRoutine()
     {
         yield return pointToMoveWait;
 
-        if(pointToMove != null) isTimeToMove.Value = true;
-        
         //차에 타야하는지
         if (isMustGetInCar)
         {
@@ -171,6 +164,10 @@ public class Entity : MonoBehaviour
             }
             
             //차량 터지면 폭발에 의해 사망
+        }
+        else
+        {
+            //todo 차에 탑승 안한다면 이동 후 할 행동
         }
     }
 
