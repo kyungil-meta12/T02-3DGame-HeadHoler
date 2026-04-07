@@ -24,8 +24,6 @@ public class SecurityCameraController : Obstacle
 	
 	private float detectionTiltX = 15f;	//감지각도 15도 보정(카메라 실제 rotation값과 프리팹 카메라 방향차이 보정용)
 
-	public LayerMask evidenceLayer;
-	public LayerMask ObstacleLayer;
 	public Light spotLight;
 	
 	private BlackboardVariable<GameObject> alertTarget;

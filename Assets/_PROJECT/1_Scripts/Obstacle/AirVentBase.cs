@@ -71,7 +71,7 @@ public class AirVentBase : Obstacle
 		{
 			if (isfalled == false)
 			{
-				collision.gameObject.GetComponent<Entity>().Hit(
+				collision.gameObject.GetComponentInParent<Entity>().Hit(
 				collision.collider, transform.position - collision.contacts[0].point, damage);
 			}
 		}
