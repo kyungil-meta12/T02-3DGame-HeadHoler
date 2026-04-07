@@ -9751,6 +9751,7 @@ GameObject:
   m_Component:
   - component: {fileID: 259767682}
   - component: {fileID: 259767681}
+  - component: {fileID: 259767683}
   m_Layer: 0
   m_Name: Sg_TargetTracker
   m_TagString: Untagged
@@ -9778,6 +9779,7 @@ MonoBehaviour:
   - {fileID: 313429354}
   - {fileID: 1140179032}
   targetQuestItem: {fileID: 124198534}
+  targetQuestTrigger: {fileID: 259767683}
   targetTextFormat: "\uB0A8\uC740 \uD0C0\uAC9F : {0}"
   resultPopupController: {fileID: 593492043}
   hudTargetSlots:
@@ -9802,6 +9804,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &259767683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 259767680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff10935536761ff438df4516aa249157, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::QuestItemSafeTrigger
+  questItem: {fileID: 124198534}
+  forceUpdateTextBeforeShow: 1
 --- !u!1 &261348789
 GameObject:
   m_ObjectHideFlags: 0
@@ -52469,10 +52485,34 @@ MonoBehaviour:
     m_Flags: 0
   onOpen:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2062065519}
+        m_TargetAssemblyTypeName: Sg_GameManager, Assembly-CSharp
+        m_MethodName: SetPause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onClose:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2062065519}
+        m_TargetAssemblyTypeName: Sg_GameManager, Assembly-CSharp
+        m_MethodName: RevertPause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1379664251
 Transform:
   m_ObjectHideFlags: 0
@@ -74871,6 +74911,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fbf8743ea28904246a1fb523386a72c1, type: 3}
+--- !u!114 &2062065519 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3387828307245922513, guid: fbf8743ea28904246a1fb523386a72c1, type: 3}
+  m_PrefabInstance: {fileID: 2062065518}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 497f5b6f333b412ea234cb788ec0d005, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Sg_GameManager
 --- !u!1001 &2062127684
 PrefabInstance:
   m_ObjectHideFlags: 0
