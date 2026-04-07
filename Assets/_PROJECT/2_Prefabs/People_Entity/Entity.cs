@@ -28,6 +28,7 @@ public class Entity : MonoBehaviour
     [Header("머리장비 선택")]
     public int equipIndex = 99;
     [Header("일정시간 후 이동해야 하는 좌표 (없으면 비워두기 가능)")]
+    public float pointToMoveTime = 60;
     public GameObject pointToMove;
     [Header("차에 타야하는지 체크")]
     public bool isMustGetInCar;
@@ -40,7 +41,6 @@ public class Entity : MonoBehaviour
 
     private static readonly int Speed = Animator.StringToHash("Speed");
     private static readonly int isInCar = Animator.StringToHash("isInCar");
-    private float pointToMoveTime = 60;
 
     [Space(20)] [Header("======참조======")] 
     [Header("남성 랜더러")]
@@ -110,6 +110,8 @@ public class Entity : MonoBehaviour
     {
         yield return pointToMoveWait;
 
+        if(pointToMove != null) isTimeToMove.Value = true;
+        
         //차에 타야하는지
         if (isMustGetInCar)
         {
