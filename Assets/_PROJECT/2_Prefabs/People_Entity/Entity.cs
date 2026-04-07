@@ -250,7 +250,7 @@ public class Entity : MonoBehaviour
         if (col == regController.headCollider)
         {
             currentHP = 0f;
-            regController.headCollider.attachedRigidbody.AddForce(direction * 200f, ForceMode.Impulse); // 맞은 방향으로 힘 가함
+            regController.headCollider.attachedRigidbody.AddForce(direction * 100f, ForceMode.Impulse); // 맞은 방향으로 힘 가함
             //print("headshot");
         }
         else
@@ -263,7 +263,7 @@ public class Entity : MonoBehaviour
                     currentHP = Mathf.Clamp(currentHP, 0f, 999f);
                     if (regController.ragdollEnabled)
                     {
-                        c.attachedRigidbody.AddForce(direction * 200f, ForceMode.Impulse); // 죽은 이후에는 맞은 방향으로 힘 가함
+                        c.attachedRigidbody.AddForce(direction * 100f, ForceMode.Impulse); // 죽은 이후에는 맞은 방향으로 힘 가함
                     }
                     //print("not headshot");
                     //print($"current HP: {currentHP}");

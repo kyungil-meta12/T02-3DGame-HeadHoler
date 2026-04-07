@@ -1,4 +1,3 @@
-using SETUtil.Extend;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;

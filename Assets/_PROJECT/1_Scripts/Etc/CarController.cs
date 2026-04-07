@@ -19,7 +19,7 @@ public class CarController : MonoBehaviour
     private Rigidbody body;
 
     private float currentTime;
-    private int currentIndex = 0;
+    private int currentIndex = -1;
     private NavMeshAgent agent;
     private float fixedHeight;
     internal bool fireStarted;
@@ -162,8 +162,8 @@ public class CarController : MonoBehaviour
             return;
         if (currentIndex < waypoints.Length - 1)
         {
-            agent.destination = waypoints[currentIndex].position;
             currentIndex++;
+            agent.destination = waypoints[currentIndex].position;
         }
         if (currentIndex == waypoints.Length - 1) // 마지막 지점이라면 오토브레이킹 활성화
         {

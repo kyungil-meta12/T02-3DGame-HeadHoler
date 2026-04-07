@@ -50,6 +50,21 @@ public class GunController : MonoBehaviour
         }
     }
 
+    bool CheckMask(int collideMask, int targetMask)
+    {
+        return (collideMask & targetMask) != 0;
+    }
+
+    void CreateSoundCollider(Vector3 point)
+    {
+        if (hitSoundPrefab)
+        {
+            var hitSound = Instantiate(hitSoundPrefab, point, Quaternion.identity);
+            hitSound.name = "hit(GunShot)";
+            hitSound.GetComponent<HitSound>().isGunShot = true;
+        }
+    }
+
     // 격발
     void FireGun()
     {
@@ -63,21 +78,22 @@ public class GunController : MonoBehaviour
         var groundMask   = 1 << LayerMask.NameToLayer("Ground");
         var wallMask     = 1 << LayerMask.NameToLayer("Wall");
         var wheelMask    = 1 << LayerMask.NameToLayer("Wheel");
-        var findMask     = obstacleMask | entityMask | groundMask | wallMask | wheelMask;
+        var carMask      = 1 << LayerMask.NameToLayer("Car");
+        var findMask     = obstacleMask | entityMask | groundMask | wallMask | wheelMask | carMask;
 
         Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+        var rayDirection = ray.direction;
+        rayDirection.y = 0f;
+        //Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * 999f, Color.red, 10f);
 
         // 레이캐스팅은 findMask에 해당하는 레이어를 가진 객체에 대해서만 처리
-        if (Physics.Raycast(ray, out var hit, 9999f, findMask)) {
-            var entityComp   = hit.transform.gameObject.GetComponentInParent<Entity>();
-            var obstacleComp = hit.transform.gameObject.GetComponentInParent<Obstacle>();
-            var wheelComp    = hit.transform.gameObject.GetComponent<WheelController>();
+        if (Physics.Raycast(ray, out var hit, 999f, findMask)) {
+            var collideMask = 1 << hit.collider.gameObject.layer;
 
-            var rayDirection = ray.direction;
-            rayDirection.y = 0f;
-
-            if (entityComp) // 사람인 경우
+            // 사람인 경우
+            if (CheckMask(collideMask, entityMask))
             {
+                var entityComp  = hit.transform.gameObject.GetComponentInParent<Entity>();
                 print("people hit");
                 entityComp.Hit(hit.collider, rayDirection, damage);
                 if (hitSoundPrefab)
@@ -90,38 +106,48 @@ public class GunController : MonoBehaviour
                 Sg_HitIndicator.Inst.InputHit();
             }
 
-            if (obstacleComp) // 상호작용 장애물인 경우
+            // 상호작용 장애물인 경우
+            else if (CheckMask(collideMask, obstacleMask))
             {
+                var obstacleComp = hit.transform.gameObject.GetComponentInParent<Obstacle>();
                 print("interactive obstacle hit");
                 obstacleComp.Hit(hit.point);
-                if (hitSoundPrefab)
-                {
-                    //사운드 콜라이더 생성
-                    Instantiate(hitSoundPrefab, hit.point, Quaternion.identity);
-                }
+                CreateSoundCollider(hit.point);
                 Sg_HitIndicator.Inst.InputHit();
             }
 
-            if (wheelComp) // 자동차 바퀴인 경우
+            // 차량 바퀴인 경우
+            else if (CheckMask(collideMask, wheelMask))
             {
+                var wheelComp    = hit.transform.gameObject.GetComponent<WheelController>();
                 print("wheel hit");
-                wheelComp.DestroyWheel(rayDirection);
-                Sg_HitIndicator.Inst.InputHit();
                 if (hitSoundPrefab)
                 {
                     //사운드 콜라이더 생성, isGunShot = true
                     Instantiate(hitSoundPrefab, hit.point, Quaternion.identity);
                 }
+                wheelComp.DestroyWheel(rayDirection);
                 wheelComp.DestroyWheel(ray.direction);
+                Sg_HitIndicator.Inst.InputHit();
             }
 
-            if (!entityComp && !obstacleComp && !wheelComp)  // 상호 작용 불가능한 장애물인 경우 // 예: 건물 외벽, 지형 등...
+            // 차량 경보 오브젝트인 경우
+            else if (CheckMask(collideMask, carMask))
+            {
+                var carComp = hit.transform.gameObject.GetComponentInParent<CarObstacle>();
+                print("car hit");
+                CreateSoundCollider(hit.point);
+                carComp.Hit();
+                Sg_HitIndicator.Inst.InputHit();
+            }
+
+            // 그 외의 경우
+            else
             {
                 print("static obstacle hit");
                 if (hitSoundPrefab)
                 {
-                    //사운드 콜라이더 생성, isGunShot = true
-                    Instantiate(hitSoundPrefab, hit.point, Quaternion.identity);
+                    CreateSoundCollider(hit.point);
                 }
             }
         }
