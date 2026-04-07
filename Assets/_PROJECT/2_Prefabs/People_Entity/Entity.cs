@@ -110,7 +110,11 @@ public class Entity : MonoBehaviour
     {
         yield return pointToMoveWait;
 
-        if(pointToMove != null) isTimeToMove.Value = true;
+        if (pointToMove != null)
+        {
+            behavior.enabled = true;
+            isTimeToMove.Value = true;
+        }
 
         while (true)
         {
