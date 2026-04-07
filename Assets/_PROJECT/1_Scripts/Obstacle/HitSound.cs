@@ -105,7 +105,10 @@ public class HitSound : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Entity"))
         {
-            other.gameObject.GetComponentInParent<BehaviorGraphAgent>().GetVariable<GameObject>("AlertTarget", out var alertTarget);
+            BehaviorGraphAgent behaviorGraphAgent = other.gameObject.GetComponentInParent<BehaviorGraphAgent>();
+            behaviorGraphAgent.enabled = true;
+            behaviorGraphAgent.GetVariable<GameObject>("AlertTarget", out var alertTarget);
+            
             if (alertTarget.Value != gameObject)
             {
                 alertTarget.Value = gameObject;

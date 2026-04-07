@@ -27,6 +27,10 @@ public class Entity : MonoBehaviour
     public int rendererIndex = 0;
     [Header("머리장비 선택")]
     public int equipIndex = 99;
+    [Header("대기만 할지 선택")]
+    public bool isDontMove;
+    [Header("대기중 대화모션 적용여부 선택")] 
+    public bool isTalking;
     [Header("일정시간 후 이동해야 하는 좌표 (없으면 비워두기 가능)")]
     public float pointToMoveTime = 60;
     public GameObject pointToMove;
@@ -79,7 +83,16 @@ public class Entity : MonoBehaviour
 
     private IEnumerator Start()
     {
+        behavior.enabled = false;
         behavior.Init();
+        if (isDontMove)
+        {
+            behavior.enabled = false;
+            if (isTalking)
+            {
+                animator.SetBool("isTalk", true);
+            }
+        }
         
         //소속, 순찰포인트 세팅
         behavior.SetVariableValue("Role", myRole);
@@ -96,12 +109,12 @@ public class Entity : MonoBehaviour
 
         if (pointToMove != null)
         {
+            pointToMoveWait = new WaitForSeconds(pointToMoveTime);
             StartCoroutine(PointToMoveCoRoutine());
         }
 
         yield return new WaitUntil(() => Sg_GameManager.Inst != null);
         Sg_GameManager.Inst.entities.Add(this);
-        pointToMoveWait = new WaitForSeconds(pointToMoveTime);
     }
 
     //목적지가 있을시 실행됨
@@ -110,7 +123,11 @@ public class Entity : MonoBehaviour
     {
         yield return pointToMoveWait;
 
-        if(pointToMove != null) isTimeToMove.Value = true;
+        if (pointToMove != null)
+        {
+            behavior.enabled = true;
+            isTimeToMove.Value = true;
+        }
 
         while (true)
         {
@@ -139,17 +156,17 @@ public class Entity : MonoBehaviour
             while (true)
             {
                 //몸 방향 -> 차량 머리방향 회전
-                float angleDiff = Quaternion.Angle(transform.rotation, pointToMove.transform.rotation * Quaternion.Euler(0f, 90f, 0f));
+                float angleDiff = Quaternion.Angle(transform.rotation, carDriverSeatPoint.transform.rotation * Quaternion.Euler(0f, 90f, 0f));
 
                 if (angleDiff < 0.1f) 
                 {
-                    transform.rotation = pointToMove.transform.rotation * Quaternion.Euler(0f, 90f, 0f);
+                    transform.rotation = carDriverSeatPoint.transform.rotation * Quaternion.Euler(0f, 90f, 0f);
                     break; 
                 }
 
                 transform.rotation = Quaternion.Slerp(
                     transform.rotation, 
-                    pointToMove.transform.rotation * Quaternion.Euler(0f, 90f, 0f), 
+                    carDriverSeatPoint.transform.rotation * Quaternion.Euler(0f, 90f, 0f), 
                     Time.deltaTime * 5f);
 
                 yield return null;
@@ -158,7 +175,7 @@ public class Entity : MonoBehaviour
 
             yield return new WaitForSeconds(5f);
 
-            CarController carController = pointToMove.GetComponentInParent<CarController>();
+            CarController carController = carDriverSeatPoint.GetComponentInParent<CarController>();
             carController.isTimeToMove = true;
             
             while (true)
