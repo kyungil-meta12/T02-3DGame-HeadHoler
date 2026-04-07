@@ -7,6 +7,7 @@ public class ScopeImageMove : MonoBehaviour
     private Vector2 mouseDelta;
     public RectTransform[] rt;
     private Vector2[] originPos;
+    private Vector2 shakeOffset;
 
     public Image scopeImage;
 
@@ -25,16 +26,20 @@ public class ScopeImageMove : MonoBehaviour
 
     void Update()
     {
-        var delta = Mouse.current.delta.ReadValue();
+        if(!Sg_MouseMan.Inst.lockState) // 일시정지 상태에서는 업데이트 건너뜀
+        {
+            return;
+        }
+
+        var delta = Sg_MouseMan.Inst.delta;
         mouseDelta.x -= delta.x * 0.5f;
         mouseDelta.y -= delta.y * 0.5f;
         mouseDelta = Vector2.Lerp(mouseDelta, Vector2.zero, Time.deltaTime * 5f);
 
         shakeAmount = Mathf.Lerp(shakeAmount, 0f, Time.deltaTime * 5f);
         var shakeVal = shakeAmount * shakeStrength;
-        Vector2 shakeOffset = new();
-        shakeTimer -= Time.deltaTime;
-        if(shakeTimer < 0f)
+        shakeTimer += Time.deltaTime;
+        if(shakeTimer > 0.02f)
         {
             shakeTimer -= 0.02f;
             shakeOffset.x = Random.Range(-shakeVal, shakeVal);

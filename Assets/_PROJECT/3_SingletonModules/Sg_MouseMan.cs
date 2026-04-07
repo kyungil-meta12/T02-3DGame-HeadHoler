@@ -22,6 +22,9 @@ public class Sg_MouseMan : MonoBehaviour
     private Vector2 prevRotation = Vector2.zero;
 
     [HideInInspector]
+    public Vector2 delta = Vector2.zero;
+
+    [HideInInspector]
     public bool lockState = false;
 
     private float recoilOffset = 0f;
@@ -84,6 +87,12 @@ public class Sg_MouseMan : MonoBehaviour
             {
                 rotation.y += 360f;
             }
+
+            delta = mouseDelta;
+        }
+        else
+        {
+            delta = Vector2.zero;
         }
 
         recoilOffset = Mathf.Lerp(recoilOffset, 0f, Time.deltaTime * 5f);
