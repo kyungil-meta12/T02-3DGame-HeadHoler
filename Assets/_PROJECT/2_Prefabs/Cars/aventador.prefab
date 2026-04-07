@@ -741,6 +741,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4486252428385966755}
+  - component: {fileID: -1539044555928825660}
+  - component: {fileID: 4641319716733063900}
   - component: {fileID: 1689055563024394143}
   m_Layer: 15
   m_Name: aventador
@@ -773,6 +775,50 @@ Transform:
   - {fileID: 5734013519758218107}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 167.797, z: 0}
+--- !u!195 &-1539044555928825660
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6998895882736878029}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 10
+  m_Acceleration: 16
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 1
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 0
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!114 &4641319716733063900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6998895882736878029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7357a7bb2642ad42ab804aa8853ee2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarController
+  destroyable: 0
+  wheels: []
+  waypoints: []
+  wheelRotationMultiplier: 500
+  startTime: 0
+  lightEnableTime: 0
+  carLight: {fileID: 0}
+  flameParticle: {fileID: 0}
+  explosionParticle: {fileID: 0}
+  isTimeToMove: 0
 --- !u!114 &1689055563024394143
 MonoBehaviour:
   m_ObjectHideFlags: 0
