@@ -7,7 +7,13 @@ public class OilBarrel : Obstacle
 	public GameObject oilPuddle;    //기름 웅덩이
 
 	[Header("지면 레이어 설정")]
-	public LayerMask groundLayer;	//**지면의 레이어를 설정할 것
+	public LayerMask groundLayer;   //**지면의 레이어를 설정할 것
+
+	[Header("기름 웅덩이 설정")]
+	public float puddleMaxRadius = 3f;
+	public float puddleSpreadTime = 5f;
+	public float puddleReduceTime = 10f;
+
 
 	private bool isLeaking = false;
 
@@ -108,6 +114,15 @@ public class OilBarrel : Obstacle
 				}
 				
 				GameObject puddleObj = Instantiate(oilPuddle, puddlePos, Quaternion.identity);
+
+				OilPuddle puddleComp = puddleObj.GetComponent<OilPuddle>();
+
+				if (puddleComp != null)
+				{
+					puddleComp.maxRadius = this.puddleMaxRadius;
+					puddleComp.spreadTime = this.puddleSpreadTime;
+					puddleComp.reduceTime = this.puddleReduceTime;
+				}
 
 				//웅덩이 생성 후 기름 줄기 비활성화
 				OilPuddle puddle = puddleObj.GetComponent<OilPuddle>();
