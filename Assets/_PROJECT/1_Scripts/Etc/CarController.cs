@@ -25,6 +25,7 @@ public class CarController : MonoBehaviour
     internal bool fireStarted;
     private float explosionTime;
     internal bool exploded;
+    internal bool isTimeToMove;
 
     private Vector3 originFlameRotation;
 
@@ -59,18 +60,21 @@ public class CarController : MonoBehaviour
         {
             if (agent.isStopped) // 일정 시간이 지나면 출발
             {
-                currentTime += Time.deltaTime;
-                if (currentTime >= lightEnableTime)
+                if (isTimeToMove)
                 {
-                    if (carLight)
+                    currentTime += Time.deltaTime;
+                    if (currentTime >= lightEnableTime)
                     {
-                        carLight.SetActive(true); // 출발 직전에 라이트 킴
+                        if (carLight)
+                        {
+                            carLight.SetActive(true); // 출발 직전에 라이트 킴
+                        }
                     }
-                }
-                if (currentTime >= startTime)
-                {
-                    SetDestinationToNextPoint();
-                    agent.isStopped = false;
+                    if (currentTime >= startTime)
+                    {
+                        SetDestinationToNextPoint();
+                        agent.isStopped = false;
+                    }
                 }
             }
             else
