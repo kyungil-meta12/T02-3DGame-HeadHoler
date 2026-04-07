@@ -138,12 +138,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 560087930315278334}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.637, y: 0.15, z: -1.715}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.6369881, y: 0.15, z: -1.7150146}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3183516268120553435}
+  m_Father: {fileID: 5865403204609419124}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &6753132960588516378
 Light:
@@ -349,12 +349,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2120906680074242765}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.646, y: 0.15, z: -1.715}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.6460135, y: 0.15, z: -1.7149875}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3183516268120553435}
+  m_Father: {fileID: 5865403204609419124}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &9016655137119151896
 Light:
@@ -571,10 +571,7 @@ Transform:
   - {fileID: 5555855761878200186}
   - {fileID: 8154043530873122225}
   - {fileID: 2723197534980515428}
-  - {fileID: 6301773683103601089}
-  - {fileID: 5250944673200694459}
-  - {fileID: 206992411731381495}
-  - {fileID: 1284929695664496252}
+  - {fileID: 5865403204609419124}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: -91.144, z: 0}
 --- !u!195 &3491922787099145853
@@ -632,9 +629,10 @@ MonoBehaviour:
   wheelRotationMultiplier: 500
   startTime: 0
   lightEnableTime: 0
-  carLight: {fileID: 0}
-  flameParticle: {fileID: 0}
-  explosionParticle: {fileID: 0}
+  carLight: {fileID: 7669699043859518315}
+  flameParticle: {fileID: 8793510976239746625, guid: 5736cdd244101b44e83766ff84aba08a, type: 3}
+  explosionParticle: {fileID: 8464950693656172981, guid: 83ad694f134ab954580473212156b35a, type: 3}
+  isTimeToMove: 0
 --- !u!114 &1286199092623696410
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -679,12 +677,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3377121958281394948}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.352, y: 0.1965, z: 1.666}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.3519871, y: 0.19650003, z: 1.6660057}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3183516268120553435}
+  m_Father: {fileID: 5865403204609419124}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &5499992857986475080
 Light:
@@ -977,6 +975,41 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300006, guid: 2951b29727e37614a99f913119bb38dc, type: 3}
+--- !u!1 &7669699043859518315
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5865403204609419124}
+  m_Layer: 15
+  m_Name: CarLight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5865403204609419124
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7669699043859518315}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6301773683103601089}
+  - {fileID: 5250944673200694459}
+  - {fileID: 206992411731381495}
+  - {fileID: 1284929695664496252}
+  m_Father: {fileID: 3183516268120553435}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7846159638997421944
 GameObject:
   m_ObjectHideFlags: 0
@@ -1002,12 +1035,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7846159638997421944}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.357, y: 0.1965, z: 1.666}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.35698622, y: 0.19650003, z: 1.6659961}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 3183516268120553435}
+  m_Father: {fileID: 5865403204609419124}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &4150620174773642826
 Light:
