@@ -28,10 +28,11 @@ public class Entity : MonoBehaviour
     [Header("머리장비 선택")]
     public int equipIndex = 99;
     [Header("일정시간 후 이동해야 하는 좌표 (없으면 비워두기 가능)")]
+    public float pointToMoveTime = 60;
     public GameObject pointToMove;
     [Header("차에 타야하는지 체크")]
     public bool isMustGetInCar;
-    [Header("운전석 위치")]
+    [Header("차 위치")]
     public Transform carDriverSeatPoint;
     [Header("가드 대상 (없으면 비워두기 가능)")]
     public GameObject guardTarget;
@@ -40,7 +41,6 @@ public class Entity : MonoBehaviour
 
     private static readonly int Speed = Animator.StringToHash("Speed");
     private static readonly int isInCar = Animator.StringToHash("isInCar");
-    private static float pointToMoveTime = 60;
 
     [Space(20)] [Header("======참조======")] 
     [Header("남성 랜더러")]
@@ -53,6 +53,8 @@ public class Entity : MonoBehaviour
     public GameObject[] equips;
     [Header("애니메이터 컨트롤러")]
     public RuntimeAnimatorController[] animatorControllers;
+
+    private Vector3 driveSeatPoint;
     
     private Animator animator;
     private SkinnedMeshRenderer rend;
@@ -64,6 +66,7 @@ public class Entity : MonoBehaviour
     internal bool isDead = false;
     internal BlackboardVariable<bool> isHurt;
     internal BlackboardVariable<bool> shotTrigger;
+    internal BlackboardVariable<bool> isTimeToMove;
 
     private void Awake()
     {
@@ -82,11 +85,12 @@ public class Entity : MonoBehaviour
         behavior.SetVariableValue("Role", myRole);
         behavior.SetVariableValue("PatrolPoints", patrolPoints);
         behavior.SetVariableValue("GuardTarget", guardTarget);
-        behavior.SetVariableValue("pointToMoveTime", pointToMoveTime);
         behavior.SetVariableValue("PointToMove", pointToMove);
+        behavior.SetVariableValue("isMustGetInCar", isMustGetInCar);
 
         behavior.GetVariable<bool>("isHurt", out isHurt);
         behavior.GetVariable<bool>("ShotTrigger", out shotTrigger);
+        behavior.GetVariable<bool>("isTimeToMove", out isTimeToMove);
             
         currentHP = maxHP;
 
@@ -97,18 +101,31 @@ public class Entity : MonoBehaviour
 
         yield return new WaitUntil(() => Sg_GameManager.Inst != null);
         Sg_GameManager.Inst.entities.Add(this);
+        pointToMoveWait = new WaitForSeconds(pointToMoveTime);
     }
 
     //목적지가 있을시 실행됨
-    private WaitForSeconds pointToMoveWait = new WaitForSeconds(pointToMoveTime);
+    private WaitForSeconds pointToMoveWait;
     private IEnumerator PointToMoveCoRoutine()
     {
         yield return pointToMoveWait;
 
+        if(pointToMove != null) isTimeToMove.Value = true;
+
+        while (true)
+        {
+            if (Vector3.Distance(pointToMove.transform.position, transform.position) < 3f)
+            {
+                break;
+            }
+            yield return null;
+        }
+        
         //차에 타야하는지
         if (isMustGetInCar)
         {
             behavior.enabled = false;
+            agent.enabled = false;
             //애니메이터 bool값 전부 끄기
             foreach (AnimatorControllerParameter param in animator.parameters)
             {
@@ -122,22 +139,24 @@ public class Entity : MonoBehaviour
             while (true)
             {
                 //몸 방향 -> 차량 머리방향 회전
-                float angleDiff = Quaternion.Angle(transform.rotation, pointToMove.transform.rotation);
+                float angleDiff = Quaternion.Angle(transform.rotation, pointToMove.transform.rotation * Quaternion.Euler(0f, 90f, 0f));
 
                 if (angleDiff < 0.1f) 
                 {
-                    transform.rotation = pointToMove.transform.rotation;
+                    transform.rotation = pointToMove.transform.rotation * Quaternion.Euler(0f, 90f, 0f);
                     break; 
                 }
 
                 transform.rotation = Quaternion.Slerp(
                     transform.rotation, 
-                    pointToMove.transform.rotation, 
+                    pointToMove.transform.rotation * Quaternion.Euler(0f, 90f, 0f), 
                     Time.deltaTime * 5f);
 
                 yield return null;
             }
             animator.SetBool(isInCar, true);
+
+            yield return new WaitForSeconds(5f);
 
             CarController carController = pointToMove.GetComponentInParent<CarController>();
             carController.isTimeToMove = true;
@@ -145,7 +164,7 @@ public class Entity : MonoBehaviour
             while (true)
             {
                 //차량 운전석으로 위치 고정
-                transform.position = carDriverSeatPoint.position;
+                transform.position = carDriverSeatPoint.position + new Vector3(0, -1f, -0.6f);
                 if (carController != null)
                 {
                     if (carController.fireStarted)
@@ -153,6 +172,7 @@ public class Entity : MonoBehaviour
                         // 터지기 직전에 다친 상태로 나오기
                         animator.SetBool(isInCar, false);
                         behavior.enabled = true;
+                        agent.enabled = true;
                         Hit(regController.ragdollColliders[0],
                             carController.transform.position - transform.position,10);
                         behavior.SetVariableValue("isMustGetInCar", false);
@@ -164,10 +184,6 @@ public class Entity : MonoBehaviour
             }
             
             //차량 터지면 폭발에 의해 사망
-        }
-        else
-        {
-            //todo 차에 탑승 안한다면 이동 후 할 행동
         }
     }
 
