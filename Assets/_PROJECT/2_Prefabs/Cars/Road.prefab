@@ -1,0 +1,2865 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &22467251886255393
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 557892385093272145}
+  - component: {fileID: 7088262379792843547}
+  - component: {fileID: 3592153597266909962}
+  m_Layer: 0
+  m_Name: Nav Point 1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &557892385093272145
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22467251886255393}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.871336, z: -0, w: 0.49068686}
+  m_LocalPosition: {x: -68.38, y: -0.049901962, z: 89.61}
+  m_LocalScale: {x: 1, y: 1, z: 6.9342623}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7088262379792843547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22467251886255393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9adaee7c5905d4892bd0506777a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERNavPoint
+  lastKnownIndex: 1
+  assignedMeshGen: {fileID: 203854246618051315}
+  lockSize: 0
+  lockedHalfWidth: 1
+--- !u!114 &3592153597266909962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 22467251886255393}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626858fbee2aae4aa7e62f9c4481353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERPointSnap
+  passive: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0}
+  snapModeInt: 0
+  snappedToPoint: {fileID: 0}
+--- !u!1 &515481842603700809
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4485767797054507229}
+  - component: {fileID: 4983396275974400660}
+  - component: {fileID: 4593377980910274341}
+  m_Layer: 0
+  m_Name: Nav Point 12
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4485767797054507229
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 515481842603700809}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.91947424, z: -0, w: 0.39315036}
+  m_LocalPosition: {x: 51.789978, y: -0.049901962, z: -57.350006}
+  m_LocalScale: {x: 1, y: 1, z: 3.516742}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4983396275974400660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 515481842603700809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9adaee7c5905d4892bd0506777a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERNavPoint
+  lastKnownIndex: 12
+  assignedMeshGen: {fileID: 203854246618051315}
+  lockSize: 0
+  lockedHalfWidth: 1
+--- !u!114 &4593377980910274341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 515481842603700809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626858fbee2aae4aa7e62f9c4481353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERPointSnap
+  passive: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0}
+  snapModeInt: 0
+  snappedToPoint: {fileID: 0}
+--- !u!1 &737184873595292857
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2393777214342161314}
+  - component: {fileID: 5056740248481345422}
+  - component: {fileID: 4233769393111105245}
+  m_Layer: 0
+  m_Name: Nav Point 26
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2393777214342161314
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 737184873595292857}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.834526, z: -0, w: 0.55096865}
+  m_LocalPosition: {x: 9.310608, y: -0.049901962, z: -131.42001}
+  m_LocalScale: {x: 1, y: 1, z: 3.6148422}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5056740248481345422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 737184873595292857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9adaee7c5905d4892bd0506777a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERNavPoint
+  lastKnownIndex: 26
+  assignedMeshGen: {fileID: 203854246618051315}
+  lockSize: 0
+  lockedHalfWidth: 1
+--- !u!114 &4233769393111105245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 737184873595292857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626858fbee2aae4aa7e62f9c4481353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERPointSnap
+  passive: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0}
+  snapModeInt: 0
+  snappedToPoint: {fileID: 0}
+--- !u!1 &1534249191044669958
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1291549485448028954}
+  - component: {fileID: 4684300007287166461}
+  - component: {fileID: 3937337053870940621}
+  m_Layer: 0
+  m_Name: Nav Point 17
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1291549485448028954
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534249191044669958}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.99663246, z: -0, w: -0.08199909}
+  m_LocalPosition: {x: 63.01001, y: -0.049901962, z: -90.039764}
+  m_LocalScale: {x: 1, y: 1, z: 3.4547184}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4684300007287166461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534249191044669958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9adaee7c5905d4892bd0506777a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERNavPoint
+  lastKnownIndex: 17
+  assignedMeshGen: {fileID: 203854246618051315}
+  lockSize: 0
+  lockedHalfWidth: 1
+--- !u!114 &3937337053870940621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1534249191044669958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626858fbee2aae4aa7e62f9c4481353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERPointSnap
+  passive: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0}
+  snapModeInt: 0
+  snappedToPoint: {fileID: 0}
+--- !u!1 &1647587219459515202
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1696753591598912853}
+  - component: {fileID: 2846638323879230584}
+  - component: {fileID: 5011856987946365241}
+  m_Layer: 0
+  m_Name: Nav Point 33
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1696753591598912853
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647587219459515202}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.9499931, z: -0, w: -0.312271}
+  m_LocalPosition: {x: -61.138123, y: -0.049901962, z: -167.21753}
+  m_LocalScale: {x: 1, y: 1, z: 5.1740055}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2846638323879230584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647587219459515202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9adaee7c5905d4892bd0506777a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERNavPoint
+  lastKnownIndex: 33
+  assignedMeshGen: {fileID: 203854246618051315}
+  lockSize: 0
+  lockedHalfWidth: 1
+--- !u!114 &5011856987946365241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647587219459515202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626858fbee2aae4aa7e62f9c4481353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERPointSnap
+  passive: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0}
+  snapModeInt: 0
+  snappedToPoint: {fileID: 0}
+--- !u!1 &1720578703359710886
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5464166402756440891}
+  - component: {fileID: 563162956663560515}
+  - component: {fileID: 4710647886955136112}
+  m_Layer: 0
+  m_Name: Nav Point 25
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5464166402756440891
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720578703359710886}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.8006382, z: -0, w: 0.5991482}
+  m_LocalPosition: {x: 17.853699, y: -0.049901962, z: -128.33911}
+  m_LocalScale: {x: 1, y: 1, z: 3.5359998}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &563162956663560515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720578703359710886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9adaee7c5905d4892bd0506777a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERNavPoint
+  lastKnownIndex: 25
+  assignedMeshGen: {fileID: 203854246618051315}
+  lockSize: 0
+  lockedHalfWidth: 1
+--- !u!114 &4710647886955136112
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1720578703359710886}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626858fbee2aae4aa7e62f9c4481353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERPointSnap
+  passive: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0}
+  snapModeInt: 0
+  snappedToPoint: {fileID: 0}
+--- !u!1 &1856436018689873875
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7886246773318581350}
+  - component: {fileID: 4354144807618179443}
+  - component: {fileID: 9168288559622476819}
+  m_Layer: 0
+  m_Name: Nav Point 15
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7886246773318581350
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856436018689873875}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.99562633, z: -0, w: 0.09342524}
+  m_LocalPosition: {x: 64.640015, y: -0.049901962, z: -73.13968}
+  m_LocalScale: {x: 1, y: 1, z: 2.0298245}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4354144807618179443
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856436018689873875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9adaee7c5905d4892bd0506777a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERNavPoint
+  lastKnownIndex: 15
+  assignedMeshGen: {fileID: 203854246618051315}
+  lockSize: 0
+  lockedHalfWidth: 1
+--- !u!114 &9168288559622476819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856436018689873875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626858fbee2aae4aa7e62f9c4481353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERPointSnap
+  passive: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0}
+  snapModeInt: 0
+  snappedToPoint: {fileID: 0}
+--- !u!1 &2030511477664281253
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8239312574433125927}
+  - component: {fileID: 737161957373553245}
+  - component: {fileID: 5651252247580762062}
+  m_Layer: 0
+  m_Name: Nav Point 30
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8239312574433125927
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030511477664281253}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.79439175, z: -0, w: 0.6074057}
+  m_LocalPosition: {x: -29.409973, y: -0.049901962, z: -143.28}
+  m_LocalScale: {x: 1, y: 1, z: 4.3518925}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &737161957373553245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030511477664281253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9adaee7c5905d4892bd0506777a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERNavPoint
+  lastKnownIndex: 30
+  assignedMeshGen: {fileID: 203854246618051315}
+  lockSize: 0
+  lockedHalfWidth: 1
+--- !u!114 &5651252247580762062
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2030511477664281253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626858fbee2aae4aa7e62f9c4481353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERPointSnap
+  passive: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0}
+  snapModeInt: 0
+  snappedToPoint: {fileID: 0}
+--- !u!1 &2066394437460124480
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5679526737234222786}
+  - component: {fileID: 1657332581826092016}
+  - component: {fileID: 370907289889128351}
+  m_Layer: 0
+  m_Name: Nav Point 31
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5679526737234222786
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066394437460124480}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.88018656, z: -0, w: -0.47462788}
+  m_LocalPosition: {x: -42.069733, y: -0.049901962, z: -148.82}
+  m_LocalScale: {x: 1, y: 1, z: 5.464989}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1657332581826092016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066394437460124480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9adaee7c5905d4892bd0506777a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERNavPoint
+  lastKnownIndex: 31
+  assignedMeshGen: {fileID: 203854246618051315}
+  lockSize: 0
+  lockedHalfWidth: 1
+--- !u!114 &370907289889128351
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2066394437460124480}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626858fbee2aae4aa7e62f9c4481353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERPointSnap
+  passive: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0}
+  snapModeInt: 0
+  snappedToPoint: {fileID: 0}
+--- !u!1 &2116437278213337981
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1517733834452032155}
+  - component: {fileID: 8602900401096648415}
+  - component: {fileID: 4070390437510522143}
+  m_Layer: 0
+  m_Name: Nav Point 32
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1517733834452032155
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116437278213337981}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.9275498, z: -0, w: -0.3736997}
+  m_LocalPosition: {x: -52.669678, y: -0.049901962, z: -157.44}
+  m_LocalScale: {x: 1, y: 1, z: 5.1740055}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8602900401096648415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116437278213337981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9adaee7c5905d4892bd0506777a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERNavPoint
+  lastKnownIndex: 32
+  assignedMeshGen: {fileID: 203854246618051315}
+  lockSize: 0
+  lockedHalfWidth: 1
+--- !u!114 &4070390437510522143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2116437278213337981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626858fbee2aae4aa7e62f9c4481353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERPointSnap
+  passive: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0}
+  snapModeInt: 0
+  snappedToPoint: {fileID: 0}
+--- !u!1 &2734532927538154285
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2005165591686590968}
+  - component: {fileID: 7280063765342394562}
+  - component: {fileID: 6197205747487625602}
+  m_Layer: 0
+  m_Name: Nav Point 20
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2005165591686590968
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2734532927538154285}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.94817275, z: -0, w: -0.3177553}
+  m_LocalPosition: {x: 55.29059, y: -0.049901962, z: -115.38971}
+  m_LocalScale: {x: 1, y: 1, z: 1.7350842}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7280063765342394562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2734532927538154285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9adaee7c5905d4892bd0506777a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERNavPoint
+  lastKnownIndex: 20
+  assignedMeshGen: {fileID: 203854246618051315}
+  lockSize: 0
+  lockedHalfWidth: 1
+--- !u!114 &6197205747487625602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2734532927538154285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626858fbee2aae4aa7e62f9c4481353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERPointSnap
+  passive: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0}
+  snapModeInt: 0
+  snappedToPoint: {fileID: 0}
+--- !u!1 &3394717433785369279
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2945634664533797079}
+  - component: {fileID: 2693671805798709653}
+  - component: {fileID: 8731041823250817061}
+  - component: {fileID: 5979152063376043396}
+  m_Layer: 0
+  m_Name: leftBorderMeshObj
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2945634664533797079
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3394717433785369279}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &2693671805798709653
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3394717433785369279}
+  m_Mesh: {fileID: 0}
+--- !u!23 &8731041823250817061
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3394717433785369279}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 5d018231017fd6c42b22d9d0b265ef94, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5979152063376043396
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3394717433785369279}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
+--- !u!1 &3438912679089380455
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2450456288270196162}
+  - component: {fileID: 3705442662285612246}
+  - component: {fileID: 4150465779154545118}
+  - component: {fileID: 203854246618051315}
+  - component: {fileID: 81357643692226235}
+  m_Layer: 0
+  m_Name: Road
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2450456288270196162
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3438912679089380455}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 539.91, y: 25.42, z: 505.48}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2945634664533797079}
+  - {fileID: 3670890613398698695}
+  - {fileID: 2561388220326095610}
+  - {fileID: 557892385093272145}
+  - {fileID: 286888794905007272}
+  - {fileID: 8932391532830392703}
+  - {fileID: 5798962129046066113}
+  - {fileID: 5149025651559226444}
+  - {fileID: 2740203983140831056}
+  - {fileID: 7947747435170049859}
+  - {fileID: 6818871546328633423}
+  - {fileID: 6704400157709206135}
+  - {fileID: 5975442724881612950}
+  - {fileID: 913785601026874805}
+  - {fileID: 4485767797054507229}
+  - {fileID: 3571475551550712879}
+  - {fileID: 7837168035300020245}
+  - {fileID: 7886246773318581350}
+  - {fileID: 6266526578630773177}
+  - {fileID: 1291549485448028954}
+  - {fileID: 2480005163670493575}
+  - {fileID: 2373515802242048907}
+  - {fileID: 2005165591686590968}
+  - {fileID: 4281551996302714997}
+  - {fileID: 8781370428435169460}
+  - {fileID: 6138700365052278933}
+  - {fileID: 6684027901320443784}
+  - {fileID: 5464166402756440891}
+  - {fileID: 2393777214342161314}
+  - {fileID: 1391396613164992379}
+  - {fileID: 7620368694426046907}
+  - {fileID: 5437531419899605814}
+  - {fileID: 8239312574433125927}
+  - {fileID: 5679526737234222786}
+  - {fileID: 1517733834452032155}
+  - {fileID: 1696753591598912853}
+  - {fileID: 9070956709778257517}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &3705442662285612246
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3438912679089380455}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 94ba5e6e26a36a74a8c4761a0824ecc6, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &4150465779154545118
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3438912679089380455}
+  m_Mesh: {fileID: 0}
+--- !u!114 &203854246618051315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3438912679089380455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 116d531602ac56d4694e801828b99d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERMeshGen
+  navPoints:
+  - transform: {fileID: 2561388220326095610}
+    pointSnapComponent: {fileID: 2518171680160908947}
+    navPointComponent: {fileID: 883405165838542566}
+  - transform: {fileID: 557892385093272145}
+    pointSnapComponent: {fileID: 3592153597266909962}
+    navPointComponent: {fileID: 7088262379792843547}
+  - transform: {fileID: 286888794905007272}
+    pointSnapComponent: {fileID: 9108364120956902552}
+    navPointComponent: {fileID: 1311830360255414822}
+  - transform: {fileID: 8932391532830392703}
+    pointSnapComponent: {fileID: 480310775236565577}
+    navPointComponent: {fileID: 7735634897678652229}
+  - transform: {fileID: 5798962129046066113}
+    pointSnapComponent: {fileID: 7824509538860195440}
+    navPointComponent: {fileID: 4834215089819522456}
+  - transform: {fileID: 5149025651559226444}
+    pointSnapComponent: {fileID: 39461233316589609}
+    navPointComponent: {fileID: 8749160045977675478}
+  - transform: {fileID: 2740203983140831056}
+    pointSnapComponent: {fileID: 1436126137423911566}
+    navPointComponent: {fileID: 7578788139120876219}
+  - transform: {fileID: 7947747435170049859}
+    pointSnapComponent: {fileID: 3926573246976516907}
+    navPointComponent: {fileID: 8397349023902483913}
+  - transform: {fileID: 6818871546328633423}
+    pointSnapComponent: {fileID: 6093596373072745192}
+    navPointComponent: {fileID: 5343099320954042130}
+  - transform: {fileID: 6704400157709206135}
+    pointSnapComponent: {fileID: 7178983973409504986}
+    navPointComponent: {fileID: 5181407790549367611}
+  - transform: {fileID: 5975442724881612950}
+    pointSnapComponent: {fileID: 2561355490405376424}
+    navPointComponent: {fileID: 1366403176606439299}
+  - transform: {fileID: 913785601026874805}
+    pointSnapComponent: {fileID: 698197052902864243}
+    navPointComponent: {fileID: 713503973767160904}
+  - transform: {fileID: 4485767797054507229}
+    pointSnapComponent: {fileID: 4593377980910274341}
+    navPointComponent: {fileID: 4983396275974400660}
+  - transform: {fileID: 3571475551550712879}
+    pointSnapComponent: {fileID: 2063846233922755544}
+    navPointComponent: {fileID: 6405119690338103864}
+  - transform: {fileID: 7837168035300020245}
+    pointSnapComponent: {fileID: 3408123539827958153}
+    navPointComponent: {fileID: 797020170723536540}
+  - transform: {fileID: 7886246773318581350}
+    pointSnapComponent: {fileID: 9168288559622476819}
+    navPointComponent: {fileID: 4354144807618179443}
+  - transform: {fileID: 6266526578630773177}
+    pointSnapComponent: {fileID: 4769271646162144182}
+    navPointComponent: {fileID: 2320184167776821413}
+  - transform: {fileID: 1291549485448028954}
+    pointSnapComponent: {fileID: 3937337053870940621}
+    navPointComponent: {fileID: 4684300007287166461}
+  - transform: {fileID: 2480005163670493575}
+    pointSnapComponent: {fileID: 6232875164631437145}
+    navPointComponent: {fileID: 1717537813552878482}
+  - transform: {fileID: 2373515802242048907}
+    pointSnapComponent: {fileID: 3433166268577535308}
+    navPointComponent: {fileID: 1226163998728563493}
+  - transform: {fileID: 2005165591686590968}
+    pointSnapComponent: {fileID: 6197205747487625602}
+    navPointComponent: {fileID: 7280063765342394562}
+  - transform: {fileID: 4281551996302714997}
+    pointSnapComponent: {fileID: 9084542197875353096}
+    navPointComponent: {fileID: 6030864711679819871}
+  - transform: {fileID: 8781370428435169460}
+    pointSnapComponent: {fileID: 3184928292460751994}
+    navPointComponent: {fileID: 3220410812148862766}
+  - transform: {fileID: 6138700365052278933}
+    pointSnapComponent: {fileID: 3098708437932327885}
+    navPointComponent: {fileID: 8393091810401392120}
+  - transform: {fileID: 6684027901320443784}
+    pointSnapComponent: {fileID: 4904235133358081440}
+    navPointComponent: {fileID: 4148521577257710744}
+  - transform: {fileID: 5464166402756440891}
+    pointSnapComponent: {fileID: 4710647886955136112}
+    navPointComponent: {fileID: 563162956663560515}
+  - transform: {fileID: 2393777214342161314}
+    pointSnapComponent: {fileID: 4233769393111105245}
+    navPointComponent: {fileID: 5056740248481345422}
+  - transform: {fileID: 1391396613164992379}
+    pointSnapComponent: {fileID: 4510590445642564843}
+    navPointComponent: {fileID: 3493634465662746282}
+  - transform: {fileID: 7620368694426046907}
+    pointSnapComponent: {fileID: 6413027589595311216}
+    navPointComponent: {fileID: 2321421481423588339}
+  - transform: {fileID: 5437531419899605814}
+    pointSnapComponent: {fileID: 5719262710233878652}
+    navPointComponent: {fileID: 2207282345252206991}
+  - transform: {fileID: 8239312574433125927}
+    pointSnapComponent: {fileID: 5651252247580762062}
+    navPointComponent: {fileID: 737161957373553245}
+  - transform: {fileID: 5679526737234222786}
+    pointSnapComponent: {fileID: 370907289889128351}
+    navPointComponent: {fileID: 1657332581826092016}
+  - transform: {fileID: 1517733834452032155}
+    pointSnapComponent: {fileID: 4070390437510522143}
+    navPointComponent: {fileID: 8602900401096648415}
+  - transform: {fileID: 1696753591598912853}
+    pointSnapComponent: {fileID: 5011856987946365241}
+    navPointComponent: {fileID: 2846638323879230584}
+  - transform: {fileID: 9070956709778257517}
+    pointSnapComponent: {fileID: 8588972334771522624}
+    navPointComponent: {fileID: 3038406725660166667}
+  deltaWidth: 8.84
+  subdivision: 10
+  uvScale: 1
+  groundOffset: 0.1
+  pointControl: 1
+  updatePointsMode: 0
+  includeCollider: 1
+  enableMeshBorders: 1
+  terrainBrushSmoothingRange: 1
+  uvSet: 2
+  runtimeBehavior: 1
+  borderCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 166.77603
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.0015075803
+      value: 0.25142825
+      inSlope: 166.77603
+      outSlope: -0.0013905359
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.50079346
+      value: 0.25073397
+      inSlope: -0.0013905359
+      outSlope: -162.6647
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.50265235
+      value: -0.05164182
+      inSlope: -162.6647
+      outSlope: -294.6906
+      tangentMode: 69
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  borderUvScale: 1
+  borderUvSet: 0
+  leftBorder: {fileID: 3394717433785369279}
+  rightBorder: {fileID: 5022767498906305654}
+  instanceId: 466018
+--- !u!64 &81357643692226235
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3438912679089380455}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
+--- !u!1 &3565928247084018807
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 286888794905007272}
+  - component: {fileID: 1311830360255414822}
+  - component: {fileID: 9108364120956902552}
+  m_Layer: 0
+  m_Name: Nav Point 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &286888794905007272
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3565928247084018807}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.92140484, z: -0, w: 0.38860413}
+  m_LocalPosition: {x: -54.37, y: -0.049901962, z: 79.4}
+  m_LocalScale: {x: 1, y: 1, z: 6.9342623}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1311830360255414822
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3565928247084018807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9adaee7c5905d4892bd0506777a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERNavPoint
+  lastKnownIndex: 2
+  assignedMeshGen: {fileID: 203854246618051315}
+  lockSize: 0
+  lockedHalfWidth: 1
+--- !u!114 &9108364120956902552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3565928247084018807}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626858fbee2aae4aa7e62f9c4481353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERPointSnap
+  passive: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0}
+  snapModeInt: 0
+  snappedToPoint: {fileID: 0}
+--- !u!1 &4552644906651776163
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6684027901320443784}
+  - component: {fileID: 4148521577257710744}
+  - component: {fileID: 4904235133358081440}
+  m_Layer: 0
+  m_Name: Nav Point 24
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6684027901320443784
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4552644906651776163}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.7851563, z: -0, w: 0.6192976}
+  m_LocalPosition: {x: 26.460022, y: -0.049901962, z: -126.32001}
+  m_LocalScale: {x: 1, y: 1, z: 3.5359998}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4148521577257710744
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4552644906651776163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9adaee7c5905d4892bd0506777a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERNavPoint
+  lastKnownIndex: 24
+  assignedMeshGen: {fileID: 203854246618051315}
+  lockSize: 0
+  lockedHalfWidth: 1
+--- !u!114 &4904235133358081440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4552644906651776163}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626858fbee2aae4aa7e62f9c4481353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERPointSnap
+  passive: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0}
+  snapModeInt: 0
+  snappedToPoint: {fileID: 0}
+--- !u!1 &4801931605982680259
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5149025651559226444}
+  - component: {fileID: 8749160045977675478}
+  - component: {fileID: 39461233316589609}
+  m_Layer: 0
+  m_Name: Nav Point 5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5149025651559226444
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4801931605982680259}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.9254605, z: -0, w: 0.37884408}
+  m_LocalPosition: {x: 10.373901, y: -0.049901962, z: -10.498077}
+  m_LocalScale: {x: 1, y: 1, z: 3.5359168}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8749160045977675478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4801931605982680259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9adaee7c5905d4892bd0506777a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERNavPoint
+  lastKnownIndex: 5
+  assignedMeshGen: {fileID: 203854246618051315}
+  lockSize: 0
+  lockedHalfWidth: 1
+--- !u!114 &39461233316589609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4801931605982680259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626858fbee2aae4aa7e62f9c4481353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERPointSnap
+  passive: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0}
+  snapModeInt: 0
+  snappedToPoint: {fileID: 0}
+--- !u!1 &5022767498906305654
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3670890613398698695}
+  - component: {fileID: 3026691802886490794}
+  - component: {fileID: 2707168401498127078}
+  - component: {fileID: 5411444080135846891}
+  m_Layer: 0
+  m_Name: rightBorderMeshObj
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3670890613398698695
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5022767498906305654}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &3026691802886490794
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5022767498906305654}
+  m_Mesh: {fileID: 0}
+--- !u!23 &2707168401498127078
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5022767498906305654}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 5d018231017fd6c42b22d9d0b265ef94, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &5411444080135846891
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5022767498906305654}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
+--- !u!1 &5074030008108871589
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2480005163670493575}
+  - component: {fileID: 1717537813552878482}
+  - component: {fileID: 6232875164631437145}
+  m_Layer: 0
+  m_Name: Nav Point 18
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2480005163670493575
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5074030008108871589}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.99324745, z: -0, w: -0.11601549}
+  m_LocalPosition: {x: 61.549988, y: -0.049901962, z: -98.73984}
+  m_LocalScale: {x: 1, y: 1, z: 3.5286922}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1717537813552878482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5074030008108871589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9adaee7c5905d4892bd0506777a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERNavPoint
+  lastKnownIndex: 18
+  assignedMeshGen: {fileID: 203854246618051315}
+  lockSize: 0
+  lockedHalfWidth: 1
+--- !u!114 &6232875164631437145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5074030008108871589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626858fbee2aae4aa7e62f9c4481353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERPointSnap
+  passive: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0}
+  snapModeInt: 0
+  snappedToPoint: {fileID: 0}
+--- !u!1 &5211604452805941169
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5975442724881612950}
+  - component: {fileID: 1366403176606439299}
+  - component: {fileID: 2561355490405376424}
+  m_Layer: 0
+  m_Name: Nav Point 10
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5975442724881612950
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5211604452805941169}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.91887635, z: -0, w: 0.39454564}
+  m_LocalPosition: {x: 39.02002, y: -0.049901962, z: -45.059692}
+  m_LocalScale: {x: 1, y: 1, z: 3.536213}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1366403176606439299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5211604452805941169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9adaee7c5905d4892bd0506777a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERNavPoint
+  lastKnownIndex: 10
+  assignedMeshGen: {fileID: 203854246618051315}
+  lockSize: 0
+  lockedHalfWidth: 1
+--- !u!114 &2561355490405376424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5211604452805941169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626858fbee2aae4aa7e62f9c4481353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERPointSnap
+  passive: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0}
+  snapModeInt: 0
+  snappedToPoint: {fileID: 0}
+--- !u!1 &5360810992262196857
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9070956709778257517}
+  - component: {fileID: 3038406725660166667}
+  - component: {fileID: 8588972334771522624}
+  m_Layer: 0
+  m_Name: Nav Point 34
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9070956709778257517
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5360810992262196857}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.9573656, z: -0, w: -0.2888791}
+  m_LocalPosition: {x: -69.140015, y: -0.049901962, z: -179.26968}
+  m_LocalScale: {x: 1, y: 1, z: 7.233338}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3038406725660166667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5360810992262196857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9adaee7c5905d4892bd0506777a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERNavPoint
+  lastKnownIndex: 34
+  assignedMeshGen: {fileID: 203854246618051315}
+  lockSize: 0
+  lockedHalfWidth: 1
+--- !u!114 &8588972334771522624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5360810992262196857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626858fbee2aae4aa7e62f9c4481353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERPointSnap
+  passive: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0}
+  snapModeInt: 0
+  snappedToPoint: {fileID: 0}
+--- !u!1 &5458528143531051040
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6704400157709206135}
+  - component: {fileID: 5181407790549367611}
+  - component: {fileID: 7178983973409504986}
+  m_Layer: 0
+  m_Name: Nav Point 9
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6704400157709206135
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5458528143531051040}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.9240502, z: -0, w: 0.3822711}
+  m_LocalPosition: {x: 32.380005, y: -0.049901962, z: -38.66977}
+  m_LocalScale: {x: 1, y: 1, z: 3.682819}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5181407790549367611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5458528143531051040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9adaee7c5905d4892bd0506777a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERNavPoint
+  lastKnownIndex: 9
+  assignedMeshGen: {fileID: 203854246618051315}
+  lockSize: 0
+  lockedHalfWidth: 1
+--- !u!114 &7178983973409504986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5458528143531051040}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626858fbee2aae4aa7e62f9c4481353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERPointSnap
+  passive: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0}
+  snapModeInt: 0
+  snappedToPoint: {fileID: 0}
+--- !u!1 &5463419518401732447
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5798962129046066113}
+  - component: {fileID: 4834215089819522456}
+  - component: {fileID: 7824509538860195440}
+  m_Layer: 0
+  m_Name: Nav Point 4
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5798962129046066113
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5463419518401732447}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.9335727, z: -0, w: 0.35838807}
+  m_LocalPosition: {x: -15.639832, y: -0.049901962, z: 16.810028}
+  m_LocalScale: {x: 1, y: 1, z: 6.7779517}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4834215089819522456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5463419518401732447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9adaee7c5905d4892bd0506777a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERNavPoint
+  lastKnownIndex: 4
+  assignedMeshGen: {fileID: 203854246618051315}
+  lockSize: 0
+  lockedHalfWidth: 1
+--- !u!114 &7824509538860195440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5463419518401732447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626858fbee2aae4aa7e62f9c4481353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERPointSnap
+  passive: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0}
+  snapModeInt: 0
+  snappedToPoint: {fileID: 0}
+--- !u!1 &5558312732042302363
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6818871546328633423}
+  - component: {fileID: 5343099320954042130}
+  - component: {fileID: 6093596373072745192}
+  m_Layer: 0
+  m_Name: Nav Point 8
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6818871546328633423
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5558312732042302363}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.9462302, z: -0, w: 0.3234942}
+  m_LocalPosition: {x: 26.281738, y: -0.049901962, z: -31.771881}
+  m_LocalScale: {x: 1, y: 1, z: 3.5360007}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5343099320954042130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5558312732042302363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9adaee7c5905d4892bd0506777a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERNavPoint
+  lastKnownIndex: 8
+  assignedMeshGen: {fileID: 203854246618051315}
+  lockSize: 0
+  lockedHalfWidth: 1
+--- !u!114 &6093596373072745192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5558312732042302363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626858fbee2aae4aa7e62f9c4481353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERPointSnap
+  passive: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0}
+  snapModeInt: 0
+  snappedToPoint: {fileID: 0}
+--- !u!1 &5692385090890950298
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1391396613164992379}
+  - component: {fileID: 3493634465662746282}
+  - component: {fileID: 4510590445642564843}
+  m_Layer: 0
+  m_Name: Nav Point 27
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1391396613164992379
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5692385090890950298}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.8401611, z: -0, w: 0.54233694}
+  m_LocalPosition: {x: 1.0700073, y: -0.049901962, z: -135.1297}
+  m_LocalScale: {x: 1, y: 1, z: 3.6148422}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3493634465662746282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5692385090890950298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9adaee7c5905d4892bd0506777a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERNavPoint
+  lastKnownIndex: 27
+  assignedMeshGen: {fileID: 203854246618051315}
+  lockSize: 0
+  lockedHalfWidth: 1
+--- !u!114 &4510590445642564843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5692385090890950298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626858fbee2aae4aa7e62f9c4481353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERPointSnap
+  passive: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0}
+  snapModeInt: 0
+  snappedToPoint: {fileID: 0}
+--- !u!1 &5704411622879033418
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7837168035300020245}
+  - component: {fileID: 797020170723536540}
+  - component: {fileID: 3408123539827958153}
+  m_Layer: 0
+  m_Name: Nav Point 14
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7837168035300020245
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5704411622879033418}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.96491474, z: -0, w: 0.2625635}
+  m_LocalPosition: {x: 62.63037, y: -0.049901962, z: -68.48001}
+  m_LocalScale: {x: 1, y: 1, z: 2.0298245}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &797020170723536540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5704411622879033418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9adaee7c5905d4892bd0506777a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERNavPoint
+  lastKnownIndex: 14
+  assignedMeshGen: {fileID: 203854246618051315}
+  lockSize: 0
+  lockedHalfWidth: 1
+--- !u!114 &3408123539827958153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5704411622879033418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626858fbee2aae4aa7e62f9c4481353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERPointSnap
+  passive: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0}
+  snapModeInt: 0
+  snappedToPoint: {fileID: 0}
+--- !u!1 &5837816399876370175
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4281551996302714997}
+  - component: {fileID: 6030864711679819871}
+  - component: {fileID: 9084542197875353096}
+  m_Layer: 0
+  m_Name: Nav Point 21
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4281551996302714997
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5837816399876370175}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.8939791, z: -0, w: -0.44810873}
+  m_LocalPosition: {x: 52.340637, y: -0.049901962, z: -118.569885}
+  m_LocalScale: {x: 1, y: 1, z: 1.7350842}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6030864711679819871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5837816399876370175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9adaee7c5905d4892bd0506777a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERNavPoint
+  lastKnownIndex: 21
+  assignedMeshGen: {fileID: 203854246618051315}
+  lockSize: 0
+  lockedHalfWidth: 1
+--- !u!114 &9084542197875353096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5837816399876370175}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626858fbee2aae4aa7e62f9c4481353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERPointSnap
+  passive: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0}
+  snapModeInt: 0
+  snappedToPoint: {fileID: 0}
+--- !u!1 &6075200389202959381
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 913785601026874805}
+  - component: {fileID: 713503973767160904}
+  - component: {fileID: 698197052902864243}
+  m_Layer: 0
+  m_Name: Nav Point 11
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &913785601026874805
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6075200389202959381}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.920602, z: -0, w: 0.39050215}
+  m_LocalPosition: {x: 45.390198, y: -0.049901962, z: -51.189606}
+  m_LocalScale: {x: 1, y: 1, z: 3.536213}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &713503973767160904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6075200389202959381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9adaee7c5905d4892bd0506777a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERNavPoint
+  lastKnownIndex: 11
+  assignedMeshGen: {fileID: 203854246618051315}
+  lockSize: 0
+  lockedHalfWidth: 1
+--- !u!114 &698197052902864243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6075200389202959381}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626858fbee2aae4aa7e62f9c4481353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERPointSnap
+  passive: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0}
+  snapModeInt: 0
+  snappedToPoint: {fileID: 0}
+--- !u!1 &6219213574078854236
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3571475551550712879}
+  - component: {fileID: 6405119690338103864}
+  - component: {fileID: 2063846233922755544}
+  m_Layer: 0
+  m_Name: Nav Point 13
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3571475551550712879
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6219213574078854236}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.9284052, z: -0, w: 0.3715693}
+  m_LocalPosition: {x: 58.159973, y: -0.049901962, z: -63.4097}
+  m_LocalScale: {x: 1, y: 1, z: 2.70385}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6405119690338103864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6219213574078854236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9adaee7c5905d4892bd0506777a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERNavPoint
+  lastKnownIndex: 13
+  assignedMeshGen: {fileID: 203854246618051315}
+  lockSize: 0
+  lockedHalfWidth: 1
+--- !u!114 &2063846233922755544
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6219213574078854236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626858fbee2aae4aa7e62f9c4481353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERPointSnap
+  passive: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0}
+  snapModeInt: 0
+  snappedToPoint: {fileID: 0}
+--- !u!1 &6399355248889098476
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7620368694426046907}
+  - component: {fileID: 2321421481423588339}
+  - component: {fileID: 6413027589595311216}
+  m_Layer: 0
+  m_Name: Nav Point 28
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7620368694426046907
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6399355248889098476}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.8016654, z: -0, w: 0.5977731}
+  m_LocalPosition: {x: -9.809998, y: -0.049901962, z: -139.8497}
+  m_LocalScale: {x: 1, y: 1, z: 3.610199}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2321421481423588339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6399355248889098476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9adaee7c5905d4892bd0506777a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERNavPoint
+  lastKnownIndex: 28
+  assignedMeshGen: {fileID: 203854246618051315}
+  lockSize: 0
+  lockedHalfWidth: 1
+--- !u!114 &6413027589595311216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6399355248889098476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626858fbee2aae4aa7e62f9c4481353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERPointSnap
+  passive: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0}
+  snapModeInt: 0
+  snappedToPoint: {fileID: 0}
+--- !u!1 &6663169780386833863
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8932391532830392703}
+  - component: {fileID: 7735634897678652229}
+  - component: {fileID: 480310775236565577}
+  m_Layer: 0
+  m_Name: Nav Point 3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8932391532830392703
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6663169780386833863}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.9493515, z: -0, w: 0.31421614}
+  m_LocalPosition: {x: -26.4, y: -0.049901962, z: 29.9}
+  m_LocalScale: {x: 1, y: 1, z: 6.7779517}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7735634897678652229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6663169780386833863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9adaee7c5905d4892bd0506777a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERNavPoint
+  lastKnownIndex: 3
+  assignedMeshGen: {fileID: 203854246618051315}
+  lockSize: 0
+  lockedHalfWidth: 1
+--- !u!114 &480310775236565577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6663169780386833863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626858fbee2aae4aa7e62f9c4481353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERPointSnap
+  passive: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0}
+  snapModeInt: 0
+  snappedToPoint: {fileID: 0}
+--- !u!1 &6703381333526375359
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2373515802242048907}
+  - component: {fileID: 1226163998728563493}
+  - component: {fileID: 3433166268577535308}
+  m_Layer: 0
+  m_Name: Nav Point 19
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2373515802242048907
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6703381333526375359}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.9814769, z: -0, w: -0.19158067}
+  m_LocalPosition: {x: 58.77002, y: -0.049901962, z: -107.67999}
+  m_LocalScale: {x: 1, y: 1, z: 3.3833988}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1226163998728563493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6703381333526375359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9adaee7c5905d4892bd0506777a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERNavPoint
+  lastKnownIndex: 19
+  assignedMeshGen: {fileID: 203854246618051315}
+  lockSize: 0
+  lockedHalfWidth: 1
+--- !u!114 &3433166268577535308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6703381333526375359}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626858fbee2aae4aa7e62f9c4481353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERPointSnap
+  passive: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0}
+  snapModeInt: 0
+  snappedToPoint: {fileID: 0}
+--- !u!1 &6815919809305823932
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6266526578630773177}
+  - component: {fileID: 2320184167776821413}
+  - component: {fileID: 4769271646162144182}
+  m_Layer: 0
+  m_Name: Nav Point 16
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6266526578630773177
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6815919809305823932}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.99786294, z: -0, w: -0.06534229}
+  m_LocalPosition: {x: 64.3006, y: -0.049901962, z: -81.49994}
+  m_LocalScale: {x: 1, y: 1, z: 3.346859}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2320184167776821413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6815919809305823932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9adaee7c5905d4892bd0506777a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERNavPoint
+  lastKnownIndex: 16
+  assignedMeshGen: {fileID: 203854246618051315}
+  lockSize: 0
+  lockedHalfWidth: 1
+--- !u!114 &4769271646162144182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6815919809305823932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626858fbee2aae4aa7e62f9c4481353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERPointSnap
+  passive: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0}
+  snapModeInt: 0
+  snappedToPoint: {fileID: 0}
+--- !u!1 &7492022796886779922
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8781370428435169460}
+  - component: {fileID: 3220410812148862766}
+  - component: {fileID: 3184928292460751994}
+  m_Layer: 0
+  m_Name: Nav Point 22
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8781370428435169460
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7492022796886779922}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.8044851, z: -0, w: 0.59397286}
+  m_LocalPosition: {x: 44.490173, y: -0.049901962, z: -122.029816}
+  m_LocalScale: {x: 1, y: 1, z: 3.4316387}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3220410812148862766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7492022796886779922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9adaee7c5905d4892bd0506777a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERNavPoint
+  lastKnownIndex: 22
+  assignedMeshGen: {fileID: 203854246618051315}
+  lockSize: 0
+  lockedHalfWidth: 1
+--- !u!114 &3184928292460751994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7492022796886779922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626858fbee2aae4aa7e62f9c4481353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERPointSnap
+  passive: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0}
+  snapModeInt: 0
+  snappedToPoint: {fileID: 0}
+--- !u!1 &7891356811124416105
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2561388220326095610}
+  - component: {fileID: 883405165838542566}
+  - component: {fileID: 2518171680160908947}
+  m_Layer: 0
+  m_Name: Nav Point 0
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2561388220326095610
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7891356811124416105}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.82476217, z: -0, w: 0.5654798}
+  m_LocalPosition: {x: -102.02, y: -0.049901962, z: 102.61}
+  m_LocalScale: {x: 1, y: 1, z: 18.032253}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &883405165838542566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7891356811124416105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9adaee7c5905d4892bd0506777a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERNavPoint
+  lastKnownIndex: 0
+  assignedMeshGen: {fileID: 203854246618051315}
+  lockSize: 0
+  lockedHalfWidth: 1
+--- !u!114 &2518171680160908947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7891356811124416105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626858fbee2aae4aa7e62f9c4481353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERPointSnap
+  passive: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0}
+  snapModeInt: 0
+  snappedToPoint: {fileID: 0}
+--- !u!1 &7958495485606196756
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5437531419899605814}
+  - component: {fileID: 2207282345252206991}
+  - component: {fileID: 5719262710233878652}
+  m_Layer: 0
+  m_Name: Nav Point 29
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5437531419899605814
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7958495485606196756}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.7571415, z: -0, w: 0.653251}
+  m_LocalPosition: {x: -18.650024, y: -0.049901962, z: -141.67001}
+  m_LocalScale: {x: 1, y: 1, z: 3.610199}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2207282345252206991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7958495485606196756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9adaee7c5905d4892bd0506777a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERNavPoint
+  lastKnownIndex: 29
+  assignedMeshGen: {fileID: 203854246618051315}
+  lockSize: 0
+  lockedHalfWidth: 1
+--- !u!114 &5719262710233878652
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7958495485606196756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626858fbee2aae4aa7e62f9c4481353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERPointSnap
+  passive: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0}
+  snapModeInt: 0
+  snappedToPoint: {fileID: 0}
+--- !u!1 &8249881054771941482
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7947747435170049859}
+  - component: {fileID: 8397349023902483913}
+  - component: {fileID: 3926573246976516907}
+  m_Layer: 0
+  m_Name: Nav Point 7
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7947747435170049859
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8249881054771941482}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.96363074, z: -0, w: 0.26723745}
+  m_LocalPosition: {x: 21.47998, y: -0.049901962, z: -24.3497}
+  m_LocalScale: {x: 1, y: 1, z: 3.5360007}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8397349023902483913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8249881054771941482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9adaee7c5905d4892bd0506777a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERNavPoint
+  lastKnownIndex: 7
+  assignedMeshGen: {fileID: 203854246618051315}
+  lockSize: 0
+  lockedHalfWidth: 1
+--- !u!114 &3926573246976516907
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8249881054771941482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626858fbee2aae4aa7e62f9c4481353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERPointSnap
+  passive: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0}
+  snapModeInt: 0
+  snappedToPoint: {fileID: 0}
+--- !u!1 &8518102590585330811
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6138700365052278933}
+  - component: {fileID: 8393091810401392120}
+  - component: {fileID: 3098708437932327885}
+  m_Layer: 0
+  m_Name: Nav Point 23
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6138700365052278933
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8518102590585330811}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.778437, z: -0, w: 0.62772274}
+  m_LocalPosition: {x: 35.880005, y: -0.049901962, z: -124.110016}
+  m_LocalScale: {x: 1, y: 1, z: 3.5431564}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8393091810401392120
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8518102590585330811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9adaee7c5905d4892bd0506777a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERNavPoint
+  lastKnownIndex: 23
+  assignedMeshGen: {fileID: 203854246618051315}
+  lockSize: 0
+  lockedHalfWidth: 1
+--- !u!114 &3098708437932327885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8518102590585330811}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626858fbee2aae4aa7e62f9c4481353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERPointSnap
+  passive: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0}
+  snapModeInt: 0
+  snappedToPoint: {fileID: 0}
+--- !u!1 &8783821614654706244
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2740203983140831056}
+  - component: {fileID: 7578788139120876219}
+  - component: {fileID: 1436126137423911566}
+  m_Layer: 0
+  m_Name: Nav Point 6
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2740203983140831056
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8783821614654706244}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.9429969, z: -0, w: 0.33280155}
+  m_LocalPosition: {x: 16.586975, y: -0.049901962, z: -16.786133}
+  m_LocalScale: {x: 1, y: 1, z: 3.5359168}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2450456288270196162}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7578788139120876219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8783821614654706244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e9adaee7c5905d4892bd0506777a4e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERNavPoint
+  lastKnownIndex: 6
+  assignedMeshGen: {fileID: 203854246618051315}
+  lockSize: 0
+  lockedHalfWidth: 1
+--- !u!114 &1436126137423911566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8783821614654706244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5626858fbee2aae4aa7e62f9c4481353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: KrisDevelopment.EasyRoadsMeshGen::KrisDevelopment.ERMG.ERPointSnap
+  passive: 0
+  originalPos: {x: 0, y: 0, z: 0}
+  originalRot: {x: 0, y: 0, z: 0}
+  snapModeInt: 0
+  snappedToPoint: {fileID: 0}
