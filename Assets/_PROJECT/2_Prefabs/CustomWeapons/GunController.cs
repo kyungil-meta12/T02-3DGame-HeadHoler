@@ -2,11 +2,16 @@ using System;
 using UnityEngine;
 using Unity.Behavior;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class GunController : MonoBehaviour
 {
     //소리 발생 콜라이더 프리팹
-    public GameObject hitSoundPrefab; 
+    public GameObject hitSoundPrefab;
+
+    // 총기 매쉬렌더러 // 줌 활성화 시 일시로 비활성화
+    public MeshRenderer mr;
+    public List<MeshRenderer> childMr = new();
     
     // 격발 간격
     public float fireInterval;
@@ -35,6 +40,12 @@ public class GunController : MonoBehaviour
     void Awake() {
         currAmmo = totalAmmo; // 탄창을 채운 상태로 시작
         centerImage = scopeImage.transform.Find("ScopeImage").GetComponent<Image>();
+        mr = GetComponent<MeshRenderer>();
+        var mrs = mr.GetComponentsInChildren<MeshRenderer>();
+        foreach(var m in mrs)
+        {
+            childMr.Add(m);
+        }
     }
 
     void Update()
@@ -182,5 +193,15 @@ public class GunController : MonoBehaviour
         currAmmo = totalAmmo; // 탄창 교체
 
         print($"[GunController] Reload | Ammo: {currAmmo} / {totalAmmo}"); // 테스트용 출력
+    }
+
+    // 매쉬렌더러 설정
+    public void SetRenderState(bool flag)
+    {
+        mr.enabled = flag;
+        foreach(var m in childMr)
+        {
+            m.enabled = flag;
+        }
     }
 }
