@@ -63,6 +63,7 @@ public class Sg_CameraController : MonoBehaviour
         {
             zoomSens.Add(0f);
         }
+        Sg_ScopeZoomIndicator.Inst.SetMaxCount(maxZoomCount);
     }
 
     void Update()
@@ -151,6 +152,9 @@ public class Sg_CameraController : MonoBehaviour
         zoomSens[currZoomCount] = 0.5f / offsetFovDest;
         offsetFovDest += zoomSens[currZoomCount];
         currZoomCount++;
+
+        // UI에 줌 카운트 추가
+        Sg_ScopeZoomIndicator.Inst.InputZoomCount(currZoomCount);
     }
 
     public void ReduceScopeMagnification()
@@ -161,6 +165,8 @@ public class Sg_CameraController : MonoBehaviour
         }
         offsetFovDest -= zoomSens[currZoomCount - 1];
         currZoomCount--;
+        // UI에 줌 카운트 추가
+        Sg_ScopeZoomIndicator.Inst.InputZoomCount(currZoomCount);
     }
 
     public void DisableZoom()
