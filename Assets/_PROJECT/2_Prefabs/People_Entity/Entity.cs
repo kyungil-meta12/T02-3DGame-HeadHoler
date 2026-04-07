@@ -147,6 +147,7 @@ public class Entity : MonoBehaviour
             animator.SetBool(isInCar, true);
 
             CarController carController = pointToMove.GetComponentInParent<CarController>();
+            carController.isTimeToMove = true;
             
             while (true)
             {
@@ -160,7 +161,7 @@ public class Entity : MonoBehaviour
                         animator.SetBool(isInCar, false);
                         behavior.enabled = true;
                         Hit(regController.ragdollColliders[0],
-                            carController.transform.position - transform.position,90);
+                            carController.transform.position - transform.position,10);
                         behavior.SetVariableValue("isMustGetInCar", false);
                         isMustGetInCar = false;
                         break;
