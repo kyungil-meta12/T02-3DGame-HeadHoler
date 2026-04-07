@@ -11,6 +11,7 @@ public class Sg_TargetTracker : MonoBehaviour
 
     [Header("Quest UI")]
     [SerializeField] private QuestItem targetQuestItem;
+    [SerializeField] private QuestItemSafeTrigger targetQuestTrigger;
     [SerializeField] private string targetTextFormat = "남은 타겟 : {0}";
 
     [Header("Result Popup")]
@@ -111,11 +112,18 @@ public class Sg_TargetTracker : MonoBehaviour
             return;
 
         int aliveCount = GetAliveTargetCount();
-        targetQuestItem.questText = string.Format(targetTextFormat, aliveCount);
-        targetQuestItem.UpdateUI();
-        targetQuestItem.AnimateQuest();
+        string text = string.Format(targetTextFormat, aliveCount);
 
+        targetQuestItem.questText = text;
 
+        if (targetQuestTrigger != null)
+        {
+            targetQuestTrigger.SetQuestTextAndShow(text);
+        }
+        else
+        {
+            targetQuestItem.UpdateUI();
+        }
     }
 
     private void CheckClear()
