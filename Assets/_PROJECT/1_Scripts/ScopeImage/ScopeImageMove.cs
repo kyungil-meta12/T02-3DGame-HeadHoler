@@ -9,7 +9,6 @@ public class ScopeImageMove : MonoBehaviour
     private Vector2[] originPos;
 
     public Image scopeImage;
-    public Sprite[] images;
 
     private float shakeAmount;
     private float shakeTimer;
@@ -22,9 +21,6 @@ public class ScopeImageMove : MonoBehaviour
         {
             originPos[i] = rt[i].localPosition;
         }
-
-        // 총마다 다른 스코프 이미지를 선택한다
-         scopeImage.sprite = images[Sg_GunIndex.Inst.GetCurrentIndex()];
     }
 
     void Update()
