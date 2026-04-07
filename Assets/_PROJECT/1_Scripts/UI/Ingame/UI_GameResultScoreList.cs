@@ -17,10 +17,6 @@ public class UI_GameResultScoreList : MonoBehaviour
     [SerializeField] private string finalScoreFormat = "Final Score : {0:N0}";
     [SerializeField] private string emptyText = "No score data.";
 
-    private void OnEnable()
-    {
-        Refresh();
-    }
 
     public void Show()
     {
