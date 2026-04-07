@@ -167,18 +167,18 @@ MonoBehaviour:
   explosives: []
   fragile: 0
   damage: 50
-  waitTime: 3
+  observerEntity: {fileID: 0}
   sweepAngle: 45
   rotateTime: 10
   viewRadius: 15
   viewAngle: 15
-  ragdollLayer:
+  evidenceLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 0
   ObstacleLayer:
     serializedVersion: 2
     m_Bits: 128
-  spotLight: {fileID: 0}
+  spotLight: {fileID: 6507041988925287070}
 --- !u!33 &33908796350202026
 MeshFilter:
   m_ObjectHideFlags: 0

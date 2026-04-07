@@ -199,7 +199,8 @@ public class Entity : MonoBehaviour
         //머리장비 바꾸기
         if (equipIndex < equips.Length)
         {
-            Instantiate(equips[equipIndex], headSlot);
+            var equip = Instantiate(equips[equipIndex], headSlot);
+            equip.layer = LayerMask.NameToLayer("Ignore Raycast");
         }
     }
 
