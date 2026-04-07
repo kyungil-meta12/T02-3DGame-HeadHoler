@@ -154,6 +154,11 @@ public class PlayerController : MonoBehaviour
 
     void UpdateGun()
     {
+        if(Sg_GameManager.Inst.isPaused)
+        {
+            return;
+        }
+
         // 재장전을 하지 않고있고 줌을 한 상태에서만 격발이 가능하다
         bool triggerPulled = Mouse.current.leftButton.isPressed && !onReloading && Sg_CameraController.Inst.zoomState;
         currGun.SetGunTrigger(triggerPulled);
@@ -201,16 +206,19 @@ public class PlayerController : MonoBehaviour
 
     void UpdateZoom()
     {
-        bool isMoving = inputForward || inputBackward || inputStrafeLeft || inputStrafeRight;
+        if(Sg_GameManager.Inst.isPaused) // 일시정지 상태이면 입력을 받지 않음
+        {
+            return;
+        }
 
         // 마우스 우클릭으로 줌 상태 토글
-        if (!onReloading && Mouse.current.rightButton.wasPressedThisFrame/* && !isMoving*/)
+        if (!onReloading && Mouse.current.rightButton.wasPressedThisFrame)
         {
             Sg_CameraController.Inst.ToggleZoom();
         }
 
         // 줌 상태에서 움직이거나 재장전을 실행하면 해제된다.
-        if (onReloading/* || isMoving*/)
+        if (onReloading)
         {
             Sg_CameraController.Inst.DisableZoom();
         }
@@ -238,6 +246,11 @@ public class PlayerController : MonoBehaviour
 
     void UpdateReload()
     {
+        if (Sg_GameManager.Inst.isPaused) // 일시정지 상태이면 입력을 받지 않음
+        {
+            return;
+        }
+
         // 애니메이션이 재생 중이 아닐 때만 재장전 실행 가능
         if (!onReloading)
         {

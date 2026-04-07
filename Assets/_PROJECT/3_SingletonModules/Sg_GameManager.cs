@@ -11,6 +11,7 @@ public class Sg_GameManager : MonoBehaviour
     [SerializeField] private ResultPopupController resultPopupController;
 
     private bool isGameOver = false;
+    public bool isPaused = false;
 
     private void Awake()
     {
@@ -59,5 +60,19 @@ public class Sg_GameManager : MonoBehaviour
         {
             Debug.LogWarning("[Sg_GameManager] resultPopupController is null.");
         }
+    }
+
+    // 일시정지 활성화
+    public void SetPause()
+    {
+        Sg_MouseMan.Inst.UnlockCursor();
+        isPaused = true;
+    }
+
+    // 일시정지 비활성화
+    public void RevertPause()
+    {
+        Sg_MouseMan.Inst.LockCursor();
+        isPaused = false;
     }
 }

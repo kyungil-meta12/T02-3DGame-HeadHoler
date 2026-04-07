@@ -71,6 +71,11 @@ public class Sg_CameraController : MonoBehaviour
 
     void Update()
     {
+        if (Sg_GameManager.Inst.isPaused)
+        {
+            return;
+        }
+
         // 스코프 배율 값 업데이트
         offsetFov = Mathf.Lerp(offsetFov, -offsetFovDest * zoomSensitivity + zoomSensitivity, Time.deltaTime * 5f);
 
