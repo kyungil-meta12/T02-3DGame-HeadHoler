@@ -30,7 +30,7 @@ public class AirVentBase : Obstacle
 		{
 			StartCoroutine(FallingDown());
 
-			//rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;   //Y좌표 외에 회전 포함 전부 잠금
+			rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;   //Y좌표 외에 회전 포함 전부 잠금
 			rb.linearVelocity = Vector3.zero;
 			rb.angularVelocity = Vector3.zero;
 
@@ -71,6 +71,7 @@ public class AirVentBase : Obstacle
 		{
 			if (isfalled == false)
 			{
+				rb.constraints = RigidbodyConstraints.None;
 				collision.gameObject.GetComponentInParent<Entity>().Hit(
 				collision.collider, transform.position - collision.contacts[0].point, damage);
 			}
@@ -81,6 +82,7 @@ public class AirVentBase : Obstacle
 			if (isfalled == false)
 			{
 				isfalled = true;
+				rb.constraints = RigidbodyConstraints.None;
 				Instantiate(hitSoundPrefab, transform.position, Quaternion.identity);
 				Hit(transform.position);
 			}
