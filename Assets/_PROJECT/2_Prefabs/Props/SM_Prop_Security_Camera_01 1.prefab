@@ -127,9 +127,10 @@ GameObject:
   - component: {fileID: 33908796350202026}
   - component: {fileID: 23855937468661348}
   - component: {fileID: 8240689149177312853}
-  m_Layer: 0
+  - component: {fileID: 4552922073734233984}
+  m_Layer: 7
   m_Name: SM_Prop_Security_Camera_Head_01
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -164,6 +165,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SecurityCameraController
   hitSoundPrefab: {fileID: 6646916530625809652, guid: 19e082466d116b44d97c210f0c8f6ebd, type: 3}
+  explosionEffect: {fileID: 0}
+  explosionEffectScale: 0
+  explosionShakeEffectStrength: 0
   explosives: []
   fragile: 0
   damage: 50
@@ -172,12 +176,6 @@ MonoBehaviour:
   rotateTime: 10
   viewRadius: 15
   viewAngle: 15
-  evidenceLayer:
-    serializedVersion: 2
-    m_Bits: 0
-  ObstacleLayer:
-    serializedVersion: 2
-    m_Bits: 128
   spotLight: {fileID: 6507041988925287070}
 --- !u!33 &33908796350202026
 MeshFilter:
@@ -276,6 +274,28 @@ MonoBehaviour:
   _meshValidity: 2
   SkipMeshCleaning: 0
   Asynchronous: 1
+--- !u!64 &4552922073734233984
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661405532363504}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300002, guid: 7e657dbd9f400254bab7a1a493e32ecb, type: 3}
 --- !u!1 &160001761247265472
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,7 +308,7 @@ GameObject:
   - component: {fileID: 1141996182184214211}
   - component: {fileID: 189648846429497989}
   - component: {fileID: 4438975208966151737}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CameraFOV
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -394,7 +414,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4515779903536984071}
   - component: {fileID: 6507041988925287070}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
