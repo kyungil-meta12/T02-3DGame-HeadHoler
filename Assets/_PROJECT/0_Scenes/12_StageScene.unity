@@ -8167,10 +8167,14 @@ PrefabInstance:
       propertyPath: m_Convex
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 64875929240884622, guid: 2519fcdc1183c2e46be8eb01405a2ac3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1170082105736364, guid: 2519fcdc1183c2e46be8eb01405a2ac3, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1903896382}
   m_SourcePrefab: {fileID: 100100000, guid: 2519fcdc1183c2e46be8eb01405a2ac3, type: 3}
 --- !u!4 &942842174 stripped
 Transform:
@@ -9570,10 +9574,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Gen_Env_Tree_Dead_02
       objectReference: {fileID: 0}
-    - target: {fileID: 5162523033389567373, guid: f7efb658b10cbe14c9fbd0e5ae4b8a1a, type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 5543693595900729143, guid: f7efb658b10cbe14c9fbd0e5ae4b8a1a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.8727722
@@ -10248,10 +10248,6 @@ PrefabInstance:
     - target: {fileID: 5965284952787518018, guid: 57568ffb4135a5d4bbe66802d0c9519b, type: 3}
       propertyPath: m_Name
       value: SM_Gen_Env_Tree_Dead_01
-      objectReference: {fileID: 0}
-    - target: {fileID: 5965284952787518018, guid: 57568ffb4135a5d4bbe66802d0c9519b, type: 3}
-      propertyPath: m_Layer
-      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6450038277403728120, guid: 57568ffb4135a5d4bbe66802d0c9519b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -11112,14 +11108,6 @@ PrefabInstance:
     - target: {fileID: 1142962482048464, guid: 39724fe3f0f5fd84aa0676538e10c18d, type: 3}
       propertyPath: m_Name
       value: SM_Prop_WireFence_02 (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 1142962482048464, guid: 39724fe3f0f5fd84aa0676538e10c18d, type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 1970908775588278, guid: 39724fe3f0f5fd84aa0676538e10c18d, type: 3}
-      propertyPath: m_Layer
-      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4735716341394874, guid: 39724fe3f0f5fd84aa0676538e10c18d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -14290,10 +14278,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SM_Gen_Env_Tree_Dead_03 (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 6443395740361465152, guid: 7b82e04a27c74dc41b25b85279da1a13, type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -14936,6 +14920,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1903896378 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1170082105736364, guid: 2519fcdc1183c2e46be8eb01405a2ac3, type: 3}
+  m_PrefabInstance: {fileID: 942842173}
+  m_PrefabAsset: {fileID: 0}
+--- !u!64 &1903896382
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1903896378}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4300000, guid: d527d71f2ee3ff9438e1294fa6515aed, type: 3}
 --- !u!1001 &1924298587
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14947,10 +14958,6 @@ PrefabInstance:
     - target: {fileID: 1500541469564970, guid: 406a5d7803b0f19438c33158b169dd14, type: 3}
       propertyPath: m_Name
       value: SM_Generic_TreeDead_01
-      objectReference: {fileID: 0}
-    - target: {fileID: 1500541469564970, guid: 406a5d7803b0f19438c33158b169dd14, type: 3}
-      propertyPath: m_Layer
-      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 4637973934252238, guid: 406a5d7803b0f19438c33158b169dd14, type: 3}
       propertyPath: m_LocalPosition.x
@@ -15298,21 +15305,9 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 918052204}
     m_Modifications:
-    - target: {fileID: 1086843499554702, guid: 0d64cf1bb9d6db5458fc4331eed07b15, type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
     - target: {fileID: 1712709652979322, guid: 0d64cf1bb9d6db5458fc4331eed07b15, type: 3}
       propertyPath: m_Name
       value: SM_Prop_WireFence_01
-      objectReference: {fileID: 0}
-    - target: {fileID: 1712709652979322, guid: 0d64cf1bb9d6db5458fc4331eed07b15, type: 3}
-      propertyPath: m_Layer
-      value: 12
-      objectReference: {fileID: 0}
-    - target: {fileID: 4713333779746000, guid: 0d64cf1bb9d6db5458fc4331eed07b15, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.2918
       objectReference: {fileID: 0}
     - target: {fileID: 4713333779746000, guid: 0d64cf1bb9d6db5458fc4331eed07b15, type: 3}
       propertyPath: m_LocalPosition.x
