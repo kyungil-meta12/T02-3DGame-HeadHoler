@@ -90,18 +90,33 @@ public class OilPuddle : Obstacle
 	{
 		base.OnTriggerEnter(other);
 
-		if (isBurn && other.gameObject.CompareTag("Entity"))
+		if(isBurn)
 		{
-			//entity Hit()
-			other.gameObject.GetComponentInParent<Entity>().Hit(
-				other,transform.position-other.transform.position, damage);
-			var hitSound = other.transform.GetComponentInParent<HitSound>();
-			//entity 불태우기
-			if (hitSound == null)
+			if (other.gameObject.CompareTag("Entity"))
 			{
-				var hitEvidence = Instantiate(hitSoundPrefab, other.transform.GetComponentInParent<Evidence>().transform);
-				hitEvidence.GetComponent<HitSound>().isBurn = true;
+				//entity Hit()
+				other.gameObject.GetComponentInParent<Entity>().Hit(
+					other,transform.position-other.transform.position, damage);
+				var hitSound = other.transform.GetComponentInParent<HitSound>();
+				//entity 불태우기
+				if (hitSound == null)
+				{
+					var hitEvidence = Instantiate(hitSoundPrefab, other.transform.GetComponentInParent<Evidence>().transform);
+					hitEvidence.GetComponent<HitSound>().isBurn = true;
+				}
+			}
+
+			// 불이 가스통에 닿으면 가스통이 폭발한다
+			else if(other.gameObject.CompareTag("GasBarrel"))
+			{
+				var comp = other.gameObject.GetComponent<Obstacle>();
+				if(comp)
+				{
+					comp.Hit(transform.position);
+				}
 			}
 		}
+
+		
 	}
 }
