@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Rendering;
 using System.Collections.Generic;
 
 [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
@@ -56,7 +57,7 @@ public class SecurityCameraFieldOfView : MonoBehaviour	//카메라 시각화 시
 		outlineObj.transform.SetParent(transform, false);
 		outlineFilter = outlineObj.AddComponent<MeshFilter>();
 		MeshRenderer ren = outlineObj.AddComponent<MeshRenderer>();
-		ren.castShadows = false;
+		ren.shadowCastingMode = ShadowCastingMode.Off;
 
 		outlineMesh = new Mesh() {name = "Outline Mesh"};
 		outlineFilter.mesh = outlineMesh;
