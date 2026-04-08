@@ -7,6 +7,7 @@ public class CarObstacle : MonoBehaviour
     private List<float> lightIntensity; // 라이트 밝기 초기 값
     public float alarmDuration; // 차량 경보 지속 시간
     public float lightFlickInterval; // 차량 라이트 깜빡임 간격
+    public CarIterator carIterator; // 차량 이동 반복 스크립트
 
     private float durateTime; // 차량 경보 업데이트 시간
     private bool alarmState = false; // 차량 경보 여부
@@ -29,6 +30,7 @@ public class CarObstacle : MonoBehaviour
         durateTime = 0f;
         flickTime = 0f;
         alarmState = true;
+        carIterator.StopIteration(); // 차량 반복 이동 중단
     }
 
     void Update()

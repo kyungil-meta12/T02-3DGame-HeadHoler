@@ -8,6 +8,8 @@ public class CarIterator : MonoBehaviour
     public List<Transform> wayPoints = new();
     public Transform[] wheels;
     public float wheelRotationMultiplier = 500f; // 바퀴 회전 배수
+    public bool stopWhenHit; // 총알에 맞으면 멈추는 여부
+    private bool stopState = false; // 멈춤 여부
 
     private Vector3 originPosition;
     private Quaternion originRotation;
@@ -45,6 +47,13 @@ public class CarIterator : MonoBehaviour
         var currentPos = transform.position;
         currentPos.y = originPosition.y;
         transform.position = currentPos;
+
+        // 멈춤상태가 되면 점차 속도를 줄인다
+        if(stopState)
+        {
+            agent.speed -= Time.deltaTime * 5f;
+            agent.speed = Mathf.Clamp(agent.speed, 0f, 100f);
+        }
     }
 
     void SetDestinationToNextPoint()
@@ -66,5 +75,11 @@ public class CarIterator : MonoBehaviour
             agent.Warp(originPosition);
             agent.SetDestination(wayPoints[0].position);
         }
+    }
+
+    //  차량 멈춤상태 활성화
+    public void StopIteration()
+    {
+        stopState = stopWhenHit ? true : false;
     }
 }
