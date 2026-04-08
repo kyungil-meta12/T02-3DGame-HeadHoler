@@ -155,13 +155,6 @@ public class Sg_ScoreManager : MonoBehaviour
 
         isFailureShown = true;
 
-        if (resultPopupController != null)
-        {
-            resultPopupController.ShowFailure();
-        }
-        else
-        {
-            Debug.LogWarning("[Sg_ScoreManager] resultPopupController is null.");
-        }
+        Sg_GameManager.Inst.SetGameOver();
     }
 }

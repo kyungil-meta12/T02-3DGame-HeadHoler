@@ -34,7 +34,7 @@ public class Sg_GameManager : MonoBehaviour
 
         if (Sg_ScoreManager.Inst.CurrentScore <= 0)
         {
-            GameOver();
+            SetGameOver();
         }
     }
 
@@ -43,7 +43,7 @@ public class Sg_GameManager : MonoBehaviour
         Inst = null;
     }
     
-    public void GameOver()
+    public void SetGameOver()
     {
         if (isGameOver)
             return;
