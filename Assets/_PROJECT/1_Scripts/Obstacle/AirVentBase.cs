@@ -69,6 +69,9 @@ public class AirVentBase : Obstacle
 
 		if (other.gameObject.CompareTag("Entity"))
 		{
+			if(rb == null) return;
+			float impactForce = rb.linearVelocity.magnitude;
+			if(impactForce < 5f) return;
 			if (isfalled == false)
 			{
 				rb.constraints = RigidbodyConstraints.None;

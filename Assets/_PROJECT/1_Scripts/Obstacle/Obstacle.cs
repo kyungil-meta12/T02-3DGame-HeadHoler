@@ -40,6 +40,8 @@ public class Obstacle : MonoBehaviour
 	public bool fragile; //부서질수있음
 
 	public float damage = 50f;
+	
+	private Rigidbody rb;
 
 	[ContextMenu("테스트")]
 	public void Test()
@@ -86,7 +88,7 @@ public class Obstacle : MonoBehaviour
 		
 		
 		//자신 분쇄
-		Rigidbody rb;
+		
 		if (fragile && TryGetComponent<RuntimeFracturedGeometry>(out RuntimeFracturedGeometry fracture))
 		{
 			if (gameObject.GetComponent<Rigidbody>() == null)
