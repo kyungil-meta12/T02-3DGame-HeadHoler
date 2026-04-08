@@ -158,5 +158,5 @@ public class SecurityCameraController : Obstacle
 		StopAllCoroutines();
 		base.UniqueInteraction();
 	}
-	protected override void OnCollisionEnter(Collision collision) { }
+	protected override void OnTriggerEnter(Collider other) { }
 }

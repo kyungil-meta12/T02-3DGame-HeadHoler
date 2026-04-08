@@ -137,7 +137,7 @@ public class OilBarrel : Obstacle
 	}
 	
 	protected override void UniqueInteraction(){}
-	protected override void OnCollisionEnter(Collision collision){}
+	protected override void OnTriggerEnter(Collider other){}
 	
 	//기름 줄기 멈춤
 	IEnumerator StopStream(GameObject stream, float delay)

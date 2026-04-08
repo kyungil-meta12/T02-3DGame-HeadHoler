@@ -32,5 +32,5 @@ public class SwitchBoard : Obstacle		//건물 배전반
 		}
 	}
 
-	protected override void OnCollisionEnter(Collision collision) { }
+	protected override void OnTriggerEnter(Collider other) { }
 }

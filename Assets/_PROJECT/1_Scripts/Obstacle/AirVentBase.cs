@@ -63,21 +63,21 @@ public class AirVentBase : Obstacle
 		transform.rotation = endRotation;
 	}
 	
-	protected override void OnCollisionEnter(Collision collision)
+	protected override void OnTriggerEnter(Collider other)
 	{
-		base.OnCollisionEnter(collision);
+		base.OnTriggerEnter(other);
 
-		if (collision.gameObject.CompareTag("Entity"))
+		if (other.gameObject.CompareTag("Entity"))
 		{
 			if (isfalled == false)
 			{
 				rb.constraints = RigidbodyConstraints.None;
-				collision.gameObject.GetComponentInParent<Entity>().Hit(
-				collision.collider, transform.position - collision.contacts[0].point, damage);
+				other.gameObject.GetComponentInParent<Entity>().Hit(
+					other, transform.position - other.transform.position, damage);
 			}
 		}
 
-			if (collision.gameObject.CompareTag("Ground"))
+		if (other.gameObject.CompareTag("Ground"))
 		{
 			if (isfalled == false)
 			{

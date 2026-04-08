@@ -63,20 +63,20 @@ public class OilPuddle : Obstacle
 		}
 	}
 
-	protected override void OnCollisionEnter(Collision collision)
+	protected override void OnTriggerEnter(Collider other)
 	{
-		base.OnCollisionEnter(collision);
+		base.OnTriggerEnter(other);
 
-		if (isBurn && collision.gameObject.CompareTag("Entity"))
+		if (isBurn && other.gameObject.CompareTag("Entity"))
 		{
 			//entity Hit()
-			collision.gameObject.GetComponentInParent<Entity>().Hit(
-				collision.collider,transform.position-collision.contacts[0].point, damage);
-			var hitSound = collision.transform.GetComponentInParent<HitSound>();
+			other.gameObject.GetComponentInParent<Entity>().Hit(
+				other,transform.position-other.transform.position, damage);
+			var hitSound = other.transform.GetComponentInParent<HitSound>();
 			//entity 불태우기
 			if (hitSound == null)
 			{
-				var hitEvidence = Instantiate(hitSoundPrefab, collision.transform.GetComponentInParent<Evidence>().transform);
+				var hitEvidence = Instantiate(hitSoundPrefab, other.transform.GetComponentInParent<Evidence>().transform);
 				hitEvidence.GetComponent<HitSound>().isBurn = true;
 			}
 		}

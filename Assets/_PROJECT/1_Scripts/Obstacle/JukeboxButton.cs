@@ -19,5 +19,5 @@ public class JukeboxButton : Obstacle
 	}
 	
 	protected override void UniqueInteraction(){}
-	protected override void OnCollisionEnter(Collision collision){}
+	protected override void OnTriggerEnter(Collider other){}
 }

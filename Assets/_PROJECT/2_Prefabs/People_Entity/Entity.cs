@@ -174,6 +174,7 @@ public class Entity : MonoBehaviour
             animator.SetBool(isInCar, true);
 
             yield return new WaitForSeconds(5f);
+            rend.enabled = false;
 
             CarController carController = carDriverSeatPoint.GetComponentInParent<CarController>();
             carController.isTimeToMove = true;
@@ -186,7 +187,9 @@ public class Entity : MonoBehaviour
                 {
                     if (carController.fireStarted)
                     {
+                        yield return new WaitForSeconds(3f);
                         // 터지기 직전에 다친 상태로 나오기
+                        rend.enabled = true;
                         animator.SetBool(isInCar, false);
                         behavior.enabled = true;
                         agent.enabled = true;
@@ -235,10 +238,12 @@ public class Entity : MonoBehaviour
         //머리장비 바꾸기
         if (equipIndex < equips.Length)
         {
-            var equip = Instantiate(equips[equipIndex], headSlot);
+            equip = Instantiate(equips[equipIndex], headSlot);
             equip.layer = LayerMask.NameToLayer("Ignore Raycast");
         }
     }
+
+    private GameObject equip;
 
     private void Update()
     {

@@ -83,5 +83,5 @@ public class Jukebox : Obstacle
 		base.UniqueInteraction();
 	}
 
-	protected override void OnCollisionEnter(Collision collision) { }
+	protected override void OnTriggerEnter(Collider other) { }
 }
