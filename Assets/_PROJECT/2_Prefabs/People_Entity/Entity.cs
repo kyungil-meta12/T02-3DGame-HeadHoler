@@ -93,6 +93,10 @@ public class Entity : MonoBehaviour
                 animator.SetBool("isTalk", true);
             }
         }
+		else
+		{
+			behavior.enabled = true;
+		}
         
         //소속, 순찰포인트 세팅
         behavior.SetVariableValue("Role", myRole);

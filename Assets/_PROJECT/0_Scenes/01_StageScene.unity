@@ -273,6 +273,96 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1456222}
   m_CullTransparentMesh: 1
+--- !u!1 &8331590
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8331591}
+  - component: {fileID: 8331593}
+  - component: {fileID: 8331592}
+  m_Layer: 2
+  m_Name: SM_Chr_Attach_Male_Hair_07(Clone)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8331591
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331590}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2019463477}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &8331592
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331590}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a74066172cf19cd4bacae3c6600a7217, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &8331593
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8331590}
+  m_Mesh: {fileID: 4300000, guid: f72a01a9316259f44b297e4febf273a0, type: 3}
 --- !u!1001 &9902567
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2733,7 +2823,7 @@ PrefabInstance:
       objectReference: {fileID: 22100000, guid: 7360a5138ca11774fa28f43c4f38c089, type: 2}
     - target: {fileID: 2456621580800312428, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
       propertyPath: rendererIndex
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2456621580800312428, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
       propertyPath: patrolPoints.Array.size
@@ -2775,6 +2865,10 @@ PrefabInstance:
       propertyPath: scoreLabelOnDeath
       value: Citizen Kill
       objectReference: {fileID: 0}
+    - target: {fileID: 4582882111974337703, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300010, guid: 0045ffb477e043a46950af7e617beb06, type: 3}
     - target: {fileID: 4924667098104362417, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
       propertyPath: m_Name
       value: Farmer_Battle (7)
@@ -7306,7 +7400,6 @@ GameObject:
   - component: {fileID: 187411014}
   - component: {fileID: 187411017}
   - component: {fileID: 187411016}
-  - component: {fileID: 187411015}
   m_Layer: 0
   m_Name: SM_Chr_Attach_Male_Hair_02(Clone)
   m_TagString: Untagged
@@ -7329,28 +7422,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1179168617}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &187411015
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 187411013}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43665357527680882, guid: aaf7fbf64a9d20847be800605f584503, type: 2}
 --- !u!23 &187411016
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10068,119 +10139,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &261348789
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 261348790}
-  - component: {fileID: 261348793}
-  - component: {fileID: 261348792}
-  - component: {fileID: 261348791}
-  m_Layer: 0
-  m_Name: SM_Chr_Attach_Male_Hair_07(Clone)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &261348790
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 261348789}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2019463477}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &261348791
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 261348789}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43645411747992516, guid: 780b086baf58eb448aa96216d6945c8a, type: 2}
---- !u!23 &261348792
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 261348789}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: a74066172cf19cd4bacae3c6600a7217, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &261348793
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 261348789}
-  m_Mesh: {fileID: 4300000, guid: f72a01a9316259f44b297e4febf273a0, type: 3}
 --- !u!1 &263692392
 GameObject:
   m_ObjectHideFlags: 0
@@ -11590,6 +11548,10 @@ PrefabInstance:
       value: 52
       objectReference: {fileID: 0}
     - target: {fileID: 2456621580800312428, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
+      propertyPath: isDontMove
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2456621580800312428, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
       propertyPath: rendererIndex
       value: 2
       objectReference: {fileID: 0}
@@ -12654,7 +12616,7 @@ PrefabInstance:
       objectReference: {fileID: 22100000, guid: 7360a5138ca11774fa28f43c4f38c089, type: 2}
     - target: {fileID: 2456621580800312428, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
       propertyPath: rendererIndex
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2456621580800312428, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
       propertyPath: patrolPoints.Array.size
@@ -12744,6 +12706,10 @@ PrefabInstance:
       propertyPath: scoreLabelOnDeath
       value: Citizen Kill
       objectReference: {fileID: 0}
+    - target: {fileID: 4582882111974337703, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300010, guid: 0045ffb477e043a46950af7e617beb06, type: 3}
     - target: {fileID: 4924667098104362417, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
       propertyPath: m_Name
       value: Farmer_Battle (4)
@@ -18255,6 +18221,17 @@ Canvas:
   m_CorrespondingSourceObject: {fileID: 6102984356442646586, guid: ecd89c2e88b7d6b469a52b0f2496a12c, type: 3}
   m_PrefabInstance: {fileID: 722022499}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &497927253 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3387828307245922513, guid: fbf8743ea28904246a1fb523386a72c1, type: 3}
+  m_PrefabInstance: {fileID: 2062065518}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 497f5b6f333b412ea234cb788ec0d005, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Sg_GameManager
 --- !u!1001 &498323318
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22572,7 +22549,7 @@ PrefabInstance:
       objectReference: {fileID: 22100000, guid: 7360a5138ca11774fa28f43c4f38c089, type: 2}
     - target: {fileID: 2456621580800312428, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
       propertyPath: rendererIndex
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2456621580800312428, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
       propertyPath: patrolPoints.Array.size
@@ -22606,6 +22583,10 @@ PrefabInstance:
       propertyPath: scoreLabelOnDeath
       value: Citizen Kill
       objectReference: {fileID: 0}
+    - target: {fileID: 4582882111974337703, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300010, guid: 0045ffb477e043a46950af7e617beb06, type: 3}
     - target: {fileID: 4924667098104362417, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
       propertyPath: m_Name
       value: Farmer_Battle (1)
@@ -27380,7 +27361,6 @@ GameObject:
   - component: {fileID: 720699254}
   - component: {fileID: 720699257}
   - component: {fileID: 720699256}
-  - component: {fileID: 720699255}
   m_Layer: 0
   m_Name: SM_Chr_Attach_Scarf_01(Clone)
   m_TagString: Untagged
@@ -27403,28 +27383,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1987688101}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &720699255
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 720699253}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43288680258035506, guid: 64a8d541b0fe57e4f829badf72b4483a, type: 2}
 --- !u!23 &720699256
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -44180,7 +44138,6 @@ GameObject:
   - component: {fileID: 1202940712}
   - component: {fileID: 1202940715}
   - component: {fileID: 1202940714}
-  - component: {fileID: 1202940713}
   m_Layer: 0
   m_Name: SM_Chr_Attach_Male_Hair_06(Clone)
   m_TagString: Untagged
@@ -44203,28 +44160,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1686541135}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &1202940713
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1202940711}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43924673045252818, guid: 3c85a3d1ada9ecb4c961229590175ffb, type: 2}
 --- !u!23 &1202940714
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -45829,7 +45764,7 @@ PrefabInstance:
       objectReference: {fileID: 22100000, guid: 7360a5138ca11774fa28f43c4f38c089, type: 2}
     - target: {fileID: 2456621580800312428, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
       propertyPath: rendererIndex
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2456621580800312428, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
       propertyPath: patrolPoints.Array.size
@@ -45870,7 +45805,7 @@ PrefabInstance:
     - target: {fileID: 4582882111974337703, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 4300008, guid: 0045ffb477e043a46950af7e617beb06, type: 3}
+      objectReference: {fileID: 4300010, guid: 0045ffb477e043a46950af7e617beb06, type: 3}
     - target: {fileID: 4924667098104362417, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
       propertyPath: m_Name
       value: Farmer_Battle (2)
@@ -53880,10 +53815,34 @@ MonoBehaviour:
     m_Flags: 0
   onOpen:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 497927253}
+        m_TargetAssemblyTypeName: Sg_GameManager, Assembly-CSharp
+        m_MethodName: SetPause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onClose:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 497927253}
+        m_TargetAssemblyTypeName: Sg_GameManager, Assembly-CSharp
+        m_MethodName: RevertPause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!4 &1379664251
 Transform:
   m_ObjectHideFlags: 0
@@ -60500,6 +60459,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1213134145521412720, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 7360a5138ca11774fa28f43c4f38c089, type: 2}
+    - target: {fileID: 2456621580800312428, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
+      propertyPath: rendererIndex
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2456621580800312428, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
       propertyPath: patrolPoints.Array.size
       value: 6
@@ -60540,6 +60507,10 @@ PrefabInstance:
       propertyPath: scoreLabelOnDeath
       value: Citizen Kill
       objectReference: {fileID: 0}
+    - target: {fileID: 4582882111974337703, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300010, guid: 0045ffb477e043a46950af7e617beb06, type: 3}
     - target: {fileID: 4924667098104362417, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
       propertyPath: m_Name
       value: Farmer_Battle (9)
@@ -64273,7 +64244,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4534913404489950, guid: 871a88763f22987488b781e56f2692de, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 543.81
+      value: 544.78
       objectReference: {fileID: 0}
     - target: {fileID: 4534913404489950, guid: 871a88763f22987488b781e56f2692de, type: 3}
       propertyPath: m_LocalPosition.y
@@ -64285,19 +64256,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4534913404489950, guid: 871a88763f22987488b781e56f2692de, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4534913404489950, guid: 871a88763f22987488b781e56f2692de, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4534913404489950, guid: 871a88763f22987488b781e56f2692de, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4534913404489950, guid: 871a88763f22987488b781e56f2692de, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4534913404489950, guid: 871a88763f22987488b781e56f2692de, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -64305,7 +64276,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4534913404489950, guid: 871a88763f22987488b781e56f2692de, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: 180
       objectReference: {fileID: 0}
     - target: {fileID: 4534913404489950, guid: 871a88763f22987488b781e56f2692de, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -64314,6 +64285,10 @@ PrefabInstance:
     - target: {fileID: 4534913404489950, guid: 871a88763f22987488b781e56f2692de, type: 3}
       propertyPath: m_ConstrainProportionsScale
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 247281158080953999, guid: 871a88763f22987488b781e56f2692de, type: 3}
+      propertyPath: Force
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5948089808732407456, guid: 871a88763f22987488b781e56f2692de, type: 3}
       propertyPath: m_UseGravity
@@ -66963,7 +66938,6 @@ GameObject:
   - component: {fileID: 1804967173}
   - component: {fileID: 1804967176}
   - component: {fileID: 1804967175}
-  - component: {fileID: 1804967174}
   m_Layer: 0
   m_Name: SM_Chr_Attach_Male_Hair_02(Clone)
   m_TagString: Untagged
@@ -66986,28 +66960,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1726079237}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &1804967174
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1804967172}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43665357527680882, guid: aaf7fbf64a9d20847be800605f584503, type: 2}
 --- !u!23 &1804967175
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -67119,7 +67071,7 @@ PrefabInstance:
       objectReference: {fileID: 22100000, guid: 7360a5138ca11774fa28f43c4f38c089, type: 2}
     - target: {fileID: 2456621580800312428, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
       propertyPath: rendererIndex
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2456621580800312428, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
       propertyPath: patrolPoints.Array.size
@@ -67209,6 +67161,10 @@ PrefabInstance:
       propertyPath: scoreLabelOnDeath
       value: Citizen Kill
       objectReference: {fileID: 0}
+    - target: {fileID: 4582882111974337703, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300010, guid: 0045ffb477e043a46950af7e617beb06, type: 3}
     - target: {fileID: 4924667098104362417, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
       propertyPath: m_Name
       value: Farmer_Battle (3)
@@ -71915,7 +71871,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2456621580800312428, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
       propertyPath: rendererIndex
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2456621580800312428, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
       propertyPath: patrolPoints.Array.size
@@ -71952,7 +71908,7 @@ PrefabInstance:
     - target: {fileID: 4582882111974337703, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 4300008, guid: 0045ffb477e043a46950af7e617beb06, type: 3}
+      objectReference: {fileID: 4300010, guid: 0045ffb477e043a46950af7e617beb06, type: 3}
     - target: {fileID: 4924667098104362417, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
       propertyPath: m_Name
       value: Farmer_Battle (5)
@@ -73939,7 +73895,7 @@ PrefabInstance:
       objectReference: {fileID: 22100000, guid: 7360a5138ca11774fa28f43c4f38c089, type: 2}
     - target: {fileID: 2456621580800312428, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
       propertyPath: rendererIndex
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2456621580800312428, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
       propertyPath: patrolPoints.Array.size
@@ -73981,6 +73937,10 @@ PrefabInstance:
       propertyPath: scoreLabelOnDeath
       value: Citizen Kill
       objectReference: {fileID: 0}
+    - target: {fileID: 4582882111974337703, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300010, guid: 0045ffb477e043a46950af7e617beb06, type: 3}
     - target: {fileID: 4924667098104362417, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
       propertyPath: m_Name
       value: Farmer_Battle (6)
@@ -75914,8 +75874,12 @@ PrefabInstance:
       value: 57
       objectReference: {fileID: 0}
     - target: {fileID: 2456621580800312428, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
+      propertyPath: isDontMove
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2456621580800312428, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
       propertyPath: rendererIndex
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2456621580800312428, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
       propertyPath: patrolPoints.Array.size
@@ -75925,6 +75889,10 @@ PrefabInstance:
       propertyPath: 'patrolPoints.Array.data[0]'
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4582882111974337703, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300010, guid: 0045ffb477e043a46950af7e617beb06, type: 3}
     - target: {fileID: 4924667098104362417, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
       propertyPath: m_Name
       value: Enemy_Battle (4)
@@ -75934,7 +75902,7 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 9217862363224708079, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 261348790}
+      addedObject: {fileID: 8331591}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
 --- !u!4 &2019463476 stripped
@@ -76599,6 +76567,10 @@ PrefabInstance:
     - target: {fileID: 1582224341829858801, guid: 6f993549b82eba84a8f22ff5faf10c55, type: 3}
       propertyPath: m_IsTrigger
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4297464594422397802, guid: 6f993549b82eba84a8f22ff5faf10c55, type: 3}
+      propertyPath: damage
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4297464594422397802, guid: 6f993549b82eba84a8f22ff5faf10c55, type: 3}
       propertyPath: forwardPush
@@ -78213,6 +78185,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1213134145521412720, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 7360a5138ca11774fa28f43c4f38c089, type: 2}
+    - target: {fileID: 2456621580800312428, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
+      propertyPath: rendererIndex
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2456621580800312428, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
       propertyPath: patrolPoints.Array.size
       value: 6
@@ -78253,6 +78233,10 @@ PrefabInstance:
       propertyPath: scoreLabelOnDeath
       value: Citizen Kill
       objectReference: {fileID: 0}
+    - target: {fileID: 4582882111974337703, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300010, guid: 0045ffb477e043a46950af7e617beb06, type: 3}
     - target: {fileID: 4924667098104362417, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
       propertyPath: m_Name
       value: Farmer_Battle (8)
