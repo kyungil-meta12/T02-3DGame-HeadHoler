@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class AirVentBase : Obstacle
 {
-	private Rigidbody rb;
 	private bool isFalling = false;
 	private bool isfalled = false;
 
