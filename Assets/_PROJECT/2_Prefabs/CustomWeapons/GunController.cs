@@ -121,10 +121,12 @@ public class GunController : MonoBehaviour
             else if (CheckMask(collideMask, obstacleMask))
             {
                 var obstacleComp = hit.transform.gameObject.GetComponentInParent<Obstacle>();
-                print("interactive obstacle hit");
-                obstacleComp.Hit(hit.point);
-                CreateSoundCollider(hit.point);
-                Sg_HitIndicator.Inst.InputHit();
+                if(obstacleComp) {
+                    print("interactive obstacle hit");
+                    obstacleComp.Hit(hit.point);
+                    CreateSoundCollider(hit.point);
+                    Sg_HitIndicator.Inst.InputHit();
+                }
             }
 
             // 차량 바퀴인 경우
