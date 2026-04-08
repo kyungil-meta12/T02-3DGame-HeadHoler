@@ -367,7 +367,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CarController
   destroyable: 0
-  wheels: []
+  wheels:
+  - {fileID: 545763578248953943}
+  - {fileID: 6370975606916459706}
+  - {fileID: 3225174785637787030}
+  - {fileID: 2913389281166979269}
   waypoints: []
   wheelRotationMultiplier: 500
   startTime: 0
