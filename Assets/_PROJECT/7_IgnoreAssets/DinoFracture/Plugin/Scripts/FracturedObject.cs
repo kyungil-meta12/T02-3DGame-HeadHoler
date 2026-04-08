@@ -56,6 +56,10 @@ namespace DinoFracture
                 hitData.impactForce = rb.linearVelocity.magnitude;
                 other.transform.root.SendMessage("Hit", hitData, SendMessageOptions.DontRequireReceiver);
             }
+            if(other.gameObject.CompareTag("OilPuddle"))
+            {
+                other.transform.SendMessage("Hit", transform.position, SendMessageOptions.DontRequireReceiver);
+            }
         }
     }
 }
