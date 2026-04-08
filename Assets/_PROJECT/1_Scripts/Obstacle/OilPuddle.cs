@@ -56,27 +56,50 @@ public class OilPuddle : Obstacle
 
 	protected override void UniqueInteraction()
 	{
-		if (fireEffect != null)
+		if (fireEffect != null && !isBurn)
 		{
 			fireEffect.SetActive(true);
 			isBurn = true;
+
+			Rigidbody rb = GetComponent<Rigidbody>();
+			if (rb == null)
+			{
+				rb = gameObject.AddComponent<Rigidbody>();
+			}
+
+			rb.useGravity = false;
+			rb.isKinematic = false;
+			rb.constraints = RigidbodyConstraints.FreezeAll;
+
+			StartCoroutine(ForceCollisionCheck());
 		}
 	}
 
-	protected override void OnCollisionEnter(Collision collision)
+	IEnumerator ForceCollisionCheck()
 	{
-		base.OnCollisionEnter(collision);
+		Collider col = GetComponent<Collider>();
+		if (col != null)
+		{
+			col.enabled = false;
+			yield return new WaitForFixedUpdate();
+			col.enabled = true;
+		}
+	}
 
-		if (isBurn && collision.gameObject.CompareTag("Entity"))
+	protected override void OnTriggerEnter(Collider other)
+	{
+		base.OnTriggerEnter(other);
+
+		if (isBurn && other.gameObject.CompareTag("Entity"))
 		{
 			//entity Hit()
-			collision.gameObject.GetComponentInParent<Entity>().Hit(
-				collision.collider,transform.position-collision.contacts[0].point, damage);
-			var hitSound = collision.transform.GetComponentInParent<HitSound>();
+			other.gameObject.GetComponentInParent<Entity>().Hit(
+				other,transform.position-other.transform.position, damage);
+			var hitSound = other.transform.GetComponentInParent<HitSound>();
 			//entity 불태우기
 			if (hitSound == null)
 			{
-				var hitEvidence = Instantiate(hitSoundPrefab, collision.transform.GetComponentInParent<Evidence>().transform);
+				var hitEvidence = Instantiate(hitSoundPrefab, other.transform.GetComponentInParent<Evidence>().transform);
 				hitEvidence.GetComponent<HitSound>().isBurn = true;
 			}
 		}

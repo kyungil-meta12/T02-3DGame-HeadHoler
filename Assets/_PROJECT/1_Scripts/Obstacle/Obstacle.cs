@@ -87,11 +87,11 @@ public class Obstacle : MonoBehaviour
 		}
 	}
 
-	protected virtual void OnCollisionEnter(Collision collision)
+	protected virtual void OnTriggerEnter(Collider other)
 	{
-		if (collision.gameObject.CompareTag("FracturedObject"))
+		if (other.gameObject.CompareTag("FracturedObject"))
 		{
-			Hit(collision.transform.position);
+			Hit(other.transform.position);
 		}
 	}
 	

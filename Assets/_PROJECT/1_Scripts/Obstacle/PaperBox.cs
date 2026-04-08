@@ -41,7 +41,7 @@ public class PaperBox : Obstacle
 		}
 	}
 
-	protected override void OnCollisionEnter(Collision collision)
+	protected override void OnTriggerEnter(Collider other)
 	{
 
 	}
