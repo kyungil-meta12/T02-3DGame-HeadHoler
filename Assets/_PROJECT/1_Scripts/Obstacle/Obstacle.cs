@@ -56,7 +56,7 @@ public class Obstacle : MonoBehaviour
 		{
 			var exp = Instantiate(explosionEffect, transform.position, Quaternion.identity);
 			exp.transform.localScale = new Vector3(2f, 2f, 2f);
-			Sg_CameraController.Inst.AddShake(0.5f);
+			Sg_CameraController.Inst.AddShake(0.1f);
 		}
 	}
 	
