@@ -81,18 +81,18 @@ public class UI_MainMenuStartButton : MonoBehaviour
 
         if (!IsAchievementUnlocked(stage01ClearAchievement))
         {
-            title = "게임 시작 - 1스테이지";
-            description = "다음 진행 스테이지인 1스테이지를 시작합니다.";
+            title = "게임 시작 - 01스테이지";
+            description = "다음 진행 스테이지인 01스테이지를 시작합니다.";
         }
         else if (!IsAchievementUnlocked(stage02ClearAchievement))
         {
-            title = "게임 시작 - 2스테이지";
-            description = "다음 진행 스테이지인 2스테이지를 시작합니다.";
+            title = "게임 시작 - 02스테이지";
+            description = "다음 진행 스테이지인 02스테이지를 시작합니다.";
         }
         else if (!IsAchievementUnlocked(stage03ClearAchievement))
         {
-            title = "게임 시작 - 3스테이지";
-            description = "다음 진행 스테이지인 3스테이지를 시작합니다.";
+            title = "게임 시작 - 03스테이지";
+            description = "다음 진행 스테이지인 03스테이지를 시작합니다.";
         }
         else if (!IsAchievementUnlocked(stage11ClearAchievement))
         {
