@@ -1,9 +1,6 @@
 using System.Collections.Generic;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.AI;
-using static UnityEditor.FilePathAttribute;
-using static UnityEngine.GraphicsBuffer;
 
 public class BoatController : MonoBehaviour
 {
