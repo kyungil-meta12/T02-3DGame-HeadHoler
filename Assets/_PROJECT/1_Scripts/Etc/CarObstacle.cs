@@ -30,7 +30,10 @@ public class CarObstacle : MonoBehaviour
         durateTime = 0f;
         flickTime = 0f;
         alarmState = true;
-        carIterator.StopIteration(); // 차량 반복 이동 중단
+        if(carIterator) 
+        {
+            carIterator.StopIteration(); // 차량 반복 이동 중단
+        }
     }
 
     void Update()
