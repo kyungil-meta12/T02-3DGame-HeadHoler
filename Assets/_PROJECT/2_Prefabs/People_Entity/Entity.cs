@@ -5,6 +5,7 @@ using UnityEditor.Animations;
 using UnityEngine;
 using Unity.Behavior;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine.AI;
 
 
@@ -40,6 +41,8 @@ public class Entity : MonoBehaviour
     public Transform carDriverSeatPoint;
     [Header("가드 대상 (없으면 비워두기 가능)")]
     public GameObject guardTarget;
+    private Entity guardTargetEntity;
+    private BlackboardVariable<GameObject> alertTarget;
     [Header("순찰 포인트")]
     public List<GameObject> patrolPoints;
 
@@ -93,10 +96,10 @@ public class Entity : MonoBehaviour
                 animator.SetBool("isTalk", true);
             }
         }
-		else
-		{
-			behavior.enabled = true;
-		}
+        else 
+        { 
+            behavior.enabled = true; 
+        }
         
         //소속, 순찰포인트 세팅
         behavior.SetVariableValue("Role", myRole);
@@ -108,7 +111,7 @@ public class Entity : MonoBehaviour
         behavior.GetVariable<bool>("isHurt", out isHurt);
         behavior.GetVariable<bool>("ShotTrigger", out shotTrigger);
         behavior.GetVariable<bool>("isTimeToMove", out isTimeToMove);
-            
+        
         currentHP = maxHP;
 
         if (pointToMove != null)
@@ -119,6 +122,13 @@ public class Entity : MonoBehaviour
 
         yield return new WaitUntil(() => Sg_GameManager.Inst != null);
         Sg_GameManager.Inst.entities.Add(this);
+        
+        if (guardTarget != null)
+        {
+            guardTargetEntity = guardTarget.GetComponent<Entity>();
+            var guardTargetBehavior = guardTargetEntity.GetComponent<BehaviorGraphAgent>();
+            guardTargetBehavior.GetVariable<GameObject>("AlertTarget", out alertTarget);
+        }
     }
 
     //목적지가 있을시 실행됨
@@ -127,11 +137,10 @@ public class Entity : MonoBehaviour
     {
         yield return pointToMoveWait;
 
-        if (pointToMove != null)
-        {
-            behavior.enabled = true;
-            isTimeToMove.Value = true;
-        }
+        
+        behavior.enabled = true;
+        isTimeToMove.Value = true;
+        
 
         while (true)
         {
@@ -278,6 +287,20 @@ public class Entity : MonoBehaviour
             currentHP = 0f;
             behavior.enabled = false;
             regController.EnableRagdoll();
+        }
+
+        if (guardTargetEntity != null && behavior.enabled == false)
+        {
+            if (guardTargetEntity.isHurt || guardTargetEntity.isDead)
+            {
+                behavior.enabled = true;
+                behavior.SetVariableValue("AlertTarget", guardTarget);
+            }
+            else if(alertTarget.Value != null)
+            {
+                behavior.enabled = true;
+                behavior.SetVariableValue("AlertTarget", alertTarget.Value);
+            }
         }
     }
 
