@@ -89,7 +89,10 @@ public class RagdollController : MonoBehaviour
         Transform[] allChildren = hip.GetComponentsInChildren<Transform>(true);
         foreach (Transform child in allChildren)
         {
-            child.gameObject.tag = "Evidence";
+            if(child.CompareTag("Entity"))
+            {
+                child.gameObject.tag = "Evidence";
+            }
         }
 
         foreach (var rb in ragdollBodies)

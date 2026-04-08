@@ -193,10 +193,11 @@ public class Entity : MonoBehaviour
                     {
                         yield return new WaitForSeconds(3f);
                         // 터지기 직전에 다친 상태로 나오기
+                        Vector3 getOutPoint = carDriverSeatPoint.position;
                         rend.enabled = true;
                         animator.SetBool(isInCar, false);
-                        behavior.enabled = true;
                         agent.enabled = true;
+                        behavior.enabled = true;
                         Hit(regController.ragdollColliders[0],
                             carController.transform.position - transform.position,10);
                         behavior.SetVariableValue("isMustGetInCar", false);
@@ -261,12 +262,11 @@ public class Entity : MonoBehaviour
 
         if (currentHP <= 0f && isDead == false)
         {
+            StopAllCoroutines();
             isDead = true;
             currentHP = 0f;
             behavior.enabled = false;
-            agent.isStopped = true;
             regController.EnableRagdoll();
-            StopAllCoroutines();
         }
     }
 

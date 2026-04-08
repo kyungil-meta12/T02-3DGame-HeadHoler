@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 8653956138840108943}
   m_Layer: 2
   m_Name: View
-  m_TagString: Entity
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -132,6 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EntityView
   viewAngle: 90
+  checkInterval: 0.5
 --- !u!1 &493847142031848706
 GameObject:
   m_ObjectHideFlags: 0
@@ -593,6 +594,9 @@ MonoBehaviour:
   isMale: 1
   rendererIndex: 0
   equipIndex: 99
+  isDontMove: 0
+  isTalking: 0
+  pointToMoveTime: 60
   pointToMove: {fileID: 0}
   isMustGetInCar: 0
   carDriverSeatPoint: {fileID: 0}
