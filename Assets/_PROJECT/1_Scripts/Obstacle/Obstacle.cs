@@ -32,6 +32,8 @@ public class Obstacle : MonoBehaviour
 	public GameObject hitSoundPrefab;
 
 	public ExplosionEffect explosionEffect; // 폭발 파티클 프리펩
+	public float explosionEffectScale; // 폭발 파티클 크기
+	public float explosionShakeEffectStrength; // 폭발 진동 효과 강ㄷ도
 	
 	public FractureGeometry[] explosives;   //파괴할 오브젝트
 
@@ -55,8 +57,8 @@ public class Obstacle : MonoBehaviour
 		if (explosionEffect)
 		{
 			var exp = Instantiate(explosionEffect, transform.position, Quaternion.identity);
-			exp.transform.localScale = new Vector3(2f, 2f, 2f);
-			Sg_CameraController.Inst.AddShake(0.1f);
+			exp.transform.localScale = new Vector3(explosionEffectScale, explosionEffectScale, explosionEffectScale);
+			Sg_CameraController.Inst.AddShake(explosionShakeEffectStrength);
 		}
 	}
 	

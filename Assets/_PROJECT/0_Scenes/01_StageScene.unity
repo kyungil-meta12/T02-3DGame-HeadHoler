@@ -1367,11 +1367,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Battle (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 4937438518159143268, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8012575135726325367, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
     - {fileID: 3742453343845809090, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
     - {fileID: 2456621580800312428, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
     - {fileID: 6076081929319409346, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
+    - {fileID: 4937438518159143268, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 402393924528196010, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
@@ -16227,6 +16232,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2456621580800312428, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2456621580800312428, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
       propertyPath: equipIndex
       value: 53
       objectReference: {fileID: 0}
@@ -16258,6 +16267,10 @@ PrefabInstance:
       propertyPath: 'patrolPoints.Array.data[4]'
       value: 
       objectReference: {fileID: 1792542887}
+    - target: {fileID: 3742453343845809090, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4582882111974337703, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
       propertyPath: m_Mesh
       value: 
@@ -16266,7 +16279,20 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Battle (6)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 4937438518159143268, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6076081929319409346, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8012575135726325367, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 4937438518159143268, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 9217862363224708079, guid: c35dacd8e72d4a84e9f857f089f00c9d, type: 3}
@@ -43535,6 +43561,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle
   hitSoundPrefab: {fileID: 6646916530625809652, guid: 19e082466d116b44d97c210f0c8f6ebd, type: 3}
+  explosionEffect: {fileID: 0}
+  explosionEffectScale: 0
+  explosionShakeEffectStrength: 0
   explosives: []
   fragile: 1
   damage: 50
@@ -58024,6 +58053,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle
   hitSoundPrefab: {fileID: 6646916530625809652, guid: 19e082466d116b44d97c210f0c8f6ebd, type: 3}
+  explosionEffect: {fileID: 0}
+  explosionEffectScale: 0
+  explosionShakeEffectStrength: 0
   explosives: []
   fragile: 1
   damage: 50
@@ -62973,6 +63005,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle
   hitSoundPrefab: {fileID: 6646916530625809652, guid: 19e082466d116b44d97c210f0c8f6ebd, type: 3}
+  explosionEffect: {fileID: 0}
+  explosionEffectScale: 0
+  explosionShakeEffectStrength: 0
   explosives: []
   fragile: 1
   damage: 50
@@ -63742,6 +63777,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle
   hitSoundPrefab: {fileID: 6646916530625809652, guid: 19e082466d116b44d97c210f0c8f6ebd, type: 3}
+  explosionEffect: {fileID: 0}
+  explosionEffectScale: 0
+  explosionShakeEffectStrength: 0
   explosives: []
   fragile: 1
   damage: 50
@@ -66312,7 +66350,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4534913404489950, guid: 871a88763f22987488b781e56f2692de, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 544.78
+      value: 574.81
       objectReference: {fileID: 0}
     - target: {fileID: 4534913404489950, guid: 871a88763f22987488b781e56f2692de, type: 3}
       propertyPath: m_LocalPosition.y
@@ -66320,7 +66358,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4534913404489950, guid: 871a88763f22987488b781e56f2692de, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 716.35
+      value: 718.52
       objectReference: {fileID: 0}
     - target: {fileID: 4534913404489950, guid: 871a88763f22987488b781e56f2692de, type: 3}
       propertyPath: m_LocalRotation.w
