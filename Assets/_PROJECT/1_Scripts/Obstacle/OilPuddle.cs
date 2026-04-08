@@ -56,10 +56,33 @@ public class OilPuddle : Obstacle
 
 	protected override void UniqueInteraction()
 	{
-		if (fireEffect != null)
+		if (fireEffect != null && !isBurn)
 		{
 			fireEffect.SetActive(true);
 			isBurn = true;
+
+			Rigidbody rb = GetComponent<Rigidbody>();
+			if (rb == null)
+			{
+				rb = gameObject.AddComponent<Rigidbody>();
+			}
+
+			rb.useGravity = false;
+			rb.isKinematic = false;
+			rb.constraints = RigidbodyConstraints.FreezeAll;
+
+			StartCoroutine(ForceCollisionCheck());
+		}
+	}
+
+	IEnumerator ForceCollisionCheck()
+	{
+		Collider col = GetComponent<Collider>();
+		if (col != null)
+		{
+			col.enabled = false;
+			yield return new WaitForFixedUpdate();
+			col.enabled = true;
 		}
 	}
 
