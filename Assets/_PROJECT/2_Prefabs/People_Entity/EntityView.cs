@@ -17,6 +17,7 @@ public class EntityView : MonoBehaviour
     private BlackboardVariable<GameObject> alertTarget;
     private BlackboardVariable<List<GameObject>> fracturedTargets;
     private HashSet<GameObject> targetSet;
+    private List<Evidence> evidences = new List<Evidence>();
 
     private void Awake()
     {
@@ -56,8 +57,13 @@ public class EntityView : MonoBehaviour
                     Evidence evidence = other.gameObject.GetComponentInParent<Evidence>();
                     if (evidence != null)
                     {
+                        if (!evidences.Contains(evidence))
+                        {
+                            alertTarget.Value = evidence.gameObject;
+                            evidences.Add(evidence);
+                        }
                         //AlertTarget이 동일한지 검사
-                        if (alertTarget.Value != evidence.gameObject)
+                        if (alertTarget.Value == null)
                         {
                             alertTarget.Value = evidence.gameObject;
                         }

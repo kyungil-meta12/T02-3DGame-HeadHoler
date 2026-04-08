@@ -126,7 +126,7 @@ public class Entity : MonoBehaviour
         if (guardTarget != null)
         {
             guardTargetEntity = guardTarget.GetComponent<Entity>();
-            var guardTargetBehavior = guardTargetEntity.GetComponent<BehaviorGraphAgent>();
+            var guardTargetBehavior = guardTarget.GetComponent<BehaviorGraphAgent>();
             guardTargetBehavior.GetVariable<GameObject>("AlertTarget", out alertTarget);
         }
     }
@@ -136,11 +136,9 @@ public class Entity : MonoBehaviour
     private IEnumerator PointToMoveCoRoutine()
     {
         yield return pointToMoveWait;
-
         
         behavior.enabled = true;
         isTimeToMove.Value = true;
-        
 
         while (true)
         {
@@ -296,8 +294,10 @@ public class Entity : MonoBehaviour
                 behavior.enabled = true;
                 behavior.SetVariableValue("AlertTarget", guardTarget);
             }
-            else if(alertTarget.Value != null)
+            else if(alertTarget != null)
             {
+                var guardTargetBehavior = guardTarget.GetComponent<BehaviorGraphAgent>();
+                guardTargetBehavior.GetVariable<GameObject>("AlertTarget", out alertTarget);
                 behavior.enabled = true;
                 behavior.SetVariableValue("AlertTarget", alertTarget.Value);
             }
