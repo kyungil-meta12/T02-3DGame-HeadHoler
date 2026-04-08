@@ -30,6 +30,8 @@ public class Obstacle : MonoBehaviour
 	//todo Entity의 Hit(RaycastHit hit, Vector3 direction, float dmg) 호출해서 데미지 입히기
 
 	public GameObject hitSoundPrefab;
+
+	public ExplosionEffect explosionEffect; // 폭발 파티클 프리펩
 	
 	public FractureGeometry[] explosives;   //파괴할 오브젝트
 
@@ -45,6 +47,17 @@ public class Obstacle : MonoBehaviour
 	public virtual void Hit(Vector3 trans) //총알에 맞았을때
 	{
 		UniqueInteraction();
+	}
+
+	public void OnExplosion()
+	{
+		// 폭발 파티클 추가 // 프리펩 없으면 생략
+		if (explosionEffect)
+		{
+			var exp = Instantiate(explosionEffect, transform.position, Quaternion.identity);
+			exp.transform.localScale = new Vector3(2f, 2f, 2f);
+			Sg_CameraController.Inst.AddShake(0.5f);
+		}
 	}
 	
 	protected virtual void UniqueInteraction() //고유한 작용
