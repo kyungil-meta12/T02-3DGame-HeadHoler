@@ -41,7 +41,7 @@ public class Obstacle : MonoBehaviour
 
 	public float damage = 50f;
 	
-	private Rigidbody rb;
+	protected Rigidbody rb;
 
 	[ContextMenu("테스트")]
 	public void Test()
