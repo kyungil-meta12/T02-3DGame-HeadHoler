@@ -66,8 +66,6 @@ public class HitSound : MonoBehaviour
             }
             
         }
-        
-        yield return null;
     }
 
     private WaitForSeconds BurnWait =  new WaitForSeconds(1f);
@@ -87,8 +85,6 @@ public class HitSound : MonoBehaviour
             }
             yield return BurnWait;
         }
-        
-        yield return null;
     }
     
     private WaitForSeconds SoundWait = new WaitForSeconds(soundTimer);
