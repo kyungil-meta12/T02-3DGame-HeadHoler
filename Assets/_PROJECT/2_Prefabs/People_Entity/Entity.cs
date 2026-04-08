@@ -145,6 +145,8 @@ public class Entity : MonoBehaviour
         //차에 타야하는지
         if (isMustGetInCar)
         {
+            agent.isStopped = true;
+            behavior.Graph.End();
             behavior.enabled = false;
             agent.enabled = false;
             //애니메이터 bool값 전부 끄기
@@ -191,13 +193,22 @@ public class Entity : MonoBehaviour
                 {
                     if (carController.fireStarted)
                     {
-                        yield return new WaitForSeconds(3f);
+                        yield return new WaitForSeconds(2f);
                         // 터지기 직전에 다친 상태로 나오기
                         Vector3 getOutPoint = carDriverSeatPoint.position;
+                        agent.enabled = true;
+                        // 2. 반경(예: 2.0f) 내에서 가장 가까운 NavMesh 위 표면 좌표를 찾음
+                        NavMesh.SamplePosition(getOutPoint, out var hit, 10f, NavMesh.AllAreas);
+                        agent.Warp(hit.position);
                         rend.enabled = true;
                         animator.SetBool(isInCar, false);
-                        agent.enabled = true;
+                        
+                        if (behavior.Graph != null)
+                        {
+                            behavior.Graph.Restart();
+                        }
                         behavior.enabled = true;
+                        
                         Hit(regController.ragdollColliders[0],
                             carController.transform.position - transform.position,10);
                         behavior.SetVariableValue("isMustGetInCar", false);

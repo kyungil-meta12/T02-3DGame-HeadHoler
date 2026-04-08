@@ -22,7 +22,7 @@ public class SecurityCameraController : Obstacle
 	[Range(10f, 45f)]
 	public float viewAngle = 15f;
 	
-	private float detectionTiltX = 15f;	//감지각도 15도 보정(카메라 실제 rotation값과 프리팹 카메라 방향차이 보정용)
+	//private float detectionTiltX = 15f;	//감지각도 15도 보정(카메라 실제 rotation값과 프리팹 카메라 방향차이 보정용)
 
 	public Light spotLight;
 	
