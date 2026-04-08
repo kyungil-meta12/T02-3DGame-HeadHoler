@@ -124,9 +124,12 @@ public class GunController : MonoBehaviour
                 if(obstacleComp) {
                     print("interactive obstacle hit");
                     obstacleComp.Hit(hit.point);
-                    CreateSoundCollider(hit.point);
                     Sg_HitIndicator.Inst.InputHit();
                 }
+
+                CreateSoundCollider(hit.point);
+                Rigidbody rb = hit.transform.GetComponent<Rigidbody>();
+                if(rb != null) rb.AddForce((hit.point - hit.transform.position ) * 10f, ForceMode.Impulse);
             }
 
             // 차량 바퀴인 경우
