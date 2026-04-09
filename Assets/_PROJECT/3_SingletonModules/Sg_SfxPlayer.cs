@@ -20,6 +20,11 @@ public class Sg_SfxPlayer : MonoBehaviour
     public AudioClip metalHit;
     public AudioClip boxHit;
 
+    public AudioClip[] maleScream;
+    public AudioClip[] femaleScream;
+
+    public AudioClip headShot;
+
     public AudioClip carHorn;
 
     void Awake()
@@ -93,5 +98,22 @@ public class Sg_SfxPlayer : MonoBehaviour
     public void PlayCarHorn()
     {
         aSource.PlayOneShot(carHorn);
+    }
+
+    public void PlayMaleScream()
+    {
+        int randNum = Random.Range(0, maleScream.Length - 1);
+        aSource.PlayOneShot(maleScream[randNum]);
+    }
+
+    public void PlayFemaleScream()
+    {
+        int randNum = Random.Range(0, femaleScream.Length - 1);
+        aSource.PlayOneShot(femaleScream[randNum]);
+    }
+
+    public void PlayHeadShot()
+    {
+        aSource.PlayOneShot(headShot);
     }
 }
