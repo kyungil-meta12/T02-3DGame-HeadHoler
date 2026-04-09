@@ -50,6 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ae433e8b28cd1a448384f0f9af42599, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle
+  obstacleType: 1
   hitSoundPrefab: {fileID: 6646916530625809652, guid: 19e082466d116b44d97c210f0c8f6ebd, type: 3}
   explosionEffect: {fileID: -167210163452784627, guid: bbe245cb0389138488ad326985c60bc8, type: 3}
   explosionEffectScale: 4
@@ -111,7 +112,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 7293500968046979566}
         m_TargetAssemblyTypeName: Obstacle, Assembly-CSharp
-        m_MethodName: OnExplosion
+        m_MethodName: OnObstacleDestroy
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

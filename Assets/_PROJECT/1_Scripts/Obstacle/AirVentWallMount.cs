@@ -11,6 +11,7 @@ public class AirVentWallMount : Obstacle
 			baseBody.StartFalling();
 		}
 
+		base.PlayHitSound();
 		base.UniqueInteraction();
 	}
 
