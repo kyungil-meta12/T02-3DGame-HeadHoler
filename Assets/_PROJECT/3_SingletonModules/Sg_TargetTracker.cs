@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Michsky.UI.Heat;
@@ -17,10 +18,14 @@ public class Sg_TargetTracker : MonoBehaviour
     [Header("Result Popup")]
     [SerializeField] private ResultPopupController resultPopupController;
 
+    [Header("Clear Delay")]
+    [SerializeField] private float clearDelay = 1.5f;
+
     [Header("HUD Target Slots")]
     [SerializeField] private HudTargetSlotUI[] hudTargetSlots;
 
     private bool isGameCleared = false;
+    private Coroutine clearCoroutine;
 
     private void Awake()
     {
@@ -134,8 +139,19 @@ public class Sg_TargetTracker : MonoBehaviour
         if (GetAliveTargetCount() <= 0)
         {
             isGameCleared = true;
-            GameClear();
+
+            if (clearCoroutine != null)
+                StopCoroutine(clearCoroutine);
+
+            clearCoroutine = StartCoroutine(CoGameClearAfterDelay());
         }
+    }
+
+    private IEnumerator CoGameClearAfterDelay()
+    {
+        yield return new WaitForSeconds(clearDelay);
+        GameClear();
+        clearCoroutine = null;
     }
 
     private void GameClear()
@@ -173,4 +189,3 @@ public class Sg_TargetTracker : MonoBehaviour
         }
     }
 }
-
