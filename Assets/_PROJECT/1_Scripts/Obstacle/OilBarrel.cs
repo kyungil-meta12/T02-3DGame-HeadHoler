@@ -61,6 +61,8 @@ public class OilBarrel : Obstacle
 
 	public override void Hit(Vector3 hit)	//명중 좌표
 	{
+		base.PlayHitSound();
+
 		if (isLeaking)  //드럼통을 이미 맞췄으면
 		{
 			return;

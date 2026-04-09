@@ -129,6 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ae433e8b28cd1a448384f0f9af42599, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle
+  obstacleType: 0
   hitSoundPrefab: {fileID: 6646916530625809652, guid: 19e082466d116b44d97c210f0c8f6ebd, type: 3}
   explosionEffect: {fileID: 0}
   explosionEffectScale: 0
@@ -172,7 +173,19 @@ MonoBehaviour:
   RandomSeed: 0
   OnFractureCompleted:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3796062519112162863}
+        m_TargetAssemblyTypeName: Obstacle, Assembly-CSharp
+        m_MethodName: OnObstacleDestroy
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _meshValidity: 1
   SkipMeshCleaning: 0
   Asynchronous: 1

@@ -964,9 +964,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Sg_SoundPlayer
   gunFire: {fileID: 8300000, guid: d08b4f3b4d9235c4ca55c50f4937da05, type: 3}
-  magazineIn: {fileID: 8300000, guid: 316584af87837f044a89be4c83b14cdf, type: 3}
-  magazineOut: {fileID: 8300000, guid: ef52277dba184ee4f91635cfe31282d1, type: 3}
+  magazineIn: {fileID: 8300000, guid: 71b275faf3ccfa54c9d0a9aa38618b68, type: 3}
+  magazineOut: {fileID: 8300000, guid: 1c859e5b5e32e7342be13005719daee8, type: 3}
   reloadEnd: {fileID: 8300000, guid: 104fb82ab63457b45a88f77b6bb2ccab, type: 3}
+  obstacleExplode: {fileID: 8300000, guid: eb12590319639e94aaa2568bcd32f470, type: 3}
+  carExplode: {fileID: 8300000, guid: 0594f9b5b80e64b4ea85342a09e20702, type: 3}
+  windowBreak: {fileID: 8300000, guid: 2198fe9b3abe8c44a898ab18f7054230, type: 3}
+  wheelBreak: {fileID: 8300000, guid: abcbd8c8d0eba7a4e912f3364eb464d5, type: 3}
+  metalHit: {fileID: 8300000, guid: 22d8ef03250af2143b49a0ae49005aec, type: 3}
+  boxHit: {fileID: 8300000, guid: 72133a7cd18653842a30d68573996e09, type: 3}
 --- !u!82 &44037296149424483
 AudioSource:
   m_ObjectHideFlags: 0

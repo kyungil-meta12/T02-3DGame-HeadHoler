@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.LowLevelPhysics2D;
 using static RagdollController;
 
 // 레이 피격 및 레그돌 활성화를 담당하는 모듈
@@ -11,6 +12,8 @@ public class RagdollController : MonoBehaviour
     public Collider headCollider; // 헤드샷 구분용 콜라이더
     public GameObject hip; //시체처리용 참조
     public bool devMode = false; // 활성화 시 spaceKey로 레그돌 활성화 가능
+
+    public PhysicsMaterial physicsMatrial; // 미끄러짐 방지용 머터리얼
 
     public enum ScoreMode
     {
@@ -47,6 +50,19 @@ public class RagdollController : MonoBehaviour
         //psRigidBody = GetComponent<Rigidbody>();
         smr = GetComponentInChildren<SkinnedMeshRenderer>();
         entityView = GetComponentInChildren<EntityView>();
+
+        // 미끄러짐 방지용 머터리얼 설정
+        foreach(var c in ragdollColliders)
+        {
+            c.material = physicsMatrial;
+        }
+        headCollider.material = physicsMatrial;
+
+        // 선속도 댐핑 설정
+        foreach(var r in ragdollBodies)
+        {
+            r.linearDamping = 0.5f;
+        }
     }
 
     void Start()

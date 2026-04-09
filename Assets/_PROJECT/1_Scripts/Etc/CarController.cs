@@ -112,6 +112,8 @@ public class CarController : MonoBehaviour
                 explosionTime += Time.deltaTime;
                 if(!exploded && explosionTime >= 4f) // 불이 붙은 후 4초가 지나면 폭발
                 {
+                    Sg_SfxPlayer.Inst.PlayCarExplode();
+
                     explosionParticle.SetActive(true);
                     explosionParticle.transform.position = body.position;
                     carLight.SetActive(false);

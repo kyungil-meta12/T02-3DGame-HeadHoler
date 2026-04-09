@@ -120,8 +120,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb8545f03ebe349489e4ec24ce743321, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AirVentWallMount
+  obstacleType: 4
   hitSoundPrefab: {fileID: 6646916530625809652, guid: 19e082466d116b44d97c210f0c8f6ebd, type: 3}
   explosionEffect: {fileID: 0}
+  explosionEffectScale: 0
+  explosionShakeEffectStrength: 0
   explosives: []
   fragile: 1
   damage: 50
@@ -162,7 +165,19 @@ MonoBehaviour:
   RandomSeed: 0
   OnFractureCompleted:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   _meshValidity: 1
   SkipMeshCleaning: 0
   Asynchronous: 1
@@ -205,8 +220,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1c8b059951b2a846a85d4308941d7c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AirVentBase
+  obstacleType: 4
   hitSoundPrefab: {fileID: 6646916530625809652, guid: 19e082466d116b44d97c210f0c8f6ebd, type: 3}
   explosionEffect: {fileID: 0}
+  explosionEffectScale: 0
+  explosionShakeEffectStrength: 0
   explosives: []
   fragile: 0
   damage: 50

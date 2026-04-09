@@ -4,6 +4,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ObstacleType
+{
+	Window,
+	GasBarrel,
+	OilBarrel,
+	SwitchBoard,
+	AirVent,
+	Box
+}
+
 public class Obstacle : MonoBehaviour
 {
 	/*
@@ -29,6 +39,8 @@ public class Obstacle : MonoBehaviour
 	
 	//todo Entity의 Hit(RaycastHit hit, Vector3 direction, float dmg) 호출해서 데미지 입히기
 
+	public ObstacleType obstacleType;
+
 	public GameObject hitSoundPrefab;
 
 	public ExplosionEffect explosionEffect; // 폭발 파티클 프리펩
@@ -48,12 +60,69 @@ public class Obstacle : MonoBehaviour
 	{
 		Hit(transform.position);
 	}
+
+	public void PlayHitSound()
+	{
+		switch(obstacleType)
+		{
+			case ObstacleType.GasBarrel:
+				Sg_SfxPlayer.Inst.PlayMetalHit();
+				break;
+			
+			case ObstacleType.OilBarrel:
+				Sg_SfxPlayer.Inst.PlayMetalHit();
+				break;
+
+			case ObstacleType.SwitchBoard:
+				Sg_SfxPlayer.Inst.PlayMetalHit();
+				break;
+
+			case ObstacleType.AirVent:
+				Sg_SfxPlayer.Inst.PlayMetalHit();
+				break;
+			
+			case ObstacleType.Box:
+				Sg_SfxPlayer.Inst.PlayBoxHit();
+				break;
+		}
+	}
+
+	public void PlayDestroySound()
+	{
+		// 타입에 따라 다른 사운드를 재생한다
+		switch(obstacleType)
+		{
+			case ObstacleType.Window:
+				Sg_SfxPlayer.Inst.PlayWindowBreak();
+				break;
+
+			case ObstacleType.GasBarrel:
+				Sg_SfxPlayer.Inst.PlayObstacleExplode();
+				break;
+			
+			case ObstacleType.OilBarrel:
+				break;
+
+			case ObstacleType.SwitchBoard:
+				break;
+
+			case ObstacleType.AirVent:
+				Sg_SfxPlayer.Inst.PlayMetalHit();
+				break;
+
+			case ObstacleType.Box:
+				break;
+		}
+	}
+
 	public virtual void Hit(Vector3 trans) //총알에 맞았을때
 	{
+		PlayHitSound();
 		UniqueInteraction();
 	}
 
-	public void OnExplosion()
+	// fracture 시스템이 호출
+	public void OnObstacleDestroy()
 	{
 		// 폭발 파티클 추가 // 프리펩 없으면 생략
 		if (explosionEffect)
@@ -62,6 +131,7 @@ public class Obstacle : MonoBehaviour
 			exp.transform.localScale = new Vector3(explosionEffectScale, explosionEffectScale, explosionEffectScale);
 			Sg_CameraController.Inst.AddShake(explosionShakeEffectStrength);
 		}
+		PlayDestroySound();
 	}
 	
 	protected virtual void UniqueInteraction() //고유한 작용

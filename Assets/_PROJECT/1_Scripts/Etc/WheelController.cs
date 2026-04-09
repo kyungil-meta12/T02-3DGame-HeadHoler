@@ -21,5 +21,6 @@ public class WheelController : MonoBehaviour
             Destroy(joint);
             joint.connectedBody = null;
         }
+        Sg_SfxPlayer.Inst.PlayWheelBreak();
     }
 }
