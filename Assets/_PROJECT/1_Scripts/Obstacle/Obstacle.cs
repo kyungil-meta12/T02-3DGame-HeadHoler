@@ -178,7 +178,10 @@ public class Obstacle : MonoBehaviour
 	{
 		if (other.gameObject.CompareTag("FracturedObject"))
 		{
-			Hit(other.transform.position);
+			if (other.GetComponent<Rigidbody>().linearVelocity.magnitude > 5f)
+			{
+				Hit(other.transform.position);
+			}
 		}
 	}
 	
