@@ -128,6 +128,11 @@ public class GunController : MonoBehaviour
                 }
 
                 CreateSoundCollider(hit.point);
+                var rb = hit.transform.GetComponentInParent<Rigidbody>();
+                if (rb != null)
+                {
+                    rb.AddForce(rayDirection * 10f, ForceMode.Impulse);
+                }
             }
 
             // 차량 바퀴인 경우

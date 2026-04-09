@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 787663752754607383}
   - component: {fileID: 3796062519112162863}
   - component: {fileID: -5959129257357502140}
-  - component: {fileID: 963107590163463589}
   - component: {fileID: -7711108350063668612}
   m_Layer: 7
   m_Name: Window(Bulletproof)
@@ -189,33 +188,6 @@ MonoBehaviour:
   _meshValidity: 1
   SkipMeshCleaning: 0
   Asynchronous: 1
---- !u!54 &963107590163463589
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4345263427704132659}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!114 &-7711108350063668612
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,5 +200,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cd6f1f120f81214d9aae45b84134d78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: DinoFracture.Scripts::DinoFracture.ExplodeOnFracture
-  Force: 1
-  Radius: 1
+  Force: 10
+  Radius: 10
