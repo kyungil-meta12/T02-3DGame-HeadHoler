@@ -297,8 +297,19 @@ public class PlayerController : MonoBehaviour
         Sg_SfxPlayer.Inst.PlayReloadEnd();
     }
 
+    private float lastEventTime;
+    private const float MinEventInterval = 0.5f; // 최소 간격
+
     public void OnFootstep()
     {
+        // 1. 시간 차이로 중복 실행 방지 (0.15초 이내면 무시)
+        if (Time.time - lastEventTime < MinEventInterval) return;
+
+        // 2. 현재 이동 입력이 거의 없는 '정지/블렌딩 초기' 상태면 무시
+        if (new Vector2(anim.GetFloat("StrafeSpeed"), anim.GetFloat("ForwardSpeed")).sqrMagnitude < 0.1f) return;
+
+        lastEventTime = Time.time;
+
         Sg_SfxPlayer.Inst.PlayFootstepSound();
     }
 }

@@ -5007,11 +5007,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6799440408756717933, guid: ae12f1ba847c6f74281e7a9a7b0ac7fd, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5.2699842
+      value: 2.86
       objectReference: {fileID: 0}
     - target: {fileID: 6799440408756717933, guid: ae12f1ba847c6f74281e7a9a7b0ac7fd, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 56.23059
+      value: 55.14
       objectReference: {fileID: 0}
     - target: {fileID: 6799440408756717933, guid: ae12f1ba847c6f74281e7a9a7b0ac7fd, type: 3}
       propertyPath: m_LocalRotation.w
@@ -43899,6 +43899,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ae433e8b28cd1a448384f0f9af42599, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle
+  obstacleType: 0
   hitSoundPrefab: {fileID: 6646916530625809652, guid: 19e082466d116b44d97c210f0c8f6ebd, type: 3}
   explosionEffect: {fileID: 0}
   explosionEffectScale: 0
@@ -58566,6 +58567,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ae433e8b28cd1a448384f0f9af42599, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle
+  obstacleType: 0
   hitSoundPrefab: {fileID: 6646916530625809652, guid: 19e082466d116b44d97c210f0c8f6ebd, type: 3}
   explosionEffect: {fileID: 0}
   explosionEffectScale: 0
@@ -63522,6 +63524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ae433e8b28cd1a448384f0f9af42599, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle
+  obstacleType: 0
   hitSoundPrefab: {fileID: 6646916530625809652, guid: 19e082466d116b44d97c210f0c8f6ebd, type: 3}
   explosionEffect: {fileID: 0}
   explosionEffectScale: 0
@@ -64294,6 +64297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ae433e8b28cd1a448384f0f9af42599, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Obstacle
+  obstacleType: 0
   hitSoundPrefab: {fileID: 6646916530625809652, guid: 19e082466d116b44d97c210f0c8f6ebd, type: 3}
   explosionEffect: {fileID: 0}
   explosionEffectScale: 0
@@ -79990,6 +79994,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: __Singletone Modules__
       objectReference: {fileID: 0}
+    - target: {fileID: 5162469604623017040, guid: fbf8743ea28904246a1fb523386a72c1, type: 3}
+      propertyPath: footstep
+      value: 
+      objectReference: {fileID: 8300000, guid: 777595faea794f64d9f694c6478e674b, type: 3}
     - target: {fileID: 7101048695149719347, guid: fbf8743ea28904246a1fb523386a72c1, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
