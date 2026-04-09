@@ -82,16 +82,20 @@ public class RagdollController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (!ragdollEnabled && devMode && Keyboard.current.spaceKey.wasPressedThisFrame) // devMode 활성화 시 space를 누르면 레그돌 즉시 활성화
-        {
-            EnableRagdoll();
-        }
-    }
+    // void Update()
+    // {
+    //     // if (!ragdollEnabled && devMode && Keyboard.current.spaceKey.wasPressedThisFrame) // devMode 활성화 시 space를 누르면 레그돌 즉시 활성화
+    //     // {
+    //     //     EnableRagdoll();
+    //     // }
+    // }
 
     public void EnableRagdoll()
     {
+        if(ragdollEnabled)
+        {
+            return;
+        }
         //var currLnVel = psRigidBody.linearVelocity * 1.5f;
         //var currAnVel = psRigidBody.angularVelocity;
 
@@ -139,6 +143,7 @@ public class RagdollController : MonoBehaviour
         // 렌더링 옵션 변경을 코루틴으로 한 프레임 미룸
         StartCoroutine(EnableOffscreenUpdateNextFrame());
     }
+
     private void ApplyScore()
     {
         if (Sg_ScoreManager.Inst == null || scoreOnDeath < 0)
