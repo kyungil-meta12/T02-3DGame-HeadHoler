@@ -72,6 +72,7 @@ public class Entity : MonoBehaviour
 
     internal bool isDead = false;
     internal BlackboardVariable<bool> isHurt;
+    internal BlackboardVariable<bool> guardTagetIsHurt;
     internal BlackboardVariable<bool> shotTrigger;
     internal BlackboardVariable<bool> isTimeToMove;
 
@@ -128,6 +129,50 @@ public class Entity : MonoBehaviour
             guardTargetEntity = guardTarget.GetComponent<Entity>();
             var guardTargetBehavior = guardTarget.GetComponent<BehaviorGraphAgent>();
             guardTargetBehavior.GetVariable<GameObject>("AlertTarget", out alertTarget);
+            guardTargetBehavior.GetVariable<bool>("isHurt", out guardTagetIsHurt);
+        }
+    }
+    
+    private void Update()
+    {
+        //애니메이터 속도전달
+        if (!regController.ragdollEnabled)
+        {
+            float speed = agent.desiredVelocity.magnitude;
+            if (speed > 1f) speed = 1f;
+            animator.SetFloat(Speed, speed, 0.1f, Time.deltaTime);
+        }
+
+        if (currentHP <= 0f && isDead == false)
+        {
+            StopAllCoroutines();
+            isDead = true;
+            currentHP = 0f;
+            behavior.enabled = false;
+            regController.EnableRagdoll();
+        }
+
+        if (guardTargetEntity != null && behavior.enabled == false)
+        {
+            if (guardTagetIsHurt || guardTargetEntity.isDead)
+            {
+                behavior.enabled = true;
+                behavior.SetVariableValue("AlertTarget", alertTarget.Value);
+            }
+            else if(alertTarget.Value != null)
+            {
+                var guardTargetBehavior = guardTarget.GetComponent<BehaviorGraphAgent>();
+                behavior.enabled = true;
+                behavior.SetVariableValue("AlertTarget", alertTarget.Value);
+            }
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (Sg_GameManager.Inst != null && Sg_GameManager.Inst.entities.Contains(this))
+        {
+            Sg_GameManager.Inst.entities.Remove(this);
         }
     }
 
@@ -267,50 +312,6 @@ public class Entity : MonoBehaviour
     }
 
     private GameObject equip;
-
-    private void Update()
-    {
-        //애니메이터 속도전달
-        if (!regController.ragdollEnabled)
-        {
-            float speed = agent.desiredVelocity.magnitude;
-            if (speed > 1f) speed = 1f;
-            animator.SetFloat(Speed, speed, 0.1f, Time.deltaTime);
-        }
-
-        if (currentHP <= 0f && isDead == false)
-        {
-            StopAllCoroutines();
-            isDead = true;
-            currentHP = 0f;
-            behavior.enabled = false;
-            regController.EnableRagdoll();
-        }
-
-        if (guardTargetEntity != null && behavior.enabled == false)
-        {
-            if (guardTargetEntity.isHurt || guardTargetEntity.isDead)
-            {
-                behavior.enabled = true;
-                behavior.SetVariableValue("AlertTarget", guardTarget);
-            }
-            else if(alertTarget != null)
-            {
-                var guardTargetBehavior = guardTarget.GetComponent<BehaviorGraphAgent>();
-                guardTargetBehavior.GetVariable<GameObject>("AlertTarget", out alertTarget);
-                behavior.enabled = true;
-                behavior.SetVariableValue("AlertTarget", alertTarget.Value);
-            }
-        }
-    }
-
-    private void OnDisable()
-    {
-        if (Sg_GameManager.Inst != null && Sg_GameManager.Inst.entities.Contains(this))
-        {
-            Sg_GameManager.Inst.entities.Remove(this);
-        }
-    }
 
     public void Hit(HitData hitData)
     {
