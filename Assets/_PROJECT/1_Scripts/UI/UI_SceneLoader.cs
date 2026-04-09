@@ -36,6 +36,7 @@ public class UI_SceneLoader : MonoBehaviour
         }
         if (Sg_AchievementRuntime.Inst != null)
             Sg_AchievementRuntime.Inst.SetSelectedStage($"{sceneName}");
+        Time.timeScale = 1f;
         SceneManager.LoadScene(sceneName);
     }
 
