@@ -29,6 +29,7 @@ public class SwitchBoard : Obstacle		//건물 배전반
 		{
 			//light.SetActive(false);
 			light.TurnOff();
+			Instantiate(hitSoundPrefab, light.transform.position, Quaternion.identity);
 		}
 	}
 
