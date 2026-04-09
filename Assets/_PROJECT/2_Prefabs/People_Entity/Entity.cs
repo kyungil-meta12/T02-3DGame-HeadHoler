@@ -333,7 +333,13 @@ public class Entity : MonoBehaviour
     //총이나 충돌체에 맞았을때
     public void Hit(Collider col, Vector3 direction, float dmg)
     {
-        // 파편 등에 피해를 입을 때 한꺼번에 사운드가 재생되지 않도록 한다
+        // 이미 죽은 개체는 처리하지 않는다
+        if(currentHP <= 0f)
+        {
+            return;
+        }
+
+        // 피해를 한 번에 여러번 입을 때 한꺼번에 사운드가 재생되지 않도록 한다
         if (Time.time - lastSoundPlayTime >= MinEventInterval) {
             if(isMale)
             {
@@ -381,7 +387,7 @@ public class Entity : MonoBehaviour
     {
         currentHP = 0f;
         behavior.enabled = false;
-        agent.isStopped = true;
+        agent.enabled = false;
         regController.EnableRagdoll();
     }
 
