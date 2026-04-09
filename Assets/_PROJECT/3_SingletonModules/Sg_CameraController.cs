@@ -165,6 +165,7 @@ public class Sg_CameraController : MonoBehaviour
 
         // UI에 줌 카운트 추가
         Sg_ScopeZoomIndicator.Inst.InputZoomCount(currZoomCount);
+        Sg_SfxPlayer.Inst.PlayScopeDial();
     }
 
     public void ReduceScopeMagnification()
@@ -177,6 +178,7 @@ public class Sg_CameraController : MonoBehaviour
         currZoomCount--;
         // UI에 줌 카운트 추가
         Sg_ScopeZoomIndicator.Inst.InputZoomCount(currZoomCount);
+        Sg_SfxPlayer.Inst.PlayScopeDial();
     }
 
     public void DisableZoom()

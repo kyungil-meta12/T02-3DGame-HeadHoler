@@ -24,6 +24,7 @@ public class Sg_SfxPlayer : MonoBehaviour
     public AudioClip[] femaleScream;
 
     public AudioClip headShot;
+    public AudioClip scopeDial;
 
     public AudioClip carHorn;
 
@@ -115,5 +116,10 @@ public class Sg_SfxPlayer : MonoBehaviour
     public void PlayHeadShot()
     {
         aSource.PlayOneShot(headShot);
+    }
+
+    public void PlayScopeDial()
+    {
+        aSource.PlayOneShot(scopeDial);
     }
 }
