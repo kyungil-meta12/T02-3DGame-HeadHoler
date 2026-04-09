@@ -49,32 +49,10 @@ public class Sg_AchievementRuntime : MonoBehaviour
 
         switch (selectedStageId)
         {
-            case "Test":
-                if (cleared)
-                {
-                    AchievementManager.SetAchievement("테스트 스테이지 클리어", true);
-                    UpdateChapterProgress("Test", "StageScene_00");
-                }
-
-                if (cleared && score >= testScoreThreshold)
-                    AchievementManager.SetAchievement("테스트 스테이지 4000점 달성", true);
-                break;
-
-            case "StageScene_00":
-                if (cleared)
-                {
-                    AchievementManager.SetAchievement("튜토리얼 스테이지 클리어", true);
-                    UpdateChapterProgress("StageScene_00", "01_StageScene");
-                }
-
-                if (cleared && score >= stage00ScoreThreshold)
-                    AchievementManager.SetAchievement("튜토리얼 2000점 달성", true);
-                break;
-
             case "01_StageScene":
                 if (cleared)
                 {
-                    AchievementManager.SetAchievement("01스테이지 클리어", true);
+                    AchievementManager.SetAchievement("Easy 1 클리어", true);
                     UpdateChapterProgress("01_StageScene", "02_StageScene");
                 }
 
@@ -85,7 +63,7 @@ public class Sg_AchievementRuntime : MonoBehaviour
             case "02_StageScene":
                 if (cleared)
                 {
-                    AchievementManager.SetAchievement("02스테이지 클리어", true);
+                    AchievementManager.SetAchievement("Easy 2 클리어", true);
                     UpdateChapterProgress("02_StageScene", "03_StageScene");
                 }
 
@@ -96,7 +74,7 @@ public class Sg_AchievementRuntime : MonoBehaviour
             case "03_StageScene":
                 if (cleared)
                 {
-                    AchievementManager.SetAchievement("03스테이지 클리어", true);
+                    AchievementManager.SetAchievement("Easy 3 클리어", true);
                     UpdateChapterProgress("03_StageScene", "11_StageScene");
                 }
 
@@ -107,7 +85,7 @@ public class Sg_AchievementRuntime : MonoBehaviour
             case "11_StageScene":
                 if (cleared)
                 {
-                    AchievementManager.SetAchievement("11스테이지 클리어", true);
+                    AchievementManager.SetAchievement("Normal 1 클리어", true);
                     UpdateChapterProgress("11_StageScene", "12_StageScene");
                 }
 
@@ -118,7 +96,7 @@ public class Sg_AchievementRuntime : MonoBehaviour
             case "12_StageScene":
                 if (cleared)
                 {
-                    AchievementManager.SetAchievement("12스테이지 클리어", true);
+                    AchievementManager.SetAchievement("Normal 2 클리어", true);
                     UpdateChapterProgress("12_StageScene", "13_StageScene");
                 }
 
@@ -129,7 +107,7 @@ public class Sg_AchievementRuntime : MonoBehaviour
             case "13_StageScene":
                 if (cleared)
                 {
-                    AchievementManager.SetAchievement("13스테이지 클리어", true);
+                    AchievementManager.SetAchievement("Normal 3 클리어", true);
                     UpdateChapterProgress("13_StageScene", "21_StageScene");
                 }
 
@@ -140,7 +118,7 @@ public class Sg_AchievementRuntime : MonoBehaviour
             case "21_StageScene":
                 if (cleared)
                 {
-                    AchievementManager.SetAchievement("21스테이지 클리어", true);
+                    AchievementManager.SetAchievement("Hard 1 클리어", true);
                     UpdateChapterProgress("21_StageScene", "22_StageScene");
                 }
 
@@ -151,7 +129,7 @@ public class Sg_AchievementRuntime : MonoBehaviour
             case "22_StageScene":
                 if (cleared)
                 {
-                    AchievementManager.SetAchievement("22스테이지 클리어", true);
+                    AchievementManager.SetAchievement("Hard 2 클리어", true);
                     UpdateChapterProgress("22_StageScene", "23_StageScene");
                 }
 
@@ -162,7 +140,7 @@ public class Sg_AchievementRuntime : MonoBehaviour
             case "23_StageScene":
                 if (cleared)
                 {
-                    AchievementManager.SetAchievement("23스테이지 클리어", true);
+                    AchievementManager.SetAchievement("Hard 3 클리어", true);
                     UpdateChapterProgress("23_StageScene", null);
                 }
 
