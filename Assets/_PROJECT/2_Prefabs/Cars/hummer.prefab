@@ -614,18 +614,7 @@ MonoBehaviour:
   - {fileID: 5555855761878200186}
   - {fileID: 8154043530873122225}
   - {fileID: 2723197534980515428}
-  waypoints:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  waypoints: []
   wheelRotationMultiplier: 500
   startTime: 0
   lightEnableTime: 0
@@ -652,6 +641,7 @@ MonoBehaviour:
   - {fileID: 9016655137119151896}
   alarmDuration: 20
   lightFlickInterval: 0.3
+  carIterator: {fileID: 0}
 --- !u!1 &3377121958281394948
 GameObject:
   m_ObjectHideFlags: 0
