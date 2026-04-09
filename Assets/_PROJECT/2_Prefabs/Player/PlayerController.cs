@@ -298,7 +298,7 @@ public class PlayerController : MonoBehaviour
     }
 
     private float lastEventTime;
-    private const float MinEventInterval = 0.5f; // 최소 간격
+    private const float MinEventInterval = 0.2f; // 최소 간격
 
     public void OnFootstep()
     {
