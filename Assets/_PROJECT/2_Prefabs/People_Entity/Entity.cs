@@ -153,6 +153,8 @@ public class Entity : MonoBehaviour
             isDead = true;
             currentHP = 0f;
             behavior.enabled = false;
+            agent.isStopped = true;
+            agent.enabled = false;
             regController.EnableRagdoll();
         }
 
