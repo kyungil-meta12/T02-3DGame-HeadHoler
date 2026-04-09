@@ -16,12 +16,12 @@ public class UI_MainMenuStartButton : MonoBehaviour
     [SerializeField] private string stage13SceneName = "13_StageScene";
 
     [Header("Clear Achievement Titles")]
-    [SerializeField] private string stage01ClearAchievement = "01스테이지 클리어";
-    [SerializeField] private string stage02ClearAchievement = "02스테이지 클리어";
-    [SerializeField] private string stage03ClearAchievement = "03스테이지 클리어";
-    [SerializeField] private string stage11ClearAchievement = "11스테이지 클리어";
-    [SerializeField] private string stage12ClearAchievement = "12스테이지 클리어";
-    [SerializeField] private string stage13ClearAchievement = "13스테이지 클리어";
+    [SerializeField] private string stage01ClearAchievement = "Easy 1 클리어";
+    [SerializeField] private string stage02ClearAchievement = "Easy 2 클리어";
+    [SerializeField] private string stage03ClearAchievement = "Easy 3 클리어";
+    [SerializeField] private string stage11ClearAchievement = "Normal 1 클리어";
+    [SerializeField] private string stage12ClearAchievement = "Normal 2 클리어";
+    [SerializeField] private string stage13ClearAchievement = "Normal 3 클리어";
 
     [Header("Button Text")]
     [SerializeField] private string defaultTitle = "게임 시작";
@@ -81,32 +81,32 @@ public class UI_MainMenuStartButton : MonoBehaviour
 
         if (!IsAchievementUnlocked(stage01ClearAchievement))
         {
-            title = "게임 시작 - 01스테이지";
+            title = "게임 시작 - Easy 1스테이지";
             description = "다음 진행 스테이지인 01스테이지를 시작합니다.";
         }
         else if (!IsAchievementUnlocked(stage02ClearAchievement))
         {
-            title = "게임 시작 - 02스테이지";
+            title = "게임 시작 - Easy 2스테이지";
             description = "다음 진행 스테이지인 02스테이지를 시작합니다.";
         }
         else if (!IsAchievementUnlocked(stage03ClearAchievement))
         {
-            title = "게임 시작 - 03스테이지";
+            title = "게임 시작 - Easy 3스테이지";
             description = "다음 진행 스테이지인 03스테이지를 시작합니다.";
         }
         else if (!IsAchievementUnlocked(stage11ClearAchievement))
         {
-            title = "게임 시작 - 11스테이지";
+            title = "게임 시작 - Normal 1스테이지";
             description = "다음 진행 스테이지인 11스테이지를 시작합니다.";
         }
         else if (!IsAchievementUnlocked(stage12ClearAchievement))
         {
-            title = "게임 시작 - 12스테이지";
+            title = "게임 시작 - Normal 2스테이지";
             description = "다음 진행 스테이지인 12스테이지를 시작합니다.";
         }
         else if (!IsAchievementUnlocked(stage13ClearAchievement))
         {
-            title = "게임 시작 - 13스테이지";
+            title = "게임 시작 - Normal 3스테이지";
             description = "다음 진행 스테이지인 13스테이지를 시작합니다.";
         }
         else
