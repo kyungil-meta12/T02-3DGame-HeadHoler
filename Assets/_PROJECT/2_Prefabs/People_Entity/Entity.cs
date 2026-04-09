@@ -152,6 +152,7 @@ public class Entity : MonoBehaviour
             StopAllCoroutines();
             isDead = true;
             currentHP = 0f;
+            behavior.End();
             behavior.enabled = false;
             agent.isStopped = true;
             agent.enabled = false;
