@@ -29,6 +29,9 @@ public class CarController : MonoBehaviour
 
     private Vector3 originFlameRotation;
 
+    private AudioSource engineRunningSound;
+    private bool engineStart = false;
+
     void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -42,6 +45,7 @@ public class CarController : MonoBehaviour
 
         if (destroyable)
         {
+            engineRunningSound = GetComponent<AudioSource>();
             body = GetComponentInChildren<Rigidbody>();
             rigidWheels = GetComponentsInChildren<Rigidbody>();
             foreach (var wheel in rigidWheels)
@@ -72,7 +76,9 @@ public class CarController : MonoBehaviour
                     }
                     if (currentTime >= startTime)
                     {
+
                         SetDestinationToNextPoint();
+                        EnableEngine();
                         agent.isStopped = false;
                     }
                 }
@@ -191,5 +197,16 @@ public class CarController : MonoBehaviour
         body.isKinematic = false;
         body.linearVelocity = agent.velocity;
         agent.enabled = false;
+        engineRunningSound.Stop();
+    }
+
+    public void EnableEngine()
+    {
+        if(!agent.isStopped || engineStart || !engineRunningSound)
+        {
+            return;
+        }
+        engineRunningSound.Play();
+        engineStart = true;
     }
 }
