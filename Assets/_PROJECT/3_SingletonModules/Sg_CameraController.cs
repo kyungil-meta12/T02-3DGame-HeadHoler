@@ -80,7 +80,7 @@ public class Sg_CameraController : MonoBehaviour
         offsetFov = Mathf.Lerp(offsetFov, -offsetFovDest * zoomSensitivity + zoomSensitivity, Time.deltaTime * 5f);
 
         // 줌을 더 크게 할 수록 마우스 감도 감소
-        var camSensitivity = (currentFov)/defaultFov;
+        var camSensitivity = currentFov/defaultFov;
         Sg_MouseMan.Inst.SetSensitivityMultiple(new Vector2(camSensitivity, camSensitivity));
 
         if (zoomState) // 줌 활성화 시 가속을 사용하여 fov 감소

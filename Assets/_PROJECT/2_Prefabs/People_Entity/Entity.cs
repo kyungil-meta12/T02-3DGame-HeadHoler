@@ -76,6 +76,10 @@ public class Entity : MonoBehaviour
     internal BlackboardVariable<bool> shotTrigger;
     internal BlackboardVariable<bool> isTimeToMove;
 
+    // 사운드가 한 번에 여러번 재생되지 않도록 플레이 간격에 제한을 둔다
+    private float lastSoundPlayTime;
+    private float MinEventInterval = 0.5f; // 최소 간격
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
@@ -326,10 +330,26 @@ public class Entity : MonoBehaviour
     //총이나 충돌체에 맞았을때
     public void Hit(Collider col, Vector3 direction, float dmg)
     {
+        // 파편 등에 피해를 입을 때 한꺼번에 사운드가 재생되지 않도록 한다
+        if (Time.time - lastSoundPlayTime >= MinEventInterval) {
+            if(isMale)
+            {
+                Sg_SfxPlayer.Inst.PlayMaleScream();
+            }
+            else
+            {
+                Sg_SfxPlayer.Inst.PlayFemaleScream();
+            }
+            lastSoundPlayTime = Time.time;
+        }
+
         shotTrigger.Value = !shotTrigger.Value;
         isHurt.Value = true;
+
+        // 헤드샷을 경우 별도의 sfx 재생
         if (col == regController.headCollider)
         {
+            Sg_SfxPlayer.Inst.PlayHeadShot();
             currentHP = 0f;
             regController.headCollider.attachedRigidbody.AddForce(direction * 100f, ForceMode.Impulse); // 맞은 방향으로 힘 가함
             //print("headshot");
