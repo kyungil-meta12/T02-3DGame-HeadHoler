@@ -173,6 +173,8 @@ public class GunController : MonoBehaviour
         Sg_MouseMan.Inst.AddRecoil(recoil); // 반동으로 인해 화면이 위로 튄다
         scopeImage.AddRecoil(recoil); // 스코프 이미지에 진동 효과 추가
 
+        Sg_SfxPlayer.Inst.PlayGunFire();
+
         print($"[GunController] Fire | Ammo: {currAmmo} / {totalAmmo}"); // 테스트용 출력
     }
 

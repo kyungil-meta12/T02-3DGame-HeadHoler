@@ -279,6 +279,7 @@ public class PlayerController : MonoBehaviour
         {
             currGunMagazine.GetComponent<MeshRenderer>().enabled = false; // 총 모델의 탄창 렌더링을 잠시 비활성화
         }
+        Sg_SfxPlayer.Inst.PlayMagazinOut();
     }
 
     // 애니메이션 이벤트
@@ -289,5 +290,10 @@ public class PlayerController : MonoBehaviour
         {
             currGunMagazine.GetComponent<MeshRenderer>().enabled = true; // 총 모델의 탄창 렌더링을 다시 활성화
         }
+           Sg_SfxPlayer.Inst.PlayMagazineIn();
+    }
+    public void OnReloadEnd()
+    {
+        Sg_SfxPlayer.Inst.PlayReloadEnd();
     }
 }
