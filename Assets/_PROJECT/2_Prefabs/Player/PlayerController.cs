@@ -296,4 +296,9 @@ public class PlayerController : MonoBehaviour
     {
         Sg_SfxPlayer.Inst.PlayReloadEnd();
     }
+
+    public void OnFootstep()
+    {
+        Sg_SfxPlayer.Inst.PlayFootstepSound();
+    }
 }

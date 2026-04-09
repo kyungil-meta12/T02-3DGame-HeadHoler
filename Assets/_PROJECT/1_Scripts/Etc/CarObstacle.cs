@@ -27,6 +27,7 @@ public class CarObstacle : MonoBehaviour
 
     public void Hit()
     {
+        Sg_SfxPlayer.Inst.PlayMetalHit();
         durateTime = 0f;
         flickTime = 0f;
         alarmState = true;
@@ -66,6 +67,9 @@ public class CarObstacle : MonoBehaviour
         for(int i = 0; i < lights.Length; i ++)
         {
             lights[i].intensity = flag ? lightIntensity[i] : 0f;
+        }
+        if(flag) {
+            Sg_SfxPlayer.Inst.PlayCarHorn();
         }
     }
 }

@@ -11,6 +11,7 @@ public class Sg_SfxPlayer : MonoBehaviour
     public AudioClip magazineIn;
     public AudioClip magazineOut;
     public AudioClip reloadEnd;
+    public AudioClip footstep;
 
     public AudioClip obstacleExplode;
     public AudioClip carExplode;
@@ -18,6 +19,8 @@ public class Sg_SfxPlayer : MonoBehaviour
     public AudioClip wheelBreak;
     public AudioClip metalHit;
     public AudioClip boxHit;
+
+    public AudioClip carHorn;
 
     void Awake()
     {
@@ -52,6 +55,11 @@ public class Sg_SfxPlayer : MonoBehaviour
         aSource.PlayOneShot(reloadEnd);
     }
 
+    public void PlayFootstepSound()
+    {
+        aSource.PlayOneShot(footstep);
+    }
+
     public void PlayObstacleExplode()
     {
         aSource.PlayOneShot(obstacleExplode);
@@ -80,5 +88,10 @@ public class Sg_SfxPlayer : MonoBehaviour
     public void PlayBoxHit()
     {
         aSource.PlayOneShot(boxHit);
+    }
+
+    public void PlayCarHorn()
+    {
+        aSource.PlayOneShot(carHorn);
     }
 }
