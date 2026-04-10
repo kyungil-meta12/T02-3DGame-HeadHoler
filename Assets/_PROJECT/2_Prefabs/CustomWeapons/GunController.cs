@@ -154,10 +154,12 @@ public class GunController : MonoBehaviour
             else if (CheckMask(collideMask, carMask))
             {
                 var carComp = hit.transform.gameObject.GetComponentInParent<CarObstacle>();
-                print("car hit");
-                CreateSoundCollider(hit.point);
-                carComp.Hit();
-                Sg_HitIndicator.Inst.InputHit();
+                if(carComp) {
+                    print("car hit");
+                    CreateSoundCollider(hit.point);
+                    carComp.Hit();
+                    Sg_HitIndicator.Inst.InputHit();
+                }
             }
 
             // 그 외의 경우
