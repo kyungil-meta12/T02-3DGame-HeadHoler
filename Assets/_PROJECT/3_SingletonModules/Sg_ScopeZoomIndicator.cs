@@ -39,4 +39,9 @@ public class Sg_ScopeZoomIndicator : MonoBehaviour
     {
         destValue = (float)count;
     }
+
+    public void HideBar()
+    {
+        Inst = null;
+    }
 }

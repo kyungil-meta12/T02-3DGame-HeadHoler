@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ResultPopupController : MonoBehaviour
@@ -86,6 +87,8 @@ public class ResultPopupController : MonoBehaviour
             }
             PlayerPrefs.Save();
         }
+        Sg_ScopeZoomIndicator.Inst.HideBar();
+        Sg_GameManager.Inst.SetPause();
 
         PlayVictoryParticlesByScore();
 
@@ -121,6 +124,9 @@ public class ResultPopupController : MonoBehaviour
 
         if (Sg_AchievementRuntime.Inst != null)
             Sg_AchievementRuntime.Inst.ProcessStageResult(finalScore, false);
+
+        Sg_ScopeZoomIndicator.Inst.HideBar();
+        Sg_GameManager.Inst.SetPause();
 
         PlayDefeatParticles();
 
