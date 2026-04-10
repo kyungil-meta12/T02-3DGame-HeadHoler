@@ -39795,7 +39795,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 968063998}
         m_TargetAssemblyTypeName: AchievementResetButton, Assembly-CSharp
-        m_MethodName: ResetAllAchievementsAndProgress
+        m_MethodName: ResetAllPlayerPrefs
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -39900,8 +39900,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a4c91d374486c74897c9bd4f84f8c5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AchievementResetButton
-  achievementManager: {fileID: 0}
-  mainMenuStartButton: {fileID: 0}
+  achievementManager: {fileID: 779874568}
+  mainMenuStartButton: {fileID: 2074311751}
   chapterManager: {fileID: 0}
 --- !u!1 &968844473
 GameObject:
