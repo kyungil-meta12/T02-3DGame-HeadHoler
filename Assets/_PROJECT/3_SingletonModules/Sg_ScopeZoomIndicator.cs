@@ -42,6 +42,6 @@ public class Sg_ScopeZoomIndicator : MonoBehaviour
 
     public void HideBar()
     {
-        Inst = null;
+        gameObject.SetActive(false);
     }
 }
