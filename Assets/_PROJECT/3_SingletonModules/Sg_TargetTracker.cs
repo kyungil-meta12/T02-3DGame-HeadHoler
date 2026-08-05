@@ -156,16 +156,7 @@ public class Sg_TargetTracker : MonoBehaviour
 
     private void GameClear()
     {
-        Debug.Log("Game Clear.");
-
-        if (resultPopupController != null)
-        {
-            resultPopupController.ShowSuccess();
-        }
-        else
-        {
-            Debug.LogWarning("[Sg_TargetTracker] ResultPopupController is null.");
-        }
+        Sg_GameManager.Inst.SetGameClear();
     }
 
     private void CleanupNullTargets()

@@ -50,11 +50,23 @@ public class Sg_GameManager : MonoBehaviour
 
         isGameOver = true;
 
-        print("Game Over.");
+        print("Game Clear.");
 
         if (resultPopupController != null)
         {
             resultPopupController.ShowFailure();
+        }
+        else
+        {
+            Debug.LogWarning("[Sg_GameManager] resultPopupController is null.");
+        }
+    }
+
+    public void SetGameClear()
+    {
+        if (resultPopupController != null)
+        {
+            resultPopupController.ShowSuccess();
         }
         else
         {
